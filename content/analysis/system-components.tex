@@ -29,6 +29,20 @@ The second configuration was abandoned due to restrictions posed by the Bluetoot
 
 The rest of the report will focus on the first configuration of the system.
 
+\subsection{Required Hardware}
+\label{sec:analysis:system-components:required-hardware}
+
+The following list presents the hardware needed for the system.
+
+\begin{itemize}
+\item A computer running software for the hub which is responsible for forwarding commands received from the user to controllable devices in the system. The benefit of running the hub on a central computer rather than the hub, is that the hub could potentially be configured with rules for automation and should therefore always be running, compromising the battery life of a wearable. Furthermore placing the logic in a central place can prove benefitial in an environment with multiple users in which multiple hubs would have to be synchronized.
+\item A wearable capable which provides access to APIs for both bluetooth and the accelerometer. Furthermore it should be possible to give some sort of feedback to the user when a gesture could not be recognized. The wearable should also be able to communicate with hub.
+\item Minimum one bluetooth beacon per room and minimum two beacons in order to configure the system with two rooms. The bluetooth beacons are used to determine which room the user is in.
+\item Minimum two controllable devices, one per room in the system. These devices receives requests from the hub that ask them to change their state, e.g. turn on or off in case of a lamp.
+\end{itemize}
+
+The above lists the bare minimum of hardware required in order to implement the system. Section \cref{} provides a detailed analyses of the desired hardware. \todo[author=Simon]{Insert reference to detailed analyses of the hardware required for the system.}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../master"
