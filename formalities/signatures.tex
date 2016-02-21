@@ -1,0 +1,34 @@
+\makeatletter
+\define@key{signature}{width}{\def\sig@width{#1}}
+\define@key{signature}{content height}{\def\sig@contentHeight{#1}}
+\define@key{signature}{image}{\def\sig@image{#1}}
+\setkeys{signature}{width=5cm, content height=1cm}%
+\newcommand{\signature}[3][]{%
+  \begingroup%
+  \setkeys{signature}{#1}% Set new keys
+  \begin{tabular}{@{}p{\sig@width}@{}}
+    #2
+    \@ifundefined{sig@image}{
+      \\\vspace{\sig@contentHeight}
+    }{
+    \\
+    \parbox[t][\sig@contentHeight][b]{\sig@width}{
+      \includegraphics[max height=\sig@contentHeight, max width=\sig@width]{\sig@image}
+    }
+    }
+    \hrule \\[0pt]
+    {\small #3} \\[2\normalbaselineskip]
+  \end{tabular}
+  \endgroup%
+}
+\makeatother
+
+\begin{center}
+\signature[image=signature-kls]{Kasper Lind Sørensen}{klsa11@student.aau.dk}
+\\ \vspace{1cm}
+\signature[image=signature-sbs]{Simon B. Støvring}{sstavr11@student.aau.dk}
+\end{center}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../master"
+%%% End:
