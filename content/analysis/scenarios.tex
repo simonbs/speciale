@@ -1,6 +1,55 @@
 \section{Scenarios}
 \label{sec:analysis:scenarios}
 
+This section describes a few scenarios that might occur during the use of the envisioned system. Some assumptions are made about the system and the environment in which these scenarios take place:
+
+\begin{itemize}
+    \item The system is installed in a private home with clearly defined rooms. Eg. there is no question whether a device is located in the kitchen or the living room
+    \item All controllable devices are connected through a central hub
+    \item Data about these devices (such as their location and their current state) is always available
+    \item The location of the user is always available
+\end{itemize}
+
+\subsection{Playing Music in the Kitchen}
+\label{sec:analysis:scenarios:playing_music}
+
+Assume that a person is in his kitchen and wishes to listen to music while cooking, and that this person has a stereo in the kitchen as well as in the living room that are both connected to his smart hub.
+Assume also that this person uses the same set of gestures to control these stereos as they are functionally equivalent and the use of them does not vary enough to warrant separate sets of gestures.
+Thus when this person wishes to interact with his stereo by performing the gestures bound to them it is neccesary to determine which stereo is the intended target.
+
+If the gesture performed is set to turn on a stereo, it is relevant to inspect the state of all stereos as it does not make sense to attempt to turn on a stereo that is already turned on.
+As well it is relevant to use the location of the person compared to the different steroes, as it is more likely that he intends to control the ones in the same room as him than the ones in other rooms.
+
+Hence if there is a stereo in the kitchen that is not already turned on then it is safe to  assume that that is the intended target of the persons action.
+
+Similarly, if the stereo in the kitchen is already turned on but the one in the living room is not, then the one in the living room is most likely the intended target.
+
+Though not apparent in this example scenario, working with devices such as stereos pose some interesting challenges regarding gesture control as they require more granular control than mere on / off, eg. when controlling the volume at which the music plays.
+
+\subsection{Handling Uncertainties}
+\label{sec:analysis:scenarios:handling_uncertainties}
+
+Not all scenarios will work out as well as the one previously presented.
+Sometimes a meaningful action cannot be determined from a gesture or the context of the user.
+Assume that a person is in his living room and he performs a gesture that is recognized as ``Turn on TV'', but the only TV in the house (located in the living room) is already turned on.
+In this case the action could be considered void, but we propose a different solution.
+Rather than just ignoring the persons request, a list of alternate actions could be presented to him on his smartwatch.
+
+It may be safe to assume that the person wanted to interact with the TV if the gesture performed was bound to this device, thus the target is still determined from the gesture, the location of the user and the location of the device, just as in the previous scenario.
+Which actions would be presented however, could be the inverse of the one performed (if applicable) which in this case would be to turn the TV off.
+It could also be a list of the actions most frequently performed by the user.
+
+Another case of uncertainty would be if the gesture performed was not recognized.
+This could be considered void and the person would be asked to try again, or the intended target could be assumed to be the device that the person most recently interacted with, and a list of the most frequently used actions could be presented on the persons watch.
+
+\subsection{Controlling Devices in Other Rooms}
+\label{sec:analysis:scenarios:other_rooms}
+
+Assume that a person is in his bedroom watching TV but then remembers that he forgot to turn off the TV in the living room.
+He wishes to turn off the TV in the living room but not the one located in the bedroom.
+If the system follows the logic presented in \cref{sec:analysis:scenarios:playing_music}, then performing a gesture bound to ``Turn off TV'' would turn off the TV in the bedroom as it is in the same room as the person.
+To circumvent this, the smartwatch app could allow the user to select which room he would like to control devices in.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../master"
