@@ -1,0 +1,60 @@
+\section{Choice of Wearable}
+\label{sec:analysis:choice-of-wearables}
+
+The following section analyze the possibilities of selected wearables in regards to solution described in this report.
+
+The wearable is primarily used for gesture recognition and positioning of the user. Furthermore the wearable is utilised to give feedback to the user when a gesture culd not be recognized. The wearable should also allow for interactions, such as virtually changing the position of the user as described in \cref{sec:analysis:scenarios}.
+
+The following requirements to the wearable can be outlined.
+
+\begin{itemize}
+\item The wearable must possess a screen on which feedback can be presented and allow for interaction with the data on the screen in some way.
+\item The wearable must possess an accelerometer in order to detect the users movements and derive gestures from those.
+\item As described in section \cref{}, bluetooth is used for positioning the user. Therefore the wearable should possess bluetooth in order to position the user. \todo[author=Simon]{Insert reference to choice of bluetooth as positioning technology.}
+\item WiFi connection in order to send commands to the hub. The wearable should ideally be independent of the phone and should send commands directly to the hub. WiFi is suitable for this as it is assumed that a WiFi connection is available in the entire house of the user.
+\end{itemize}
+
+As we want a wearable that allows for both performing gestures, providing feedback to the user and let the user interact with an application running on the wearable, we chose to focus on smartwatches.
+
+Performing gestures using a hand feels more natural than the feet, head or other body parts. This makes smartwatches are ideal for recognizing gestures as they are worn on the wrist. Furthermore smartwatches are typically equipped with a touchscreen or buttons to interact with a screen or both.
+
+The following wearables were chosen based on their popularity, availability and a desire to include a watch running each of the major smartwatch operating systems which, as of writing this, is Android Wear, Tizen and Apple Watch \todo[author=Simon]{Are the major smartwatch operating systems a claim or ``broadly accepted''?}. Furthermore we included a Pebble Classic in our analyze as we already had access to one.
+
+The below four smartwatches are analyzed in the following sections.
+
+\begin{itemize}
+\item Pebble Classic running Pebble OS.
+\item Second generation Moto 360 running Android Wear.
+\item Samsung Gear S2 running Tizen.
+\item Apple Watch running watchOS.
+\end{itemize}
+
+\Cref{tbl:analysis:choice-of-wearable} shows a comparison of the four smartwatches based on the three parameters previously listed. The table shows that the Pebble Classic and the Apple Watch does not provide access to the bluetooth API and thus we cannot perform positioning directly on the smartwatch. An alternative is to accept the limitation of the hardware and perform the positioning of the user on a smartphone and continously transfer the positions to the hub. The smartwatch can then retrieve the positions when needed.
+This limitation requires the user to carry the phone wherever he goes.
+
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[htb]
+\centering
+\caption{Comparison of wearables}
+\label{tbl:analysis:choice-of-wearable}
+\begin{tabularx}{\linewidth}{rXX}
+\multicolumn{1}{l}{\textbf{}}     & \textbf{Pebble Classic}                       & \textbf{Second generation Moto 360} \\
+\textbf{Feedback} & Screen with hardware buttons for interaction. & Touchscreen.                        \\
+\textbf{Gesture recognition}      & Accelerometer. \cite{pebble:accelerometer}                                & Accelerometer and gyroscope. \cite{motorola:moto360} \cite{android:creating-wearable-apps} \cite{android:motion-sensors}        \\
+\textbf{Positioning}              & No access to the bluetooth API.               & Access to the bluetooth API. \cite{motorola:moto360} \cite{android:creating-wearable-apps} \cite{android:bluetooth}        \\
+\textbf{WiFi}                     & No references indicating that it has WiFi.    & Yes.                                \\
+\multicolumn{1}{l}{}              & \textbf{Samsung Gear S2}                      & \textbf{Apple Watch}                \\
+\textbf{Feedback} & Touchscreen with a rotating bezel.             & Touchscreen with digital crown.     \\
+\textbf{Gesture recognition}      & Accelerometer and gyroscope. \cite{samsung:gears2} \cite{tizen:sensors}                  & Accelerometer.                      \\
+\textbf{Positioning}              & Access to the bluetooth API. \cite{samsung:gears2} \cite{tizen:bluetooth}                  & No access to the bluetooth API.     \\
+\textbf{WiFi}                     & Yes.                                          & Yes.                               
+\end{tabularx}
+\end{table}
+
+\subsection{Conclusion}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:
