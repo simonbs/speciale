@@ -18,7 +18,7 @@ As we want a wearable that allows for both performing gestures, providing visual
 
 Performing gestures using a hand feels more natural than the feet, head or other body parts. This makes smartwatches are ideal for recognizing gestures as they are worn on the wrist. Furthermore smartwatches are typically equipped with a touchscreen or buttons to interact with a screen or both.
 
-The following wearables were chosen based on their popularity, availability and a desire to include a watch running each of the major smartwatch operating systems which, as of writing this, is Android Wear, Tizen and Apple Watch \todo[author=Simon]{Are the major smartwatch operating systems a claim or ``broadly accepted''?}. Furthermore we included a Pebble Classic in our analyze as we already had access to one.
+The following wearables were chosen based on their popularity, availability and a desire to include a watch by each of the major players in the mobile market which, as of writing this, is Google, Microsoft, Apple and Samsung \todo[author=Simon]{Are the major smartwatch operating systems a claim or ``broadly accepted''?}. Furthermore we included a Pebble Classic in our analyze as we already had access to one.
 
 The below four smartwatches are analyzed in the following sections.
 
@@ -27,6 +27,7 @@ The below four smartwatches are analyzed in the following sections.
 \item Second generation Moto 360 running Android Wear.
 \item Samsung Gear S2 running Tizen.
 \item Apple Watch running watchOS.
+\item Microsoft Band running Microsofts wearable architecture.
 \end{itemize}
 
 \Cref{tbl:analysis:choice-of-wearable} shows a comparison of the four smartwatches based on the three parameters previously listed. The table shows that the Pebble Classic and the Apple Watch does not provide access to the bluetooth API and thus we cannot perform positioning directly on the smartwatch. An alternative is to accept the limitation of the hardware and perform the positioning of the user on a smartphone and continously transfer the positions to the hub. The smartwatch can then retrieve the positions when needed.
@@ -47,7 +48,12 @@ This limitation requires the user to carry the phone wherever he goes.
 \textbf{Feedback} & Touchscreen with a rotating bezel.             & Touchscreen with digital crown.     \\
 \textbf{Gesture recognition}      & Accelerometer and gyroscope. \cite{samsung:gears2, tizen:sensors}                  & Accelerometer.                      \\
 \textbf{Positioning}              & Access to the bluetooth API. \cite{samsung:gears2, tizen:bluetooth}                  & No access to the bluetooth API.     \\
-\textbf{WiFi}                     & Yes.                                          & Yes.                               
+\textbf{WiFi}                     & Yes.                                          & Yes.                               \\
+\multicolumn{1}{l}{}              & \textbf{Microsoft Band}                      & ~                \\
+\textbf{Feedback} & Touchscreen.            & ~     \\
+\textbf{Gesture recognition}      & Accelerometer and gyroscope. \cite{microsoft:band-sdk, microsoft:band-sdk-documentation}                  & ~                      \\
+\textbf{Positioning}              & No reference to access of the bluetooth API.                  & ~     \\
+\textbf{WiFi}                     & No.                                          & ~                               
 \end{tabularx}
 \end{table}
 
