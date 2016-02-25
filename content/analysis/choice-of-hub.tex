@@ -1,0 +1,25 @@
+\section{Choice of Hub}
+\label{sec:analysis:choice-of-hub}
+
+\subsection{Hardware}
+
+The hardware that, together with OpenHAB, constitutes the hub should fulfill the following requirements.
+
+\begin{itemize}
+\item Compatible with OpenHAB as this is our software of choice.
+\item Low cost in order to reduce the barrier of entry.
+\item Small in order to for it to easily fit into any place of a home, e.g. a closet.
+\end{itemize}
+
+OpenHAB runs on any computer that can run a Java virtual machine \cite{openhab:introduction}. It can be installed on desktop computers running Windows, Linux or OS X.
+
+Typical desktop computers are not a great fit for this project as they are typically large and take up more space than recently introduced tiny computers such as the Raspberry Pi. The tiny computers are typically assembled from hardware components that is less powerful than the components installed in desktop computers. Therefore tiny computers consume less power than traditional desktop computers thus reducing the long-time cost of running the hub.
+
+Furthermore tiny computers such as the Raspberry Pi Zero are priced as low as \$5 dollars \cite{raspberrypi:zero}. While the Pi Zero requires an adapter to be connected to the Internet, the total cost of the solution is still less than a setup using a desktop computer.
+
+Raspberry Pi is completely compatible with OpenHAB and is one of the recommended tiny computers for running OpenHAB \cite{openhab:hardware}. Therefore we choose to base the hub on a Raspberry Pi but the hub should be able to run on any machine that can a JVM.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:
