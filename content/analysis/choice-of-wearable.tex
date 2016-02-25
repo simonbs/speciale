@@ -1,11 +1,11 @@
 \section{Choice of Wearable}
 \label{sec:analysis:choice-of-wearables}
 
-The following section analyze the possibilities of selected wearables in regards to solution described in this report.
+The following section analyzes the possibilities of the selected wearables in regards to the solution described in this report.
 
 The wearable is primarily used for gesture recognition and positioning of the user. Furthermore the wearable is utilised to give feedback to the user when a gesture culd not be recognized. The wearable should also allow for interactions, such as virtually changing the position of the user as described in \cref{sec:analysis:scenarios}.
 
-The following requirements to the wearable can be outlined.
+Hence we decided on the following requirements.
 
 \begin{itemize}
 \item The wearable must possess a screen on which visual feedback can be presented and allow for interaction with the data on the screen in some way.
@@ -18,7 +18,7 @@ As we want a wearable that allows for both performing gestures, providing visual
 
 Performing gestures using a hand feels more natural than the feet, head or other body parts. This makes smartwatches are ideal for recognizing gestures as they are worn on the wrist. Furthermore smartwatches are typically equipped with a touchscreen or buttons to interact with a screen or both.
 
-The following wearables were chosen based on their popularity, availability and a desire to include a watch by each of the major players in the mobile market which, as of writing this, is Google, Microsoft, Apple and Samsung \todo[author=Simon]{Are the major smartwatch operating systems a claim or ``broadly accepted''?}. Furthermore we included a Pebble Classic in our analyze as we already had access to one.
+The following wearables were chosen based on their popularity, availability and a desire to include a watch by each of the major players in the mobile market which, as of writing this is Google, Microsoft, Apple and Samsung \todo[author=Simon]{Are the major smartwatch operating systems a claim or ``broadly accepted''?}. Furthermore we included a Pebble Classic in our analysis as we already had access to one.
 
 The below four smartwatches are analyzed in the following sections.
 
@@ -30,7 +30,7 @@ The below four smartwatches are analyzed in the following sections.
 \item Microsoft Band running Microsofts wearable architecture.
 \end{itemize}
 
-\Cref{tbl:analysis:choice-of-wearable} shows a comparison of the four smartwatches based on the three parameters previously listed. The table shows that the Pebble Classic and the Apple Watch does not provide access to the bluetooth API and thus we cannot perform positioning directly on the smartwatch. An alternative is to accept the limitation of the hardware and perform the positioning of the user on a smartphone and continously transfer the positions to the hub. The smartwatch can then retrieve the positions when needed.
+\Cref{tbl:analysis:choice-of-wearable} shows a comparison of the four smartwatches based on the three parameters previously listed. The table shows that the Pebble Classic and the Apple Watch do not provide access to the bluetooth API and thus we cannot perform positioning directly on the smartwatch. An alternative is to accept this limitation and perform the positioning of the user on a smartphone and continously transfer the positions to the hub. The smartwatch can then retrieve the positions when needed.
 This limitation requires the user to carry the phone wherever he goes.
 
 \renewcommand{\arraystretch}{1.2}
@@ -59,9 +59,9 @@ This limitation requires the user to carry the phone wherever he goes.
 
 \subsection{Conclusion}
 
-\Cref{tbl:analysis:choice-of-wearable} shows that only two wearables fulfills our requirements, namely the second generation Moto 360 by Motorola and the Gear S2 by Samsung. The other wearables provide access to the an accelerometer but does not provide access to the bluetooth API. In those cases performing the positioning of the user on a smartphone could be a solution, thus requiring the user to carry his phone around with him whenever he use the solution.
+\Cref{tbl:analysis:choice-of-wearable} shows that only two wearables fulfill our requirements, namely the second generation Moto 360 by Motorola and the Gear S2 by Samsung. The other wearables provide access to the an accelerometer but do not provide access to the bluetooth API. In those cases performing the positioning of the user on a smartphone could be a solution, thus requiring the user to carry his phone around with him whenever he use the solution.
 
-Implementing the system on a wearable which gives access to both the bluetooth and the accelerometer APIs seem to be the most attractive solution. Of the two proposed wearables, we find the Moto 360 to be best suited for our project as we already have experience with the Android platform and therefore should be able to make progress on a prototype of the system faster.
+Implementing the system on a wearable which gives access to both the bluetooth and the accelerometer APIs seems to be the most attractive solution. Of the two proposed wearables, we find the Moto 360 to be best suited for our project as we already have experience with the Android platform and therefore should be able to make progress on a prototype of the system faster.
 
 %%% Local Variables:
 %%% mode: latex
