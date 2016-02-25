@@ -1,6 +1,53 @@
 \section{Choice of Hub}
 \label{sec:analysis:choice-of-hub}
 
+As mentioned in \cref{sec:analysis:scenarios}, we intend to use a central hub for connecting devices in the smart home setting. Which hub will be used will be explained in this section.
+
+In our previous report\cite{previous-report} we presented a list of different home automation hubs and decided to use HomePort.
+
+We have decided to revisit the following hubs to determine which one we deem to be the right one to use now:
+
+\begin{itemize}
+    \item HomePort
+    \item SmartThings
+    \item OpenHAB
+\end{itemize}
+
+\subsection{HomePort}
+\label{sec:analysis:choice-of-hub:homeport}
+
+Homeport\cite{HOMEPORT10,homeport:github} is a free open source software solution developed as a research project at the Institute of Computer Science at Aalborg University.
+Since HomePort is a software solution the user needs to install it on a computer that will then act as the hub.
+
+As mentioned in \cref{sec:analysis:choice-of-hub}, HomePort was the one we chose to use in our previous project. However, there were some difficulties getting it to work on our machines.
+
+\subsection{SmartThings}
+\label{sec:analysis:choice-of-hub:smartthings}
+
+SmartThings\cite{SMARTTHINGS} is product developed by Samsung\todo[author=Kasper]{Er faktisk lidt i tvivl om det her, tror måske det blev udviklet af nogle andre og så opkøbt af Samsung.} but unlike HomePort, described in \cref{sec:analysis:choice-of-hub:homeport}, the user does not need to install the hub software on his own computer but instead purchases a physical hub\footnote{https://www.smartthings.com/products/hub} and connects it to his home network.
+At the time of writing the retail price for the hub is \$99.
+
+\subsection{OpenHAB}
+\label{sec:analysis:choice-of-hub:openhab}
+
+OpenHAB\cite{OPENHAB} is, much like HomePort, a free open source software solution.
+However it is not a research project but is instead community driven with 10 official maintainers\cite{openhab:maintainers}.
+As of writing it has a list of 121 supported devices\cite{openhab:supported-technologies}.
+
+\subsection{Conclusion}
+\label{sec:analysis:choice-of-hub:conclusion}
+
+Although the SmartThings hub presented in \cref{sec:analysis:choice-of-hub:smartthings} is easy to install for the user, we want to keep the price of our solution to a minimum and thus would rather go for a free software solution rather than purchase the SmartThings hub.
+
+The choice between HomePort and OpenHAB came down to two things.
+
+First off we have tried using Homeport once before in \cite{previous-report} and it was not very easy for us to set up and use.
+As well there are only a few people actively developing it so there is only support for a few smart devices.
+
+The other thing is that, due to the amount of people working on, as well as using, OpenHAB compared to HomePort, there are more people that can assist us when issues arise.
+
+Hence we think that OpenHAB is the best fit for this project and will be our choice of hub.
+
 \subsection{Hardware}
 
 The hardware that, together with OpenHAB, constitutes the hub should fulfill the following requirements.
