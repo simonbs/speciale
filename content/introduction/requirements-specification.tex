@@ -1,3 +1,40 @@
 \section{Requirements Specification}
 \label{sec:requirements-specification}
 
+This section presents the requirements for the solution. The requirements are divided into the following three groupings.
+
+\begin{description}
+\item[Functional requirements] These represent the functionality the solution best implement.
+\item[Performance requirements] These requirements describe how well the solution should perform in given conditions.
+\item[Overall requirements] These are requirements that the system as a whole should fulfill and that does not fit within any of the two other groupings.
+\end{description}
+
+\subsection{Functional Requirements}
+
+\begin{description}
+\item[Trigger actions on controllable devices using gestures] Users should be able to trigger an action on a controllable device by performing a gesture using a wearable.
+\item[Receive feedback if a gesture is not recognized] If a gesture is not recognized, the user should receive feedback. If possible, the system should guess which gestures the user was likely to perform and suggest the actions associated with the guessed gesture to the user.
+\item[Context-aware gestures] Gestures should be context-aware, meaning that a gesture has a different meaning depending on the context in which it is performed. For example, a circular gesture may turn on the TV when the user is in the living room but when the user is in the kitchen, it turns on the lights.
+\item[Associate a gesture with actions] The user should be able to associate a gesture with one or more actions that a controllable device can perform. A gesture can only be associated with multiple actions, if the controllable devices to which the action belongs reside in different rooms.
+\item[Virtual positioning of users] A user should be able to virtually positioning himself in his home using the wearable. This allows users to perform gestures in one room, while being in another.
+\end{description}
+
+\todo[author=Simon]{Consider if training gestures is a functional requirements? Is installing controllable devices a functional requirement?}
+
+\subsection{Performance Requirements}
+
+\begin{description}
+\item[Use a maximum of seven gestures] As described in \cref{}, humans remember a maximum of seven things. Therefore the system should work with a maximum of seven different gestures. \todo[author=Simon]{Insert reference to section describing a human can remember a maximum of seven things.}
+\item[Handle 15-20 controllable devices] As described in \cref{sec:target-group} we assume the system is deployed in an appartment with 3-4 rooms with 2-5 devices in each room. Therefore the system should be able to handle a minimum of 15-20 controllable devices.
+\end{description}
+
+\subsection{Overall Requirements}
+
+\begin{description}
+\item[Use inexpensive hardware and software] As described in \cref{sec:target-group} the target group are people living in a smart home, typically in an appartment with a size of 90 square meters. Therefore we are not interested in expensive cooperate solutions when looking at hardware or software.
+\end{description}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:
