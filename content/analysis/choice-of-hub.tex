@@ -26,15 +26,17 @@ As mentioned in \cref{sec:analysis:choice-of-hub}, HomePort was the one we chose
 \subsection{SmartThings}
 \label{sec:analysis:choice-of-hub:smartthings}
 
-SmartThings \cite{SMARTTHINGS} is product developed by Samsung\todo[author=Kasper]{Er faktisk lidt i tvivl om det her, tror måske det blev udviklet af nogle andre og så opkøbt af Samsung.} but unlike HomePort, described in \cref{sec:analysis:choice-of-hub:homeport}, the user does not need to install the hub software on his own computer but instead purchases a physical hub\footnote{https://www.smartthings.com/products/hub} and connects it to his home network.
+SmartThings \cite{SMARTTHINGS} is commercial home automation hub developed by Samsung\todo[author=Kasper]{Er faktisk lidt i tvivl om det her, tror måske det blev udviklet af nogle andre og så opkøbt af Samsung.} but unlike HomePort, described in \cref{sec:analysis:choice-of-hub:homeport}, the user does not need to install the hub software on his own computer but instead purchases a physical hub\footnote{https://www.smartthings.com/products/hub} and connects it to his home network.
 At the time of writing the retail price for the hub is \$99.
 
 \subsection{OpenHAB}
 \label{sec:analysis:choice-of-hub:openhab}
 
-OpenHAB \cite{OPENHAB} is, much like HomePort, a free open source software solution.
+OpenHAB \cite{OPENHAB} is, much like HomePort \todo[author=Simon]{``Much like'' er upræcist talesprog. Hvordan minder den om OpenHAB?}, a free open source software solution.
 However it is not a research project but is instead community driven with 10 official maintainers \cite{openhab:maintainers}.
 As of writing it has a list of 121 supported devices \cite{openhab:supported-technologies}.
+
+\todo[author=Simon]{Uddyb afsnittet om OpenHAB. Hvorfor er det godt? Hvilket API stiller det til rådighed? Hvad understøtter det?}
 
 \subsection{Conclusion}
 \label{sec:analysis:choice-of-hub:conclusion}
@@ -43,7 +45,7 @@ Although the SmartThings hub presented in \cref{sec:analysis:choice-of-hub:smart
 
 The choice between HomePort and OpenHAB came down to two things.
 
-First off we have tried using Homeport once before in \cite{previous-report} and it was not very easy for us to set up and use.
+First off we have tried using Homeport once before in \cite{previous-report} and it was not very easy for us to set up and use \todo[author=Simon]{Hvorfor var det ikke let? Hvilke problemer oplevede vi? Kunne ikke starte op og crashes}.
 As well there are only a few people actively developing it so there is only support for a few smart devices.
 
 The other thing is that, due to the amount of people working on, as well as using, OpenHAB compared to HomePort, there are more people that can assist us when issues arise.
@@ -64,9 +66,9 @@ OpenHAB runs on any computer that can run a Java virtual machine (JVM) \cite{ope
 
 Typical desktop computers are not a great fit for this project as they are typically large and take up more space than recently introduced tiny computers such as the Raspberry Pi. The tiny computers are typically assembled from hardware components that are less powerful than the components installed in desktop computers. Therefore tiny computers consume less power than traditional desktop computers thus reducing the long-term cost of running the hub.
 
-Furthermore tiny computers such as the Raspberry Pi Zero are priced as low as \$5 dollars \cite{raspberrypi:zero}. While the Pi Zero requires an adapter to be connected to the Internet, the total cost of the solution is still less than a setup using a desktop computer.
+Furthermore tiny computers such as the Raspberry Pi Zero are priced as low as \$5 dollars \cite{raspberrypi:zero}. While the Pi Zero requires an adapter to be connected to the Internet, the total cost of the solution is still less than a setup using a desktop computer. Recently Adafruit, the company behind the Raspberry Pi, released the Raspberry Pi 3, which is the first Raspberry Pi with built-in WiFi and Bluetooth LE.
 
-Raspberry Pi is completely compatible with OpenHAB and is one of the recommended tiny computers for running OpenHAB \cite{openhab:hardware}. Therefore we choose to base the hub on a Raspberry Pi but the hub should be able to run on any machine that can run a JVM.
+Raspberry Pi is completely compatible with OpenHAB and is one of the recommended computers for running OpenHAB \cite{openhab:hardware}. Therefore we choose to base the hub on a Raspberry Pi but the hub should be able to run on any machine that can run a JVM.
 
 %%% Local Variables:
 %%% mode: latex

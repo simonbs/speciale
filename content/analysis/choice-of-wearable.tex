@@ -8,10 +8,11 @@ The wearable is primarily used for gesture recognition and positioning of the us
 Hence we decided on the following requirements.
 
 \begin{itemize}
-\item The wearable must possess a screen on which visual feedback can be presented and allow for interaction with the data on the screen in some way.
+\item The wearable must possess a screen on which visual feedback can be presented and allow for presenting and interacting with proposed gestures, in case the gesture that the user performs was not recognized. Furthermore, displaying and interacting with information is needed when the user virtually changes his position.
 \item The wearable must possess an accelerometer in order to detect the users movements and derive gestures from those.
 \item As described in section \cref{}, bluetooth is used for positioning the user. Therefore the wearable should possess bluetooth in order to position the user. \todo[author=Simon]{Insert reference to choice of bluetooth as positioning technology.}
 \item WiFi connection in order to send commands to the hub. The wearable should ideally be independent of the phone and should send commands directly to the hub. WiFi is suitable for this as it is assumed that a WiFi connection is available in the entire house of the user. \author[author=Simon]{Argument why we use a hub that uses WiFi. Reference to section on choice of hub.}
+\item We must be able to install and run our own applications on the wearable.
 \end{itemize}
 
 As we want a wearable that allows for both performing gestures, providing visual feedback to the user and let the user interact with an application running on the wearable, we chose to focus on smartwatches.
@@ -41,9 +42,9 @@ This limitation requires the user to carry the phone wherever he goes.
 \begin{tabularx}{\linewidth}{rXX}
 \multicolumn{1}{l}{\textbf{}}     & \textbf{Pebble Classic}                       & \textbf{Second generation Moto 360} \\
 \textbf{Feedback} & Screen with hardware buttons for interaction. & Touchscreen.                        \\
-\textbf{Gesture recognition}      & Accelerometer. \cite{pebble:accelerometer}                                & Accelerometer and gyroscope. \cite{motorola:moto360, android:creating-wearable-apps, android:motion-sensors}        \\
-\textbf{Positioning}              & No access to the bluetooth API.               & Access to the bluetooth API. \cite{motorola:moto360, android:creating-wearable-apps, android:bluetooth}        \\
-\textbf{WiFi}                     & No references indicating that it has WiFi.    & Yes.                                \\
+\textbf{Gesture recognition}      & Accelerometer. \cite{pebble:accelerometer}                                & Accelerometer and gyroscope available from API level 3 and 9 respectively. \cite{motorola:moto360, android:creating-wearable-apps, android:motion-sensors, android:sensors-overview}        \\
+\textbf{Positioning}              & No access to the bluetooth API.               & Access to the bluetooth API available from API level 1. \cite{motorola:moto360, android:creating-wearable-apps, android:bluetooth, android:broadcast-receiver}        \\
+\textbf{WiFi}                     & Unknown\footnotemark[\getrefnumber{ftn:choice-of-wearable:unknown-feature}].    & Yes.                                \\
 \multicolumn{1}{l}{}              & \textbf{Samsung Gear S2}                      & \textbf{Apple Watch}                \\
 \textbf{Feedback} & Touchscreen with a rotating bezel.             & Touchscreen with digital crown.     \\
 \textbf{Gesture recognition}      & Accelerometer and gyroscope. \cite{samsung:gears2, tizen:sensors}                  & Accelerometer.                      \\
@@ -52,10 +53,12 @@ This limitation requires the user to carry the phone wherever he goes.
 \multicolumn{1}{l}{}              & \textbf{Microsoft Band}                      & ~                \\
 \textbf{Feedback} & Touchscreen.            & ~     \\
 \textbf{Gesture recognition}      & Accelerometer and gyroscope. \cite{microsoft:band-sdk, microsoft:band-sdk-documentation}                  & ~                      \\
-\textbf{Positioning}              & No reference to access of the bluetooth API.                  & ~     \\
+\textbf{Positioning}              & Unknown\footnotemark[\getrefnumber{ftn:choice-of-wearable:unknown-feature}].                  & ~     \\
 \textbf{WiFi}                     & No.                                          & ~                               
 \end{tabularx}
 \end{table}
+
+\footnotetext{\label{ftn:choice-of-wearable:unknown-feature}We found no reference to this in the official documentation and therefore assume that the feature is not available.}
 
 \subsection{Conclusion}
 

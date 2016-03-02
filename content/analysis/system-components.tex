@@ -3,7 +3,7 @@
 
 The following section summarize the hardware components needed in order to design and implement the scenarios presented in \Cref{sec:analysis:scenarios}.
 
-We envision two different configurations of the system. Both confgiurations assume that bluetooth technology is utilized to determine the position of the user. \todo[author=Simon]{Reference to where we determine that bluetooth is used for positioning.}
+We envision two different methods for positioning of the system. Both metods assume that bluetooth technology is utilized to determine the position of the user. \todo[author=Simon]{Reference to where we determine that bluetooth is used for positioning.}
 
 \begin{enumerate}
 \item One configuration in which the wearable continously scan for bluetooth beacons. The wearable determines the position of the user based on data advertised by the bacons.
@@ -20,9 +20,9 @@ The idea of the second configuration is to design the system in such a way that 
 The second configuration was abandoned due to restrictions posed by the Bluetooth LE specification. The specification poses the following limitations that prevent such a system from working properly.
 
 \begin{itemize}
-\item A Bluetooth LE peripheral (e.g. a wearable) can only be the slave of one master, that is, it can only be paired with one central.
+\item A Bluetooth LE peripheral (e.g. a wearable) can only be the slave of one master, that is, it can only be paired with a single other device.
 \item A peripheral must advertise in order to be discovered by a central. Advertising requires a piece of software to be running on the peripheral and thus access to the bluetooth API.
-\item A central can obtain an RSSI based on the MAC address of a peripheral. However, the bluetooth specification allows a peripheral to change its MAC address in order to prevent tracking of the user\cite[p.~91]{bluetooth2010bluetooth_vol_1}.
+\item A central can obtain an RSSI based on the MAC address of a peripheral. However, the bluetooth specification allows a peripheral to change its MAC address in order to prevent tracking of the user\cite[p.~91]{bluetooth2010bluetooth_vol_1}. The change of MAC address could be disabled for this approach, if this is possible on the wearable. However, since this is a security feature introduced in the bluetooth specification, this seems counterintuitive.
 \end{itemize}
 
 \todo[author=Simon]{Add references on above claims.}
