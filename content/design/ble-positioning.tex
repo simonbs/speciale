@@ -13,9 +13,9 @@ The two protocols and their uses are described below.
 The iBeacon protocol was presented by Apple in 2013. When using the iBeacon protocol, a beacon will broadcast the following three identifiers \cite[ch. 1]{gilchrist2014learning}.
 
 \begin{description}
-\item[UUID] A Universally Unique Identifier is 16-byte string \cite{estimote:what-is-ibeacon} specific to a deployment of a set of beacons. For example, if McDonalds deployed iBeacons on all their restaurants, the beacons would all have the same UUID letting their application know which beacons to look for \cite[ch. 1]{gilchrist2014learning}.
-\item[Major] The major value is a 2-byte string \cite{estimote:what-is-ibeacon} that distinguish a smaller group of installed beacons \cite[ch. 1]{gilchrist2014learning}. For McDonalds, the major value could be specific to an installation of iBeacons in a certain restaurant.
-\item[Minor] The major value is a 2-byte string \cite{estimote:what-is-ibeacon} that further distinguish a group of beacons \cite[ch. 1]{gilchrist2014learning}. McDonalds could use this to distinguish between the floors of a restaurant.
+\item[UUID] A Universally Unique Identifier is 16-byte string \cite{estimote:what-is-ibeacon} specific to a deployment of a set of beacons. For example, if McDonalds deployed iBeacons in all of their restaurants, the beacons would all have the same UUID letting their application know which beacons to look for \cite[ch. 1]{gilchrist2014learning}.
+\item[Major] The major value is a 2-byte string \cite{estimote:what-is-ibeacon} that distinguishes a smaller group of installed beacons \cite[ch. 1]{gilchrist2014learning}. For McDonalds, the major value could be specific to an installation of iBeacons in a certain restaurant.
+\item[Minor] The major value is a 2-byte string \cite{estimote:what-is-ibeacon} that further distinguishes a group of beacons \cite[ch. 1]{gilchrist2014learning}. McDonalds could use this to distinguish between the floors of a restaurant.
 \item[Measured Power] A value, meaured in dBM, that helps Bluetooth LE-enabled devices with ranging accuracy \cite{apple:proximity-beacon-spec}.
 \end{description}
 
@@ -25,14 +25,14 @@ The Measured Power is broadcasted by the beacon in order for other Bluetooth LE-
 \item The iPhone 5s must be held in portrait orientation with nothing covering the top half.
 \item RSSI values from the broadcasting beacon is recorded with a distance of 1 meter to the beacon. This should be done for a minimum of 10 seconds.
 \item The highest 10\% and the lowest 20\% of the values are discarded.
-\item The remaining values are averaged. The average constitutes the Mesaured Power value.
+\item The remaining values are averaged. This average constitutes the Measured Power value.
 \end{enumerate}
 
-\Cref{tbl:design:ble-positioning:ibeacon1}, \cref{tbl:design:ble-positioning:ibeacon2}, \cref{tbl:design:ble-positioning:ibeacon3} shows examples of packets McDonalds could broadcast in order to retrieve information about a users positioning. Amongst others, McDonalds could use this for tracking users and sending them advertisements or offers based on their position.
+\Cref{tbl:design:ble-positioning:ibeacon1}, \cref{tbl:design:ble-positioning:ibeacon2} and \cref{tbl:design:ble-positioning:ibeacon3} show examples of packets McDonalds could broadcast in order to retrieve information about a users positioning. Amongst others, McDonalds could use this for tracking users and sending them advertisements or offers based on their position.
 
-In the examples in sections \cref{tbl:design:ble-positioning:ibeacon1}, \cref{tbl:design:ble-positioning:ibeacon2} and \cref{tbl:design:ble-positioning:ibeacon3}, $664E170A-21BB-457C-A86B-F9265595452A$ is the UUID of all McDonalds' beacons, a major value of 1 indicates a restaurant in Copenhagen and a major value of 2 indicates a restaurant in Aalborg. Beacons installed on first floor has a minor value of 1 and beacons installed on second floor has a minor value of 2.
+In the examples in \cref{tbl:design:ble-positioning:ibeacon1}, \cref{tbl:design:ble-positioning:ibeacon2} and \cref{tbl:design:ble-positioning:ibeacon3}, $664E170A-21BB-457C-A86B-F9265595452A$ is the UUID of all McDonalds' beacons, a major value of 1 indicates a restaurant in Copenhagen and a major value of 2 indicates a restaurant in Aalborg. Beacons installed on first floor has a minor value of 1 and beacons installed on second floor has a minor value of 2.
 
-Please note that all examples are fictious.
+Please note that all examples are fictitious.
 
 \begin{table}[h!]
 \centering
@@ -79,7 +79,7 @@ Eddystone is an open protocol designed by Google \cite{estimote:what-is-eddyston
 Eddystone-UID frames are broadcasted when interested in identifying groups of beacons or particular beacons within a group. The beacon emits the following information \cite{eddystone:protocol-uid-spec}.
 
 \begin{description}
-\item[Namespace] 10-byte identifier. Groups a particular set of beacons, similarly to the UUID in the iBeacon protocol
+\item[Namespace] 10-byte identifier. Groups a particular set of beacons, similar to the UUID in the iBeacon protocol
 \item[Instance] 6-byte identifier. Specific for each beacon within the namespace.
 \item[Tx Power] The received power at 0 meters from the beacon, measured in dBm. Similar to the Measured Power in the iBeacon protocol. Resolution of 1 dBm.
 \end{description}
@@ -137,7 +137,7 @@ Eddystone-URL frames are broadcasted when interested in redirecting users to a w
 \textbf{Byte offset} & \textbf{Field} & \textbf{Description}                                       & \textbf{Value} \\
 0                    & Frame type     & Type of the frame. URL, in this case.                      & 0x10           \\
 1                    & Ranging data   & Tx Power. Signed 8-bit integer.                            & 0xD4           \\
-2                    & URL scheme     & Value defiend by the specification for the http:// prefix. & 0x02           \\
+2                    & URL scheme     & Value defined by the specification for the http:// prefix. & 0x02           \\
 3                    & URL{[}0{]}     & Encoded URL. Length 0 - 17.                                & g              \\
 4                    & URL{[}1{]}     &                                                            & o              \\
 5                    & URL{[}2{]}     &                                                            & o              \\
@@ -197,7 +197,7 @@ Both the iBeacon and the Eddystone protocols are suitable for the system describ
 
 The iBeacon protocol solely supports positioning of the user, either granularly using the Measured Power or non-granularly using regions defined by the major and/or minor value of the beacon.
 
-The Eddystone protocol supports more than positioning of the user. It also supports the monitoring the health of the beacon. While technically, Eddystone-URL frames can be used for positioning the user in regions based on the broadcasted URL, i.e. different URLs for each regions, the Eddystone-UID frame seem better suited for this purpose. Using Eddystone-UID regions can be identified based in the instance of a beacon.
+The Eddystone protocol supports more than positioning of the user. It also supports the monitoring the health of the beacon. While technically, Eddystone-URL frames can be used for positioning the user in regions based on the broadcasted URL, i.e. different URLs for each regions, the Eddystone-UID frame seems better suited for this purpose. Using Eddystone-UID regions can be identified based in the instance of a beacon.
 
 While the iBeacon protocol is only officially supported by iOS devices, the Eddystone protocol is officially supported by both iOS and Android \cite{estimote:what-is-eddystone}. Since we are using a smartwatch running Android Wear for our prototype, we will use the Eddystone protocol.
 
