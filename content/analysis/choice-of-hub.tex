@@ -1,13 +1,9 @@
 \section{Choice of Hub}
 \label{sec:analysis:choice-of-hub}
 
-\todo[author=Kasper]{Der skal lige sættes en liste af krav ind i dette afsnit her i starten.}
+As mentioned in \cref{sec:analysis:scenarios}, we intend to use a central hub for connecting devices in the smart home setting. In \cite{prespecialisation} we presented a list of different home automation hubs and decided to use HomePort.
 
-As mentioned in \cref{sec:analysis:scenarios}, we intend to use a central hub for connecting devices in the smart home setting. Which hub will be used will be explained in this section.
-
-In our previous report \cite{prespecialisation} we presented a list of different home automation hubs and decided to use HomePort.
-
-We have decided to revisit the following hubs to determine which one we deem to be the right one to use now:
+For this project we decided to revisit the following hubs to determine which one we deem to be the right one to use now.
 
 \begin{itemize}
     \item HomePort
@@ -15,60 +11,83 @@ We have decided to revisit the following hubs to determine which one we deem to 
     \item OpenHAB
 \end{itemize}
 
+Common for all three solution is that they serve as adapters. Devices that fit within the concept of IOT, e.g. smart bulbs, media centres, windows, door locks and so on communicate using different protocols. These protocols include ZigBee, Z-Wave, HTTP and Bluetooth. The hubs expose devices communicating using those protocols under a common interface, e.g. HTTP using a REST architecture.
+
+The hub should fulfill the following requirements.
+
+\begin{itemize}
+\item We intend to keep the price of the entire solution presented in this report at a minimum, therefore we are interested in an inexpensive hub.
+\item As the primary focus of the report is not on the development and research of a hub, we intend to choose a solution which can easily be used within our system with little to no modifications.
+\item The hub should be commonly accessible.
+\end{itemize}
+
 \subsection{HomePort}
 \label{sec:analysis:choice-of-hub:homeport}
 
-Homeport \cite{HOMEPORT10,homeport:github} is a free open source software solution developed as a research project at the Institute of Computer Science at Aalborg University.
-Since HomePort is a software solution the user needs to install it on a computer that will then act as the hub.
+Homeport \cite{HOMEPORT10,homeport:github} is a free open and source software solution developed as a research project at the Institute of Computer Science at Aalborg University.
+HomePort is a software solution that the user needs to install it on a computer that will then act as the hub.
 
-As mentioned in \cref{sec:analysis:choice-of-hub}, HomePort was the one we chose to use in our previous project. However, there were some difficulties getting it to work on our machines.
+HomePort supports communication with Phidget USB devices and expose them using a REST interface over the HTTP protocol. Other applications can control the Phidget devices and read their state by issuing requests to HomePort using the REST interface.
+
+When using HomePort in \cite{prespecialisation} we experienced the following issues.
+
+\begin{itemize}
+\item We found that the Phidget adapter was not compatible with the most recent version of HomePort.
+\item Furthermore we had difficulties getting an older version of HomePort with a compatible Phidget adapter running on OS X.
+\item We got the older version of HomePort running on a Windows machine but found that it would frequently crash requiring a reboot of the HomePort software.
+\end{itemize}
 
 \subsection{SmartThings}
 \label{sec:analysis:choice-of-hub:smartthings}
 
-SmartThings \cite{SMARTTHINGS} is commercial home automation hub developed by Samsung\todo[author=Kasper]{Er faktisk lidt i tvivl om det her, tror måske det blev udviklet af nogle andre og så opkøbt af Samsung.} but unlike HomePort, described in \cref{sec:analysis:choice-of-hub:homeport}, the user does not need to install the hub software on his own computer but instead purchases a physical hub\footnote{https://www.smartthings.com/products/hub} and connects it to his home network.
+SmartThings \cite{SMARTTHINGS} is commercial home automation hub offered by Samsung. SmartThings is a hardware device that comes preinstalled with the necessary software \footnote{https://www.smartthings.com/products/hub}.
+
+Protocols supported by SmartThings include ZigBee and Z-Wave as well as devices communicating over WiFi within the local network \cite{smartthings:compatible-products}. SmartThings expose the devices over HTTP using a REST architecture \cite{smartthings:developer}.
+
+While exposing devices using a REST interface, Samsung also provides a concept of SmartApps, applications installed in the cloud, i.e. on Samsungs servers. These applications react to events within the users SmartThings environment, i.e. a new temperature reading and triggers other events based on the new information. SmartApps can also run events periodically.
+
 At the time of writing the retail price for the hub is \$99.
 
 \subsection{OpenHAB}
 \label{sec:analysis:choice-of-hub:openhab}
 
-OpenHAB \cite{OPENHAB} is, much like HomePort \todo[author=Simon]{``Much like'' er upræcist talesprog. Hvordan minder den om OpenHAB?}, a free open source software solution.
-However it is not a research project but is instead community driven with 10 official maintainers \cite{openhab:maintainers}.
-As of writing it has a list of 121 supported devices \cite{openhab:supported-technologies}.
+Unlike SmartThings, openHAB \cite{OPENHAB} does not come with the hardware needed to run the hub. It is a Java based software solution that supports any platform capable of running a JVM \cite{openhab:introduction}. The software is free and open source maintained by a community of enthusiasts.
 
-\todo[author=Simon]{Uddyb afsnittet om OpenHAB. Hvorfor er det godt? Hvilket API stiller det til rådighed? Hvad understøtter det?}
+openHAB supports a wide range of devices, 121 as of writing this \cite{openhab:supported-technologies}. Amongst these are devices communicating using ZigBee, Z-Wave, MQTT and HTTP. openHABs concept of adapters is called ``bindings'' and these can be specific to a protocol or a product. For example, the community has developed bindings for the HTTP, Bluetooth and MQTT protocols as well as for the Philips Hue, Netatmo, and Sonos products.
+
+The devices connected to an openHAB environment is exposed over HTTP using a REST architecture.
 
 \subsection{Conclusion}
 \label{sec:analysis:choice-of-hub:conclusion}
 
-Although the SmartThings hub presented in \cref{sec:analysis:choice-of-hub:smartthings} is easy to install for the user, we want to keep the price of our solution to a minimum and thus would rather go for a free software solution rather than purchase the SmartThings hub.
+While the SmartThings hub is a consumer oriented solution which is easy to install, we want to keep the price of our solution to a minimum and thus prefer a free software solution rather than purchase the SmartThings hub.
 
-The choice between HomePort and OpenHAB came down to two things.
+The choice between HomePort and openHAB came down to the following two things.
 
-First off we have tried using Homeport once before in \cite{previous-report} and it was not very easy for us to set up and use \todo[author=Simon]{Hvorfor var det ikke let? Hvilke problemer oplevede vi? Kunne ikke starte op og crashes}.
-As well there are only a few people actively developing it so there is only support for a few smart devices.
+\begin{itemize}
+\item We experienced various issues with HomePort. In a previous project \cite{prespecialisation} we found that the Phidget adapter is incompatible with the most recent version of HomePort, that we were unable to run previous a previous version on OS X and that the same version would frequently crash on Windows.
+\item Furthermore we found that the community developing openHAB has created bindings for hardware we already have access to and assuming these work, we will not need to create our own adapters.
+\end{itemize}
 
-The other thing is that, due to the amount of people working on, as well as using, OpenHAB compared to HomePort, there are more people that can assist us when issues arise.
-
-Hence we think that OpenHAB is the best fit for this project and will be our choice of hub.
+The main focus of this report is not the research or development of a smart hub and therefore we do not intend to spend much time installing and configuring a hub. Hence we think that openHAB is the best fit for this project and will be our choice of hub.
 
 \subsection{Hardware}
 
-The hardware that, together with OpenHAB, constitutes the hub should fulfill the following requirements.
+The hardware that, together with openHAB, constitutes the hub should fulfill the following requirements.
 
 \begin{itemize}
-\item Compatible with OpenHAB as this is our software of choice.
+\item Compatible with openHAB as this is our software of choice.
 \item Low cost in order to reduce the barrier of entry.
 \item Small in order for it to easily fit into any place of a home, e.g. a closet.
 \end{itemize}
 
-OpenHAB runs on any computer that can run a Java virtual machine (JVM) \cite{openhab:introduction}. It can be installed on desktop computers running Windows, Linux or OS X.
+openHAB runs on any computer that can run a Java virtual machine (JVM) \cite{openhab:introduction}. It can be installed on desktop computers running Windows, Linux or OS X.
 
 Typical desktop computers are not a great fit for this project as they are typically large and take up more space than recently introduced tiny computers such as the Raspberry Pi. The tiny computers are typically assembled from hardware components that are less powerful than the components installed in desktop computers. Therefore tiny computers consume less power than traditional desktop computers thus reducing the long-term cost of running the hub.
 
 Furthermore tiny computers such as the Raspberry Pi Zero are priced as low as \$5 dollars \cite{raspberrypi:zero}. While the Pi Zero requires an adapter to be connected to the Internet, the total cost of the solution is still less than a setup using a desktop computer. Recently Adafruit, the company behind the Raspberry Pi, released the Raspberry Pi 3, which is the first Raspberry Pi with built-in WiFi and Bluetooth LE.
 
-Raspberry Pi is completely compatible with OpenHAB and is one of the recommended computers for running OpenHAB \cite{openhab:hardware}. Therefore we choose to base the hub on a Raspberry Pi but the hub should be able to run on any machine that can run a JVM.
+Raspberry Pi is completely compatible with openHAB and is one of the recommended computers for running openHAB \cite{openhab:hardware}. Therefore we choose to base the hub on a Raspberry Pi but the hub should be able to run on any machine that can run a JVM.
 
 %%% Local Variables:
 %%% mode: latex
