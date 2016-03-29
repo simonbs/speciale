@@ -1,0 +1,31 @@
+\section{Context Engine}
+\label{sec:analysis:context-engine}
+
+The context engine is responsible for recognizing the context the user is in. By recognizing the context the user is situated in, gestures can trigger different actions depending on the current context. The benefit of a context aware system is, that the number of gestures a user should remember can be reduced as the action of a gesture depends on the context the user is in. This is in contrary to a system that is not context aware.
+
+Examples of information that helps describe the context include:
+
+\begin{itemize}
+\item The position of the user.
+\item The recognized gestures. \todo[author=Simon]{Indsæt reference som beskriver, hvorfor vi genkender flere gestures}
+\item The state of the controllable devices in the system.
+\item The day of the week.
+\item The time of the day.
+\end{itemize}
+
+Everything that is part of determining the right action to trigger, is part of the context engine. This includes the set of recognized gestures which describes the part of the context that is related to the movement of the user. For other systems, such as voice controlled systems, this could be a description of the recognized sentence pronounced by the user.
+
+\todo[author=Simon]{Indsæt referencer til relevante løsninger. Semantic web, decision trees, ...}
+
+We suggests a design of the context engine based on the following requirements.
+
+\begin{itemize}
+\item While this project have focus on combining gesture recognition with the position of a user, the design should make no assumptions about the supplied type of information about the context.
+\item The design should support suggesting multiple actions if it is unsure which action the user desired to trigger.
+\item The design should support an arbitrary number of informations about the context with zero being an exception as it does not make sense to determine the context with no information about it.
+\end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:
