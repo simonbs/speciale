@@ -67,6 +67,26 @@ Another threshold can be introduced to the calculated probability in order to su
 \label{fig:design:context-engine:multiple-suggestions}
 \end{figure}
 
+\subsection{Class Diagram}
+\label{sec:design:context-engine:class-diagram}
+
+\Cref{fig:design:context-engine:class-diagram} shows the class diagram for all classes and interfaces involved in the context engine. Below is a short description of each component.
+
+\begin{description}
+\item[ContextProvider] Objects implementing the interface provides information about a part of the context. Examples of this include the position context provider described in \cref{sec:design:position-context-provider} and the gesture context provider described in \cref{sec:design:gesture-context-provider}.
+\item[ContextProviderListener] Objects implementing the interface and which are registered with a context provider are informed when a context provider has information about the context ready or when it fails.
+\item[ContextRecognizer] The recognizer has a set of context providers and asks those to provide information about the context when the recognizer is started. Based on the retrieved information it determines the appropriate action to trigger of suggests multiple actions.
+\item[ContextRecognizerListener] Objects implementing the interface and which are registered with the context recognizer are informed when the recognizer has recognized the context, fails recognizing the context or the recognition times out. A time out may occur if the recognizer does not get information from the providers within a certain interval.
+\item[ContextOutcome] Context providers supply outcomes to the context recognizer. An outcome represents an action by the ID of the action and contains a probability. The context recognizer returns the outcomes when the context has been recognized.
+\end{description}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{images/uml-context-engine}
+\caption{Class diagram showing all classes and interfaces involved in the context engine.}
+\label{fig:design:context-engine:class-diagram}
+\end{figure}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../master"
