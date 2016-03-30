@@ -14,13 +14,13 @@ For example, if gestures A and B are recognized with A having a score of 47 and 
 The lower the score is, the better. Therefore the probability of gesture A being recognized is considered to be the following.
 
 \begin{equation*}
-1 - \frac{47}{140} \cdot 100 = 66.43
+(1 - \frac{47}{140}) \cdot 100 = 66.43
 \end{equation*}
 
 The probability of gesture B is considered to be the following.
 
 \begin{equation*}
-1 - \frac{93}{140} \cdot 100 = 33.57
+(1 - \frac{93}{140}) \cdot 100 = 33.57
 \end{equation*}
 
 The probabilities are assigned to the actions as weights. The weights are then normalized as shown in \cref{tbl:sec:design:gesture-context-provider:weighted-actions}. The weights are passed to the context recognizer.
