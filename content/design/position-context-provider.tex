@@ -1,7 +1,9 @@
 \section{Position Context Provider}
 \label{sec:design:position-context-provider}
 
-The position context provider is responsible for determining which actions it makes sense to trigger in in the users current position and what the probability of the user desiring to trigger each of the actions.
+The following section describes the position context provider introduced in \cref{sec:analysis:context-engine}.
+
+The position context provider is responsible for determining which actions it makes sense to trigger in the users current position and what the probability of the user desiring to trigger each of the actions.
 
 The context provider determines the position of the user using Bluetooth LE. One or more Estimote beacons are installed in rooms that should be tracked. The beacons broadcast using the Eddystone protocol as described in section \ref{sec:design:ble-positioning}. The wearable continuously scans for nearby beacons using the Estimote SDK.
 
@@ -15,7 +17,7 @@ For example, consider the following set where $A$, $B$ and $C$ are different roo
   \{ A, A, B, B, A, A, A, B, C, A, A, A \}
 \end{equation*}
 
-There are a total of twelve items in the queue. Room A occurs eight times, Room B occurs three times and Room C occurs one time. Therefore we assign a 67\% probability that the user is in Room A, a 25\% probability that the user is in Room B and a roughly 8\% probability that the user is in Room C.
+There are a total of twelve items in the queue. Room A occurs eight times, Room B occurs three times and Room C occurs one time. Therefore we assign a 66.67\% probability that the user is in Room A, a 25\% probability that the user is in Room B and a roughly 8.33\% probability that the user is in Room C.
 
 For each room we find the actions that are valid in the room and distribute the probabilities on all actions. Consider the valid actions for each room in \Cref{tbl:sec:design:position-context-provider:actions}.
 
@@ -29,21 +31,21 @@ For each room we find the actions that are valid in the room and distribute the 
 \end{tabular}
 \end{table}
 
-We assign a weight of 67 to the actions in room A, a weight of 25 to the actions in room B and a weight of 8 to the actions in room C and normalize the weights as shown in \Cref{tbl:sec:design:position-context-provider:actions}. The normalized weights are returned as outcomes by the context provider.
+We assign a weight of 66.67 to the actions in room A, a weight of 25 to the actions in room B and a weight of 8.33 to the actions in room C and normalize the weights as shown in \Cref{tbl:sec:design:position-context-provider:weighted-actions}. The normalized weights are returned as outcomes by the context provider.
 
-\begin{table}[]
+\begin{table}[h!]
 \centering
 \caption{Example of weights assigned to actions.}
-\label{tbl:sec:design:position-context-provider:actions}
+\label{tbl:sec:design:position-context-provider:weighted-actions}
 \begin{tabular}{lll}
                   & \textbf{Weight} & \textbf{Normalized weight} \\
-\textbf{Action 1} & 67              & $\frac{67}{217}$                   \\
-\textbf{Action 2} & 67              & $\frac{67}{217}$                   \\
-\textbf{Action 3} & 25              & $\frac{25}{217}$                   \\
-\textbf{Action 4} & 25              & $\frac{25}{217}$                   \\
-\textbf{Action 5} & 25              & $\frac{25}{217}$                   \\
-\textbf{Action 6} & 8               & $\frac{8}{217}$                    \\
-\textbf{Total}    & 217             & 1                         
+\textbf{Action 1} & 66.67              & $\frac{66.67}{216.67}$                   \\
+\textbf{Action 2} & 66.67              & $\frac{66.67}{216.67}$                   \\
+\textbf{Action 3} & 25              & $\frac{25}{216.67}$                   \\
+\textbf{Action 4} & 25              & $\frac{25}{216.67}$                   \\
+\textbf{Action 5} & 25              & $\frac{25}{216.67}$                   \\
+\textbf{Action 6} & 8.33               & $\frac{8.33}{216.67}$                    \\
+\textbf{Total}    & 216.67             & 1                         
 \end{tabular}
 \end{table}
 
