@@ -1,0 +1,85 @@
+\section{Gesture Recognition}
+\label{sec:design:gesture-recognition}
+
+As stated in \cref{sec:analysis:choice-of-gesture-recognizer} we decided to use the 1\textcent~gesture recognizer \cite{herold20121}.
+However as it is designed to be used for recognition of two-dimensional gestures we have created a modified version of it that is able to recognize three-dimensional gestures recorded using a three-axis accelerometer.
+
+\subsection{1\textcent~Gesture Recognizer}
+The 1\textcent~gesture recognizer by Herold et al. is designed as an improvement to the 1\$ recognizer \cite{wobbrock2007gestures} by Wobbrock et al. by removing computationally expensive rotate-and-check methods and instead using a one-dimensional representation of gestures that is rotation-invariant.
+
+A gesture is recorded as a timeseries of two-dimensional coordinates which is then resampled to contain a fixed amount of points $N$.
+Herold et al. use $N = 64$ to match Wobbrock et al. but state that any value between 16 and 128 will suffice.
+Once a gesture has been resampled, the centroid is calculated and for each point in the gesture the euclidean distance between that point and the centroid is calculated and stored in an array.
+This array of distances to the centroid is the one-dimensional representation of a gesture and Herold et al. call it a template.
+
+When attempting to recognize an input from a user, the input is resampled and converted to a template in the same way to enable comparison between the input and the stored templates.
+Comparison between the input and a template is done by calculating the distance between the input and each stored templated using \cref{eq:one-cent-l-squared}.
+The template with the lowest $L^2$ distance to the input is the best match.
+
+\begin{figure}
+\begin{equation}
+L^{2}(v_1, v_2) = \lvert\lvert v_1 - v_2 \rvert\rvert^2
+\label{eq:one-cent-l-squared}
+\end{equation}
+\caption{Distance between two templates. Source: \cite{herold20121}}
+\end{figure}
+
+\subsection{Converting 1\textcent~to Three Dimensions}
+For use in this project we created a modified version of 1\textcent~that works with three-dimensional accelerometer data.
+A naive approach would be to use raw accelerometer data as coordinates but the problem with this approach, besides lack of filtering, is that these coordinates would not properly represent a gesture.
+
+Imagine a minimalistic example where the the accelerometer registers two accelerations, the first one is on the $x$-axis and the other is on the $y$-axis.
+The $z$-axis is ignored for the sake of the argument.
+This is illustrated by the two blue arrows in \cref{fig:accelerometerpoints}.
+If these two measurements are used as coordinates for the gesture, it would end up looking like the gesture shown in \cref{fig:accelerometerpath}.
+
+The proper path is illustrated in \cref{fig:acceleromterpath-proper}.
+The way we achieve the proper path is by borrowing a technique from \cite{threedollar} where acceleration deltas are acquired by subtracting the current measurement from the previos one, and finally summing all the deltas to get the path.
+
+\begin{figure}
+    \begin{subfigure}{.5\linewidth}
+    \resizebox{\linewidth}{!}{
+        % Pure accelerometer points
+        \begin{tikzpicture}
+            \draw[gray, ->, thick] (0,-5) -- (0,5) node[left] {$y$};
+            \draw[gray, ->, thick] (-5,0) -- (5,0) node[below] {$x$};
+            \draw[blue, ->, thick] (0,0) -- (4,0);
+            \draw[blue, ->, thick] (0,0) -- (0,4);
+            \filldraw[red] (0,0) circle (2pt);
+        \end{tikzpicture}
+    }
+    \caption{Two accelerometer measurements $\{4,0\}$ and $\{0,4\}$}
+\label{fig:accelerometerpoints}
+    \end{subfigure}
+    \begin{subfigure}{.5\linewidth}
+    \resizebox{\linewidth}{!}{
+        % Pure accelerometer path
+        \begin{tikzpicture}
+            \draw[gray, ->, thick] (0,-5) -- (0,5) node[left] {$y$};
+            \draw[gray, ->, thick] (-5,0) -- (5,0) node[below] {$x$};
+            \draw[black, thick] (0,0) -- (4,0) -- (0,4);
+            \filldraw[red] (0,0) circle (2pt);
+            \filldraw[black] (4,0) circle (2pt);
+            \filldraw[black] (0,4) circle (2pt);
+        \end{tikzpicture}
+    }
+    \caption{Path drawn between the measured points.}
+\label{fig:accelerometerpath}
+    \end{subfigure}
+\caption{ }
+\end{figure}
+
+\begin{figure}
+\centering
+% 3$ path
+\begin{tikzpicture}[scale=0.6]
+\draw[gray, ->, thick] (0,-5) -- (0,5) node[left] {$y$};
+\draw[gray, ->, thick] (-5,0) -- (5,0) node[below] {$x$};
+\draw[black, thick] (0,0) -- (4,0) -- (4,4);
+\filldraw[red] (0,0) circle (2pt);
+\filldraw[black] (4,0) circle (2pt);
+\filldraw[black] (4,4) circle (2pt);
+\end{tikzpicture}
+\caption{The proper path of the accelerometer-recorded gesture.}
+\label{fig:acceleromterpath-proper}
+\end{figure}
