@@ -25,7 +25,7 @@ In the above example, actions are suggested with a probability based on the moti
 Consider the following example of how the position context provider can supply information about the context.
 
 \begin{testexample}
-A user is equipped with a wearable and walks around his rome installed with Bluetooth LE beacons. As the user moves around, the position context provider determines the likelihood that the user is in each room. There may be fluctations in the readings, i.e. a reading indicating the the user is in a wrong room, so the provider continuously measures the position and adjusts the probabilities accordingly.
+A user is equipped with a wearable and walks around his room installed with Bluetooth LE beacons. As the user moves around, the position context provider determines the likelihood that the user is in each room. There may be fluctations in the readings, i.e. a reading indicating the the user is in a wrong room, so the provider continuously measures the position and adjusts the probabilities accordingly.
 The probability in each room is directly converted to probabilities of each action that can be performed in the room. The probabilities are normalized.
 \end{testexample}
 
@@ -35,13 +35,13 @@ In the above example, the position context provider only knows about the users p
 
 The gesture recognizer has found two gestures to be likely, however, the gesture associated with Action 1 has a significantly higher score than the gesture for Action 2.
 
-The system state provider supplies probabilities for all actions that it currently makes sense to trigger in the system. It makes sense to trigger Action 1 and Action 3. It could be that Action 2 turns on a light which is already turned on, therefore it does not make sense to trigger it and it has a probability of zero. The total probability is distributed among all actions it makes sense to trigger. Therefore the systam state provider can be regarded as a \textit{filter}, as it only filters out actions it does not make sense to perform and assigns an equal probability to all other actions.
+The system state provider supplies probabilities for all actions that it currently makes sense to trigger in the system. It makes sense to trigger Action 1 and Action 3. It could be that Action 2 turns on a light which is already turned on, therefore it does not make sense to trigger it and it has a probability of zero. The total probability is distributed among all actions it makes sense to trigger. Therefore the system state provider can be regarded as a \textit{filter}, as it only filters out actions.
 
 In \cref{fig:design:context-engine:single-suggestion} the probabilities of actions are represented by a line from the action, i.e. a circle, to the probability. The identifiers of each action is written inside the circle. 
 
-Context providers are assigned a weight, shown below the name of the context provider in \cref{fig:design:context-engine:single-suggestion}. Weights are introduced in order model prescence and reduce the risk of triggering the wrong action. This could happen if the position context provider assigns a high probability to an action that the gesture context provider assigns a low probability to. By introducing weights we can make the gesture recognizer more significant than other recognizes and reduce the risk that we trigger an action which the gesture context provider assigned a low probability.
+Context providers are assigned a weight, shown below the name of the context provider in \cref{fig:design:context-engine:single-suggestion}. Weights are introduced in order ​to​ model precedence and reduce the risk of triggering the wrong action. This could happen if the position context provider assigns a high probability to an action that the gesture context provider assigns a low probability to. By introducing weights we can make the gesture recognizer more significant than other recognizes and reduce the risk that we trigger an action which the gesture context provider assigned a low probability.
 
-The context recognizer takes all the context providers as input and outputs an appropriate action to be triggered. The gesture recognizer calculates the probability of an action $a$ as shown in the equation below where $p_a$ is the total probability of the action, $CP$ is the set of context providers, $p_{a,x}$ is the probability of action $a$ in set $x$ and $w_x$ is the weight of set $x$.
+The context recognizer takes all the context providers as input and outputs an appropriate action to be triggered. The context recognizer calculates the probability of an action $a$ as shown in the equation below where $p_a$ is the total probability of the action, $CP$ is the set of context providers, $p_{a,x}$ is the probability of action $a$ in set $x$ and $w_x$ is the weight of set $x$.
 
 \begin{equation*}
 p_a = \sum\limits_{x \in CP}^{} p_{a,x} \cdot w_{x}
