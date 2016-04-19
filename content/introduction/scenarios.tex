@@ -1,32 +1,150 @@
-\section{Scenarios}
+\section{Scenario}
 \label{sec:analysis:scenarios}
 
-\todo[author=Simon]{The requirement specification seem tightly coupled with the scenarios. Does the scenarios belong to the introduction?}
+\todo[author=Simon]{The requirement specification seem tightly coupled with the scenario. Does the scenario belong to the introduction?}
 
-This section describes a few scenarios that might occur during the use of the envisioned system. We make the following assumptions about the system and the environment in which these scenarios take place:
+This section describes a scenario the envisioned system may be used in. We make the following assumptions about the system and the environment in which the scenario take place:
 
 \begin{itemize}
     \item All controllable devices are connected through a central hub.
-    \item The system is installed in a private home with clearly defined rooms.
-    \item Data about these devices, such as their location and their current state, is always available.
+    \item The system is installed in a private home where the different rooms can be defined.
+    \item The state of the controllable devices is always available.
     \item The location of the user is always available when he is in his home.
 \end{itemize}
 
-\subsection{Playing Music in the Kitchen}
-\label{sec:analysis:scenarios:playing_music}
+We consider the system to be installed in the appartment shown in \cref{fig:analysis:scenario:appartment}. The rooms in the appartment are listed in \cref{tbl:analysis:scenario:rooms} along with the controllable devices that seem realistic to be located in each room.
 
-Assume that a person is in his kitchen and wishes to listen to music while cooking, and that this person has a stereo in the kitchen as well as in the living room that are both connected to his smart hub.
-Assume also that this person uses the same set of gestures to control these stereos as they are functionally equivalent and the use of them does not vary enough to warrant separate sets of gestures.
-Thus when this person wishes to interact with his stereo by performing the gestures bound to them it is neccesary to determine which stereo is the intended target.
+\begin{table}[h!]
+\centering
+\caption{Rooms in the appartment with possible devices in each room.}
+\label{tbl:analysis:scenario:rooms}
+\begin{tabular}{ll}
+\textbf{Region} & \textbf{Controllable devices}                                                 \\
+Hallway         & Two lamps and a door lock.                                                    \\
+Living room     & Three lamps, a television, a music centre, a thermostat and a weather station.\\
+Kitchen         & Two lamps, a coffee maker and a music centre.                                 \\
+Bedroom         & Two lamps and a television.                                                   \\
+Home office     & Two lamps and a music centre.                                                 \\
+Bathroom        & A lamp.                                                                      
+\end{tabular}
+\end{table}
 
-If the gesture performed is set to turn on a stereo, it is relevant to inspect the state of all stereos as it does not make sense to attempt to turn on a stereo that is already turned on.
-As well it is relevant to use the location of the person compared to the different steroes, as it is more likely that he intends to control the ones in the same room as him than the ones in other rooms.
+\Cref{tbl:analysis:scenario:gestures} shows the gestures a user may perform in the appartment shown in \cref{fig:analysis:scenario:room-with-beacons}.
 
-Hence if there is a stereo in the kitchen that is not already turned on then it is safe to  assume that that is the intended target of the persons action.
+\begin{table}[h!]
+\centering
+\caption{Gestures the user has configured.}
+\label{tbl:analysis:scenario:gestures}
+\begin{tabular}{ll}
+\textbf{Gesture name} & \textbf{Illustration}
+\\[0.2cm]
+Z                     &  
+\begin{minipage}{.3\textwidth}
+  \includegraphics[height=1cm]{images/gesture-z}
+\end{minipage}
+\\[0.5cm]
+V                     &
+\begin{minipage}{.3\textwidth}
+  \includegraphics[height=1cm]{images/gesture-v}
+\end{minipage}
+\\[0.5cm]
+Circle                &
+\begin{minipage}{.3\textwidth}
+  \includegraphics[height=1cm]{images/gesture-circle}
+\end{minipage}
+\\[0.5cm]
+Triangle              &
+\begin{minipage}{.3\textwidth}
+  \includegraphics[height=1cm]{images/gesture-triangle}
+\end{minipage}
+\\[0.5cm]
+L                     &
+\begin{minipage}{.3\textwidth}
+  \includegraphics[height=1cm]{images/gesture-l}
+\end{minipage}
+\\[0.5cm]
+W                     &
+\begin{minipage}{.3\textwidth}
+  \includegraphics[height=1cm]{images/gesture-w}
+\end{minipage}
+\\[0.5cm]
+Horizontal Line       &
+\begin{minipage}{.3\textwidth}
+  \includegraphics[width=1.75cm]{images/gesture-horizontal-line}
+\end{minipage}
+\\[0.5cm]
+Half Circle           &                      
+\begin{minipage}{.3\textwidth}
+  \includegraphics[height=1cm]{images/gesture-half-circle}
+\end{minipage}
+\end{tabular}
+\end{table}
 
-Similarly, if the stereo in the kitchen is already turned on but the one in the living room is not, then the one in the living room is most likely the intended target.
+For each room there are a number of gestures that are valid in that room and when performing a gesture, an actions is sent and the action affects a device. \Cref{tbl:analysis:scenario:gesture-configurations} shows the meaning the gestures in each room. For example, when the user performs a circle gesture in the hallway, he locks or unlocks the door lock.
 
-Though not apparent in this example scenario, working with devices such as stereos pose some interesting challenges regarding gesture control as they require more granular control than mere on / off, eg. when controlling the volume at which the music plays.
+\begin{table}[]
+\centering
+\caption{Shows gestures that perform actions on controllable devices in each room of the appartment shown in \cref{fig:analysis:scenario:appartment}}
+\label{tbl:analysis:scenario:gesture-configurations}
+\begin{tabular}{lll}
+\textbf{Region} & \textbf{Affected device} & \textbf{Gesture}                       \\
+Hallway                    & Lamp 1                              & Z turns on and off.                      \\
+Hallway                    & Lamp 2                              & V turns on and off.                      \\
+Hallway                    & Door lock                           & Circle locks and unlocks.                \\
+Living room                & Lamp 3                              & Z turns on and off.                      \\
+Living room                & Lamp 4                              & V turns on and off.                      \\
+Living room                & Lamp 5                              & Triangle turns on and off.               \\
+Living room                & Thermostat                          & L increases the temperature.             \\
+Living room                & Thermostat                          & W decreases the temperature.             \\
+Living room                & Music centre                        & Horizontal Line skips to next track.     \\
+Living room                & Music centre                        & Half Circle skips to previous track.     \\
+Living room                & Music centre                        & Circle plays and pauses.                 \\
+Kitchen                    & Lamp 6                              & Z turns on and off.                      \\
+Kitchen                    & Lamp 7                              & V turns on and off.                      \\
+Kitchen                    & Coffee maker                        & W starts brewing.                        \\
+Kitchen                    & Music centre                        & Horizontal Line skips to next track.     \\
+Kitchen                    & Music centre                        & Half Circle skips to previous track.     \\
+Kitchen                    & Music centre                        & Circle plays and pauses.                 \\
+Bedroom                    & Lamp 8                              & Z turns on and off.                      \\
+Bedroom                    & Lamp 9                              & V turns on and off.                      \\
+Bedroom                    & Television                          & Circle turns on and off the television.  \\
+Bedroom                    & Television                          & L increases the volume.                  \\
+Bedroom                    & Television                          & L decreases the volume.                  \\
+Bedroom                    & Television                          & Horizontal Line changes to next channel. \\
+Bedroom                    & Television                          & Half Circle changes to previous channel. \\
+Home office                & Lamp 10                             & Z turns on and off.                      \\
+Home office                & Lamp 11                             & V turns on and off.                      \\
+Home office                & Music centre                        & Horizontal Line skips to next track.     \\
+Home office                & Music centre                        & Half circle skips to previous track.     \\
+Home office                & Music centre                        & Circle plays and pauses.                 \\
+Bathroom                   & Lamp 12                             & Z turns on and off.                     
+\end{tabular}
+\end{table}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.75\textwidth]{images/room-with-beacons}
+\label{fig:analysis:scenario:appartment}
+\caption{Example appartment we envision the system to be installed in.}
+\end{figure}
+
+We consider the following example of a day in a users life realistic to take place in the appartment illustrated in \cref{fig:analysis:scenario:appartment} and \cref{tbl:analysis:scenario:rooms} with the gestures outline in \cref{tbl:analysis:scenario:gestures}.
+
+\begin{testexample}
+At the begnning of the day, the user wakes up in his bedroom. He makes a Z gesture to turn on Lamp 8 in the bedroom and gets out of bed. He goes to the bathroom to take a shower and turns on Lamp 12 by performing gesture Z as he enters. When he is done, he performs gesture Z to turn off the Lamp 12.
+
+The user goes the living room, and increases the temperature by performing gesture L, turns on Lamp 4 and Lamp 5 by performing gestures V and Triangle. Before he goes to the kitchen, he starts the music in the living room by performing the Circle gesture. In the kitchen he starts brewing coffee by performing the W gesture and gets some breakfast.
+
+When the user is done eating breakfast, he goes to the living room and turns off the music by performing the Circle gesture. The user goes to the home office, starts the music in the office by performing the Circle gesture and turns on Lamp 10 and Lamp 11 by performing gestures Z and V.
+
+When done working, he goes grocery shopping. As he leaves the home office, he performs gestures Z and V to turn off Lamp 10 and Lamp 11. He goes to the hallway and performs the Circle gesture to unlock the door. The user locks the door by performing a Circle gesture.
+
+When the user comes home, he unlocks the door by performing a Circle gesture and unpacks his groceries in the kitchen in which he turns on Lamp 7 by performing a V gesture. Whe he is done unpacking the grocieries, he turns off Lamp 7 again by performing the V gesture again.
+
+Earlier the day, the user had turned on Lamp 4 and Lamp 5 in the living room. He goes to the living room and turns off Lamp 4 and Lamp 5 by performing the V and Triangle gestures. He continues to the bedroom to watch television. The television is turned on by performing the Circle gesture. After watching television, the user turns off the TV by performing the Circle gesture and Lamp 8 by performing the Z gesture.
+\end{testexample}
+
+The above example briefly shows how the user can move around his appartment and use the same eight gestures to control different devices located in different rooms.
 
 \subsection{Handling Uncertainties}
 \label{sec:analysis:scenarios:handling_uncertainties}
@@ -47,10 +165,10 @@ This could be considered void and the person would be asked to try again, or the
 \subsection{Controlling Devices in Other Rooms}
 \label{sec:analysis:scenarios:other_rooms}
 
-Assume that a person is in his bedroom watching TV but then remembers that he forgot to turn off the TV in the living room.
-He wishes to turn off the TV in the living room but not the one located in the bedroom.
-If the system follows the logic presented in \cref{sec:analysis:scenarios:playing_music}, then performing a gesture bound to ``Turn off TV'' would turn off the TV in the bedroom as it is in the same room as the person.
-To circumvent this, the smartwatch app could allow the user to select which room he would like to control devices in.
+Assume that a person is in his home office listening to music but then remembers that he forgot to turn off the music in the living room.
+He wishes to turn off the music in the living room but not the one located in the home office.
+If the user performs the Circle gesture to pause the music, he would pause it in the home office.
+To circumvent this, the smartwatch application could allow the user to select which room he would like to control devices in.
 
 %%% Local Variables:
 %%% mode: latex
