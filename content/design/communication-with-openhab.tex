@@ -1,9 +1,9 @@
 \section{Communication with openHAB}
 \label{sec:design:communication-with-openhab}
 
-The open source home automation hub openHAB described in \cref{sec:analysis:choice-of-hub} expose an API with a REST architecture. Clients can communicate with the API over HTTP.
+The open source home automation hub openHAB described in \cref{sec:analysis:choice-of-hub} exposes an API with a REST architecture. Clients can communicate with the API over HTTP.
 
-The communication with the openHAB API consist of the following two components.
+The communication with the openHAB API consists of the following two components.
 
 \begin{description}
 \item[REST client] A base REST client suitable for communicating with a REST API which carries its data using JSON. The client implements base methods for interacting with a REST API. This includes retrieving, deleting, updating and creating entities. The base client parses data received by the API into models.
