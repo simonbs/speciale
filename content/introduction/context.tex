@@ -3,13 +3,13 @@
 
 In the envisioned system the context is used to determine which actions should be triggered when the user performs a gesture. Therefore the context plays an important part in the envisioned system.
 
-The notion of context is researched in multiple fields, including philosophy and psychology \cite{bolchini2007data}. For the purpose of this project we focus on the notion of context in context-aware software systems. Dey \cite{abowd1999towards} use the following definition of the context for context-aware systems:
+The notion of context is researched in multiple fields, including philosophy and psychology \cite{bolchini2007data}. For the purpose of this project we focus on the notion of context in context-aware software systems. Abowd \etal\cite{abowd1999towards} uses the following definition of the context for context-aware systems:
 
 \begin{italicquote}
 Context is any information that can be used to characterize the situation of an entity. An entity is a person, place, or object that is considered relevant to the interaction between a user and an application, including the user and applications themselves.
 \end{italicquote}
 
-According to this definition, information is context if the information characterize the situation of a participant in an interaction \cite{abowd1999towards}.
+According to this definition, information is context if the information characterizes the situation of a participant in an interaction \cite{abowd1999towards}.
 
 Consider the following example.
 
@@ -31,38 +31,40 @@ Information such as what other customers are in the store and the time of the da
 
 \subsection{Context Types}
 
-Dey \cite{abowd1999towards} categorizes context, describing the location, identity, time and activity to be the \emph{primary} context types that answers questions of \emph{where}, \emph{who}, \emph{when} and \emph{what}. Answering these questions helps us understand \emph{why} a given situation occurs. In this project an action is triggered on a controllable device because the user is interested in triggering it (that's the \emph{why}).
+Abowd \etal\cite{abowd1999towards} categorizes context, describing the location, identity, time and activity to be the \emph{primary} context types that answer questions of \emph{where}, \emph{who}, \emph{when} and \emph{what}. Answering these questions help us understand \emph{why} a given situation occurs. In this project an action is triggered on a controllable device because the user is interested in triggering it (that's the \emph{why}).
 
-Dey describes that from the primary context types, \emph{secondary} context types can be derived. When knowing the identity of a user, we can derive other information. In the previous example the sex and age of the user are primary context types that can be derived from the identity of the user. The percentage the price of the t-shirt is reduced with is also secondary information because it is derived when knowing the identity of the t-shirt. The position of the user and the t-shirt are primary context types.
+Abowd \etal~state that \emph{secondary} context types can be derived from the \emph{primary} context types. When the identity of a user is known, additional information can be derived. In the previous example the sex and age of the user are primary context types that can be derived from the identity of the user. 
+The price reduction of the t-shirt is secondary information as well as it can be derived from the identity of the t-shirt.
+The position of the user and the t-shirt are both primary context types.
 
 \subsection{Context Features}
 
-Dey \cite{abowd1999towards} defines a context-aware system as follows.
+Abowd \etal\cite{abowd1999towards} defines a context-aware system as follows.
 
 \begin{italicquote}
 A system is context-aware if it uses context to provide relevant information and/or services to the user, where relevancy depends on the user's task.
 \end{italicquote}
 
-Based on Deys definition, Ferrerira \cite{ferreira2014distributed} outlines the following three main features a context-aware system can provide to its users.
+Based on this definition, Ferreira \etal\cite{ferreira2014distributed} outlines the following three main features a context-aware system can provide to its users.
 
 \begin{itemize}
 \item Presentation of information and services. Systems with this feature, use context to suggest services to the users or present them with relevant information. Yelp, a service that presents users with nearby businesses, is an example of a system implementing this feature.
-\item Automatic execution of a service. Systems with this feature automatically execute a service based on context. Philips Hue, which can automatically change the lightning based on the time of the day, is an example of a system implementing this feature.
+\item Automatic execution of a service. Systems with this feature automatically execute a service based on context. Philips Hue, which can automatically change the lighting based on the time of day, is an example of a system implementing this feature.
 \item Tagging of context to information for later retrieval. Systems with this feature associate information with context. \cite{ferreira2014distributed} uses a service that tags locations with a virtual note for other users to see as an example of systems implementing this feature.
 \end{itemize}
 
-According to Ferreriras categorization of context-aware systems, the system envisioned in this report belong to the category of systems implementing automatic execution of a service. Based on context, the system automatically triggers an action on a controllable device. While the user must perform a gesture in order to trigger the action, the system is still automatic as we consider the gesture to be context.
+According to the categorization of context-aware systems by Ferreira \etal~the system envisioned in this report belongs to the category of systems implementing automatic execution of a service. Based on context, the system automatically triggers an action on a controllable device. While the user must perform a gesture in order to trigger the action, the system is still automatic as we consider the gesture to be context.
 
 \subsection{Conclusion}
 
-We accept Deys definitions of cotext and context-aware systems. The system envisioned in this project makes use of the following context.
+We accept the definitions of context and context-aware systems proposed by Abowd \etal~and the system envisioned in this project makes use of the following context.
 
 \begin{itemize}
 \item The position of the user.
 \item The gesture performed by the user.
 \end{itemize}
 
-Other context can be included in the system but in order to limit the score of this project, we focus on the position and the gesture.
+Other context can be included in the system but in order to limit the scope of this project, we focus on the position and the gesture.
 
 The system is context-aware as it automatically executes a service when a gesture is performed, provided that an appropriate action to trigger can be determined.
 
