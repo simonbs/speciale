@@ -3,7 +3,7 @@
 
 \todo[author=Simon]{The requirement specification seem tightly coupled with the scenario. Does the scenario belong to the introduction?}
 
-This section describes a scenario the envisioned system may be used in. We make the following assumptions about the system and the environment in which the scenario take place:
+This section describes a scenario the envisioned system may be used in. We make the following assumptions about the system and the environment in which the scenario takes place:
 
 \begin{itemize}
     \item All controllable devices are connected through a central hub.
@@ -12,11 +12,11 @@ This section describes a scenario the envisioned system may be used in. We make 
     \item The location of the user is always available when he is in his home.
 \end{itemize}
 
-We consider the system to be installed in the appartment shown in \cref{fig:analysis:scenario:appartment}. The rooms in the appartment are listed in \cref{tbl:analysis:scenario:rooms} along with the controllable devices that seem realistic to be located in each room.
+We consider the system to be installed in the apartment shown in \cref{fig:analysis:scenario:apartment}. The rooms in the apartment are listed in \cref{tbl:analysis:scenario:rooms} along with the controllable devices that seem realistic to be located in each room.
 
 \begin{table}[h!]
 \centering
-\caption{Rooms in the appartment with possible devices in each room.}
+\caption{Rooms in the apartment with possible devices in each room.}
 \label{tbl:analysis:scenario:rooms}
 \begin{tabular}{ll}
 \textbf{Region} & \textbf{Controllable devices}                                                 \\
@@ -29,7 +29,7 @@ Bathroom        & A lamp.
 \end{tabular}
 \end{table}
 
-\Cref{tbl:analysis:scenario:gestures} shows the gestures a user may perform in the appartment shown in \cref{fig:analysis:scenario:room-with-beacons}.
+\Cref{tbl:analysis:scenario:gestures} shows the gestures a user may perform in the apartment shown in \cref{fig:analysis:scenario:apartment}.
 
 \begin{table}[h!]
 \centering
@@ -80,11 +80,11 @@ Half Circle           &
 \end{tabular}
 \end{table}
 
-For each room there are a number of gestures that are valid in that room and when performing a gesture, an actions is sent and the action affects a device. \Cref{tbl:analysis:scenario:gesture-configurations} shows the meaning the gestures in each room. For example, when the user performs a circle gesture in the hallway, he locks or unlocks the door lock.
+For each room there are a number of gestures that are valid in that room and when performing a gesture, an action is sent to the hub and the action affects a device. \Cref{tbl:analysis:scenario:gesture-configurations} shows the devices and actions associated with the gestures in each room. For example, when the user performs a circle gesture in the hallway, he locks or unlocks the door lock.
 
 \begin{table}[]
 \centering
-\caption{Shows gestures that perform actions on controllable devices in each room of the appartment shown in \cref{fig:analysis:scenario:appartment}}
+\caption{Shows gestures that perform actions on controllable devices in each room of the apartment shown in \cref{fig:analysis:scenario:apartment}}
 \label{tbl:analysis:scenario:gesture-configurations}
 \begin{tabular}{lll}
 \textbf{Region} & \textbf{Affected device} & \textbf{Gesture}                       \\
@@ -124,16 +124,16 @@ Bathroom                   & Lamp 12                             & Z turns on an
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.75\textwidth]{images/room-with-beacons}
-\label{fig:analysis:scenario:appartment}
-\caption{Example appartment we envision the system to be installed in.}
+\label{fig:analysis:scenario:apartment}
+\caption{Example apartment we envision the system to be installed in.}
 \end{figure}
 
-We consider the following example of a day in a users life realistic to take place in the appartment illustrated in \cref{fig:analysis:scenario:appartment} and \cref{tbl:analysis:scenario:rooms} with the gestures outline in \cref{tbl:analysis:scenario:gestures}.
+We consider the following example of a day in a users life realistic to take place in the apartment illustrated in \cref{fig:analysis:scenario:apartment} and \cref{tbl:analysis:scenario:rooms} with the gestures outline in \cref{tbl:analysis:scenario:gestures}.
 
 \begin{testexample}
 At the begnning of the day, the user wakes up in his bedroom. He makes a Z gesture to turn on Lamp 8 in the bedroom and gets out of bed. He goes to the bathroom to take a shower and turns on Lamp 12 by performing gesture Z as he enters. When he is done, he performs gesture Z to turn off the Lamp 12.
 
-The user goes the living room, and increases the temperature by performing gesture L, turns on Lamp 4 and Lamp 5 by performing gestures V and Triangle. Before he goes to the kitchen, he starts the music in the living room by performing the Circle gesture. In the kitchen he starts brewing coffee by performing the W gesture and gets some breakfast.
+The user goes into the living room, and increases the temperature by performing gesture L, turns on Lamp 4 and Lamp 5 by performing gestures V and Triangle. Before he goes to the kitchen, he starts the music in the living room by performing the Circle gesture. In the kitchen he starts brewing coffee by performing the W gesture and gets some breakfast.
 
 When the user is done eating breakfast, he goes to the living room and turns off the music by performing the Circle gesture. The user goes to the home office, starts the music in the office by performing the Circle gesture and turns on Lamp 10 and Lamp 11 by performing gestures Z and V.
 
@@ -141,10 +141,10 @@ When done working, he goes grocery shopping. As he leaves the home office, he pe
 
 When the user comes home, he unlocks the door by performing a Circle gesture and unpacks his groceries in the kitchen in which he turns on Lamp 7 by performing a V gesture. Whe he is done unpacking the grocieries, he turns off Lamp 7 again by performing the V gesture again.
 
-Earlier the day, the user had turned on Lamp 4 and Lamp 5 in the living room. He goes to the living room and turns off Lamp 4 and Lamp 5 by performing the V and Triangle gestures. He continues to the bedroom to watch television. The television is turned on by performing the Circle gesture. After watching television, the user turns off the TV by performing the Circle gesture and Lamp 8 by performing the Z gesture.
+Earlier that day, the user had turned on Lamp 4 and Lamp 5 in the living room. He goes to the living room and turns off Lamp 4 and Lamp 5 by performing the V and Triangle gestures. He continues to the bedroom to watch television. The television is turned on by performing the Circle gesture. After watching television, the user turns off the TV by performing the Circle gesture and Lamp 8 by performing the Z gesture.
 \end{testexample}
 
-The above example briefly shows how the user can move around his appartment and use the same eight gestures to control different devices located in different rooms.
+The above example briefly shows how the user can move around his apartment and use the same eight gestures to control different devices located in different rooms.
 
 \subsection{Handling Uncertainties}
 \label{sec:analysis:scenarios:handling_uncertainties}
