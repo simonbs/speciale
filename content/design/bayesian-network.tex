@@ -1,0 +1,43 @@
+\section{Bayesian Network}
+\label{sec:design:bayesian-network}
+
+Determining the correct action to trigger based on the contextual information is done using a Bayesian network. The network is illustrated in \cref{fig:design:bayesian-network:overview}. We consider there to be the following three levels in the network.
+
+\begin{itemize}
+\item The uppermost level containing the ``Gesture'', ``Room'', ``TV\_IsOn'' and ``MusicCentre\_IsPlaying'' nodes provides contextual information.
+\item The middle level observes on the uppermost level to provide probabilities for each action in the system based on a subset of the information observed in the uppermost level.
+\item The bottom level observes on all nodes in the middle level to provide probabilities for the actions in the system. Based on these probabilities the correct action to perform is determined.
+\end{itemize}
+
+The benefit of this structure is, that contextual information such as the performed gesture and the users position is always translated to probabilities for actions and these probabilities are independent of other contextual information that we may observe.
+
+When the contextual information is modelled as probabilities for actions, it becomes trivial to combine all the contextual information to choose the right action to perform.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.75\textwidth]{images/bayesian-network}
+\caption{The Bayesian network used for determining the appropriate action to trigger based on the gesture performed by the user, the position of the user and the state of the system.}
+\label{fig:design:bayesian-network:overview}
+\end{figure}
+
+The uppermost level of the network is constituted by the following four nodes.
+
+\begin{itemize}
+\item[Gesture] 
+\item[Room] 
+\item[TV\_IsOn] 
+\item[MusicCentre\_IsPlaying] 
+\end{itemize}
+
+The middle level of the network is constituted by the following four nodes.
+
+\begin{itemize}
+\item[Gesture\_Action] 
+\item[Room\_Action] 
+\item[System\_State\_Action] 
+\end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:
