@@ -1,0 +1,25 @@
+\subsection{Evidence in Room Node}
+\label{sec:design:bayesian-network:room-node-evidence}
+
+The following section describes how the evidence assigned to states in the Room node of the Bayesian network is determined. In order to determine the evidence, we introduce the \emph{position context provider}.
+
+The position context provider is responsible for determining which actions make sense to trigger given the users current position. For each action it provides the likelihood of those actions being the intended ones. The likelihoods are the evidence assigned to the states in the Room node.
+
+The context provider determines the position of the user using Bluetooth LE. One or more Estimote beacons are installed in rooms that should be tracked. The beacons broadcast using the Eddystone protocol as described in section \ref{sec:design:ble-positioning}. The wearable continuously scans for nearby beacons using the Estimote SDK.
+
+The Estimote beacons delivers a set of discovered beacons several times each second. Each time beacons are discovered, the provider choose the beacon with the highest RSSI. We assume that the higher the RSSI is, the closer the user is to the beacon as the RSSI is an indicator of the signal strength between the two Bluetooth devices.
+
+In order to account for sporadic and false measurements indicating that the user is in the wrong room, we store a reference to the room the beacon with the highest RSSI is placed in. Each reference lives in the queue for 30 seconds. \todo[author=Simon]{Indsæt reference til hvorfor vi bruger 30 sekunder} Whenever the context provider is asked to provide its context, we calculate the occurence of each beacon in percentage.
+
+For example, consider the following set where $R_1$, $R_2$ and $R_3$ are different rooms.
+
+\begin{equation*}
+  \{ R_1, R_1, R_2, R_2, R_1, R_1, R_1, R_2, R_3, R_1, R_1, R_1 \}
+\end{equation*}
+
+There are a total of twelve items in the queue. $R_1$ occurs eight times, $R_2$ occurs three times and $R_3$ occurs one time. Therefore we assign a 66.67\% probability that the user is in $R_1$, a 25\% probability that the user is in $R_2$ and a roughly 8.33\% probability that the user is in $R_3$. The normalized probabilities are used as soft evidence of the states in the Room node.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:

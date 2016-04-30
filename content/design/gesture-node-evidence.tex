@@ -1,0 +1,29 @@
+\subsection{Evidence in Gesture Node}
+\label{sec:design:bayesian-network:pgesture-node-evidence}
+
+The following section describes how the evidence assigend to the states in the Gesture node of the Bayesian is determined. In order to determine the evidence, we introduce the \emph{gesture context provider}.
+
+The gesture context provider determines the actions that make sense to trigger based on the motion performed by the user. When the user performs a motion, the gesture recognizer scores the trained gestures. When the gestures are scored, they are passed to the context provider which calculates the probabilities of each action associated with the gesture. The calculation of probabilities is similar to the calculation of probabilities for the position context provider presented in \cref{sec:design:position-context-provider}.
+
+When calculating the probabilities, all actions associated with each gesture is retrieved, the scores are normalized and distributed among the actions.
+
+For example, if gestures $G_1$ and $G_2$ are recognized with $G_1$ having a score of 47 and $G_2$ having a score of 93, the total score is $47 + 93 = 140$. Assume that $G_1$ is associated with actions 1 and 2 and $G_2$ is associated with action 3.
+
+The lower the score is, the better. Therefore the probability of gesture $G_1$ being recognized is considered to be the following.
+
+\begin{equation*}
+(1 - \frac{47}{140}) \cdot 100 = 66.43
+\end{equation*}
+
+The probability of gesture $G_2$ is considered to be the following.
+
+\begin{equation*}
+(1 - \frac{93}{140}) \cdot 100 = 33.57
+\end{equation*}
+
+The normalized probabilities are used as soft evidence of the states in the Gesture node.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:
