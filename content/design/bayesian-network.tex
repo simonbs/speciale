@@ -9,9 +9,7 @@ Determining the correct action to trigger based on the contextual information is
 \item The bottom level observes on all nodes in the middle level to provide probabilities for the actions in the system. Based on these probabilities the correct action to perform is determined.
 \end{itemize}
 
-The benefit of this structure is, that contextual information such as the performed gesture and the users position is always translated to probabilities for actions and these probabilities are independent of other contextual information that we may observe.
-
-When the contextual information is modelled as probabilities for actions, it becomes trivial to combine all the contextual information to choose the right action to perform.
+The benefit of this structure is, that contextual information such as the performed gesture and the users position is always translated to probabilities for actions and these probabilities are independent of other contextual information that we may observe. When the contextual information is modelled as probabilities for actions, it becomes trivial to combine all the contextual information to choose the right action to perform.
 
 \begin{figure}[h!]
 \centering
@@ -20,7 +18,7 @@ When the contextual information is modelled as probabilities for actions, it bec
 \label{fig:design:bayesian-network:overview}
 \end{figure}
 
-\begin{table}[]
+\begin{table}[h!]
 \centering
 \caption{Excerpt of the probability tables for the Gesture and Room nodes.}
 \label{tbl:design:bayesian-network:pt-gesture-room}
@@ -43,7 +41,7 @@ Bedroom   & Living room \\ \hline
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[h!]
 \centering
 \caption{Probability tables for the TV\_IsOn and MusicCentre\_IsPlaying nodes.}
 \label{tbl:design:bayesian-network:pt-tv-ison-musiccentre-isplaying}
@@ -63,14 +61,15 @@ Yes   & No \\ \hline
 0.5 & 0.5
 \end{tabular}
 \end{tabular}
-
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[h!]
 \centering
 \caption{Excerpt of the conditional probability table for the Gesture\_Action node.}
 \label{tbl:design:bayesian-network:cpt-gesture-action}
+\begin{tabular}{c}
+\textbf{Gesture\_Action}   \\
 \begin{tabular}{r|ccc}
                              & Z   & Half circle & Horizontal line \\ \hline
 Lamp 3: on/off               & 0.5 & 0             & 0                \\
@@ -80,12 +79,15 @@ Music centre: previous track & 0   & 0             & 0.5              \\
 Television: next channel     & 0   & 0.5             & 0                \\
 Television: previous channel & 0   & 0             & 0.5              
 \end{tabular}
+\end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[h!]
 \centering
 \caption{Exceprt of the conditional probability table for the Room\_Action node.}
 \label{tbl:design:bayesian-network:cpt-room-action}
+\begin{tabular}{c}
+\textbf{Room\_Action}   \\
 \begin{tabular}{r|cc}
                              & Bedroom & Living room \\ \hline
 Lamp 3: on/off               & 0 & $\frac{1}{3}$ \\
@@ -95,12 +97,15 @@ Music centre: previous track & 0    & $\frac{1}{3}$ \\
 Television: next channel     & $\frac{1}{3}$   & 0  \\
 Television: previous channel & $\frac{1}{3}$   & 0  \\
 \end{tabular}
+\end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[h!]
 \centering
 \caption{Excerpt of the conditional probability table for the System\_Action node.}
 \label{tbl:design:bayesian-network:cpt-system-state-action}
+\begin{tabular}{c}
+\textbf{System\_Action}   \\
 \begin{tabular}{r|cc}
 MusicCentre\_IsPlaying       & Yes & No \\
 TV\_IsOn                     & 
@@ -137,6 +142,25 @@ Television: previous channel               &
 \begin{tabularx}{2cm}{YY} $\frac{1}{6}$ & 0 \end{tabularx}
 &
 \begin{tabularx}{2cm}{YY} 0.25 & 0 \end{tabularx}
+\end{tabular}
+\end{tabular}
+\end{table}
+
+We assume A and B are actions in the system. For example, $\text{A} = \text{``Lamp 3: on/off''}$ and $\text{B} = \text{``Music centre: next track''}$.
+
+\begin{table}[h!]
+\centering
+\caption{Excerpt of the conditional probability table for the Action node in the Bayesian network presented in \cref{fig:design:bayesian-network:overview}.}
+\label{tbl:design:bayesian-network:cpt-action}
+\begin{tabular}{c}
+\textbf{Action} \\
+\begin{tabular}{r|c}
+System\_State\_Action & \begin{tabularx}{12cm}{Y|Y} A & B \end{tabularx} \\ \hline
+Room\_Action          & \begin{tabularx}{12cm}{Y|Y|Y|Y} A & B & A & B \end{tabularx} \\ \hline
+Gesture\_Action       & \begin{tabularx}{12cm}{YY|YY|YY|YY} A & B & A & B & A & B & A & B \end{tabularx} \\ \hline
+A                     & \begin{tabularx}{12cm}{YY|YY|YY|YY} 1 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0 \end{tabularx} \\ 
+B                     & \begin{tabularx}{12cm}{YY|YY|YY|YY} 0 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1 \end{tabularx}
+\end{tabular}
 \end{tabular}
 \end{table}
 
