@@ -4,6 +4,8 @@
 %Makes LaTeX more tolerant for underfill lines (won't let e.g. texttt to overfill hboxes)
 \sloppy
 
+\usepackage{pbox}
+
 % Section spacing and numbering
 \setsecnumdepth{subsection}
 \setlength{\beforechapskip}{0pt}
@@ -192,3 +194,11 @@
 \newenvironment{italicquote}
 {\begin{quote}\itshape}
 {\end{quote}}
+
+\usepackage{lscape}
+\usepackage{rotating}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

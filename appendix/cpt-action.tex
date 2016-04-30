@@ -1,0 +1,24 @@
+\chapter{Conditional Probability Table for the Action Node}
+\label{appendix:cpt-action}
+
+We assume A and B are actions in the system. For example, $\text{A} = \text{``Lamp 3: on/off''}$ and $\text{B} = \text{``Music centre: next track''}$.
+
+\begin{table}[h!]
+\centering
+\caption{Excerpt of the conditional probability table for the Action node in the Bayesian network presented in \cref{fig:design:bayesian-network:overview}.}
+\label{my-label}
+\begin{tabular}{r|c}
+System\_State\_Action & \begin{tabularx}{12cm}{Y|Y} A & B \end{tabularx} \\ \hline
+Room\_Action          & \begin{tabularx}{12cm}{Y|Y|Y|Y} A & B & A & B \end{tabularx} \\ \hline
+Gesture\_Action       & \begin{tabularx}{12cm}{YY|YY|YY|YY} A & B & A & B & A & B & A & B \end{tabularx} \\ \hline
+A                     & \begin{tabularx}{12cm}{YY|YY|YY|YY} 1 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0 \end{tabularx} \\ 
+B                     & \begin{tabularx}{12cm}{YY|YY|YY|YY} 0 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1 \end{tabularx}
+\end{tabular}
+\end{table}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../master"
+%%% End:
