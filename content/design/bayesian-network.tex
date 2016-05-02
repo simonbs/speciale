@@ -5,13 +5,13 @@ Determining the correct action to trigger based on the contextual information is
 
 \begin{itemize}
 \item The uppermost level containing the ``Gesture'', ``Room'', ``TV\_IsOn'' and ``MusicCentre\_IsPlaying'' nodes provides contextual information.
-\item The middle level observes on, i.e. is children of, the uppermost level to provide probabilities for each action in the system based on a subset of the information observed in the uppermost level.
-\item The bottom level observes on all nodes in the middle level to provide probabilities for the actions in the system. Based on these probabilities the correct action to perform is determined.
+\item The middle level observes, \ie~is children of, the uppermost level to provide probabilities for each action in the system based on a subset of the information observed in the uppermost level.
+\item The bottom level observes all nodes in the middle level to provide probabilities for the actions in the system. Based on these probabilities the correct action to perform is determined.
 \end{itemize}
 
 The benefit of this structure is, that contextual information such as the performed gesture and the users position is always translated to probabilities for actions and these probabilities are independent of other contextual information that we may observe. When the contextual information is modelled as probabilities for actions, it becomes trivial to combine all the contextual information to choose the right action to perform.
 
-The probability tables and conditional probability tables  \ref{tbl:design:bayesian-network:pt-gesture-room}, \ref{tbl:design:bayesian-network:pt-tv-ison-musiccentre-isplaying}, \ref{tbl:design:bayesian-network:cpt-gesture-action}, \ref{tbl:design:bayesian-network:cpt-room-action}, \ref{tbl:design:bayesian-network:cpt-system-state-action}, \ref{tbl:design:bayesian-network:cpt-action} only shows selected states. In reality, the tables include states for all gestures, rooms and actions in the system but some have been left out for readability purposes.
+The probability tables and conditional probability tables shown in \cref{tbl:design:bayesian-network:pt-gesture-room,tbl:design:bayesian-network:pt-tv-ison-musiccentre-isplaying,tbl:design:bayesian-network:cpt-gesture-action,tbl:design:bayesian-network:cpt-room-action,tbl:design:bayesian-network:cpt-system-state-action,tbl:design:bayesian-network:cpt-action} only show selected states. In reality, the tables include states for all gestures, rooms and actions in the system but some have been left out for readability purposes.
 
 \begin{figure}[h!]
 \centering
@@ -20,7 +20,7 @@ The probability tables and conditional probability tables  \ref{tbl:design:bayes
 \label{fig:design:bayesian-network:overview}
 \end{figure}
 
-\Cref{tbl:design:bayesian-network:pt-gesture-room} shows an excerpt of the probability table for the gesture node. The node contains probabilities for all gestures in the system. The probability is the same for all gestures in the system. This is because the user is equally likely to have performed the gestures when we have not observed anything else. Based on the likelihoods of each gesture supplied by the gesture recognizer, we can add soft evidence to the Gesture node. The evidence is assigned as described in \cref{sec:design:bayesian-network:gesture-node-evidence}.
+\Cref{tbl:design:bayesian-network:pt-gesture-room} shows an excerpt of the probability table for the gesture node. The node contains probabilities for all gestures in the system. The probability is the same for all gestures in the system. This is because the user is equally likely to have performed the gestures when we have not observed anything else. Based on the likelihoods of each gesture supplied by the gesture recognizer, we can add soft evidence to the Gesture node. The evidence is assigned as described in \cref{sec:design:bayesian-network:pgesture-node-evidence}.
 
 When using a Bayesian network, we assign evidence to the states of a node. If a node, $X$, in a bayesian network has states $x_1$, $x_2$ and $x_3$ then an evidence function $\epsilon_X = (1, 0, 0)$ indicates that $X = x_1$, i.e. node $X$ is in state $x_1$ with certainty. If $\epsilon_X = (1, 2, 0)$ then we are sure that $X$ is not in state $x_3$ and $X = x_2$ is twice as likely as $X = x_1$ \cite[pp. 23-24]{kjaerulff2008bayesian}. The probabilities for a column in a conditional probability table should have a sum of 1. That is for a node $X$, $P(x_1) + P(x_2) + ... + P(X_n) = 1$ where $n$ is the number of states in $X$.
 
@@ -74,11 +74,11 @@ Yes   & No \\ \hline
 
 The Gesture, Room, TV\_IsOn and MusicCentre\_IsPlaying nodes constitute the uppermost level in the network. The middle level is constituted by the Gesture\_Action, Room\_Action and System\_State\_Action nodes.
 
-The nodes on the middle level observes on nodes in the uppermost level and based on the observed information, computes probabilities for the all actions in the system. Without any evidence on a state, the probabilities of the states in nodes in the middle level is determined by gesture configurations.
+The nodes on the middle level observes nodes in the uppermost level and based on the observed information, compute probabilities for the all actions in the system. Without any evidence on a state, the probabilities of the states in nodes in the middle level is determined by gesture configurations.
 
 Consider the probabilities of the Gesture\_Action node as shown in \cref{tbl:design:bayesian-network:cpt-gesture-action}. In the scenario presented in \cref{sec:analysis:scenarios} we presented a configuration of the system. \Cref{tbl:design:bayesian-network:cpt-gesture-action} shows an excerpt of the configuration in which the user has configured the Z gesture to turn Lamp 3 and Lamp 8 on and off. The Half Circle gesture skips to the next track on the music centre and changes to the next channel on the television. The Horizontal Line gesture skips to the previous track on the music centre and changes to the previous channel on the television. The valid actions for each gesture have the same probability.
 
-As the Gesture\_Action node observes on the Gesture node, the probabilities of each action are changed when evidence is added to the states of the Gesture node.
+As the Gesture\_Action node observes the Gesture node, the probabilities of each action are changed when evidence is added to the states of the Gesture node.
 
 \begin{table}[h!]
 \centering
@@ -104,7 +104,7 @@ The evidence added to the states of the Room node, is likely to be soft evidence
 
 \begin{table}[h!]
 \centering
-\caption{Exceprt of the conditional probability table for the Room\_Action node.}
+\caption{Excerpt of the conditional probability table for the Room\_Action node.}
 \label{tbl:design:bayesian-network:cpt-room-action}
 \begin{tabular}{c}
 \textbf{Room\_Action}   \\
