@@ -5,7 +5,7 @@ The following section describes how the evidence assigned to states in the Room 
 
 The position context provider is responsible for determining which actions make sense to trigger given the users current position. For each action it provides the likelihood of those actions being the intended ones. The likelihoods are the evidence assigned to the states in the Room node.
 
-The context provider determines the position of the user using Bluetooth LE. One or more Estimote beacons are installed in rooms that should be tracked. The beacons broadcast using the Eddystone protocol as described in section \ref{sec:design:ble-positioning}. The wearable continuously scans for nearby beacons using the Estimote SDK.
+The context provider determines the position of the user using Bluetooth LE. One or more Estimote beacons are installed in rooms that should be tracked. The beacons broadcast using the Eddystone protocol as described in \cref{sec:design:ble-positioning}. The wearable continuously scans for nearby beacons using the Estimote SDK.
 
 The Estimote beacons delivers a set of discovered beacons several times each second. Each time beacons are discovered, the provider chooses the beacon with the highest RSSI. We assume that the higher the RSSI is, the closer the user is to the beacon as the RSSI is an indicator of the signal strength between the two Bluetooth devices.
 
