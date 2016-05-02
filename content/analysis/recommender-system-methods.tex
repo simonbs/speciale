@@ -1,16 +1,19 @@
 \section{Recommender System Methods}
 
+The following section present selected techniques for creating a recommender system. The strengths and weaknesses of the techniques are outlined and the technique used in this project is decided.
+
 \subsection{Collaborative Filtering}
 \label{sec:analysis:recommender-methods:collaborative-filtering}
 
-Collaborative filtering is technique that uses information about multiple users to recommend items for a given user.
-In a setting where it is used to recommend movies a source of information could be user-submitted movie ratings.
-Based on the genres and actors of the movies that a given user has rated highly, the recommender sytem begins acquiring the preferences of that user.
-It would  then find users with similar preferences and look at which movies they have rated highly as they may then be relevant to a given user.
+Collaborative filtering is a technique that uses information about multiple users to recommend items for a given user.
+In a setting in which it is used to recommend movies, a source of information could be user-submitted movie ratings.
+Based on information about the movies a user has rated highly, such as genres, actors and release year, the recommender system begins acquiring the preferences of that user.
+The system then find users with similar preferences and look at which movies they have rated highly. These movies can be suggested to other users.
 
-Some of the issues with collaborative filtering according to Claypool et.~al~\cite{claypool1999combining} are that it depends heavily on users actually providing ratings, otherwise the recommender system will have nothing to base it recommendations on.
-This issue will occur every time a new item is added as users have yet to rate it.
-In addition when a new recommender system created it will suffer from lack of data and every user will be afflicted by this ``Early rater problem'' for all items.
+Consider the example of John. Because John has given high ratings to western movies from the 50s, the system knows that John likes those movies. The system then looks for users with a similar taste in movies, i.e. users who have given high ratings to western movies from the 50s. If the set of movies retrieved from the users with a similar taste in movies contains a movie John have not watched, the movie can be suggested to John. Note that it is key that both John and the users have given high ratings to the movies. As a consequence, if users with similar taste in movies have given the western movies from the 50s low ratings, these are not recommended to John.
+
+Some of the issues with collaborative filtering according to Claypool et.~al~\cite{claypool1999combining} are that it depends heavily on users actually providing ratings, otherwise the recommender system will have nothing to base its recommendations on. This issue will occur every time a new item is added as users have yet to rate it.
+In addition, when a new recommender system is created, the system will suffer from lack of data and every user will be afflicted by this ``Early rater problem'' for all items.
 
 % We deem collaborative filtering unsuited for the purposes of this project as it requires multiple comparable users and our project is tailored more towards individual users.
 
@@ -18,7 +21,7 @@ In addition when a new recommender system created it will suffer from lack of da
 \label{sec:analysis:recommender-methods:content-based-filtering}
 
 A different method that Claypool et.~al utilize to compensate for the ``Early rater problem'' is content-based filtering which relies on the correlation between a users preferences and the information about items.
-Eg.~a user who likes to read news articles regarding specific topics is more likely to be presented with articles with such from a recommender system using content-based filtering, regardless of how other users have rated that article.
+Eg.~John, the user who likes western movies from the 50s, is move likely to be recommended other western movies from the 50s regardless of how other users have rated the recommended movies.
 One of the challenges of this technique is to create proper classification of items and their attributes along with user profiles such that they can be matched.
 Pazzani et.~al~\cite{pazzani1996syskill} classify web pages by analysing the word frequencies, excluding common English words.
 To determine the preferences of the user some form of relevancy feedback is required, either positive or negative.
@@ -33,10 +36,11 @@ However when using implicit feedback one has to be cautious with how strong beli
 \subsection{Decision Trees}
 \label{sec:analysis:recommender-methods:decision-trees}
 
-Decision trees are a model for decision making and prediction using a graph structure where leaf nodes represent outcome and non leaf nodes test attributes or random variables.
-The branches that leave non leaf nodes are labeled with the value of the corresponding attribute.
+Decision trees are a model for decision making and prediction using a graph structure where leaf nodes represent outcome and non-leaf nodes test attributes or random variables.
+The branches that leave non-leaf nodes are labeled with the value of the corresponding attribute.
 Decision trees need not be balanced trees so some paths may end in a leaf node after very few nodes, as in figure 2 of Cho et.~al~\cite{cho2002personalized} where if the root node evaluates to ``manager'' the tree immediately ends in a leaf node ``buy''.
-Decision trees are commonly used for content-based filtering~\cite{adomavicius2005toward}.
+
+A decision tree is built on rules, e.g. $(A \wedge B) => C$. That is, if both A and B are observed, then C applies. Decision trees are commonly used for content-based filtering~\cite{adomavicius2005toward}.
 
 \subsection{Bayesian Networks}
 \label{sec:analysis:recommender-methods:bayesian-networks}
@@ -45,7 +49,13 @@ Bayesian networks are a model for for prediction represented as a directed acycl
 This means that any child node is conditionally dependent on its parents.
 Each node or item in the network has a probability distribution that may change when evidence is observed.
 A node representing the probability for a given disease may be conditionally dependent in such a way that observing the symptoms of a patient will change the likelihood that the patient is afflicted.
-One of the advantages of bayesian networks is that they can handle missing data well~\cite{heckerman2008tutorial}.
+One of the advantages of Bayesian networks is that they can handle missing data well~\cite{heckerman2008tutorial}. 
+
+A Bayesian network is based on joint probabilities, e.g. $P(G,S)$ is the join probability of events $G$ and $S$. $P(A|G,S)$ is the probability of event $A$ given information about events $G$ and $S$.
+
+In the system designed in this report, we are interested in finding the probabilities of events occurring based on the observations of other events. More specifically, we want to determine an action to trigger based on the performed gesture and the room the user is in.
+
+As per the requirements presented in \ref{{sec:requirements-specification}, we are interested in presenting the user with actions he is likely to trigger when we are unable to determine which action he desires to trigger. Working with probabilities is a good way to fulfill this requirement. When working with probabilities, an action can be triggered if it is the only action with a sufficiently high probability, $P$. When no action have a probability succeeding $P$ or more actions has probabilities succeeding $P$, the actions can be suggested to the user.
 
 % \subsection{Neural Network}
 % \label{sec:analysis:recommender-methods:neural-networks}
@@ -56,6 +66,13 @@ One of the advantages of bayesian networks is that they can handle missing data 
 
 A multitude of different solutions have been proposed for recommender systems~\cite{adomavicius2005toward} with just a few presented in this report.
 Collaborative filtering, presented in~\cref{sec:analysis:recommender-methods:collaborative-filtering}, can be a useful approach when different users are comparable and the interests of other users may have a positive impact on a given user.
+
 Rather we think that content-based filtering may prove a better fit for this project.
 However in this project we focus on single user needs and do not see the behaviour of other users as applicable to a given user.
-Decision trees, described in~\cref{sec:analysis:recommender-methods:decision-trees}, though prevalent for use in content-based recommender systems, do not handle missing data as well as bayesian networks and thusly we deem bayesian networks a better suited model for the purposes of this project.
+
+Decision trees, described in~\cref{sec:analysis:recommender-methods:decision-trees}, though prevalent for use in content-based recommender systems, do not handle missing data as well as Bayesian networks and thusly we deem Bayesian networks a better suited model for the purposes of this project. Furthermore Bayesian networks is highly based on probabilities, a desired feature in our system as we will see in sections \ref{sec:design:bayesian-network:pgesture-node-evidence} and \ref{sec:design:bayesian-network:room-node-evidence} is a natural way to model the contextual information.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:
