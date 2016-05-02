@@ -24,7 +24,7 @@ The probability tables and conditional probability tables shown in \cref{tbl:des
 
 When using a Bayesian network, we assign evidence to the states of a node. If a node, $X$, in a bayesian network has states $x_1$, $x_2$ and $x_3$ then an evidence function $\epsilon_X = (1, 0, 0)$ indicates that $X = x_1$, i.e. node $X$ is in state $x_1$ with certainty. If $\epsilon_X = (1, 2, 0)$ then we are sure that $X$ is not in state $x_3$ and $X = x_2$ is twice as likely as $X = x_1$ \cite[pp. 23-24]{kjaerulff2008bayesian}. The probabilities for a column in a conditional probability table should have a sum of 1. That is for a node $X$, $P(x_1) + P(x_2) + ... + P(X_n) = 1$ where $n$ is the number of states in $X$.
 
-As per Kjærulff et al. \cite[pp. 23-24]{kjaerulff2008bayesian} we distinquish between \emph{hard evidence} and \emph{soft evidence}. If an evidence function assigns a probability of zero to all but one state in a node, then there is \emph{hard evidence} on that one state. If an evidence function assigns evidence to multiple states, there is said to be \emph{soft evidence} on the states.
+As per Kjærulff \etal\cite[pp. 23-24]{kjaerulff2008bayesian} we distinquish between \emph{hard evidence} and \emph{soft evidence}. If an evidence function assigns a probability of zero to all but one state in a node, then there is \emph{hard evidence} on that one state. If an evidence function assigns evidence to multiple states, there is said to be \emph{soft evidence} on the states.
 
 \begin{table}[h!]
 \centering

@@ -5,12 +5,12 @@ As stated in \cref{sec:analysis:choice-of-gesture-recognizer} we decided to use 
 However as the 1\textcent~gesture recognizer is designed to be used for recognition of two-dimensional gestures we have created a modified version of it that is able to recognize three-dimensional gestures recorded using a three-axis accelerometer.
 
 \subsection{1\textcent~Gesture Recognizer}
-The 1\textcent~gesture recognizer by Herold et al. is designed as an improvement to the 1\$ recognizer \cite{wobbrock2007gestures} by Wobbrock et al. by removing computationally expensive rotate-and-check methods and instead using a one-dimensional representation of gestures that is rotation-invariant.
+The 1\textcent~gesture recognizer by Herold \etal~is designed as an improvement to the 1\$ recognizer \cite{wobbrock2007gestures} by Wobbrock \etal~by removing computationally expensive rotate-and-check methods and instead using a one-dimensional representation of gestures that is rotation-invariant.
 
 A gesture is recorded as a timeseries of two-dimensional coordinates which is then resampled to contain a fixed amount of points $N$.
-Herold et al. use $N = 64$ to match Wobbrock et al. but state that any value between 16 and 128 will suffice.
+Herold \etal~use $N = 64$ to match Wobbrock \etal~but state that any value between 16 and 128 will suffice.
 Once a gesture has been resampled, the centroid is calculated and for each point in the gesture the euclidean distance between that point and the centroid is calculated and stored in an array.
-This array of distances to the centroid is the one-dimensional representation of a gesture. Herold et al. calls this a template.
+This array of distances to the centroid is the one-dimensional representation of a gesture. Herold \etal~calls this a template.
 
 When attempting to recognize an input from a user, the input is resampled and converted to a template in the same way to enable comparison between the input and the stored templates.
 Comparison between the input and a template is done by calculating the distance between the input and each stored templated using \cref{eq:one-cent-l-squared}.
