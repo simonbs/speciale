@@ -25,6 +25,8 @@ We suggest a design of the context engine based on the following requirements.
 \item The design should support an arbitrary number of informations about the context with zero being an exception as it does not make sense to determine the context with no information about it.
 \end{itemize}
 
+The context engine can be regarded as a recommender system which given some input, e.g. the gesture performed by the user and his position in the smart home, recommends one or more actions the user may desire to trigger. Section \ref{sec:analysis:recommender-methods:collaborative-filtering} describes the technique chosen for the context engine. Section \ref{sec:design:bayesian-network} describes the design of the context engine.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../master"
