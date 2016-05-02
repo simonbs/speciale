@@ -74,7 +74,7 @@ In theory, the context engine can be started at any time. We start the engine wh
 
 When the engine is started, it will ask all registered context providers to supply information about the context. The gesture context provider will calculate probabilities of actions as described in \cref{sec:design:gesture-context-provider} and supply them to the context recognizer.
 
-The context providers should supply their information within a specified interval, e.g. two seconds, and if they do not respond within the interval, they will be cancelled and not considered in the final calculations. This is to ensure a minimum delay between starting the context engine, choosing an action and triggering that action.
+The context providers should supply their information within a specified interval, \eg~two seconds, and if they do not respond within the interval, they will be cancelled and not considered in the final calculations. This is to ensure a minimum delay between starting the context engine, choosing an action and triggering that action.
 
 \subsection{Class Diagram}
 \label{sec:design:context-engine:class-diagram}

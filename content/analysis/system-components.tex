@@ -20,7 +20,7 @@ The idea of the second configuration is to design the system in such a way that 
 The second configuration was abandoned due to restrictions posed by the Bluetooth LE specification. The specification poses the following limitations that prevent such a system from working properly.
 
 \begin{itemize}
-\item A Bluetooth LE peripheral (e.g. a wearable) can only be the slave of one master, that is, it can only be paired with a single other device.
+\item A Bluetooth LE peripheral (\eg~a wearable) can only be the slave of one master, that is, it can only be paired with a single other device.
 \item A peripheral must advertise in order to be discovered by a central. Advertising requires a piece of software to be running on the peripheral and thus access to the bluetooth API.
 \item A central can obtain an RSSI based on the MAC address of a peripheral. However, the bluetooth specification allows a peripheral to change its MAC address in order to prevent tracking of the user\cite[p.~91]{bluetooth2010bluetooth_vol_1}. The change of MAC address could be disabled for this approach, if this is possible on the wearable. However, since this is a security feature introduced in the bluetooth specification, this seems counterintuitive.
 \end{itemize}
@@ -35,10 +35,10 @@ The rest of the report will focus on the first configuration of the system.
 The following list presents the hardware needed for the system.
 
 \begin{itemize}
-\item A computer running the hub. The hub is responsible for forwarding commands from the user to the controllable devices, e.g. lamps. The benefit of running the hub on a central computer rather than the phone, is that the hub could potentially be configured with rules for automation and should therefore always be running, compromising the battery life of a wearable. Furthermore placing the logic in a central place can prove benefitial in an environment with multiple users in which multiple hubs would have to be synchronized.
+\item A computer running the hub. The hub is responsible for forwarding commands from the user to the controllable devices, \eg~lamps. The benefit of running the hub on a central computer rather than the phone, is that the hub could potentially be configured with rules for automation and should therefore always be running, compromising the battery life of a wearable. Furthermore placing the logic in a central place can prove benefitial in an environment with multiple users in which multiple hubs would have to be synchronized.
 \item A wearable capable which provides access to APIs for both bluetooth and the accelerometer. Furthermore it should be possible to give some sort of feedback to the user when a gesture could not be recognized. The wearable should also be able to communicate with hub.
 \item Minimum one bluetooth beacon per room and minimum two beacons in order to configure the system with two rooms. The bluetooth beacons are used to determine which room the user is in.
-\item Minimum two controllable devices, one per room in the system. These devices receives requests from the hub that ask them to change their state, e.g. turn on or off in case of a lamp.
+\item Minimum two controllable devices, one per room in the system. These devices receives requests from the hub that ask them to change their state, \eg~turn on or off in case of a lamp.
 \end{itemize}
 
 The above lists the bare minimum of hardware required in order to implement the system. \cref{} provides a detailed analyses of the desired hardware. \todo[author=Simon]{Insert reference to detailed analyses of the hardware required for the system.}
