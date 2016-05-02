@@ -72,7 +72,7 @@ Please note that all examples are fictitious.
 
 \subsection{Eddystone}
 
-Eddystone is an open protocol designed by Google \cite{estimote:what-is-eddystone}. The Eddystone protocol supports the following \emph{frame types}, i.e. different types of packets that can be broadcasted \cite{eddystone:protocol-spec}.
+Eddystone is an open protocol designed by Google \cite{estimote:what-is-eddystone}. The Eddystone protocol supports the following \emph{frame types}, \ie~different types of packets that can be broadcasted \cite{eddystone:protocol-spec}.
 
 \subsubsection{Eddystone-UID}
 
@@ -160,7 +160,7 @@ Eddystone-TLM frames are broadcasted when interested in monitoring the health of
 
 \begin{description}
 \item[Version] TLM version. Always $0x00$ \cite{eddystone:protocol-tlm-spec}.
-\item[Battery voltage] Voltage of the battery, i.e. remaining power, measured in 1 mv/bit.
+\item[Battery voltage] Voltage of the battery, \ie~remaining power, measured in 1 mv/bit.
 \item[Beacon temperature] Temperature of the beacon, measured in degrees Celsius. Signed 8.8 fixed-point notation.
 \item[Advertisement count] Number of frames advertised since the beacon was powered on or rebooted.
 \item[Seconds count] Number of seconds since the beacon was powered on or rebooted. Resolution of 0.1 seconds.
@@ -198,7 +198,7 @@ Both the iBeacon and the Eddystone protocols are suitable for the system describ
 
 The iBeacon protocol solely supports positioning of the user, either granularly using the Measured Power or non-granularly using regions defined by the major and/or minor value of the beacon.
 
-The Eddystone protocol supports more than positioning of the user. It also supports the monitoring the health of the beacon. While technically, Eddystone-URL frames can be used for positioning the user in regions based on the broadcasted URL, i.e. different URLs for each regions, the Eddystone-UID frame seems better suited for this purpose. Using Eddystone-UID regions can be identified based in the instance of a beacon.
+The Eddystone protocol supports more than positioning of the user. It also supports the monitoring the health of the beacon. While technically, Eddystone-URL frames can be used for positioning the user in regions based on the broadcasted URL, \ie~different URLs for each regions, the Eddystone-UID frame seems better suited for this purpose. Using Eddystone-UID regions can be identified based in the instance of a beacon.
 
 While the iBeacon protocol is only officially supported by iOS devices, the Eddystone protocol is officially supported by both iOS and Android \cite{estimote:what-is-eddystone}. Since we are using a smartwatch running Android Wear for our prototype, we will use the Eddystone protocol.
 
