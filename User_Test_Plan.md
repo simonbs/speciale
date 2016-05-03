@@ -4,9 +4,8 @@
 This document will outline how and what we plan to test during our user tests.
 
 ##Purpose
-This section will describe the purpose of the tests conducted.
-
-The purpose of the user tests is to obtain knowledge regarding how well the system performs when used by people who have no prior experience with it.
+The purpose of the user tests is to obtain knowledge regarding how well the system performs when used by people who have no prior experience with it. We wish to gain at least an indication of how well the gesture recognizer performs, meaning how many times it correctly identifies the gesture performed by the user.
+As well we wish to gain at least an indication of how well the recommender performs, meaning how many times it correctly identifies the intended action of the user.
 _This will **not** test technical aspects such as how much RAM is consumed, how much power is used or how computationally expensive it is._
 
 ###Gesture Recognizer Goal
@@ -21,6 +20,7 @@ We wish to achieve knowledge about how well the recommender system performs. Per
 This section will describe the setup of the tests such as where they will take place, how many people will be involved as well as other details.
 ###Location
 The tests will take place in the Cassiopeia building. Room not yet specified.
+Preferably it will take place in two connected rooms so that we may test with more realistic positioning probabilities, but in the event that only one room is available to us, we will simple switch some of the Estimote beacons off to simulate the user leaving a room.
 ###Date and Time
 Date yet to be determined.
 ###Participants
@@ -74,7 +74,7 @@ The participant is asked to perform the following actions:
  - Turn on **Lamp2** in **Living Room**
  - Pause song on Spotify in **Home Office**
 
-For each action performed, the system will log the probabilities of all actions, the outcome (either a single action or a list) and a timestamp for identification of the attempted action.
+For each action performed, the system will log the probabilities of all actions for each of the context providers, the outcome (either a single action or a list) and a timestamp for identification of the attempted action.
 The time and attempted action will be noted by hand and the timestamps logged by the system will be used for identification of attempted action.
 
 ##Evaluation
