@@ -68,8 +68,7 @@ The participant is asked to perform the following actions:
 
  - Turn on **Lamp1** in **Home Office**
  - Play song on Spotify in **Home Office**
- - Go to next song on Spotify in **Home Office**
- - Go to previous song on Spotify in **Home Office**
+ - Skip to next song on Spotify in **Home Office**
  - Turn on **Lamp1** in **Living Room**
  - Turn on **Lamp2** in **Living Room**
  - Pause song on Spotify in **Home Office**
