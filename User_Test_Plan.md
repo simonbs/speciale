@@ -73,7 +73,7 @@ The participant is asked to perform the following actions:
  - Pause song on Spotify while in **Living Room** with the virtual position set to **Home Office**
  - Turn off **Lamp1** in **Home Office**
 
-For each action performed, the system will log the probabilities of all actions for each of the context providers, the outcome (either a single action or a list) and a timestamp for identification of the attempted action.
+For each action performed, the system will log the probabilities of all actions for each of the contextual information providers, the outcome (either a single action or a list) and a timestamp for identification of the attempted action.
 The time and attempted action will be noted by hand and the timestamps logged by the system will be used for identification of attempted action.
 
 ##Evaluation
