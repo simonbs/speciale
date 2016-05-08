@@ -73,6 +73,15 @@ The participant is asked to perform the following actions:
  - Pause song on Spotify while in **Living Room** with the virtual position set to **Home Office**
  - Turn off **Lamp1** in **Home Office**
 
+Important notes on the naming:
+
+- In our OpenHAB configuration the rooms are named incorrectly. In OpenHAB "Home Office" is named "Desk" and "Living Room" is named "Kitchen"
+- In the Wear app, the "Horizontal Line" gesture is named "Swipe left to right"
+- In the Wear app, the "Zorro" gesture is named "Z"
+- In OpenHAB "Lamp 1" is named "Shelves lamp"
+- In OpenHAB "Lamp 2" is named "Architect lamp"
+- In OpenHAB "Lamp 3" is named "TV lamp"
+
 For each action performed, the system will log the probabilities of all actions for each of the contextual information providers, the outcome (either a single action or a list) and a timestamp for identification of the attempted action.
 The time and attempted action will be noted by hand and the timestamps logged by the system will be used for identification of attempted action.
 
