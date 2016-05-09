@@ -1,0 +1,37 @@
+\section{Status}
+\label{sec:implementation:status}
+
+As part of the project we have designed and implemented a context-aware home automation solution on an Android Wear and a Raspberry Pi with Philips Hue light bulbs and a MacBook running a Spotify client acting as the controllable devices. 
+
+\todo[author=Simon]{Evt. indsæt billede af alle de involverede enheder.}
+
+\subsection{Implemented Features}
+
+Below we present the features implemented as part of the project. Features are grouped by the hardware the software is running on.
+
+\subsubsection{Android Wear}
+
+The user utilizes the Android Wear smart watch to perform gestures which starts the context recognition process. The following features were implemented on the watch.
+
+\begin{itemize}
+\item Training of gestures using the 1\textcent~gesture recognizer as described in \cref{sec:design:gesture-recognition}.
+\item Recognition of gestures using the 1\textcent~gesture recognizer.
+\item Positioning of the user using Estimotes BLE beacons as described in \cref{sec:design:ble-positioning}.
+\item Setup of gesture configurations, i.e. a combination of a gesture, a room and an action.
+\item Recognition of the context using a Bayesian network as described in \cref{sec:design:bayesian-network}.
+\end{itemize}
+
+\subsubsection{MacBook}
+
+\subsubsection{Raspberry Pi}
+
+
+
+\subsection{Missing Implementation}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:
