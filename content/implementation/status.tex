@@ -1,7 +1,7 @@
 \section{Status}
 \label{sec:implementation:status}
 
-As part of the project we have designed and implemented a context-aware home automation solution on an Android Wear and a Raspberry Pi with Philips Hue light bulbs and a MacBook running a Spotify client acting as the controllable devices. 
+As part of the project we have designed and implemented a context-aware home automation solution on an Android Wear and a Raspberry Pi with Philips Hue light bulbs and a desktop machine running a Spotify client acting as the controllable devices. 
 
 \todo[author=Simon]{Evt. indsæt billede af alle de involverede enheder.}
 
@@ -11,25 +11,50 @@ Below we present the features implemented as part of the project. Features are g
 
 \subsubsection{Android Wear}
 
-The user utilizes the Android Wear smart watch to perform gestures which starts the context recognition process. The following features were implemented on the watch.
+The user utilizes the Android Wear smart watch to perform gestures which starts the context recognition process. Furthermore the smart watch is used for positioning the user and configuring parts of the system. The following features were implemented on the watch.
 
 \begin{itemize}
+\item Retrieval of available devices and actions from OpenHAB.
+\item Configuration of the smart watch application based on rooms and beacons registered in OpenHAB.
 \item Training of gestures using the 1\textcent~gesture recognizer as described in \cref{sec:design:gesture-recognition}.
 \item Recognition of gestures using the 1\textcent~gesture recognizer.
 \item Positioning of the user using Estimotes BLE beacons as described in \cref{sec:design:ble-positioning}.
 \item Setup of gesture configurations, i.e. a combination of a gesture, a room and an action.
 \item Recognition of the context using a Bayesian network as described in \cref{sec:design:bayesian-network}.
+\item Presentation of a list of actions if one single action cannot be determined but rather we have a set of actions to choose from.
+\item Configuration and use of virtual positions, i.e. allowing the user to manually determine which room he is in.
 \end{itemize}
-
-\subsubsection{MacBook}
 
 \subsubsection{Raspberry Pi}
 
+The Raspberry Pi runs OpenHAB, which was described in \cref{sec:analysis:choice-of-hub}. OpenHAB is the home automation software utilized in the project. The software receives HTTP requests which is then translated to an equivalent request using an appropriate protocol, e.g. Bluetooth, HTTP or MQTT, and forwards the translated request to a controllable device. The following features were implemented on OpenHAB.
 
+\begin{itemize}
+\item We implemented an OpenHAB plugin for configuring the relationship beacons and rooms and the relationship between the two.
+\item OpenHAB was configured to support the actions in the scenario presented in \cref{sec:analysis:scenarios}, e.g. we implemented rules to toggle a lamp between the on and off states as this is not directly supported by OpenHAB.
+\end{itemize}
+
+\subsubsection{Desktop Machine}
+
+The desktop machine serve as the media centre used for testing while developing the solution. In order to control Spotify, we developed a smart application that runs on the desktop machine. The application receives requests over HTTP and forwards them to the Spotify client for OS X which is an AppleScript scriptable application, meaning that it provides a terminology that scripts can use to send \emph{events} to the application. An event triggers a handler within the application which in some way modifies the application. For the Spotify application, events includes ``next'', ``previous'' and ``playpause''. When the application receives an event, an appropriate action is taken in the application.
+
+The following feature was implemented in the application running on the desktop machine.
+
+\begin{itemize}
+\item Skip to next track, skip to previous track, play and pause the music in Spotify by issuing HTTP requests to the application.
+\end{itemize}
 
 \subsection{Missing Implementation}
 
+While not part of the requirements presented in \cref{sec:requirements-specification}, we presented a model for including the state of the system in \cref{sec:design:bayesian-network}. The system state was introduced in the model to illustrate how contextual information different than the gesture performed by the user and the users location can be included in the system.
 
+The following feature was not implemented.
+
+\begin{itemize}
+\item Inclusion of the ofsystem state in the Bayesian network used for recognizing the context.
+\end{itemize}
+
+While the feature is not implemented, a naive implementation of the system state is trivial to implement. The Android Wear application can periodically request the state of all controllable devices registered in OpenHAB and based on the response, populate the system state nodes in the Bayesian network with the appropriate states. The nodes will typically have hard evidence on one of the states as OpenHAB is considered to hold the truth of the systems state, e.g. it knows if a television is on or not and if music is playing or not.
 
 %%% Local Variables:
 %%% mode: latex
