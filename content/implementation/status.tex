@@ -14,8 +14,8 @@ Below we present the features implemented as part of the project. Features are g
 The user utilizes the Android Wear smart watch to perform gestures which starts the context recognition process. Furthermore the smart watch is used for positioning the user and configuring parts of the system. The following features were implemented on the watch.
 
 \begin{itemize}
-\item Retrieval of available devices and actions from OpenHAB.
-\item Configuration of the smart watch application based on rooms and beacons registered in OpenHAB.
+\item Retrieval of available devices and actions from openHAB.
+\item Configuration of the smart watch application based on rooms and beacons registered in openHAB.
 \item Training of gestures using the 1\textcent~gesture recognizer as described in \cref{sec:design:gesture-recognition}.
 \item Recognition of gestures using the 1\textcent~gesture recognizer.
 \item Positioning of the user using Estimotes BLE beacons as described in \cref{sec:design:ble-positioning}.
@@ -27,11 +27,11 @@ The user utilizes the Android Wear smart watch to perform gestures which starts 
 
 \subsubsection{Raspberry Pi}
 
-The Raspberry Pi runs OpenHAB, which was described in \cref{sec:analysis:choice-of-hub}. OpenHAB is the home automation software utilized in the project. The software receives HTTP requests which is then translated to an equivalent request using an appropriate protocol, e.g. Bluetooth, HTTP or MQTT, and forwards the translated request to a controllable device. The following features were implemented on OpenHAB.
+The Raspberry Pi runs openHAB, which was described in \cref{sec:analysis:choice-of-hub}. openHAB is the home automation software utilized in the project. The software receives HTTP requests which is then translated to an equivalent request using an appropriate protocol, e.g. Bluetooth, HTTP or MQTT, and forwards the translated request to a controllable device. The following features were implemented on openHAB.
 
 \begin{itemize}
-\item We implemented an OpenHAB plugin for configuring the relationship beacons and rooms and the relationship between the two.
-\item OpenHAB was configured to support the actions in the scenario presented in \cref{sec:analysis:scenarios}, e.g. we implemented rules to toggle a lamp between the on and off states as this is not directly supported by OpenHAB.
+\item We implemented an openHAB plugin for configuring the relationship beacons and rooms and the relationship between the two.
+\item openHAB was configured to support the actions in the scenario presented in \cref{sec:analysis:scenarios}, e.g. we implemented rules to toggle a lamp between the on and off states as this is not directly supported by openHAB.
 \end{itemize}
 
 \subsubsection{Desktop Machine}
@@ -54,7 +54,7 @@ The following feature was not implemented.
 \item Inclusion of the ofsystem state in the Bayesian network used for recognizing the context.
 \end{itemize}
 
-While the feature is not implemented, a naive implementation of the system state is trivial to implement. The Android Wear application can periodically request the state of all controllable devices registered in OpenHAB and based on the response, populate the system state nodes in the Bayesian network with the appropriate states. The nodes will typically have hard evidence on one of the states as OpenHAB is considered to hold the truth of the systems state, e.g. it knows if a television is on or not and if music is playing or not.
+While the feature is not implemented, a naive implementation of the system state is trivial to implement. The Android Wear application can periodically request the state of all controllable devices registered in openHAB and based on the response, populate the system state nodes in the Bayesian network with the appropriate states. The nodes will typically have hard evidence on one of the states as openHAB is considered to hold the truth of the systems state, e.g. it knows if a television is on or not and if music is playing or not.
 
 %%% Local Variables:
 %%% mode: latex
