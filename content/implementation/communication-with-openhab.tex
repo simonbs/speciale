@@ -18,7 +18,6 @@ The communication with the openHAB API consists of the following two components.
 \item[ResultListener] Interface implemented by objects that should receive a result when a network request completes, either because of a failure or because of a succesful response.
 \item[EntityBuilder] Interface implemented by objects mapping from the received JSON to models.
 \item[Result] Encapsulates a network result. A result can either be a success or a failure. In case of a success, the result will contain a the value received from the API. In case of a failure, the result must contain an error.
-\item[Optional] Wraps an optional value, \ie~a value that may be null. Used to convey that some values may be optional.
 \end{description}
 
 \begin{figure}[h!]

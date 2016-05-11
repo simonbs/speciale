@@ -51,9 +51,11 @@ At the time of writing the retail price for the hub is \$99.
 \subsection{OpenHAB}
 \label{sec:analysis:choice-of-hub:openhab}
 
-Unlike SmartThings, openHAB \cite{OPENHAB} does not come with the hardware needed to run the hub. It is a Java based software solution that supports any platform capable of running a JVM \cite{openhab:introduction}. The software is free and open source maintained by a community of enthusiasts.
+Unlike SmartThings, openHAB \cite{OPENHAB} does not come with the hardware needed to run the hub.
+openHAB is based on Eclipse SmartHome \footnote{https://www.eclipse.org/smarthome/}, an open source framework for building software for a smart home. Amongst others, the framework provides a mechanisms for handling data (including a common type system) and a rule engine.
+openHAB and Eclipse SmartHome are both Java based software solutions that supports any platform capable of running a JVM \cite{openhab:introduction}.
 
-openHAB supports a wide range of devices, 121 as of writing this \cite{openhab:supported-technologies}. Amongst these are devices communicating using ZigBee, Z-Wave, MQTT and HTTP. openHABs concept of adapters is called ``bindings'' and these can be specific to a protocol or a product. For example, the community has developed bindings for the HTTP, Bluetooth and MQTT protocols as well as for the Philips Hue, Netatmo, and Sonos products.
+openHAB is free and open source maintained by a community of enthusiasts. It supports a wide range of devices, 121 as of writing this \cite{openhab:supported-technologies}. Amongst these are devices communicating using ZigBee, Z-Wave, MQTT and HTTP. openHABs concept of adapters is called ``bindings'' and these can be specific to a protocol or a product. For example, the community has developed bindings for the HTTP, Bluetooth and MQTT protocols as well as for the Philips Hue, Netatmo, and Sonos products.
 
 The devices connected to an openHAB environment is exposed over HTTP using a REST architecture.
 

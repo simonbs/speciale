@@ -1,0 +1,27 @@
+\section{Programming Languages}
+\label{sec:implementation:programming-language}
+
+In order to give a better understanding of the implementation details, we present the programming languages used for the implementation with the reasoning of the language choices.
+
+\subsection{Android Wear}
+
+The primary application presented in this report is an Android Wear application. While Googles Android framework APIs are targeted towards a Java environment, Google do provide Android NDK, a toolset for writing parts of an Android application in the C or C++ programming languages. Google emphasize that Android NDK is intended only for parts of an application and is generally not suited for most applications. The Android SDK is meant to be used when reusing existing code libraries or frameworks written in C or C++.
+
+Alternative tools for developing to the Android platform includes Xamarin\footnote{https://www.xamarin.com} and Phonegap\footnote{http://phonegap.com} in which developers write applications in either C\# or HTML and CSS respectively. The tools are targeted towards cross-platform development, i.e. developing for multiple platforms using the same codebase.
+
+For the purpose of the prototype developed in this report, we have no interest in supporting other platforms than the Motorola 360. Furthermore we are comfortable with the Java programming language. Therefore we chose write the application in Java.
+
+\subsection{Raspberry Pi}
+
+We developed an addon for the openHAB which runs on the Raspberry Pi. Because openHAB provides a Java based framework for writing addons and we were already writing Java for the Android Wear platform, we decided to write the addon in Java.
+
+\subsection{Desktop Machine}
+
+The small application created for controlling a Spotify clent running on a desktop machine using HTTP requests, was developed in JavaScript using the Node.js framework \footnote{https://nodejs.org/en/}. The client calls a script written in AppleScript.
+
+Because the application does not depend on APIs from other services but merely invokes a local AppleScript, the choice of language and framework was based on our familarity with the two.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:
