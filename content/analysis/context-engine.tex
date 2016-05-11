@@ -1,6 +1,6 @@
 \section{Context Engine}
 \label{sec:analysis:context-engine}
-\todo[author=Kasper]{Overvej at omdøbe Context Engine til noget mere passende}
+% \todo[author=Kasper]{Overvej at omdøbe Context Engine til noget mere passende}
 
 As presented in \cref{sec:requirements-specification}, the system should be context-aware in order to ensure that the correct actions are triggered on the correct devices in accordance with the users intention.
 To accomplish this we propose what we call a \emph{context engine}.
@@ -20,7 +20,7 @@ Examples of other information that could be considered part of the context inclu
 We suggest a design of the context engine based on the following requirements.
 
 \begin{itemize}
-\item While this project is focused on combining gesture recognition with the position of a user, the design should make no assumptions about the supplied type of information about the context.
+\item While this project is focused on combining gesture recognition with the position of a user, the design should make no assumptions about the type of supplied contextual information about the context.
 \item The design should support suggesting multiple actions if it is unsure which action the user desired to trigger.
 \item The design should support an arbitrary number of informations about the context with zero being an exception as it does not make sense to determine the context with no information about it.
 \end{itemize}
