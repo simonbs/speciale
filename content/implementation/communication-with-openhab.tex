@@ -43,6 +43,43 @@ The communication with the openHAB API consists of the following two components.
 \label{fig:design:communication-with-openhab:class-diagram-openhab-client}
 \end{figure}
 
+\subsection{Mapping of Actions}
+
+Eclipse SmartHome, which openHAB builds on top of, has a set of supported item types. An item type defines which actions an item supports. \Cref{tbl:design:communication-with-openhab:types} shows a list of the item types supported by Eclipse SmartHome and thus also by openHAB. For each item type, the actions supported by the item type is listed. Item types DateTime and Group are special items in openHAB which has no support for actions but is used to hold a date and time and a group of other items respectively.
+The action types ``Percent'', ``HSB'', ``Decimal'' and ``String'' are not exact actions that can be send to openAB but refers to type of action, e.g. a lamp supporting the ``Percent'' action can receive a request containing ``50'' and adjust its brightness to 50\%. The other action types are exat actions that can be send in a request to openHAB.
+
+In the smart watch application, we create a list of supported actions for each item. A supported action for an item is represented as the string, which is sent to openHABs API when an action should be triggered. For example, an item of type Switch has the set of actions $\{ "ON", "OFF" \}$. For the sake of this prototype, we only support a limited subset of item types and actions. The supported types and actions are shown in \cref{tbl:design:communication-with-openhab:types}.
+
+\begin{table}[]
+\centering
+\caption{Supported actions for each item type in openHAB \cite{eclipse:smarthomeitems}.}
+\label{tbl:design:communication-with-openhab:types}
+\begin{tabular}{p{2cm}p{6cm}p{6cm}}
+\textbf{Item type} & \textbf{Description}                              & \textbf{Action types}                      \\ 
+Color              & Color information (RGB)                           & ON, OFF, INCREASE, DECREASE, Percent, HSB      \\
+Contact            & Item storing status of e.g. door/window contacts  & OPEN, CLOSE                                  \\
+DateTime           & Stores date and time                              &                                            \\
+Dimmer             & Item carrying a percentage value for dimmers      & ON, OFF, INCREASE, DECREASE, Percent           \\
+Group              & Item to nest other items / collect them in groups &                                            \\
+Number             & Stores values in number format                    & Decimal                                    \\
+Player             & Allows to control players (e.g. audio players)    & PLAY, PAUSE, NEXT, PREVIOUS, REWIND, FASTFORWARD \\
+Rollershutter      & Typically used for blinds                         & UP, DOWN, STOP, MOVE, Percent                  \\
+String             & Stores texts                                      & String                                     \\
+Switch             & Typically used for lights (on/off)                & ON, OFF                                     
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{Actions supported by the smart watch application.}
+\label{tbl:design:communication-with-openhab:supported-types}
+\begin{tabular}{p{2cm}p{11cm}}
+\textbf{Item type}      & \textbf{Action types}                      \\ 
+Dimmer                  & ON, OFF, INCREASE, DECREASE, 10, 20, 30, 40, 50, 60, 70, 80, 90           \\
+Switch                  & ON, OFF                                     
+\end{tabular}
+\end{table}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../master"
