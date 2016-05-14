@@ -188,6 +188,66 @@ B                     & \begin{tabularx}{11cm}{YY|YY|YY|YY} 0 & $\frac{1}{3}$ & 
 \end{tabular}
 \end{table}
 
+\subsection{Alternative Model of System State}
+
+In \cref{fig:design:bayesian-network:overview} both the TV\_IsOn and the MusicCentre\_IsPlaying nodes are parents of the System\_State\_Action node. One may propose an alternative model for the sytem state as shown in \cref{fig:design:bayesian-network:alternative-network}.
+
+The System\_State action node have been replaced by the TV\_IsOn\_Action and MusicCentre\_IsPlaying\_Action nodes. Each observes a specific part of the system state. The conditional probability tables for the nodes are shown in \cref{tbl:design:bayesian-network:alternative-system-state}.
+
+Consider the table for TV\_IsOn\_Action with a subset of the actions presented in the scenario. As the node knows nothing about the state of the television, it must have equal probabilities for the two states when the television is on. However, if the television is off the node has zero probability of changing the channel on the television. The same principle applies for the MusicCentre\_IsPlaying\_Action node.
+
+The consequences of the alternative model is illustrated using screenshots from Hugin shown in \cref{fig:design:bayesian-network:system-state-one-6,fig:design:bayesian-network:system-state-multiple-6}. Note that the difference between the beliefs of the states in the Action node is smaller in \cref{fig:design:bayesian-network:system-state-multiple-6}. This is the reason we choose to model the system state as presented in \cref{fig:design:bayesian-network:overview} as it does not reduce the difference between states as significantly.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.75\textwidth]{images/bayesian-network-split-system-state}
+\caption{Alternative apporach for modeling the system state in the Bayesian network.}
+\label{fig:design:bayesian-network:alternative-network}
+\end{figure}
+
+\begin{table}[h!]
+\centering
+\caption{Probability tables for the TV\_IsOn\_Action and MusicCentre\_IsPlaying\_Action nodes in the alternative Bayesian network illustrated in \cref{fig:design:bayesian-network:system-state-nodes-evidence:alternative-network}.}
+\label{tbl:design:bayesian-network:alternative-system-state}
+\begin{tabular}{cc}
+\begin{tabular}{c}
+\textbf{TV\_IsOn\_Action}   \\
+\begin{tabular}{l|cc}
+~ & Yes   & No \\ \hline
+Music centre: play/pause & $\frac{1}{4}$ & $\frac{1}{3}$ \\
+Music centre: next track & $\frac{1}{4}$ & $\frac{1}{3}$ \\
+Television: on/off       & $\frac{1}{4}$ & $\frac{1}{3}$ \\
+Television: next channel & $\frac{1}{4}$ & 0
+\end{tabular}
+\end{tabular}
+&
+\begin{tabular}{c}
+\textbf{MusicCentre\_IsPlaying\_Action}   \\
+\begin{tabular}{l|cc}
+~ & Yes   & No \\ \hline
+Music centre: play/pause & $\frac{1}{4}$ & $\frac{1}{3}$ \\
+Music centre: next track & $\frac{1}{4}$ & 0 \\
+Television: on/off       & $\frac{1}{4}$ & $\frac{1}{3}$ \\
+Television: next channel & $\frac{1}{4}$ & $\frac{1}{3}$
+\end{tabular}
+\end{tabular}
+\end{tabular}
+\end{table}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{images/system-state-one-6}
+\caption{Screenshot from Hugin. Example network showing beliefs of actions when using one node at the middle level for system state. Nodes are configured according to the scenario presented in \cref{sec:analysis:scenarios}. Conditional tables for the TV\_IsOn and MusicCentre\_IsPlaying nodes are configured as shown in \cref{tbl:design:bayesian-network:alternative-system-state}.}
+\label{fig:design:bayesian-network:system-state-one-6}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{images/system-state-multiple-6}
+\caption{Screenshot from Hugin. Example network showing beliefs of actions when using multiple nodes at the middle level for system state. Nodes are configured according to the scenario presented in \cref{sec:analysis:scenarios}. Conditional tables for the TV\_IsOn and MusicCentre\_IsPlaying nodes are configured as shown in \cref{tbl:design:bayesian-network:alternative-system-state}.}
+\label{fig:design:bayesian-network:system-state-multiple-6}
+\end{figure}
+
 \input{content/design/gesture-node-evidence}
 \input{content/design/room-node-evidence}
 \input{content/design/system-state-nodes-evidence}
