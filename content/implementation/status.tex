@@ -44,6 +44,16 @@ The following feature was implemented in the application running on the desktop 
 \item Skip to next track, skip to previous track, play and pause the music in Spotify by issuing HTTP requests to the application.
 \end{itemize}
 
+\subsection{Known Issues}
+
+The following describes known issues in the implementation.
+
+\begin{itemize}
+\item There is an issue with the implementation of the gesture recognizer that causes the smart watch application to crash if recognition is started with little to no data available to the gesture recognizer. In order to fix the issue, recognition should most likely be abandoned all together when little information is available. We have only seen the issue when users have accidentally stopped recognition immediately after starting it.
+\item Sometimes the application will hang, i.e. ``freeze'', when context recognition is started. The fix for the issue is most likely to perform the context recognition on another thread.
+\item In order to present the settings (see \cref{fig:implementation:prototype:screenshots:3}), the user must scroll from right to left on the gesture recognition screen (see fig:implementation:prototype:screenshots:1). The list of settings is meant to be scrolled vertically but it seems that the horizontal scroll gesture interferes with the vertical scroll causing the list of settings not to scroll. It is, however, possible to tap in the top and the bottom of the list to change the selected setting.
+\end{itemize}
+
 \subsection{Missing Implementation}
 
 While not part of the requirements presented in \cref{sec:requirements-specification}, we presented a model for including the state of the system in \cref{sec:design:bayesian-network}. The system state was introduced in the model to illustrate how contextual information different than the gesture performed by the user and the users location can be included in the system.
