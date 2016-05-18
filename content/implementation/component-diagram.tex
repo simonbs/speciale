@@ -1,7 +1,8 @@
 \section{Component Diagram}
 \label{sec:implementation:component-diagram}
 
-\Cref{fig:implementation:component-diagram:wear} shows a component diagram of the primary components involved in the application eveloped for the Android Wear smart watch.
+\Cref{fig:implementation:component-diagram:wear} shows a component diagram of the primary components involved in the application developed for the Android Wear smart watch. The component diagram illustrates which key components are involved in the software and how they interact with each other.
+The diagram focus on the smart watch as most of our development was concentrated on that platform. 
 
 Below is a brief description of the components in the diagram. Please beware of the note in the in the diagram. Components which communicates without an \emph{assembly connector}, i.e. communicating using a required and a provided interface, communicates without the use of Java interfaces, e.g invocation of public methods that are not part of a Java interface. Since the components are still considered to be independent of each other, it makes sense to revisit the implementation to communicate using assembly connectors, i.e. Java interfaces. When information is passed without the use of assembly connectors, the edge is annotated with the information being passed between the components.
 
