@@ -118,11 +118,7 @@ Yes   & No \\ \hline
 
 The Gesture, Room, TV\_IsOn and MusicCentre\_IsPlaying nodes constitute the uppermost level in the network. The middle level is constituted by the Gesture\_Action, Room\_Action and System\_State\_Action nodes.
 
-The nodes on the middle level observes nodes in the uppermost level and based on the observed information, compute probabilities for the all actions in the system. Without any evidence on a state, the probabilities of the states in nodes in the middle level is determined by \emph{gesture configurations}.
-
-\begin{definition}
-We define a \emph{gesture configuration} as the combination of a gesture, a room and an action. Gesture configurations are created by the user in the smart watch application. When the user performs the gesture in the specified room, the selected action is triggered in the system.
-\end{definition}
+The nodes on the middle level observes nodes in the uppermost level and based on the observed information, compute probabilities for the all actions in the system. Without any evidence on a state, the probabilities of the states in nodes in the middle level is determined by gesture configurations.
 
 Consider the probabilities of the Gesture\_Action node as shown in \cref{tbl:design:bayesian-network:cpt-gesture-action}. In the scenario presented in \cref{sec:analysis:scenarios} we presented a configuration of the system. \Cref{tbl:design:bayesian-network:cpt-gesture-action} shows an excerpt of the configuration in which the user has configured the Z gesture to turn Lamp 3 and Lamp 8 on and off. The Half Circle gesture skips to the next track on the music centre and changes to the next channel on the television. The Horizontal Line gesture skips to the previous track on the music centre and changes to the previous channel on the television. The valid actions for each gesture have the same probability.
 
