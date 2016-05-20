@@ -11,7 +11,7 @@ Below we present the features implemented as part of the project. Features are g
 
 \subsubsection{Android Wear}
 
-The user utilizes the Android Wear smart watch to perform gestures which starts the context recognition process. Furthermore the smart watch is used for positioning the user and configuring parts of the system. The following features were implemented on the watch.
+The user utilizes the Android Wear smart watch to perform gestures which starts the context recognition process. Furthermore the smart watch is used for positioning the user and configuring parts of the system. The following features are implemented on the watch.
 
 \begin{itemize}
 \item Retrieval of available devices and actions from openHAB.
@@ -27,10 +27,10 @@ The user utilizes the Android Wear smart watch to perform gestures which starts 
 
 \subsubsection{Raspberry Pi}
 
-The Raspberry Pi runs openHAB, which was described in \cref{sec:analysis:choice-of-hub}. openHAB is the home automation software utilized in the project. The software receives HTTP requests which is then translated to an equivalent request using an appropriate protocol, e.g. Bluetooth, HTTP or MQTT, and forwards the translated request to a controllable device. The following features were implemented on openHAB.
+The Raspberry Pi runs openHAB, which was described in \cref{sec:analysis:choice-of-hub}. openHAB is the home automation software utilized in the project. The software receives HTTP requests usoing an HTTP API. The request is then translated to an equivalent request using an appropriate protocol, e.g. Bluetooth, HTTP or MQTT, and forwards the translated request to a controllable device. The following features were implemented on openHAB.
 
 \begin{itemize}
-\item We implemented an openHAB plugin for configuring the relationship beacons and rooms and the relationship between the two.
+\item We implemented an openHAB plugin for configuring which beacons are installed in the rooms of the users house or apartment.
 \item openHAB was configured to support the actions in the scenario presented in \cref{sec:analysis:scenarios}, e.g. we implemented rules to toggle a lamp between the on and off states as this is not directly supported by openHAB.
 \end{itemize}
 
@@ -49,9 +49,9 @@ The following feature was implemented in the application running on the desktop 
 The following describes known issues in the implementation.
 
 \begin{itemize}
-\item There is an issue with the implementation of the gesture recognizer that causes the smart watch application to crash if recognition is started with little to no data available to the gesture recognizer. In order to fix the issue, recognition should most likely be abandoned all together when little information is available. We have only seen the issue when users have accidentally stopped recognition immediately after starting it.
+\item There is an issue with the implementation of the gesture recognizer that causes the smart watch application to crash if recognition is started with little to no measurements from the accelerometer are available to the gesture recognizer. In order to fix the issue, recognition should most likely be abandoned all together when little information is available. We have only seen the issue when users have accidentally stopped recognition immediately after starting it.
 \item Sometimes the application will hang, i.e. ``freeze'', when context recognition is started. The fix for the issue is most likely to perform the context recognition on another thread.
-\item In order to present the settings (see \cref{fig:implementation:prototype:screenshots:3}), the user must scroll from right to left on the gesture recognition screen (see fig:implementation:prototype:screenshots:1). The list of settings is meant to be scrolled vertically but it seems that the horizontal scroll gesture interferes with the vertical scroll causing the list of settings not to scroll. It is, however, possible to tap in the top and the bottom of the list to change the selected setting.
+\item In order to present the settings (see \Cref{fig:implementation:prototype:screenshots:3}), the user must scroll from right to left on the gesture recognition screen (see \Cref{fig:implementation:prototype:screenshots:1}). The list of settings is meant to be scrolled vertically but it seems that the horizontal scroll gesture interferes with the vertical scroll causing the list of settings not to scroll. It is, however, possible to tap in the top and the bottom of the list to change the selected setting.
 \end{itemize}
 
 \subsection{Missing Implementation}
