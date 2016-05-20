@@ -8,6 +8,15 @@ This section presents the prototype of the Android Wear application as well as t
 
 \Cref{fig:implementation:prototype:navigation-diagram} shows a navigation diagram of the smart watch application. The letters in the top right corner of the nodes in the diagram references the screenshots shown in \cref{fig:implementation:prototype:screenshots}.
 
+The diagram shows that the application can be considered divided into the following two areas.
+
+\begin{description}
+\item[Primary use] We refer to the parts of the application which the user use the most as the \emph{primary use}. This involves the recognition of gestures as well as the picker presented when an action to trigger could not be determined after context recognition.
+\item[Configuration] Before the user gets involved with the primary use, he will need to configure the application, i.e. train gestures and create gesture configurations.
+\end{decsription}
+
+When opening the application, the user is presented with a screen to perform gesture recognition. This enables the user to start context recognition fast, whereas he needs to dive deeper into the navigation in order to train gestures and create gesture configurations, i.e. features that he will not use as often as the context recognition.
+
 For a list of the supported features in the application, please refer to \cref{sec:implementation:status}.
 
 \begin{figure}[!htb]
