@@ -3,13 +3,23 @@
 
 As part of the project we have designed and implemented a context-aware home automation solution on an Android Wear and a Raspberry Pi with Philips Hue light bulbs and a desktop machine running a Spotify client acting as the controllable devices. 
 
-\todo[author=Simon]{Evt. indsæt billede af alle de involverede enheder.}
+\Cref{fig:implementation:deployment-diagram} shows a deployment diagram of the prototype developed during the project. \Cref{sec:implementation:status:devices} describes the devices involved in the deployment as well as the features implemented on the devices.
 
-\subsection{Implemented Features}
+In our specific prototype, we have a computer acting as the media centra and we have two Philips Hue light bulbs connected to openHAB. The number of devices will vary depending on the specific deployment, e.g. there can be more Philips Hue light bulbs or other devices in the system, e.g. door locks, a television or a thermostat.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[height=\textheight]{images/deployment-diagram}
+\caption{Deployment diagram of the prototype developed in the project.}
+\label{fig:implementation:deployment-diagram}
+\end{figure}
+
+\subsection{Devices}
+\label{sec:implementation:status:devices}
 
 Below we present the features implemented as part of the project. Features are grouped by the hardware the software is running on.
 
-\subsubsection{Android Wear}
+\subsubsection{Smart Watch}
 
 The user utilizes the Android Wear smart watch to perform gestures which starts the context recognition process. Furthermore the smart watch is used for positioning the user and configuring parts of the system. The following features are implemented on the watch.
 
@@ -25,6 +35,12 @@ The user utilizes the Android Wear smart watch to perform gestures which starts 
 \item Configuration and use of virtual positions, i.e. allowing the user to manually determine which room he is in.
 \end{itemize}
 
+\subsubsection{BLE Beacon}
+
+The Bluetooth Low Energy beacons are used to position the user indoor.
+
+We have not implemented any features on the BLE beacons but in order to position te user, the smart watch reads the RSSI values from the Bluetooth beacons and based on those values determines which room the user is in, described in detail in \cref{sec:design:bayesian-network:room-node-evidence}.
+
 \subsubsection{Raspberry Pi}
 
 The Raspberry Pi runs openHAB, which was described in \cref{sec:analysis:choice-of-hub}. openHAB is the home automation software utilized in the project. The software receives HTTP requests usoing an HTTP API. The request is then translated to an equivalent request using an appropriate protocol, e.g. Bluetooth, HTTP or MQTT, and forwards the translated request to a controllable device. The following features were implemented on openHAB.
@@ -34,7 +50,7 @@ The Raspberry Pi runs openHAB, which was described in \cref{sec:analysis:choice-
 \item openHAB was configured to support the actions in the scenario presented in \cref{sec:analysis:scenarios}, e.g. we implemented rules to toggle a lamp between the on and off states as this is not directly supported by openHAB.
 \end{itemize}
 
-\subsubsection{Desktop Machine}
+\subsubsection{Computer}
 
 The desktop machine serve as the media centre used for testing while developing the solution. In order to control Spotify, we developed a smart application that runs on the desktop machine. The application receives requests over HTTP and forwards them to the Spotify client for OS X which is an AppleScript scriptable application, meaning that it provides a terminology that scripts can use to send \emph{events} to the application. An event triggers a handler within the application which in some way modifies the application. For the Spotify application, events includes ``next'', ``previous'' and ``playpause''. When the application receives an event, an appropriate action is taken in the application.
 
@@ -43,6 +59,16 @@ The following feature was implemented in the application running on the desktop 
 \begin{itemize}
 \item Skip to next track, skip to previous track, play and pause the music in Spotify by issuing HTTP requests to the application.
 \end{itemize}
+
+\subsubsection{Philips Hue Bridge}
+
+A bridge provided by Philips is installed in the users home. The bridge communicates with the Philips Hue lights using the ZigBee protocol. The protocol is described later in this section.
+
+We have not implemented any features on the bridge but use it in order to control the Philips Hue light bulbs.
+
+\subsubsection{Philips Hue Light Bulb}
+
+The light bulbs provided by Philips are controlled using gestures on the smart watch, i.e. using the CARMA application. The bulbs receive commands from the Philips Hue bridge when they need to change their state, e.g. turn on, turn off, change color or change temperature. The bulbs can communicate with each other using the ZigBee Light Link protocol to extend the range of the network by forwarding commands between bulbs.
 
 \subsection{Known Issues}
 
@@ -65,6 +91,31 @@ The following feature was not implemented.
 \end{itemize}
 
 While the feature is not implemented, a naive implementation of the system state is trivial to implement. The Android Wear application can periodically request the state of all controllable devices registered in openHAB and based on the response, populate the system state nodes in the Bayesian network with the appropriate states. The nodes will typically have hard evidence on one of the states as openHAB is considered to hold the truth of the systems state, e.g. it knows if a television is on or not and if music is playing or not.
+
+\subsection{HTTP}
+
+As shown in \cref{fig:implementation:deployment-diagram} we use HTTP for communication between the smart watch, the Raspberry Pi and the computer acting as media centre with both expose a REST API.
+
+HTTP, or Hyptertext Transfer Protocol, which it is short for, is a protocol amongst others used for communication between a web browser and a web server. A web browser will make a request for a specific resource and the server will return the response or a failure. In the case of a web browser, the response is typically a web page formatted as HTML which the browser can render and present to the user.
+
+Resourecs on a web server are identified by a URL, a Uniform Resource Locator. An example of a URL is ``http://mysite.com/index.html'' which requests the ``index.html'' file on the ``mysite.com'' hostname using the ``http'' protocol.
+
+When a web server returns a response, it will return an HTTP status code as part of the response. Examples of this includes the status code 200 for success, 404 for a resource not found and 400 for a bad request.
+
+HTTP utilize TCP/IP to transfer information. TCP transfers information in small packets between machines and IP is responsible for addressing machines in a network and routing the information between the machines.
+
+In the case of our prototype, we do not use a web browser to make the requests. Instead the requests are send using a framework appropriate for the platform, e.g. in the case of the smart watch application we use the Android Volley framework for making requests\footnote{For more information about Google Volley, please refer to \url{https://developer.android.com/training/volley/}}.
+The requests are sent to either openHAB or the Spotify Controls API which will return a response formatted using JSON. In the case of a simple request, e.g. for changing the state of the music centre, the JSON response, as well as the HTTP status code, indicates whether or not the request was successful. For a more complex request, e.g. when requesting the available items in openHAB, the response will contain all available items in openHAB formatted as JSON along with a HTTP status code.
+
+% \subsection{ZigBee}
+
+% The ZigBee protocol is targeted towards devices that fit within the concept of internet of things, e.g. lamps, thermostats and door locks. The devices create a \emph{mesh network}, i.e. a network in which nodes relays information to other nodes \cite{zigbee:zigbee-pro}. This is depicted in the deployment diagram shown in \cref{fig:implementation:deployment-diagram} in which both Philips Hue light bulbs receives commands by the bridge but the bulbs can also relay commands to each other.
+
+% The ZigBee protocol, amongst others, specifies the frequencies on which the devices shuld communicate, how devices are discovered and how they are paired with each other.
+
+% The Philips Hue light bulbs used in our prototype utilize the ZigBee Light Link standard, an extension of the ZigBee protocol, which is a ZigBee standardization of how communication with light bulbs is done, e.g. the information sent to the bulbs when changing their state.
+
+% In this project, we have not implemented communication using ZigBee, but instead utilize HTTP to communiate with the Philips Hue brdige which in turn communicates with the bulbs using the ZigBee protocol.
 
 %%% Local Variables:
 %%% mode: latex
