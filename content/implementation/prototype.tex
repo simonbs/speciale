@@ -53,7 +53,7 @@ For a list of the supported features in the application, please refer to \cref{s
 \subsection{openHAB}
 \label{sec:implementation:prototype:openhab}
 
-The screenshots in \cref{fig:implementation:prototype:openhab:screenshots} shows the \emph{binding} developed for openHAB. A \emph{binding} is an addon for openHAB which relates to a specific problem domain. For example, there is a binding for communcating with Philips Hue lights and a binding for controlling a Sonos media centre. We have created a binding for configuring the rooms and beacons in a users home.
+We developed a \emph{binding} for openHAB. A \emph{binding} is an addon for openHAB which relates to a specific problem domain. For example, there is a binding for communcating with Philips Hue lights and a binding for controlling a Sonos media centre. We have created a binding for configuring the rooms and beacons in a users home.
 
 We chose to place the configuration of the rooms and beacons in openHAB, as this is a one time configuration which can be shared amongst the users in a home where as the creation of gesture configurations is place on the watch as this can be independent for each inhabitant of a home.
 
@@ -61,26 +61,26 @@ The rooms and beacons are synchronized to the smart watch when the application i
 
 A room has a name and when it is created, openHAB assigns it a UID. When creating a beacon, the user must enter the UID assigned by openHAB in order to specify which room the beacon is placed in. Furthermore the user should enter the Eddystone namespace and instance, both described in \cref{sec:design:ble-positioning}. This identifies the specific beacon. When the smart watch registers a beacon, it can determine which room the user is in by the beacons reference to a room.
 
-\begin{figure}[!htb]%
-    \centering
-    \subbottom[Screen on which to choose the binding to configure.]{\label{fig:implementation:protoype:openhab:bindings}
-        \frame{\includegraphics[width=0.5\textwidth]{images/openhab-addon-bindings}}
-    }
-    \subbottom[Screen on which the \emph{thing} to create is chosen. In openHAB physical devices are referred to as \emph{things}.]{\label{fig:implementation:prototype:openhab:things}
-        \frame{\includegraphics[width=0.45\textwidth]{images/openhab-addon-things}}
-    }
-    \subbottom[Screen on which a new room can be created. The room should have a name, e.g. ``Kitchen'' or ``Living room''.]{\label{fig:implementation:protoype:openhab:room}
-        \frame{\includegraphics[width=0.45\textwidth]{images/openhab-addon-room}}
-    }
-    \subbottom[Screen on which a new beacon can be created. The UID of the room the beacon is placed in must be specified. UIDs are created by openHAB when a new room is created. The namespace and instance of the Eddystone beacon must also be specified. ]{\label{fig:implementation:prototype:openhab:beacon}
-        \frame{\includegraphics[width=0.45\textwidth]{images/openhab-addon-beacon}}
-    }
-    \subbottom[Screen showing the list of all configured things in openHAB. The screenshot shows two rooms and two beacons configured as well as some Philips Hue light bulbs.]{\label{fig:implementation:prototype:openhab:list}
-        \frame{\includegraphics[width=0.45\textwidth]{images/openhab-addon-list}}
-    }
-    \caption{Screenshots of the binding developed for openHAB.}
-    \label{fig:implementation:prototype:openhab:screenshots}
-\end{figure}
+% \begin{figure}[!htb]%
+%     \centering
+%     \subbottom[Screen on which to choose the binding to configure.]{\label{fig:implementation:protoype:openhab:bindings}
+%         \frame{\includegraphics[width=0.5\textwidth]{images/openhab-addon-bindings}}
+%     }
+%     \subbottom[Screen on which the \emph{thing} to create is chosen. In openHAB physical devices are referred to as \emph{things}.]{\label{fig:implementation:prototype:openhab:things}
+%         \frame{\includegraphics[width=0.45\textwidth]{images/openhab-addon-things}}
+%     }
+%     \subbottom[Screen on which a new room can be created. The room should have a name, e.g. ``Kitchen'' or ``Living room''.]{\label{fig:implementation:protoype:openhab:room}
+%         \frame{\includegraphics[width=0.45\textwidth]{images/openhab-addon-room}}
+%     }
+%     \subbottom[Screen on which a new beacon can be created. The UID of the room the beacon is placed in must be specified. UIDs are created by openHAB when a new room is created. The namespace and instance of the Eddystone beacon must also be specified. ]{\label{fig:implementation:prototype:openhab:beacon}
+%         \frame{\includegraphics[width=0.45\textwidth]{images/openhab-addon-beacon}}
+%     }
+%     \subbottom[Screen showing the list of all configured things in openHAB. The screenshot shows two rooms and two beacons configured as well as some Philips Hue light bulbs.]{\label{fig:implementation:prototype:openhab:list}
+%         \frame{\includegraphics[width=0.45\textwidth]{images/openhab-addon-list}}
+%     }
+%     \caption{Screenshots of the binding developed for openHAB.}
+%     \label{fig:implementation:prototype:openhab:screenshots}
+% \end{figure}
 
 %%% Local Variables:
 %%% mode: latex
