@@ -13,7 +13,7 @@ Our requirements for the implementation were the following:
 
 We chose to only consider implementations written in Java as we are familiar with the language and we were confident that implementations written in Java would run on Android platforms with only little work required. 
 
-The correctness of the implementation was validated using Hugin, a decision making tool previously described in \todo[author=Simon]{Indsæt reference til beskrivelse af Hugin.}. Given a set of nodes with states, edges, probabilities and evidence on the states, the resulting belief of the states should equal the resulting belief when the same configurations were made in Hugin.
+The correctness of the implementation was validated using Hugin, a decision making tool previously described in \cref{sec:design:bayesian-network:hugin}. Given a set of nodes with states, edges, probabilities and evidence on the states, the resulting belief of the states should equal the resulting belief when the same configurations were made in Hugin.
 
 When investigating third party solutions, we found that only few implementations supported soft evidence. Since we utilize this in the design of the Bayesian network, the implementation must support it. 
 
