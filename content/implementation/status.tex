@@ -84,13 +84,16 @@ The following describes known issues in the implementation.
 
 While not part of the requirements presented in \cref{sec:requirements-specification}, we presented a model for including the state of the system in \cref{sec:design:bayesian-network}. The system state was introduced in the model to illustrate how contextual information different than the gesture performed by the user and the users location can be included in the system.
 
-The following feature was not implemented.
+The following features were not implemented.
 
 \begin{itemize}
 \item Inclusion of the system state in the Bayesian network used for recognizing the context.
+\item Reuse of the Bayesian network. The Bayesian network is created every time the recognition is started. When the network is created once, it could be reused for future computations of beliefs.
 \end{itemize}
 
-While the feature is not implemented, a naive implementation of the system state is trivial to implement. The Android Wear application can periodically request the state of all controllable devices registered in openHAB and based on the response, populate the system state nodes in the Bayesian network with the appropriate states. The nodes will typically have hard evidence on one of the states as openHAB is considered to hold the truth of the systems state, e.g. it knows if a television is on or not and if music is playing or not.
+While inclusion of the system state is not implemented, a naive implementation of the system state is trivial to implement. The Android Wear application can periodically request the state of all controllable devices registered in openHAB and based on the response, populate the system state nodes in the Bayesian network with the appropriate states. The nodes will typically have hard evidence on one of the states as openHAB is considered to hold the truth of the systems state, e.g. it knows if a television is on or not and if music is playing or not.
+
+Reuse of the Bayesian network could be implemented by creating the network when the application whenever the network changes, i.e. new gesture configurations are created. The network could then be stored either in memory or on disk and loaded. For sufficiently large networks, this may be faster than recreating the network whenever it is needed.
 
 \subsection{HTTP}
 
