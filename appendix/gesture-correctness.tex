@@ -169,4 +169,28 @@ Bars in order from left to right:
 Bars in order from left to right:
 \emph{Gesture correctness ratio}, \emph{Action correctness ratio}, \emph{Location correctness ratio}}
 
+&
+
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=2pt,
+    xticklabels from table={data/ActionCorrectnessTransposed.csv}{Action},
+    xtick=data,
+    x tick label style={
+    rotate=45,
+    anchor=east,
+    },
+    width=0.42\textwidth,
+    ymin = 0,
+    ymax = 1]
+    \addplot table[x=Row, y=Average] {data/GestureCorrectness.csv};
+    \addplot table[x=Row, y=Average] {data/ActionCorrectnessTransposed.csv};
+    \addplot table[x=Row, y=Average] {data/LocationCorrectness.csv};
+\end{axis}
+\end{tikzpicture}
+\figcaption{All participants combined.
+Bars in order from left to right:
+\emph{Gesture correctness ratio}, \emph{Action correctness ratio}, \emph{Location correctness ratio}}
+
 \end{longtable}
