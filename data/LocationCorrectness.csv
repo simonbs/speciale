@@ -1,0 +1,9 @@
+Row,Action,1,2,3,4,5,6,7,Average
+1,Turn On Lamp1 in Home Office,0.75,1,1,1,1,0,1,0.8214285714
+2,Play song on Spotify in Home Office,1,1,1,1,1,0,1,0.8571428571
+3,Skip to next song on Spotify in Home Office,1,0.75,1,1,1,0.4,0,0.8583333333
+4,Turn on Lamp2 in Living Room,1,1,0.3,1,1,0,1,0.7571428571
+5,Turn on Lamp3 in Living Room,1,1,1,1,1,0,1,0.8571428571
+6,Pause song on Spotify while in Living Room with the virtual position set to Home Office,0,0,0,1,1,0,1,0.75
+7,Turn off Lamp1 in Home Office,0.8,1,0.8888888889,1,0.5,0,1,0.8648148148
+8,Average,0.925,0.9583333333,0.7412698413,1,0.9285714286,0.08,1,0.8237150416
