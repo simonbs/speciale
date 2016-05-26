@@ -2,7 +2,7 @@
 \label{sec:evaluation:user-tests}
 
 This section will describe the experimental procedures carried out during the project to determine how well it performed when used by
-other people and how well it performed comparing to the requirements specified in \cref{}.
+other people and how well it performed comparing to the requirements specified in \cref{sec:requirements-specification}.
 
 \subsection{Setup}
 \label{sec:evaluation:user-tests-setup}
@@ -48,84 +48,70 @@ Shelves\_Lamp\_Toggle   & V                   & Home Office                    \
 \subsection{Results}
 \label{sec:evaluation:user-tests-results}
 
-For each participant and task, the correctness ratio of the actions triggered was calculated as the \emph{number of times the intended action was triggered} divided by
-the \emph{number of attempts}.
-Additionally, the average correctness ratio for each action across all participants as well as the average correctness ratio for each participant across
-all actions have been determined and is plotted in \cref{fig:user-test-action-correctness}.
-
-As shown in \cref{fig:user-test-action-correctness}, the correct action was triggered less than 80\% of the time for the majority of the actions.
-To determine why this is the case we looked at the rate at which the intended gesture received the highest score.
-\cref{fig:user-test-gesture-correctness} shows the correctness ratio of the gestures calculated as the \emph{number of times the intended gesture scored the lowest} divided by
-the \emph{number of attempts}.
-The results were mixed between the participants with one of them having an average correctness ratio of \number0.925 while another had a ratio of \number0.2.
+For each participant and task, the correctness ratio of the actions triggered was calculated as the \emph{number of times the intended action was triggered} divided by the \emph{number of attempts} and can be found in \cref{fig:user-test-action-correctness}.
+In the same manner, the correctness ratio for gestures and locations can be found in \cref{fig:user-test-gesture-correctness,fig:user-test-location-correctness}.
+For each participant, the average correctness rate for all actions, gestures, and locations can be found in \cref{table:user-task-averages}.
+\cref{fig:participant-average} shows the combined averages of all participents separated per task.
+This shows that the locations is correctly identified in the majority of the cases with an average correctness ratio of 0.827020202, which is above the requirement specified in \cref{sec:requirements-specification}.
+The average correctness ratio of actions is well below 80\% with a combined average of 0.4361381674.
+Triggering the correct action less than half of the time is not a satisfactory result and is thusly something that needs to be looked into.
+We suspect that the primary source of the inaccuracy comes from the low average correctness ratios of the gestures.
+\cref{fig:participant-average} shows that the gesture correctness ratios are generally higher than those for actions yet never surpass the 80\% requirement with an average value of 0.5567550505.
+However differences between the average gesture correctness ratios of the participants are noticable.
+The most noticable example is comparing \cref{fig:participant-1,fig:participant-2}.
+Something to note here is that both of these participants, as well as participant 1 experienced some technical difficulties which prevented them from completing the task.
 
 \begin{figure}
-\centering
-\begin{tikzpicture}
+\begin{longtable}{p{0.45\textwidth} p{0.45\textwidth}}
+  \centering
+  \begin{tikzpicture}
   \begin{axis}[
-      ybar,
-      bar width=2pt,
-      xlabel = Intended Action,
-      ylabel = Action Correctness ratio,
-      xtick=data,
-      xticklabels from table={data/ActionCorrectnessTransposed.csv}{Action},
-      x tick label style={
-      rotate=45,
-      anchor=east,
-      },
-      width=0.95\textwidth,
-      height = 6cm,
-      yticklabel style={align=right,inner sep=0pt,xshift=-0.3em},
-      ymin = 0,
-      ymax = 1,
-      grid=major,
-      try min ticks=10]
-    \addplot table[x=Row, y=1] {data/ActionCorrectnessTransposed.csv};
-    \addplot table[x=Row, y=2] {data/ActionCorrectnessTransposed.csv};
-    \addplot table[x=Row, y=3] {data/ActionCorrectnessTransposed.csv};
-    \addplot table[x=Row, y=4] {data/ActionCorrectnessTransposed.csv};
-    \addplot table[x=Row, y=5] {data/ActionCorrectnessTransposed.csv};
-    \addplot table[x=Row, y=6] {data/ActionCorrectnessTransposed.csv};
-    \addplot table[x=Row, y=7] {data/ActionCorrectnessTransposed.csv};
-    \addplot table[black, x=Row, y=Average] {data/ActionCorrectnessTransposed.csv};
-  \end{axis}
-\label{fig:user-test-action-correctness}
-\end{tikzpicture}
-\caption{The rate at which the correct action was triggered for per participant. The last bar for each action is the average correctness ratio of all participants.
-The last group of bars is the average correctness ratio per user, across all actions.}
-\end{figure}
-
-\begin{figure}
-\centering
-\begin{tikzpicture}
-\begin{axis}[
     ybar,
     bar width=2pt,
-    xticklabels from table={data/GestureCorrectness.csv}{Intended Gesture},
+    xticklabels from table={data/ActionCorrectnessTransposed.csv}{Action},
     xtick=data,
     x tick label style={
     rotate=45,
     anchor=east,
     },
-    xlabel = Intended Gesture,
-    ylabel = Gesture Correctness ratio,
-    width=0.95\textwidth,
-    height = 6cm,
+    width=0.40\textwidth,
     ymin = 0,
-    ymax = 1]
-    \addplot table[x=Row, y=1] {data/GestureCorrectness.csv};
+    ymax = 1,
+    ylabel = Correctness Ratio,
+    legend style={
+    at={(0,0)},
+    anchor=west, at={(axis description cs:1,0.5)}}]
     \addplot table[x=Row, y=2] {data/GestureCorrectness.csv};
-    \addplot table[x=Row, y=3] {data/GestureCorrectness.csv};
-    \addplot table[x=Row, y=4] {data/GestureCorrectness.csv};
-    \addplot table[x=Row, y=5] {data/GestureCorrectness.csv};
+    \addplot table[x=Row, y=2] {data/ActionCorrectnessTransposed.csv};
+    \addplot table[x=Row, y=2] {data/LocationCorrectness.csv};
+    \legend{Gesture, Action, Location}
+  \end{axis}
+  \end{tikzpicture}
+  \figcaption{Participant 2.}
+  \label{fig:participant-1}
+&
+  \begin{tikzpicture}
+  \begin{axis}[
+    ybar,
+    bar width=2pt,
+    xticklabels from table={data/ActionCorrectnessTransposed.csv}{Action},
+    xtick=data,
+    x tick label style={
+    rotate=45,
+    anchor=east,
+    },
+    width=0.40\textwidth,
+    ymin = 0,
+    ymax = 1]
     \addplot table[x=Row, y=6] {data/GestureCorrectness.csv};
-    \addplot table[x=Row, y=7] {data/GestureCorrectness.csv};
-    \addplot table[x=Row, y=Average] {data/GestureCorrectness.csv};
-\end{axis}
-\end{tikzpicture}
-\label{fig:user-test-gesture-correctness}
-\caption{The correctness ratio for gestures. The last bar for each gesture is the average correctness ratio of all participants.
-The last group of bars is the average correctness ratio per user, across all gestures.}
+    \addplot table[x=Row, y=6] {data/ActionCorrectnessTransposed.csv};
+    \addplot table[x=Row, y=6] {data/LocationCorrectness.csv};
+  \end{axis}
+  \end{tikzpicture}
+  \figcaption{Participant 6.}
+  \label{fig:participant-2}
+\end{longtable}
+\caption{Average correctness ratio for gestures, actions and locations for the participants who performed the best and worst respectively.}
 \end{figure}
 
 \begin{figure}
@@ -134,32 +120,36 @@ The last group of bars is the average correctness ratio per user, across all ges
 \begin{axis}[
     ybar,
     bar width=2pt,
-    xticklabels from table={data/LocationCorrectness.csv}{Location},
+    xticklabels from table={data/ActionCorrectnessTransposed.csv}{Action},
     xtick=data,
     x tick label style={
     rotate=45,
     anchor=east,
     },
-    xlabel = Intended Location,
-    ylabel = Location Correctness ratio,
-    width=0.95\textwidth,
-    height = 6cm,
+    width=0.42\textwidth,
     ymin = 0,
-    ymax = 1]
-    \addplot table[x=Row, y=1] {data/LocationCorrectness.csv};
-    \addplot table[x=Row, y=2] {data/LocationCorrectness.csv};
-    \addplot table[x=Row, y=3] {data/LocationCorrectness.csv};
-    \addplot table[x=Row, y=4] {data/LocationCorrectness.csv};
-    \addplot table[x=Row, y=5] {data/LocationCorrectness.csv};
-    \addplot table[x=Row, y=6] {data/LocationCorrectness.csv};
-    \addplot table[x=Row, y=7] {data/LocationCorrectness.csv};
+    ymax = 1,
+    ylabel = Correctness Ratio,
+    legend style={
+    at={(0,0)},
+    anchor=north west, at={(axis description cs:1,0)}}]
+    \addplot table[x=Row, y=Average] {data/GestureCorrectness.csv};
+    \addplot table[x=Row, y=Average] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=Average] {data/LocationCorrectness.csv};
+    \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
-\label{fig:user-test-location-correctness}
-\caption{The correctness ratio for locations. The last bar for each location is the average correctness ratio of all participants.
-The last group of bars is the average correctness ratio per user, across all gestures.}
+\caption{All participants combined.
+Bars in order from left to right:
+\emph{Gesture correctness ratio}, \emph{Action correctness ratio}, \emph{Location correctness ratio}}
 \end{figure}
+
+\subsection{Conclusion}
+\label{sec:evaluation:user-tests-conclusion}
+
+Comparing the results with the requirements specified in \cref{sec:requirements-specification}, only the positioning part succeeded.
+The low successrate of actions is likely caused by the low successrate of the gesture but may also be due to the way we have modeled the bayesian network.
+Though the requirements were not fulfilled, the average correctness ratios seem promising and with a bit more work done on improving the gesture recognition, and a perhaps the bayesian network this project seems feasible.
 
 %%% Local Variables:
 %%% mode: latex
