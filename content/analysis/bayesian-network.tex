@@ -13,16 +13,16 @@ Two nodes, A and C are said to be conditionally independent if there is no edge 
 \label{fig:analysis:bayesian-network:abc}
 \end{figure}
 
-For each variable in the Bayesian network there is a probability distribution function which depends on the edges leading into the variable. Probability distribution functions can be illustrated using \emph{probability tables}. A probability table is set to be \emph{conditional}, i.e. it is a \emph{conditional probability table} if the variable to which the table belongs depends on one or more variables.
+For each variable in the Bayesian network there is a probability distribution function which depends on the edges leading into the variable. Probability distribution functions can be illustrated using \emph{probability tables}. A probability table is said to be \emph{conditional}, i.e. it is a \emph{conditional probability table} if the variable to which the table belongs depends on one or more variables.
 
-Probabilities are denoted $P(A|B)$, meaning the probability of A given B. An alternative notation is $P(A=a|B=b)$, meaning the probability of variable $A$ having value, also referred to as being \emph{in state}, $a$ when $B$ is in state $b$. $P(A|B,C) = P(A|B)$ when A and C are conditionally independent as is the case in \cref{fig:analysis:bayesian-network:abc}. The joint distribution of all nodes, $X = X_1,\ldots,X_n$, in a network is 
+Probabilities are denoted $P(A|B)$, meaning the probability of A given B. An alternative notation is $P(A=a|B=b)$, meaning the probability of variable $A$ having value, also referred to as being \emph{in state}, $a$ when $B$ is in state $b$. $P(A|B,C) = P(A|B)$ when A and C are conditionally independent as is the case in \cref{fig:analysis:bayesian-network:abc}. The joint distribution of nodes, $X = X_1,\ldots,X_n$, in a network is 
 
 \begin{equation}
 \label{eq:analysis:bayesian-network:prod}
 P(X) = \displaystyle \prod_{i=1}^{n} P(X_i|parents(X_i))
 \end{equation}
 
-In case of the network illustrated in \cref{fig:analysis:bayesian-network:abc}, the join distribution of all variables is
+In case of the network illustrated in \cref{fig:analysis:bayesian-network:abc}, the joint distribution of all variables is
 
 \begin{equation}
 P(A, B, C) = P(A|B) \cdot P(B) \cdot P(C|B)
@@ -35,7 +35,7 @@ We also have that if the node $x_0$ does not depend on $x_n$, then we can remove
 P(x_0|x_1,\ldots,x_n,\ldots,x_k) = P(x_0|x_1,\ldots,x_{n-1},x_{n+1},\ldots,x_k)
 \end{equation}
 
-A graphical model of a Bayesian network consists of $K$, a set of nodes, $E$ a set of edges between the nodes and $P$, a set of probability distributions for each variable \cite{stephenson2000introduction}. In case of \cref{fig:analysis:bayesian-network:abc} $K = \{A, B, C\}$ and $E = \{\{B, A\}, \{B,C\}\}$. An example definition of $P$ can be the probability table and conditional probability tables shown in \cref{tbl:analysis:bayesian-network:abc-tables}. For example, the tables show that $P(B=Yes) = 0.3$ and $P(A=No|B=Yes) = 0.8$.
+A graphical model of a Bayesian network consists of $K$, a set of nodes, $E$ a set of edges between the nodes and $P$, a set of probability distributions for each variable \cite{stephenson2000introduction}. In case of \cref{fig:analysis:bayesian-network:abc} $K = \{A, B, C\}$ and $E = \{\{B, A\}, \{B,C\}\}$. An example definition of $P$ can be the probability table and conditional probability tables shown in \cref{tbl:analysis:bayesian-network:abc-tables}. For example, the tables show that $P(B=Yes) = 0.3$ and $P(A=No|B=Yes) = 0.8$. This is the \emph{prior distribution}, i.e. our beliefs before any evidence is observed.
 
 \begin{table}[h!]
 \centering
@@ -72,11 +72,42 @@ No   & 0.3   & 0.7 \\
 
 \subsection{Evidence}
 
+Bayesian networks are used in order to reason under uncertainty. When reasoning under uncertainty we update the beliefs of some events based on observations of other events, i.e. \emph{evidence} on those events \cite[p. 90]{kjaerulff2008bayesian}.
+
 When using a Bayesian network, we assign evidence to the states of a node. If a node, $X$, in a Bayesian network has states $x_1$, $x_2$ and $x_3$ then an evidence function $\epsilon_X = (1, 0, 0)$ indicates that $X = x_1$, \ie~node $X$ is in state $x_1$ with certainty. If $\epsilon_X = (1, 2, 0)$ then we are sure that $X$ is not in state $x_3$ and $X = x_2$ is twice as likely as $X = x_1$ \cite[pp. 23-24]{kjaerulff2008bayesian}. The probabilities for a column in a conditional probability table should have a sum of 1. That is for a node $X$, $P(x_1) + P(x_2) + ... + P(X_n) = 1$ where $n$ is the number of states in $X$.
 
 As per Kjærulff \etal\cite[pp. 23-24]{kjaerulff2008bayesian} we distinquish between \emph{hard evidence} and \emph{soft evidence}. If an evidence function assigns a probability of zero to all but one state in a node, then there is \emph{hard evidence} on that one state. If an evidence function assigns evidence to multiple states, there is said to be \emph{soft evidence} on the states.
 
-When evidence is observed on a node, we say the the belief \emph{propagates} to its childs just adjusting the belief of the childs.
+\emph{Bayesian inference} or \emph{belief propagation} is the action of updating beliefs of variables when evidence is observed in the network. This means that the \emph{posterior distribution}, i.e. the probability after evidence is observed, is computed.
+
+$x_1,\ldots,x_n$ be the prior distributions for node $X$ with $n$ states and $\epsilon$ the soft evidence observed for $X$ where $\epsilon_i$ is the soft evidence for state $x_i$. Then the posterior probability of $x_i$, $P(x_{b,i})$ is computed as shown in \cref{eq:analysis:bayesian-network:soft-evidence}.
+
+\begin{equation}
+\label{eq:analysis:bayesian-network:soft-evidence}
+P(x_{b,i}) = \frac{x_i \cdot \epsilon_i}{\sum\limits_{i=1}^n x_n \cdot \epsilon_n}
+\end{equation}
+
+% When evidence is assigned to one or more nodes, the changes are \emph{propagated} to other nodes, i.e. the beleifs in the network are updated. The beliefs can be computed using Bayes' theorem which is defined as:
+
+% \begin{equation}
+% \label{sec:analysis:bayesian-network:bayes-theorem}
+% P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
+% \end{equation}
+
+% The equation can also be written as shown in \cref{sec:analysis:bayesian-network:bayes-theorem-alt} because the probability of event B occuring when we have evidence on event A and event A occurring, is the same as events A and B occurring at the same time \cite{stephenson2000introduction}.
+
+% \begin{equation}
+% \label{sec:analysis:bayesian-network:bayes-theorem-alt}
+% P(A|B) = \frac{P(B,A)}{P(B)}
+% \end{equation}
+
+
+
+
+% \begin{equation}
+% \label{sec:analysis:bayesian-network:inference}
+% P(X) = \frac{\sum\limits_{i=1}^n P(X,y_i)}{}
+% \end{equation}
 
 \subsection{Hugin}
 \label{sec:analysis:bayesian-network:hugin}
