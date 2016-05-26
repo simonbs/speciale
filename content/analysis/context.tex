@@ -3,11 +3,12 @@
 
 In the envisioned system the context is used to determine which actions should be triggered when the user performs a gesture. Therefore the context plays an important part in the envisioned system.
 
-The notion of context is researched in multiple fields, including philosophy and psychology \cite{bolchini2007data}. For the purpose of this project we focus on the notion of context in context-aware software systems. Abowd \etal\cite{abowd1999towards} uses the following definition of the context for context-aware systems:
+The notion of context is researched in multiple fields, including philosophy and psychology \cite{bolchini2007data}. For the purpose of this project we focus on the notion of context in context-aware software systems. Abowd \etal\cite{abowd1999towards} uses \cref{def:context} of the context for context-aware systems.
 
-\begin{italicquote}
+\begin{definition}
+\label{def:context}
 Context is any information that can be used to characterize the situation of an entity. An entity is a person, place, or object that is considered relevant to the interaction between a user and an application, including the user and applications themselves.
-\end{italicquote}
+\end{definition}
 
 According to this definition, information is context if the information characterizes the situation of a participant in an interaction \cite{abowd1999towards}.
 
@@ -39,11 +40,12 @@ The position of the user and the t-shirt are both primary context types.
 
 \subsection{Context Features}
 
-Abowd \etal\cite{abowd1999towards} defines a context-aware system as follows.
+Abowd \etal\cite{abowd1999towards} defines a context-aware system as in \cref{def:context-aware}.
 
-\begin{italicquote}
+\begin{definition}
+\label{def:context-aware}
 A system is context-aware if it uses context to provide relevant information and/or services to the user, where relevancy depends on the user's task.
-\end{italicquote}
+\end{definition}
 
 Based on this definition, Ferreira \etal\cite{ferreira2014distributed} outlines the following three main features a context-aware system can provide to its users.
 
@@ -57,14 +59,43 @@ According to the categorization of context-aware systems by Ferreira \etal~the s
 
 \subsection{Conclusion}
 
-We accept the definitions of context and context-aware systems proposed by Abowd \etal~and the system envisioned in this project makes use of the following context.
+We accept the definitions of context and context-aware systems proposed by Abowd \etal. We also introduce the term \emph{contextual information} as defined in \cref{def:contextual-information}. 
+
+\begin{definition}
+\label{def:contextual-information}
+\emph{Contextual information} is information that is part of the context, e.g. the position of the user.
+\end{definition}
+
+Examples of contextual information, include the following.
+
+\begin{itemize}
+\item The day of the week.
+\item The time of the day.
+\item The position of the user.
+\item The mood of the user.
+\item The sex of the user.
+\item The age of the user.
+\item Users present, e.g. users that are home.
+\item Sentences or words pronounced by the user.
+\item Motion gestures made by the user.
+\item The state of the controllable devices in the system.
+\end{itemize}
+
+While other context can be included in the system, for the purpose of the prototype presented in this report, we chose to focus on the following two contextual informations.
 
 \begin{itemize}
 \item The position of the user.
 \item The gesture performed by the user.
 \end{itemize}
 
-Other context can be included in the system but in order to limit the scope of this project, we focus on the position and the gesture.
+The contextual information provides us with a way of initiating the process of determining the correct action to trigger. When the user has performed a motion, we begin the recognition of the context. Gestures can trigger different actions depending on the position of the user, thus reducing the number of gestures the user needs to remember as a single gesture can be configured to trigger different actions as illustrated in \cref{sec:analysis:scenarios}.
+
+We refer to the combination of gesture, room and action, i.e. a gesture causing a specific action to be triggered in a specific room, as a \emph{gesture configuration} as defined in \cref{def:gesture-configuration}. Gesture configurations are meant to be configured by a user. For example, a user can configure a circle gesture to turn on table lamp when he is in the living room.
+
+\begin{definition}
+\label{def:gesture-configuration}
+A \emph{gesture configuration} is the combination of a gesture, a room and an action. When the user performs the gesture in the specified room, the selected action is triggered in tOBhe system.
+\end{definition}
 
 The system is context-aware as it automatically executes a service when a gesture is performed, provided that an appropriate action to trigger can be determined.
 

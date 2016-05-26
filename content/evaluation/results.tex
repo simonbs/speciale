@@ -1,0 +1,163 @@
+\section{User Tests}
+\label{sec:evaluation:user-tests}
+
+This section will describe the experimental procedures carried out during the project to determine how well it performed when used by
+other people and how well it performed comparing to the requirements specified in \cref{}.
+
+\subsection{Setup}
+\label{sec:evaluation:user-tests-setup}
+
+The setup of our user test consisted of a Macbook Pro running OpenHAB and Spotify, two Philips Hue lamps and two Estimote beacons.
+Seven people were asked to train four unique gestures, creating ten templates per gesture resulting in a total of 40 gesture templates
+per person.
+The gestures used were:
+
+\begin{itemize}
+  \item Circle
+  \item Swipe left to right
+  \item V
+  \item Zorro
+\end{itemize}
+
+The template library was cleared before each test so each participant was only using his own templates and not those created by others.
+
+The participants were instructed how to perform the gestures but were allowed to scale them to their personal preference, eg.
+either create large circles or small circles.
+
+Once the gesture templates had been created the participants were asked to complete seven tasks, each of which required them to perform a given gesture five times.
+Tests took place in a single room but to simulate the user moving between two different rooms, only one Estimote beacon would be turned on at a time.
+A list of the gestures and locations is shown in in \cref{table:user-test-tasks}, along with the OpenHAB actions they were supposed to trigger.
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Action                  & Gesture             & Location                       \\ \hline
+Shelves\_Lamp\_Toggle   & V                   & Home Office                    \\ \hline
+Spotify\_PlayPause      & Circle              & Home Office                    \\ \hline
+Spotify\_Next           & Swipe Left to Right & Home Office                    \\ \hline
+Architect\_Lamp\_Toggle & V                   & Living Room                    \\ \hline
+TV\_Lamp\_Toggle        & Zorro               & Living Room                    \\ \hline
+Spotify\_Next           & Swipe Left to Right & Home Office (Virtual Position) \\ \hline
+Shelves\_Lamp\_Toggle   & V                   & Home Office                    \\ \hline
+\end{tabular}
+\caption{The actions, gestures and locations that were used during the user tests.}
+\label{table:user-test-tasks}
+\end{table}
+
+\subsection{Results}
+\label{sec:evaluation:user-tests-results}
+
+For each participant and task, the correctness ratio of the actions triggered was calculated as the \emph{number of times the intended action was triggered} divided by
+the \emph{number of attempts}.
+Additionally, the average correctness ratio for each action across all participants as well as the average correctness ratio for each participant across
+all actions have been determined and is plotted in \cref{fig:user-test-action-correctness}.
+
+As shown in \cref{fig:user-test-action-correctness}, the correct action was triggered less than 80\% of the time for the majority of the actions.
+To determine why this is the case we looked at the rate at which the intended gesture received the highest score.
+\cref{fig:user-test-gesture-correctness} shows the correctness ratio of the gestures calculated as the \emph{number of times the intended gesture scored the lowest} divided by
+the \emph{number of attempts}.
+The results were mixed between the participants with one of them having an average correctness ratio of \number0.925 while another had a ratio of \number0.2.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+  \begin{axis}[
+      ybar,
+      bar width=2pt,
+      xlabel = Intended Action,
+      ylabel = Correctness ratio,
+      xtick=data,
+      xticklabels from table={data/ActionCorrectnessTransposed.csv}{Action},
+      x tick label style={
+      rotate=45,
+      anchor=east,
+      },
+      width=0.95\textwidth,
+      height = 6cm,
+      yticklabel style={align=right,inner sep=0pt,xshift=-0.3em},
+      ymin = 0,
+      ymax = 1,
+      grid=major,
+      try min ticks=10]
+    \addplot table[x=Row, y=1] {data/ActionCorrectnessTransposed.csv};
+    \addplot table[x=Row, y=2] {data/ActionCorrectnessTransposed.csv};
+    \addplot table[x=Row, y=3] {data/ActionCorrectnessTransposed.csv};
+    \addplot table[x=Row, y=4] {data/ActionCorrectnessTransposed.csv};
+    \addplot table[x=Row, y=5] {data/ActionCorrectnessTransposed.csv};
+    \addplot table[x=Row, y=6] {data/ActionCorrectnessTransposed.csv};
+    \addplot table[x=Row, y=7] {data/ActionCorrectnessTransposed.csv};
+    \addplot table[black, x=Row, y=Average] {data/ActionCorrectnessTransposed.csv};
+  \end{axis}
+\label{fig:user-test-action-correctness}
+\end{tikzpicture}
+\caption{The rate at which the correct action was triggered for per participant. The last bar for each action is the average correctness ratio of all participants.
+The last group of bars is the average correctness ratio per user, across all actions.}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=2pt,
+    xticklabels from table={data/GestureCorrectness.csv}{Intended Gesture},
+    xtick=data,
+    x tick label style={
+    rotate=45,
+    anchor=east,
+    },
+    width=0.95\textwidth,
+    height = 6cm,
+    ymin = 0,
+    ymax = 1]
+    \addplot table[x=Row, y=1] {data/GestureCorrectness.csv};
+    \addplot table[x=Row, y=2] {data/GestureCorrectness.csv};
+    \addplot table[x=Row, y=3] {data/GestureCorrectness.csv};
+    \addplot table[x=Row, y=4] {data/GestureCorrectness.csv};
+    \addplot table[x=Row, y=5] {data/GestureCorrectness.csv};
+    \addplot table[x=Row, y=6] {data/GestureCorrectness.csv};
+    \addplot table[x=Row, y=7] {data/GestureCorrectness.csv};
+    \addplot table[x=Row, y=Average] {data/GestureCorrectness.csv};
+\end{axis}
+\end{tikzpicture}
+\label{fig:user-test-gesture-correctness}
+\caption{The correctness ratio for gestures. The last bar for each gesture is the average correctness ratio of all participants.
+The last group of bars is the average correctness ratio per user, across all gestures.}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=2pt,
+    xticklabels from table={data/LocationCorrectness.csv}{Action},
+    xtick=data,
+    x tick label style={
+    rotate=45,
+    anchor=east,
+    },
+    width=0.95\textwidth,
+    height = 6cm,
+    ymin = 0,
+    ymax = 1]
+    \addplot table[x=Row, y=1] {data/LocationCorrectness.csv};
+    \addplot table[x=Row, y=2] {data/LocationCorrectness.csv};
+    \addplot table[x=Row, y=3] {data/LocationCorrectness.csv};
+    \addplot table[x=Row, y=4] {data/LocationCorrectness.csv};
+    \addplot table[x=Row, y=5] {data/LocationCorrectness.csv};
+    \addplot table[x=Row, y=6] {data/LocationCorrectness.csv};
+    \addplot table[x=Row, y=7] {data/LocationCorrectness.csv};
+    \addplot table[x=Row, y=Average] {data/LocationCorrectness.csv};
+\end{axis}
+\end{tikzpicture}
+\label{fig:user-test-location-correctness}
+\caption{The correctness ratio for locations. The last bar for each action is the average correctness ratio of all participants.
+The last group of bars is the average correctness ratio per user, across all gestures.}
+\end{figure}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

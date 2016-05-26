@@ -40,7 +40,7 @@ When using HomePort in \cite{prespecialisation} we experienced the following iss
 \subsection{SmartThings}
 \label{sec:analysis:choice-of-hub:smartthings}
 
-SmartThings \cite{SMARTTHINGS} is commercial home automation hub offered by Samsung. SmartThings is a hardware device that comes preinstalled with the necessary software \footnote{https://www.smartthings.com/products/hub}.
+SmartThings \cite{SMARTTHINGS}\footnote{More information about SmartThings is available at \url{https://www.smartthings.com/products/hub}} is commercial home automation hub offered by Samsung. SmartThings is a hardware device that comes preinstalled with the necessary software.
 
 Protocols supported by SmartThings include ZigBee and Z-Wave as well as devices communicating over WiFi within the local network \cite{smartthings:compatible-products}. SmartThings expose the devices over HTTP using a REST architecture \cite{smartthings:developer}.
 
@@ -52,7 +52,7 @@ At the time of writing the retail price for the hub is \$99.
 \label{sec:analysis:choice-of-hub:openhab}
 
 Unlike SmartThings, openHAB \cite{OPENHAB} does not come with the hardware needed to run the hub.
-openHAB is based on Eclipse SmartHome \footnote{https://www.eclipse.org/smarthome/}, an open source framework for building software for a smart home. Amongst others, the framework provides a mechanisms for handling data (including a common type system) and a rule engine.
+openHAB is based on Eclipse SmartHome \footnote{The Eclipse SmartHome project can be found at \url{https://www.eclipse.org/smarthome/}}, an open source framework for building software for a smart home. Amongst others, the framework provides a mechanisms for handling data (including a common type system) and a rule engine.
 openHAB and Eclipse SmartHome are both Java based software solutions that supports any platform capable of running a JVM \cite{openhab:introduction}.
 
 openHAB is free and open source maintained by a community of enthusiasts. It supports a wide range of devices, 121 as of writing this \cite{openhab:supported-technologies}. Amongst these are devices communicating using ZigBee, Z-Wave, MQTT and HTTP. openHABs concept of adapters is called ``bindings'' and these can be specific to a protocol or a product. For example, the community has developed bindings for the HTTP, Bluetooth and MQTT protocols as well as for the Philips Hue, Netatmo, and Sonos products.

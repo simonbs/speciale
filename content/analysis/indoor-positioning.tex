@@ -1,0 +1,24 @@
+\section{Indoor Positioning}
+\label{sec:analysis:indoor-positioning}
+
+Indoor positioning concerns determining the position of a device placed indoors. For outdoor positioning, the Global Positioning System, shortened GPS, can be used to determine a device. GPS can be unreliable indoor because the waves from the satellites used to positioning the device is weakened and scattered by the roof and walls of a building as well as the objects inside and outside the building.
+
+Instead, alternative technologies can be used to estimate the position of a device, or a user carrying a device, while the user is indoor. As per \cite{prespecialisation} differentiate between the following two types of indoor positioning.
+
+\begin{description}
+\item[Ranging] Granular positioning of the user in which we attempt to determine his precise location in a room. Trilateration can be used to estimate the users position given a minimum of three \emph{anchors}, e.g. WiFi hotspots.
+\item[Region monitoring] Coarse grained positioning of the user in which we determine which region of a larger area the user is located in. A region is specified by one or more anchors, e.g. WiFi hotspots. We determine the user to be in the region which contains the anchor from which we receive the strongest signal.
+\end{description}
+
+In \cite{prespecialisation} we investigated solutions based on various technologies for positioning the user indoors. The technologies included WiFi, ultra-wideband, Bluetooth Low Energy, shortened BLE, as well as the accelerometer.
+
+In a previous report, we found ranging using BLE beacons to have an average accuracy of 2.92m \cite[p. 63]{prespecialisation}. The accuracy is not high enough to perform ranging in a home or apartment of 90 square meters with 3-4 rooms, where each room would be an average of roughly 23-30 square meters. Because we have seen bad results when performing indoor positioning, we choose to focus on region monitoring and determining which room in an apartment the user is situated in.
+
+WiFi, ultra-wideband and BLE are all technologies that can be used to perform region monitoring but we choose to use BLE beacons to position the user in the apartment because we have experience with the technology from \cite{prespecialisation} and more specifically we have experience with beacons from Estimote, a company producing BLE beacons, as well as the SDK for reading RSSI values from the beacons.
+
+Refer to \cref{sec:design:ble-positioning} for more information on positioning using BLE beacons.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:

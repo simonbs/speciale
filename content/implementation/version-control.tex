@@ -1,0 +1,29 @@
+\section{Version Control}
+\label{sec:implementation:version-control}
+
+We use version control management for keeping track of changes to the codebase developed through the project as well as this report. Below is a non-comprehensive list of advantages of using version control management.
+
+\begin{itemize}
+\item Colalborators can work on the same file at the same time, due the way changes to the file can be \emph{merged}. This is in contrary to a shared folder, e.g. a Dropbox folder which always synchronize the most recent version of a file with a central location.
+\item Keeping track of what files were changed, what was changed in the files and who changed it.
+\item When publishing changes to the files, authors typically tag the changes with a message with a description of the changes making their intention clear to collaborators.
+\item Changes can be rolled back to a previous state.
+\item Collaborators of a project can \emph{branch} out from the main codebase to create changes without touching the currently stable code base. When their changes are done, they can \emph{merge} in their changes to the stable codebase.
+\item Depending on the amount of collaborators and the system used, the codebase is inherently backed up.
+\end{itemize}
+
+There are several software solutions for version control management, including but not limited to Git, Subversion, CVS and Bazaar. When choosing a system to use, we decided to only look into the Git and Subversion as we have experience with the two.
+
+The key difference between Git and Subversion is, that Git is decentralized and Subversion is centralized. When using Git, collaborators have a local copy of the entire repository in which the codebase resides. Collaborators then push their changes to a central location when they are done working on a feature or a fix. With Subversion, collaborators are working in a central online repository, meaning that the version control features are unavailable when there is no connection to the repository.
+
+We chose Git over Subversion because of it being decentralized. This provides two advantages over Subversion.
+
+\begin{itemize}
+\item When we are working with no or an unstable internet connection, version control features are still available. Several times during the project have we worked with no internet connection.
+\item We believe that a decentralized and local system provides extra safety in terms of backups. All collaborators always have a backup of the repository on their local machines. In addition, we push the changes to GitHub, a website for hosting Git repositories, from which we also pull the changes other collaborators make.
+\end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:

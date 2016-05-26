@@ -1,9 +1,13 @@
 \section{Scenario}
 \label{sec:analysis:scenarios}
 
-\todo[author=Simon]{The requirement specification seem tightly coupled with the scenario. Does the scenario belong to the introduction?}
+This section describes a scenario the envisioned system may be used in and outlines the target group of the system.
 
-This section describes a scenario the envisioned system may be used in. We make the following assumptions about the system and the environment in which the scenario takes place:
+In \cite[p. 15]{prespecialisation} we defined the target group as people living in a smart home and interested in controlling the state of their home, \eg~lights, music centers, doors and windows, in a convenient matter. The group of people will currently consist of early adoptors of smart home technologies but based on the trend in IoT, our assumption is that the technology will be widespread within 5-10 years. 
+
+We extend the definition of the target group presented in \cite[p. 15]{prespecialisation} to include a definition of the surroundings. As shown in \cref{appendix:housing-types:table} the most common size of housings in Denmark is 75-99 square meters. Therefore we assume that the solution presented in this report is installed in a typical Danish apartment with a size of 90 square meters and with 3-4 rooms. 
+
+We make the following assumptions about the system and the environment in which the scenario takes place:
 
 \begin{itemize}
     \item All controllable devices are connected through a central hub.
@@ -11,6 +15,8 @@ This section describes a scenario the envisioned system may be used in. We make 
     \item The state of the controllable devices is always available.
     \item The location of the user is always available when he is in his home.
 \end{itemize}
+
+We assume each room has two-three controllable lamps. The living room may have a television and a music center while the kitchen may have a controllable coffee machine. We estimate that 2-5 controllable devices per room seems fair leaving us with a maximum of 20 controllable devices in an apartment.
 
 We consider the system to be installed in the apartment shown in \cref{fig:analysis:scenario:apartment}. The rooms in the apartment are listed in \cref{tbl:analysis:scenario:rooms} along with the controllable devices that seem realistic to be located in each room.
 
@@ -123,7 +129,7 @@ Bathroom                   & Lamp 12                             & Z turns on an
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.75\textwidth]{images/room-with-beacons}
+\includegraphics[width=\textwidth]{images/room-with-beacons}
 \label{fig:analysis:scenario:apartment}
 \caption{Example apartment we envision the system to be installed in.}
 \end{figure}
