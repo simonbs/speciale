@@ -66,7 +66,7 @@ The results were mixed between the participants with one of them having an avera
       ybar,
       bar width=2pt,
       xlabel = Intended Action,
-      ylabel = Correctness ratio,
+      ylabel = Action Correctness ratio,
       xtick=data,
       xticklabels from table={data/ActionCorrectnessTransposed.csv}{Action},
       x tick label style={
@@ -107,6 +107,8 @@ The last group of bars is the average correctness ratio per user, across all act
     rotate=45,
     anchor=east,
     },
+    xlabel = Intended Gesture,
+    ylabel = Gesture Correctness ratio,
     width=0.95\textwidth,
     height = 6cm,
     ymin = 0,
@@ -132,12 +134,14 @@ The last group of bars is the average correctness ratio per user, across all ges
 \begin{axis}[
     ybar,
     bar width=2pt,
-    xticklabels from table={data/LocationCorrectness.csv}{Action},
+    xticklabels from table={data/LocationCorrectness.csv}{Location},
     xtick=data,
     x tick label style={
     rotate=45,
     anchor=east,
     },
+    xlabel = Intended Location,
+    ylabel = Location Correctness ratio,
     width=0.95\textwidth,
     height = 6cm,
     ymin = 0,
