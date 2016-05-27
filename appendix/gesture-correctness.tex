@@ -1,6 +1,10 @@
 \chapter{Gesture Correctness}
 \label{appendix:Gesture-Correctness}
 
+\pgfplotsset{every axis legend/.append style={
+    at={(0,0)},
+    anchor=west, at={(axis description cs:1,0.5)}}}
+
 \begin{longtable}{p{0.45\textwidth} p{0.45\textwidth}}
 \label{table:user-task-averages}
 \begin{tikzpicture}
@@ -15,15 +19,19 @@
     },
     width=0.42\textwidth,
     ymin = 0,
-    ymax = 1]
+    ymax = 1,
+    legend style={
+    at={(0,0)},
+    anchor=east, at={(axis description cs:-0.15,0.5)}}]
     \addplot table[x=Row, y=1] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=1] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=1] {data/LocationCorrectness.csv};
+    \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
 \figcaption{Participant 1.
 Bars in order from left to right:
-\emph{Gesture correctness ratio}, \emph{Action correctness ratio}, \emph{Location correctness ratio}.}
+\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}.}
 
 &
 
@@ -43,11 +51,12 @@ Bars in order from left to right:
     \addplot table[x=Row, y=2] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=2] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=2] {data/LocationCorrectness.csv};
+    \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
 \figcaption{Participant 2.
 Bars in order from left to right:
-\emph{Gesture correctness ratio}, \emph{Action correctness ratio}, \emph{Location correctness ratio}}
+\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}}
 
 \\
 
@@ -63,15 +72,19 @@ Bars in order from left to right:
     },
     width=0.42\textwidth,
     ymin = 0,
-    ymax = 1]
+    ymax = 1,
+    legend style={
+    at={(0,0)},
+    anchor=east, at={(axis description cs:-0.15,0.5)}}]
     \addplot table[x=Row, y=3] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=3] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=3] {data/LocationCorrectness.csv};
+    \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
 \figcaption{Participant 3.
 Bars in order from left to right:
-\emph{Gesture correctness ratio}, \emph{Action correctness ratio}, \emph{Location correctness ratio}.}
+\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}.}
 
 &
 
@@ -91,11 +104,12 @@ Bars in order from left to right:
     \addplot table[x=Row, y=4] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=4] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=4] {data/LocationCorrectness.csv};
+    \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
 \figcaption{Participant 4.
 Bars in order from left to right:
-\emph{Gesture correctness ratio}, \emph{Action correctness ratio}, \emph{Location correctness ratio}}
+\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}}
 
 \\
 
@@ -111,15 +125,19 @@ Bars in order from left to right:
     },
     width=0.42\textwidth,
     ymin = 0,
-    ymax = 1]
+    ymax = 1,
+    legend style={
+    at={(0,0)},
+    anchor=east, at={(axis description cs:-0.15,0.5)}}]
     \addplot table[x=Row, y=5] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=5] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=5] {data/LocationCorrectness.csv};
+    \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
 \figcaption{Participant 5.
 Bars in order from left to right:
-\emph{Gesture correctness ratio}, \emph{Action correctness ratio}, \emph{Location correctness ratio}.}
+\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}.}
 
 &
 
@@ -139,11 +157,12 @@ Bars in order from left to right:
     \addplot table[x=Row, y=6] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=6] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=6] {data/LocationCorrectness.csv};
+    \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
 \figcaption{Participant 6.
 Bars in order from left to right:
-\emph{Gesture correctness ratio}, \emph{Action correctness ratio}, \emph{Location correctness ratio}.}
+\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}.}
 
 \\
 
@@ -159,15 +178,19 @@ Bars in order from left to right:
     },
     width=0.42\textwidth,
     ymin = 0,
-    ymax = 1]
+    ymax = 1,
+    legend style={
+    at={(0,0)},
+    anchor=east, at={(axis description cs:-0.15,0.5)}}]
     \addplot table[x=Row, y=7] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=7] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=7] {data/LocationCorrectness.csv};
+    \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
 \figcaption{Participant 7.
 Bars in order from left to right:
-\emph{Gesture correctness ratio}, \emph{Action correctness ratio}, \emph{Location correctness ratio}.}
+\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}.}
 
 &
 
@@ -187,12 +210,13 @@ Bars in order from left to right:
     \addplot table[x=Row, y=Average] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=Average] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=Average] {data/LocationCorrectness.csv};
+    \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
 \label{fig:participant-average}
 \figcaption{All participants combined.
 Bars in order from left to right:
-\emph{Gesture correctness ratio}, \emph{Action correctness ratio}, \emph{Location correctness ratio}}
+\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}}
 \end{longtable}
 
 \begin{figure}
@@ -202,7 +226,7 @@ Bars in order from left to right:
       ybar,
       bar width=2pt,
       xlabel = Intended Action,
-      ylabel = Action Correctness ratio,
+      ylabel = Action Correctness rate,
       xtick=data,
       xticklabels from table={data/ActionCorrectnessTransposed.csv}{Action},
       x tick label style={
@@ -215,10 +239,7 @@ Bars in order from left to right:
       ymin = 0,
       ymax = 1,
       grid=major,
-      try min ticks=10]
-      \pgfplotsset{every axis legend/.append style={
-at={(0,0)},
-anchor=north east}} 
+      try min ticks=10] 
     \addplot table[x=Row, y=1] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=2] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=3] {data/ActionCorrectnessTransposed.csv};
@@ -227,11 +248,12 @@ anchor=north east}}
     \addplot table[x=Row, y=6] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=7] {data/ActionCorrectnessTransposed.csv};
     \addplot table[black, x=Row, y=Average] {data/ActionCorrectnessTransposed.csv};
+    \legend{P1, P2, P3, P4, P5, P6, P7, All}
   \end{axis}
 \label{fig:user-test-action-correctness}
 \end{tikzpicture}
-\caption{The rate at which the correct action was triggered for each participant. The last bar for each action is the average correctness ratio of all participants.
-The last group of bars is the average correctness ratio per user, across all actions.}
+\caption{The rate at which the correct action was triggered for each participant. The last bar for each action is the average correctness rate of all participants.
+The last group of bars is the average correctness rate per user, across all actions.}
 \end{figure}
 
 \begin{figure}
@@ -247,7 +269,7 @@ The last group of bars is the average correctness ratio per user, across all act
     anchor=east,
     },
     xlabel = Intended Gesture,
-    ylabel = Gesture Correctness ratio,
+    ylabel = Gesture Correctness rate,
     width=0.95\textwidth,
     height = 6cm,
     ymin = 0,
@@ -260,11 +282,12 @@ The last group of bars is the average correctness ratio per user, across all act
     \addplot table[x=Row, y=6] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=7] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=Average] {data/GestureCorrectness.csv};
+    \legend{P1, P2, P3, P4, P5, P6, P7, All}
 \end{axis}
 \end{tikzpicture}
 \label{fig:user-test-gesture-correctness}
-\caption{The correctness ratio for gestures. The last bar for each gesture is the average correctness ratio of all participants.
-The last group of bars is the average correctness ratio per user, across all gestures.}
+\caption{The correctness rate for gestures. The last bar for each gesture is the average correctness rate of all participants.
+The last group of bars is the average correctness rate per user, across all gestures.}
 \end{figure}
 
 \begin{figure}
@@ -280,7 +303,7 @@ The last group of bars is the average correctness ratio per user, across all ges
         anchor=east,
         },
         xlabel = Intended Location,
-        ylabel = Location Correctness ratio,
+        ylabel = Location Correctness rate,
         width=0.95\textwidth,
         height = 6cm,
         ymin = 0,
@@ -293,9 +316,10 @@ The last group of bars is the average correctness ratio per user, across all ges
         \addplot table[x=Row, y=6] {data/LocationCorrectness.csv};
         \addplot table[x=Row, y=7] {data/LocationCorrectness.csv};
         \addplot table[x=Row, y=Average] {data/LocationCorrectness.csv};
+        \legend{P1, P2, P3, P4, P5, P6, P7, All}
     \end{axis}
     \end{tikzpicture}
-\caption{The correctness ratio for locations. The last bar for each location is the average correctness ratio of all participants.
-The last group of bars is the average correctness ratio per user, across all gestures.}
+\caption{The correctness rate for locations. The last bar for each location is the average correctness rate of all participants.
+The last group of bars is the average correctness rate per user, across all gestures.}
 \label{fig:user-test-location-correctness}
 \end{figure}
