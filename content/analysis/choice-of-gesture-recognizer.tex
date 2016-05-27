@@ -1,31 +1,82 @@
 \section{Choice of Gesture Recognizer}
 \label{sec:analysis:choice-of-gesture-recognizer}
 
-In~\cite{prespecialisation} we stated that are two primary methods of gesture recognition, camera-based and motion-based.
-\cref{sec:related-work} as well as~\cite{prespecialisation} presented different implementations of camera-based solutions, however as stated in both we opted to not use this method as it requires a sightline between the user and any device he intends to interact with.
+There are two primary methods for performing gesture recognition \cite[pp. 19-21]{prespecialisation}:
 
-Hence we elected to use a motion-based approach.
-In~\cite{prespecialisation} we argued that a significant amount (55\%) of wrist-worn wearables, according to Vandrico\footnote{Vandricos data can be found at \url{http://vandrico.com/wearables/}}, contained an accelerometer and as such it makes sense to focus on motion-based gesture recognition utilizing that.
-\todo[author=Kasper]{Skal vi evt. forklare hvorfor vi kun kiggede på wrist-worn? Jeg ved godt at vi i \cref{sec:analysis:choice-of-wearables} argumenterer for at det er mere naturligt at bruge sine hænder, men hvorfor kigger vi så ikke på wearables der sidder på \emph{hænderne} eller fingrene, fremfor på håndleddet?}
+\begin{itemize}
+\item Camera based
+\item Mosition based
+\end{itemize}
+
+Examples of camera based approaches for gesture recognition includes the use of one or more Microsoft Kinects that record the users motions \cite{caon2011context}. The benefit of Microsoft Kinects is, that they can potentially record full body motion gestures, e.g. gestures performed with the legs. Another approach is an infrared gesture pendant worn by the user which records their hand motions when gestures are performed in front of their chest \cite{starner2000gesture}.
+
+As stated in \cref{sec:related-work} we opt to not camera based methods as it requires a line of sight between the user and any device he intends to interact with or optionally, a line of sight between the user and multiple cameras installed in his smart home.
+
+Hence we elected to use a motion-based approach. As of spring 2016 a significant amount (55\%) of wrist-worn wearables contained an accelerometer \cite[pp. 2-3]{prespecialisation} and as such it makes sense to focus on motion-based gesture recognition utilizing an accelerometer.
+
+While natural to use hands to perform gestures, we chose to look at wearables that are worn on the wrist rather than wearables that are worn on the hands, e.g. the fingers. As shown in \cref{fig:wearables-placement} only very few wearables are worn on the hands and we found it more interesting to develop for more widely available devices. In regards to gestures, the primary difference between recognizing a gesture with a wearable worn on the hand and on the wrist, is that the motions must be larger, when the wearable is worn on the wrist, i.e. the user must move the entire arm in order to produce significant accelerations on the axes of the accelerometer.
+
+\begin{figure}[!htb]
+  \centering
+  \input{drawings/wearables-placement.tikz}
+  \caption{Placements of wearables. Graph from \cite[p. 2]{prespecialisation}, data from \protect\cite{LISTOFWEARABLES}.}
+  \label{fig:wearables-placement}
+\end{figure}
 
 In~\cite{prespecialisation} we used the \$3 recognizer~\cite{threedollar} which is based on the \$1 recognizer~\cite{wobbrock2007gestures}.
 Both are designed to be simple and easy to implement and the main difference between them is that \$1 is designed for two-dimensional gestures drawn on a screen whereas \$3 is designed for three-dimensional gestures captured using a tri-axis accelerometer.
 
-Though \$3 worked adequately for our project, we decided to search for a possibly better alternative.
-We have the following criteria:
+While the \$3 gesture recognizer works adequately \cite[p. 55]{prespecialisation}, we decided to search for an alternative that would possibly work better on embedded and resource constrained devices.
+
+We have the following requirements for the gesture recognizer.
 
 \begin{itemize}
-    \item It must utilize an accelerometer to detect gesture motion data
-    \item It must run on Android Wear
-    \item It must recognize a gesture faster than 200ms
-    \item It must support userdefined gestures
-    \item Preferably it should run on the wearable independently from the smartphone
+    \item It must utilize an accelerometer to detect gesture motion data.
+    \item It must run on Android Wear.
+    \item It must recognize a gesture faster than 200 milliseconds.
+    \item It must support userdefined gestures.
+    \item Preferably it should run on the wearable independently from the smartphone.
 \end{itemize}
+
 Based on these criteria we will examine the following gesture recognition solutions:
 
 \begin{itemize}
-    \item GRT~\cite{gillian2011gesture, gillian2014gesture, gilliangesturegithub}
+    % \item GRT~\cite{gillian2011gesture, gillian2014gesture, gilliangesturegithub}
     \item \$3~\cite{threedollar}
     \item 1\textcent~\cite{herold20121}
 \end{itemize}
-\todo[author=Kasper]{Ved ikke om jeg bør smide Kiwi og FocusMotion på listen eller om jeg blot skal smide dem ind et sted som ``related, men ikke kandidater''}
+
+% The Kiwi\footnote{For more information about Kiwi, refer to http://kiwi.ai/} and FocusMotion\footnote{For more information about FocusMotion, refer to http://focusmotion.io/} gesture recognizers were not taken into consideration as they are commercial and potentially expensive solutions and as per the requirement specification presented, we desire to use inexpensive software.
+
+% \subsection{GRT}
+
+% GRT, short for Gesture Recognition Toolkit, is a C++ libary for real-time gesture recognition, thus the library has support for continuous recognition of gestures. 
+
+% The library supports various algorithms for classification of gestures, including but not limited to Naive Bayes and K-Nearest Neighbor. Furthermore the library has built in support for pre-processing of accelerations from the accelerometer as well as post-processing of classified gestures and as the library performs continuous recognition, part of the post-processing may be to timeout the receognizer after a gesture is recognizer in order to avoid recognizing multiple gestures right after each other.
+
+% GRT works with any N-dimensional floating point vector and as such, can work with accelerometer data.
+
+\subsection{\$3}
+
+The \$3 gesture recognizer is designed to work with data from an accelerometer, i.e. accelerations on the axes of an accelerometer. The gesture recognizer translates accelerations to points in the system. The first accelerations measured from the accelerometer is considered origo in a coordinate system. When the next accelerations on the axes are received, the delta between the previous measurement is calculated and added to the previous measurement. When a gesture trace is recorded, \$3 will rotate the trace and calculate the distance to the trained gesture templates.
+
+The gesture recognizer is based on the \$1 gesture recognizer but whereas the \$1 recognizer works with two dimensions, \$3 works with three dimensions \cite{threedollar}.
+
+The gesture recognizer was used in \cite{prespecialisation} and was found to have a precision between 58\% - 98\%, depending on the user utilizing the recognizer \cite[p. 55]{prespecialisation}. The concrete implementation of the recognizer was also found to have memory issues where allocated memory was not deallocated \cite[p. 54]{prespecialisation}.
+
+\subsection{1\textcent}
+
+Like the \$3 gesture recognizer, the 1\textcent gesture recognizer is also based on \$1. Where as \$3 improves \$1 by adding support for a third dimension, 1\textcent improves \$1 by decreasing the amount of computations, thus making it more suitable for embedded and resource constrained devices.
+
+1\textcent decreases the amount of computations by not calculating deltas between accelerations and rotating a gesture trace when matching it with trained gesture templates. Instead, the algorithm computes distances to the center of the gesture trace and compares the distances to the ones trained gesture templates.
+
+\subsection{Conclusion}
+
+Concrete implementations of \$3 and 1\textcent are available and both support the Android Wear platform where they utilize the accelerometer data in order to train and recognize gestures. While we have previous experience with the \$3 algorithm and found it to have an accuracy of up to 98\%, we chose to utilize the 1\textcent as Herold et. al. claims, that the algorithm is better suited for embedded devices \cite{herold20121}.
+
+The 1\textcent gesture recognizer only supports recognition in two dimensions, e.g. recognition on a touch screen therefore we choose to implement support for the third dimension and use it with accelerations on the X, Y and Z axes provided by the accelerometer of an Android Wear device.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:
