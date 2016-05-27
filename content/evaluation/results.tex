@@ -145,11 +145,10 @@ As such it is easier to trigger actions that only have a single gesture associat
     \addplot table[x=Row, y=2] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=2] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=2] {data/LocationCorrectness.csv};
-    
   \end{axis}
   \end{tikzpicture}
-  \figcaption{Participant 2.}
-  \label{fig:participant-1}
+\subcaption{Participant 2.}
+\label{fig:participant-1}
 \end{subfigure}
 \begin{subfigure}{0.45\textwidth}
   \begin{tikzpicture}
@@ -174,13 +173,13 @@ As such it is easier to trigger actions that only have a single gesture associat
     \legend{Gesture, Action, Location};
   \end{axis}
   \end{tikzpicture}
-  \figcaption{Participant 6.}
-  \label{fig:participant-2}
+\subcaption{Participant 6.}
+\label{fig:participant-2}
 \end{subfigure}
 \caption{Average correctness rate for gestures, actions and locations for the participants who performed the best and worst respectively.}
 \end{figure}
 
-\begin{figure}[]
+\begin{figure}[h]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -205,9 +204,7 @@ As such it is easier to trigger actions that only have a single gesture associat
     \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
-\caption{All participants combined.
-Bars in order from left to right:
-\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}}
+\caption{All participants combined.}
 \end{figure}
 
 \subsection{Conclusion}
