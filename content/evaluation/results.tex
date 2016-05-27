@@ -19,7 +19,9 @@ The gestures used were:
   \item Zorro
 \end{itemize}
 
-The template library was cleared before each test so each participant was only using his own templates and not those created by others.
+The setup was limited to a subset of the smart devices and gestures presented in the scenario \cref{sec:analysis:scenarios}, because we did not have the necessary hardware and space available to perform a test of the entire scenario as well as to keep the invested time for each participant to a minimum, so it is more likely that they schedule time to participate in a test.
+
+The gesture templates stored in the database were removed before each test so each participant was only using his own templates and not those created by others.
 
 The participants were instructed how to perform the gestures but were allowed to scale them to their personal preference, eg.
 either create large circles or small circles.
@@ -51,7 +53,7 @@ Shelves\_Lamp\_Toggle   & V                   & Home Office                    \
 For each participant and task, the correctness ratio of the actions triggered was calculated as the \emph{number of times the intended action was triggered} divided by the \emph{number of attempts} and can be found in \cref{fig:user-test-action-correctness}.
 In the same manner, the correctness ratio for gestures and locations can be found in \cref{fig:user-test-gesture-correctness,fig:user-test-location-correctness}.
 For each participant, the average correctness rate for all actions, gestures, and locations can be found in \cref{table:user-task-averages}.
-\cref{fig:participant-average} shows the combined averages of all participents separated per task.
+\Cref{fig:participant-average} shows the combined averages of all participents separated per task.
 This shows that the locations is correctly identified in the majority of the cases with an average correctness ratio of 0.827020202, which is above the requirement specified in \cref{sec:requirements-specification}.
 The average correctness ratio of actions is well below 80\% with a combined average of 0.4361381674.
 Triggering the correct action less than half of the time is not a satisfactory result and is thusly something that needs to be looked into.
@@ -61,7 +63,7 @@ However differences between the average gesture correctness ratios of the partic
 The most noticable example is comparing \cref{fig:participant-1,fig:participant-2}.
 Something to note here is that both of these participants, as well as participant 1 experienced some technical difficulties which prevented them from completing the task.
 
-\begin{figure}
+\begin{figure}[!htb]
 \begin{longtable}{p{0.45\textwidth} p{0.45\textwidth}}
   \centering
   \begin{tikzpicture}
@@ -114,7 +116,7 @@ Something to note here is that both of these participants, as well as participan
 \caption{Average correctness ratio for gestures, actions and locations for the participants who performed the best and worst respectively.}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[!htb]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -153,5 +155,5 @@ Though the requirements were not fulfilled, the average correctness ratios seem 
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: t
+%%% TeX-master: "../../master"
 %%% End:
