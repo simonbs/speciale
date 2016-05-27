@@ -54,32 +54,23 @@ For each participant and task, the correctness rate of the actions triggered was
 In the same manner, the correctness rate for gestures and locations have been plotted in \cref{fig:user-test-gesture-correctness,fig:user-test-location-correctness}.
 For each participant, the average correctness rate for all actions, gestures, and locations can be found in \cref{table:user-task-averages}.
 \Cref{fig:participant-average} shows the combined averages of all participents separated per task.
-This shows that the locations is correctly identified in the majority of the cases with an average correctness rate of 0.827020202 which indicates that the positioning is reliable.
+
 The average correctness rate of actions is below the 80\% requirement specified in \cref{sec:requirements-specification} with a combined average of 0.4361381674.
 Triggering the correct action less than half of the time is not a satisfactory result and is thus something that needs to be looked into.
+The locations are correctly identified in the majority of the cases with an average correctness rate of 0.827020202 which indicates that the positioning is reliable.
 
 One source of the inaccuracy comes from the low average correctness rates of the gestures.
-\cref{fig:participant-average} shows that the gesture correctness rates are generally higher than those for actions with an average of 0.5567550505.
+\cref{fig:participant-average} shows that the gesture correctness rates are generally higher than those of actions with an average of 0.5567550505.
 However differences between the average gesture correctness rates of the participants are noticable.
 The most noticable example is comparing \cref{fig:participant-1,fig:participant-2}.
-Something to note here is that both of these participants, as well as participant 1 experienced some technical difficulties which prevented them from completing the task.
+Something to note here is that both of these participants, as well as participant 1 experienced some technical difficulties which prevented them from completing the \emph{Spotify\_PlayPause (Virtual)} task.
 Participant 2 has an average correctness rate for gestures of \emph{0.925} and participant 6 has an average correctness rate of \emph{0.2}.
 This is a significant difference and indicates that possibly something went wrong during the tests of participant 6, or the gesture recognizer is not capable of handling people with different capabilities of performing these gestures.
 
 Another source of the inaccuracy of actions is the way we have modeled the context engine.
 Loking at the corectness rates for \emph{Shelves_Lamp_Toggle} in \cref{fig:participant-1} shows that the correct gesture and location was always identified, yet the correct action was only triggered 40\% of the time.
 
-In a single trial of participant 2 the scores in \cref{table:participant-2-first-run} were recored.
-The gesture \emph{V} correctly received the highest belief in the \emph{Gesture} node but because \emph{V} is configured to be used with two actions, \emph{Shelves\_Lamp\_Toggle} as well as \emph{Architect\_Lamp\_Toggle}, the \emph{Gesture\_Action} node divides the belief amongst these.
-The  gesture \emph{Circle} did not match as well as \emph{V} and only recieved approximately half of the belief value of \emph{V}.
-However, since \emph{Circle} is only configured to trigger a single action, its belief value remains intact in the \emph{Gesture\_Action} node.
-This results in the beliefs of \emph{Spotify\_PlayPause} and \emph{Shelves\_Lamp\_Toggle} being approximately equivalent even after the location beliefs have been applied.
-
-As such it is more difficult to properly trigger actions where the gesture is configured to other actions as well, than triggering actions where the gesture is only configured for that one.
-
-As such it is easier to trigger actions that only have a single gesture associated with them than actions that have multiple.
-
-\begin{table}[]
+\begin{table}[h]
 \centering
 \begin{tabular}{|l|l|}
 \hline
@@ -117,10 +108,18 @@ TV\_Lamp\_Toggle           & 0                   \\ \hline
 \label{table:participant-2-first-run}
 \end{table}
 
+In a single trial of participant 2 the scores in \cref{table:participant-2-first-run} were recored.
+The gesture \emph{V} correctly received the highest belief in the \emph{Gesture} node but because \emph{V} is configured to be used with two actions, \emph{Shelves\_Lamp\_Toggle} as well as \emph{Architect\_Lamp\_Toggle}, the \emph{Gesture\_Action} node divides the belief amongst these.
+The  gesture \emph{Circle} did not match as well as \emph{V} and only recieved approximately half of the belief value of \emph{V}.
+However, since \emph{Circle} is only configured to trigger a single action, its belief value remains intact in the \emph{Gesture\_Action} node.
+This results in the beliefs of \emph{Spotify\_PlayPause} and \emph{Shelves\_Lamp\_Toggle} being approximately equivalent even after the location beliefs have been applied.
+
+As such it is more difficult to properly trigger actions where the gesture is configured to other actions as well, than triggering actions where the gesture is only configured for that one.
+
+As such it is easier to trigger actions that only have a single gesture associated with them than actions that have multiple.
 
 \begin{figure}[]
-\begin{longtable}{p{0.45\textwidth} p{0.45\textwidth}}
-  \centering
+\begin{subfigure}{0.45\textwidth}
   \begin{tikzpicture}
   \begin{axis}[
     ybar,
@@ -131,22 +130,21 @@ TV\_Lamp\_Toggle           & 0                   \\ \hline
     rotate=45,
     anchor=east,
     },
-    width=0.40\textwidth,
+    width=0.95\textwidth,
     ymin = 0,
     ymax = 1,
-    ylabel = correctness rate,
-    legend style={
-    at={(0,0)},
-    anchor=west, at={(axis description cs:1,0.5)}}]
+    ylabel = correctness rate
+    ]
     \addplot table[x=Row, y=2] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=2] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=2] {data/LocationCorrectness.csv};
-    \legend{Gesture, Action, Location}
+    
   \end{axis}
   \end{tikzpicture}
   \figcaption{Participant 2.}
   \label{fig:participant-1}
-&
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
   \begin{tikzpicture}
   \begin{axis}[
     ybar,
@@ -157,17 +155,21 @@ TV\_Lamp\_Toggle           & 0                   \\ \hline
     rotate=45,
     anchor=east,
     },
-    width=0.40\textwidth,
+    width=0.95\textwidth,
     ymin = 0,
-    ymax = 1]
+    ymax = 1,
+    legend style={
+    at={(0,0)},
+    anchor=west, at={(axis description cs:1,0.5)}}]
     \addplot table[x=Row, y=6] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=6] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=6] {data/LocationCorrectness.csv};
+    \legend{Gesture, Action, Location};
   \end{axis}
   \end{tikzpicture}
   \figcaption{Participant 6.}
   \label{fig:participant-2}
-\end{longtable}
+\end{subfigure}
 \caption{Average correctness rate for gestures, actions and locations for the participants who performed the best and worst respectively.}
 \end{figure}
 
@@ -189,7 +191,7 @@ TV\_Lamp\_Toggle           & 0                   \\ \hline
     ylabel = correctness rate,
     legend style={
     at={(0,0)},
-    anchor=north west, at={(axis description cs:1,0)}}]
+    anchor=west, at={(axis description cs:1,0.5)}}]
     \addplot table[x=Row, y=Average] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=Average] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=Average] {data/LocationCorrectness.csv};
@@ -204,9 +206,18 @@ Bars in order from left to right:
 \subsection{Conclusion}
 \label{sec:evaluation:user-tests-conclusion}
 
-Comparing the results with the requirements specified in\cref{sec:requirements-specification}, only the positioning part succeeded.
-The low successrate of actions is likely caused by the low successrate of the gesture but may also be due to the way we have modeled the Bayesian network.
-Though the requirements were not fulfilled, the average correctness rates seem promising and with a bit more work done on improving the gesture recognition, and a perhaps the Bayesian network this project seems feasible.
+From the results of the user tests we can see that the average correctness rate of actions falls below the 80\% stated in \cref{sec:requirements-specification} with a value of \emph{0.4361381674}.
+The two primary causes of this is likely the low average correctness rate of gestures and the way the context engine is modeled.
+
+The gesture recognition performs sufficiently well for some participants, like participant 2, but the correctness varies too much between different participants.
+The correctness rate of the gestures could perhaps be improved if the participants had been asked to practice the gestures before training and using them.
+It may also work better if the users were allowed to make up their own gestures instead of using the ones selected by us.
+
+The correctness rate of the actions could be improved by using a different model as the current model favors actions that have only a single gesture associated with it, as seen the example shown in \cref{table:participant-2-first-run}.
+An alternative model could be one where the \emph{Gesture} and \emph{Room} nodes were direct parents of the \emph{Action} node and removing the \emph{Gesture\_Action} and \emph{Room\_Action} nodes.
+
+Other alternative models are presented in \cref{sec:evaluation-alternative-models}.
+
 
 %%% Local Variables:
 %%% mode: latex
