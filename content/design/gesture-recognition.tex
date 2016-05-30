@@ -2,21 +2,29 @@
 \label{sec:design:gesture-recognition}
 
 As stated in \cref{sec:analysis:choice-of-gesture-recognizer} we decided to use the 1\textcent~gesture recognizer \cite{herold20121}.
-However as the 1\textcent~gesture recognizer is designed to be used for recognition of two-dimensional gestures we have created a modified version of it that is able to recognize three-dimensional gestures recorded using a three-axis accelerometer.
+However as the 1\textcent~gesture recognizer is designed to be used for recognition of two-dimensional gestures we have created a modified version of it that is able to recognize three-dimensional gestures recorded using a three-axis accelerometer by utilizing one of the techniques used by \$3~\cite{three-dollar}.
 
 \subsection{1\textcent~Gesture Recognizer}
 The 1\textcent~gesture recognizer by Herold \etal~is designed as an improvement to the 1\$ recognizer \cite{wobbrock2007gestures} by Wobbrock \etal~by removing computationally expensive rotate-and-check methods and instead using a one-dimensional representation of gestures that is rotation-invariant.
+This means that rather than attempting to rotate a given gesture trace to best match the stored templates, an alternative representation is used such that it does not matter how the trace is rotated.
 
 A gesture is recorded as a timeseries of two-dimensional coordinates which is then resampled to contain a fixed amount of points $N$.
 Herold \etal~use $N = 64$ to match Wobbrock \etal~but state that any value between 16 and 128 will suffice.
-Once a gesture has been resampled, the centroid is calculated and for each point in the gesture the euclidean distance between that point and the centroid is calculated and stored in an array.
+Once a gesture has been resampled, the centroid is calculated and for each point in the gesture the euclidean distance between that point and the centroid is calculated and stored in an array as shown in \cref{eq:one-cent-trace-duplicate}.
+
+\begin{figure}[h]
+\[ d = \{d_i,\ldots,d_N\} \text{ s.t. } d_i=||p_i-c|| \]
+\caption{Gesture trace representation in 3\textcent. $d$ is the gesture trace represented as distances to the centroid, $p_i$ is a point in the trace and $c$ is the centroid of the trace. Source:~\cite{herold20121}}
+\label{eq:one-cent-trace-duplicate}
+\end{figure}
+
 This array of distances to the centroid is the one-dimensional representation of a gesture. Herold \etal~calls this a template.
 
 When attempting to recognize an input from a user, the input is resampled and converted to a template in the same way to enable comparison between the input and the stored templates.
 Comparison between the input and a template is done by calculating the distance between the input and each stored templated using \cref{eq:one-cent-l-squared}.
 The template with the lowest $L^2$ distance to the input is the best match.
 
-\begin{figure}
+\begin{figure}[h]
 \begin{equation}
 L^{2}(v_1, v_2) = \lvert\lvert v_1 - v_2 \rvert\rvert^2
 \label{eq:one-cent-l-squared}
@@ -33,24 +41,21 @@ The $z$-axis is ignored for the sake of the argument.
 This is illustrated by the two blue arrows in \cref{fig:accelerometerpoints}.
 If these two measurements are used as coordinates for the gesture, it would end up looking like the gesture shown in \cref{fig:accelerometerpath}.
 
-The proper path is illustrated in \cref{fig:acceleromterpath-proper}.
-The way we achieve the proper path is by borrowing a technique from \cite{threedollar} where acceleration deltas are acquired by subtracting the current measurement from the previos one, and finally summing all the deltas to get the path.
-
-\begin{figure}
-    \begin{subfigure}{.5\linewidth}
-    \resizebox{\linewidth}{!}{
-        % Pure accelerometer points
-        \begin{tikzpicture}
-            \draw[gray, ->, thick] (0,-5) -- (0,5) node[left] {$y$};
-            \draw[gray, ->, thick] (-5,0) -- (5,0) node[below] {$x$};
-            \draw[blue, ->, thick] (0,0) -- (4,0);
-            \draw[blue, ->, thick] (0,0) -- (0,4);
-            \filldraw[red] (0,0) circle (2pt);
-        \end{tikzpicture}
-    }
-    \caption{Two accelerometer measurements $\{4,0\}$ and $\{0,4\}$}
+\begin{figure}[h]
+\centering
+% Pure accelerometer points
+\begin{tikzpicture}
+    \draw[gray, ->, thick] (0,-5) -- (0,5) node[left] {$y$};
+    \draw[gray, ->, thick] (-5,0) -- (5,0) node[below] {$x$};
+    \draw[blue, ->, thick] (0,0) -- (4,0);
+    \draw[blue, ->, thick] (0,0) -- (0,4);
+    \filldraw[red] (0,0) circle (2pt);
+\end{tikzpicture}
+\caption{Two consecutive accelerometer measurements $\{4,0\}$ and $\{0,4\}$. Accelerations are measured in $\frac{m}{s^2}$}
 \label{fig:accelerometerpoints}
-    \end{subfigure}
+\end{figure}
+
+\begin{figure}[h]
     \begin{subfigure}{.5\linewidth}
     \resizebox{\linewidth}{!}{
         % Pure accelerometer path
@@ -63,23 +68,32 @@ The way we achieve the proper path is by borrowing a technique from \cite{threed
             \filldraw[black] (0,4) circle (2pt);
         \end{tikzpicture}
     }
-    \caption{Path drawn between the measured points.}
+    \caption{Path drawn between the measured points by using measurements as coordinates.}
 \label{fig:accelerometerpath}
     \end{subfigure}
-\caption{ }
+    \begin{subfigure}{.5\linewidth}
+    \resizebox{\linewidth}{!}{
+        % 3$ path
+        \begin{tikzpicture}[scale=0.6]
+        \draw[gray, ->, thick] (0,-5) -- (0,5) node[left] {$y$};
+        \draw[gray, ->, thick] (-5,0) -- (5,0) node[below] {$x$};
+        \draw[black, thick] (0,0) -- (4,0) -- (4,4);
+        \filldraw[red] (0,0) circle (2pt);
+        \filldraw[black] (4,0) circle (2pt);
+        \filldraw[black] (4,4) circle (2pt);
+        \end{tikzpicture}
+    }
+    \caption{The proper path of the accelerometer-recorded gesture by adding acceleration deltas together.}
+\label{fig:acceleromterpath-proper}
+    \end{subfigure}
+\caption{Minimalistic example of the difference between using accelerometer measurements directly as coordinates in a gesture trace compared to adding acceleration deltas together as in \$3.}
 \end{figure}
 
-\begin{figure}
-\centering
-% 3$ path
-\begin{tikzpicture}[scale=0.6]
-\draw[gray, ->, thick] (0,-5) -- (0,5) node[left] {$y$};
-\draw[gray, ->, thick] (-5,0) -- (5,0) node[below] {$x$};
-\draw[black, thick] (0,0) -- (4,0) -- (4,4);
-\filldraw[red] (0,0) circle (2pt);
-\filldraw[black] (4,0) circle (2pt);
-\filldraw[black] (4,4) circle (2pt);
-\end{tikzpicture}
-\caption{The proper path of the accelerometer-recorded gesture.}
-\label{fig:acceleromterpath-proper}
+The proper path is illustrated in \cref{fig:acceleromterpath-proper}.
+The way we achieve the proper path is by borrowing a technique from~\cite{threedollar} where acceleration deltas are acquired by subtracting the current measurement from the previous one, and finally summing all the deltas to get the path as in \cref{eq:acceleration-timeseries-duplicate}.
+
+\begin{figure}[h]
+\[ T = \{p_1,\ldots,p_X\} \text{ s.t. } p_i=a_i-a_{i-1} \]
+\caption{Gesture trace representation in \$3. $T$ is the gesture trace, $a_i$ is an accelerometer measurement and $X$ is the number of accelerations measured.}
+\label{eq:acceleration-timeseries-duplicate}
 \end{figure}
