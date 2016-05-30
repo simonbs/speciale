@@ -1,6 +1,40 @@
 \section{Future Work}
 \label{sec:conclusion:future-work}
 
+Based on the evaluation presented in \cref{chap:evaluation} and the project results presented in \cref{sec:results}, we believe that a contet-aware smart home controlled using gestures is feasible in the future. 
+In this section, we present functionality and design changes that it would make sense to investigate, in case future work is to be done on the project.
+
+\subsection{Continuous Recognition of Gestures}
+
+Investigation of battery efficient approaches for continuous gesture recognition could be beneficial. The curent implementation requires the user to open the Andorid Wear application, tap to start recognizing a gesture, perform the gesture and then tap again to stop the gesture recognition. From the tests we conducted with users, we found the approach to be unsuitable as starting the recognition must be done with the arm on which the watch is mounted, held in a position ready to do the gesture when starting and stopping the gesture must be done in the position where the gesture ended.
+
+In order to avoid this, we imagine a solution where smart watch continuously attempt to recognize gestures based on accelerometer data, even when the smart watch application is put in the background. Such a solution would solve the following two issues.
+
+\begin{description}
+\item[The need to open the application to perform recognition] When gesture recognition can be done with the application put into the background, i.e. not launched and visible on the screen of the smart watch, there is no longer a need to open the application thus making it faster to control the smart home using gestures.
+\item[Starting and stopping the recognition] The user no longe rhas to manually start and stop the gesture recognizing after performing each gesture. The continuous gesture recognizer should automatically detect when the user starts performing a gesture and when he stops performing it.
+\end{description}
+
+Research in continuous gesture recognition, or \emph{real time gesture recognition} as Gillian et.al. refers to it has been performed in \cite{gillian2014gesture}. The authors have implemented a solution for continuous recognition using a Kinect infrared camera to detet motions and claim that it works with other sensor data as well, e.g. accelerations from an accelerometer. The article does not state an accuracy of the recognition.
+
+\subsection{Inclusion of System State}
+
+In the design of the Bayesian network used for context recognition (see \ref{sec:design:bayesian-network}) we introduced the state of the system as contextual information and as explained in \cref{sec:implementation:status}, the functionality was not implemented.
+
+The idea of introducing the state of the system, is to give lower probability to actions that it does not make sense to trigger given the state of the system. For example, an action fo changing channel on the television would have lower probability when the teleivison is turned off, than when it is turned on. 
+
+When not including the system state, it may be that the context engine suggests actions that it does not make sense to perform and since it is fair to assume that the user knows at least part of the system state, the suggested action may not be the intended one. By including the system state, we could potentially reduce the risk of suggesting undesired actions.
+
+\subsection{Inclusion of User History}
+
+Looking into further further inclusion of concepts from machine intelligence could pose interesting possibilities for the project. Using machine intelligence, attempts to suggest user actions based on his historical behaviour could be made or the beliefs of nodes in the Bayesian network could be adjusted based on historical data. For example, if the system detects that the user is often in a specific room at a specific time of the day, we may put a stronger belief on that room at that time of the day. It is also a possibility, that we can detect actions the user is likely to trigger at certain times of the day. If the user often turns on specific lights when he gets home from work at 17:00, we could put a stronger belief on the actions turning those lights on.
+
+Short-term historical data, i.e. data of the users behaviour collected just few minutes or hours ago, could be used to further determine the context the user is in. If he interacted with his television a few minutes ago, we may be able to increase our belief of actions related to the television. This is based on the assumption that if the user recently interacted with his television, he may want to interact with it again, e.g. to change channel or adjust the volume. Further research into the behaviour of users in a smart home and their interactions with electronic devices could help confirm of dismiss the hypothesis.
+
+\subsection{Investigate Alternative Designs for Context Recognition}
+
+
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../master"
