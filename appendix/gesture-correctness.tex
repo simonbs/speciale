@@ -246,8 +246,8 @@ Bars in order from left to right:
     \addplot table[x=Row, y=4] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=5] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=6] {data/ActionCorrectnessTransposed.csv};
-    \addplot table[x=Row, y=7] {data/ActionCorrectnessTransposed.csv};
-    \addplot table[black, x=Row, y=Average] {data/ActionCorrectnessTransposed.csv};
+    \addplot[fill=black!10!yellow] table[x=Row, y=7] {data/ActionCorrectnessTransposed.csv};
+    \addplot[fill=black!10!orange] table[x=Row, y=Average] {data/ActionCorrectnessTransposed.csv};
     \legend{P1, P2, P3, P4, P5, P6, P7, All}
   \end{axis}
 \label{fig:user-test-action-correctness}
@@ -280,8 +280,8 @@ The last group of bars is the average correctness rate per user, across all acti
     \addplot table[x=Row, y=4] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=5] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=6] {data/GestureCorrectness.csv};
-    \addplot table[x=Row, y=7] {data/GestureCorrectness.csv};
-    \addplot table[x=Row, y=Average] {data/GestureCorrectness.csv};
+    \addplot[fill=black!10!yellow] table[x=Row, y=7] {data/GestureCorrectness.csv};
+    \addplot[fill=black!10!orange] table[x=Row, y=Average] {data/GestureCorrectness.csv};
     \legend{P1, P2, P3, P4, P5, P6, P7, All}
 \end{axis}
 \end{tikzpicture}
@@ -314,8 +314,8 @@ The last group of bars is the average correctness rate per user, across all gest
         \addplot table[x=Row, y=4] {data/LocationCorrectness.csv};
         \addplot table[x=Row, y=5] {data/LocationCorrectness.csv};
         \addplot table[x=Row, y=6] {data/LocationCorrectness.csv};
-        \addplot table[x=Row, y=7] {data/LocationCorrectness.csv};
-        \addplot table[x=Row, y=Average] {data/LocationCorrectness.csv};
+        \addplot[fill=black!10!yellow] table[x=Row, y=7] {data/LocationCorrectness.csv};
+        \addplot[fill=black!10!orange] table[x=Row, y=Average] {data/LocationCorrectness.csv};
         \legend{P1, P2, P3, P4, P5, P6, P7, All}
     \end{axis}
     \end{tikzpicture}
@@ -323,3 +323,8 @@ The last group of bars is the average correctness rate per user, across all gest
 The last group of bars is the average correctness rate per user, across all gestures.}
 \label{fig:user-test-location-correctness}
 \end{figure}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../master"
+%%% End:
