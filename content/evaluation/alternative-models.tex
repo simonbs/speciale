@@ -1,6 +1,5 @@
 \section{Alternative Models}
-\label{sec:evaluation-alternative-models}
-\todo[author=Kasper]{Endnu ikke skrevet}
+\label{sec:evaluation:alternative-models}
 
 When seeing the results of the user test presented in \cref{sec:evaluation:user-tests} and finding that the accuracy of the system is roughly 44\%, i.e. the correct action is triggered in 44\% of the cases, we started considering if alternative models for the context engine would be better suited or if improvements to the current model would address the issues.
 
@@ -36,6 +35,43 @@ When testing the Bayesian network with a subset of the recorded data during the 
 \label{fig:evaluation:alternative-models:hugin-influence-diagram}
 \end{figure}
 
+\subsection{Calculation of Gesture Beliefs}
+
+In \Cref{sec:design:bayesian-network:gesture-node-evidence} the computation of beliefs on the Gesture node in the Bayesian network is specified. We only consider gesture templates with a score of 70 or below and then compute the average score. We found that this approach may cause issues, because a single gesture template may have a very low score but all other gesture templates with the same name have very high scores, thus the single gesture template is an outlier potentially causing us to consider an incorrect gesture recognized.
+
+Instead we propose computing the average before filtering the gesture templates. Naturally, the average of each gesture will be larger as we include templates with a higher score in the computation and as such the threshold for accepted gesture should be higher.
+
+Using the scores of the gestures performed by participant 7 in the user test, we computed how many actions would be correctly triggered when computing the average of the scores first and then filter them based on a threshold. We chose a threshold of 100. We found that 45\% of the actions were correctly triggered when we adjusted the computations of the gesture beliefs. This is in contrary to 41\% before the adjustments were made. While the adjustments are not a big impact, this can be considered an indication that the computations of beliefs in the Gesture node should have been performed differently.
+
+We also found that when changing the way we compute beliefs for the Gesture node, we are generally able to put a greater belief on the correct action. This is examplified in \Cref{sec:evaluation:alternative-models:improved-action-beliefs}. The beliefs are taken from a scenario where the user desires to trigger the \emph{Spotify\_PlayPause} action. Note that in the beliefs before the improvements to the computations, \emph{Spotify\_Next} has the greatest belief where as after the improvements are made, the \emph{Spotify\_PlayPause} has the highest belief.
+The average score used when computing the improved beliefs are shown in \Cref{sec:evaluation:alternative-models:improved-gesture-beliefs}. Note that only the Circle and V gestures have an average score below 100 and thus only those two gestures are assigned a belief greater than zero. Before improving the computations, all four gestures were assigned a belief greater than zero.
+
+\begin{table}[]
+\centering
+\caption{Example beliefs of the Gesture node for participant 7 when attempting to trigger an action. The beliefs are shown before the computations were improved and after.}
+\label{sec:evaluation:alternative-models:improved-action-beliefs}
+\begin{tabular}{lll}
+\textbf{Action}         & \textbf{Belief before} & \textbf{Belief after} \\
+Spotify\_PlayPause      & 28.39                                              & 42.24                                             \\
+Spotify\_Next           & 30.06                                              & 16.67                                             \\
+Shelves\_Lamp\_Toggle   & 22.87                                              & 28.88                                             \\
+Architect\_Lamp\_Toggle & 6.20                                               & 12.21                                             \\
+TV\_Lamp\_Toggle        & 12.48                                              & 0                                                 
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+AA\caption{Average scores of gestures used when computing the beliefs for the ``Belief after'' column shown in \cref{sec:evaluation:alternative-models:improved-beliefs}.}
+\label{sec:evaluation:alternative-models:improved-gesture-beliefs}
+\begin{tabular}{ll}
+\textbf{Gesture}    & \textbf{Score} \\
+Circle              & 89.80          \\
+Swipe Left to Right & 116.03         \\
+V                   & 94.03          \\
+Zorro               & 110.54         
+\end{tabular}
+\end{table}
 
 %%% Local Variables:
 %%% mode: latex
