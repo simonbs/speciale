@@ -3,7 +3,7 @@
 
 The following section describes how the evidence assigned to the states in the Gesture node of the Bayesian network is determined. In order to determine the evidence, we introduce the \emph{gesture context provider}.
 
-The gesture context provider determines the actions that make sense to trigger based on the motion performed by the user. When the user performs a motion, the gesture recognizer scores the trained gestures as explained in \cref{sec:design:gesture-recognition}. When the gestures are scored, they are passed to the context provider which calculates the probabilities of each action associated with the gesture. 
+The gesture context provider determines the actions that make sense to trigger based on the motion performed by the user. When the user performs a motion, the gesture recognizer scores the trained gestures as explained in \Cref{sec:design:gesture-recognition}. When the gestures are scored, they are passed to the context provider which calculates the probabilities of each action associated with the gesture. 
 
 Because the gesture recognizer scores all trained templates, gestures that are obviously not correct are returned by the gesture recognizer. Therefore we introduce a threshold which the gesture scores must be below to be considered. We only consider gestures with a score of 70 or below. The threshold of 70 was determined by considering the scores of multiple gesture samples and we found that generally, gestures with a score of 70 or below can be considered as a properly recognized gesture.
 

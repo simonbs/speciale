@@ -6,7 +6,7 @@ This section presents the prototype of the Android Wear application as well as t
 \subsection{Android Wear}
 \label{sec:implementation:prototype:android-wear}
 
-\Cref{fig:implementation:prototype:navigation-diagram} shows a navigation diagram of the smart watch application. The letters in the top right corner of the nodes in the diagram references the screenshots shown in \cref{fig:implementation:prototype:screenshots}.
+\Cref{fig:implementation:prototype:navigation-diagram} shows a navigation diagram of the smart watch application. The letters in the top right corner of the nodes in the diagram references the screenshots shown in \Cref{fig:implementation:prototype:screenshots}.
 
 The diagram shows that the application can be considered divided into the following two areas.
 
@@ -17,12 +17,12 @@ The diagram shows that the application can be considered divided into the follow
 
 When opening the application, the user is presented with a screen to perform gesture recognition. This enables the user to start context recognition fast, whereas he needs to dive deeper into the navigation in order to train gestures and create gesture configurations, i.e. features that he will not use as often as the context recognition.
 
-For a list of the supported features in the application, please refer to \cref{sec:implementation:status}.
+For a list of the supported features in the application, please refer to \Cref{sec:implementation:status}.
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.7\textwidth]{images/wear-navigation-diagram}
-    \caption{Navigation diagram of the application developed for the Android Wear device. Letters in the top right corner of each node refers to the screenshots in figure \cref{fig:implementation:prototype:screenshots}.}
+    \caption{Navigation diagram of the application developed for the Android Wear device. Letters in the top right corner of each node refers to the screenshots in figure \Cref{fig:implementation:prototype:screenshots}.}
     \label{fig:implementation:prototype:navigation-diagram}
 \end{figure}
 
@@ -68,7 +68,7 @@ We chose to place the configuration of the rooms and beacons in openHAB, as this
 
 The rooms and beacons are synchronized to the smart watch when the application is loaded. The watch use the models when positioning the user.
 
-A room has a name and when it is created, openHAB assigns it a UID. When creating a beacon, the user must enter the UID assigned by openHAB in order to specify which room the beacon is placed in. Furthermore the user should enter the Eddystone namespace and instance, both described in \cref{sec:design:ble-positioning}. This identifies the specific beacon. When the smart watch registers a beacon, it can determine which room the user is in by the beacons reference to a room.
+A room has a name and when it is created, openHAB assigns it a UID. When creating a beacon, the user must enter the UID assigned by openHAB in order to specify which room the beacon is placed in. Furthermore the user should enter the Eddystone namespace and instance, both described in \Cref{sec:design:ble-positioning}. This identifies the specific beacon. When the smart watch registers a beacon, it can determine which room the user is in by the beacons reference to a room.
 
 % \begin{figure}[!htb]%
 %     \centering

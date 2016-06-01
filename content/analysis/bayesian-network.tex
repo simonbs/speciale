@@ -4,7 +4,7 @@ Determining the correct action to trigger based on the contextual information is
 
 A Bayesian network is modelled as a graph which is composed of nodes and edges between the nodes. Each node in the network represents a variable and edges connect two nodes. If there is a causal relationship between two nodes, the edge is directed. If there is only some correlation between two nodes, the edge is undirected \cite{stephenson2000introduction}.
 
-Two nodes, A and C are said to be conditionally independent if there is no edge between them. If we introduce a variable B and directed edges from B to A and B to C, both A and B are said to be dependent on B. B is totally independent because it does not depend on other nodes where as A and B are said to be conditionally independent given B \cite{stephenson2000introduction}. The network is illustrated in figure \cref{fig:analysis:bayesian-network:abc}.
+Two nodes, A and C are said to be conditionally independent if there is no edge between them. If we introduce a variable B and directed edges from B to A and B to C, both A and B are said to be dependent on B. B is totally independent because it does not depend on other nodes where as A and B are said to be conditionally independent given B \cite{stephenson2000introduction}. The network is illustrated in figure \Cref{fig:analysis:bayesian-network:abc}.
 
 \begin{figure}[h!]
 \centering
@@ -15,31 +15,31 @@ Two nodes, A and C are said to be conditionally independent if there is no edge 
 
 For each variable in the Bayesian network there is a probability distribution function which depends on the edges leading into the variable. Probability distribution functions can be illustrated using \emph{probability tables}. A probability table is said to be \emph{conditional}, i.e. it is a \emph{conditional probability table} if the variable to which the table belongs depends on one or more variables.
 
-Probabilities are denoted $P(A|B)$, meaning the probability of A given B. An alternative notation is $P(A=a|B=b)$, meaning the probability of variable $A$ having value, also referred to as being \emph{in state}, $a$ when $B$ is in state $b$. $P(A|B,C) = P(A|B)$ when A and C are conditionally independent as is the case in \cref{fig:analysis:bayesian-network:abc}. The joint distribution of nodes, $X = X_1,\ldots,X_n$, in a network is 
+Probabilities are denoted $P(A|B)$, meaning the probability of A given B. An alternative notation is $P(A=a|B=b)$, meaning the probability of variable $A$ having value, also referred to as being \emph{in state}, $a$ when $B$ is in state $b$. $P(A|B,C) = P(A|B)$ when A and C are conditionally independent as is the case in \Cref{fig:analysis:bayesian-network:abc}. The joint distribution of nodes, $X = X_1,\ldots,X_n$, in a network is 
 
 \begin{equation}
 \label{eq:analysis:bayesian-network:prod}
 P(X) = \displaystyle \prod_{i=1}^{n} P(X_i|parents(X_i))
 \end{equation}
 
-In case of the network illustrated in \cref{fig:analysis:bayesian-network:abc}, the joint distribution of all variables is
+In case of the network illustrated in \Cref{fig:analysis:bayesian-network:abc}, the joint distribution of all variables is
 
 \begin{equation}
 P(A, B, C) = P(A|B) \cdot P(B) \cdot P(C|B)
 \end{equation}
 
-We also have that if the node $x_0$ does not depend on $x_n$, then we can remove $x_n$ when calculating the probability of $x_0$ as shown in \cref{eq:analysis:bayesian-network:not-child} \cite{stephenson2000introduction}.
+We also have that if the node $x_0$ does not depend on $x_n$, then we can remove $x_n$ when calculating the probability of $x_0$ as shown in \Cref{eq:analysis:bayesian-network:not-child} \cite{stephenson2000introduction}.
 
 \begin{equation}
 \label{eq:analysis:bayesian-network:not-child}
 P(x_0|x_1,\ldots,x_n,\ldots,x_k) = P(x_0|x_1,\ldots,x_{n-1},x_{n+1},\ldots,x_k)
 \end{equation}
 
-A graphical model of a Bayesian network consists of $K$, a set of nodes, $E$ a set of edges between the nodes and $P$, a set of probability distributions for each variable \cite{stephenson2000introduction}. In case of \cref{fig:analysis:bayesian-network:abc} $K = \{A, B, C\}$ and $E = \{\{B, A\}, \{B,C\}\}$. An example definition of $P$ can be the probability table and conditional probability tables shown in \cref{tbl:analysis:bayesian-network:abc-tables}. For example, the tables show that $P(B=Yes) = 0.3$ and $P(A=No|B=Yes) = 0.8$. This is the \emph{prior distribution}, i.e. our beliefs before any evidence is observed.
+A graphical model of a Bayesian network consists of $K$, a set of nodes, $E$ a set of edges between the nodes and $P$, a set of probability distributions for each variable \cite{stephenson2000introduction}. In case of \Cref{fig:analysis:bayesian-network:abc} $K = \{A, B, C\}$ and $E = \{\{B, A\}, \{B,C\}\}$. An example definition of $P$ can be the probability table and conditional probability tables shown in \Cref{tbl:analysis:bayesian-network:abc-tables}. For example, the tables show that $P(B=Yes) = 0.3$ and $P(A=No|B=Yes) = 0.8$. This is the \emph{prior distribution}, i.e. our beliefs before any evidence is observed.
 
 \begin{table}[h!]
 \centering
-\caption{Sample probability table and conditional probability tables for nodes A, B and C in the network illustrated in \cref{fig:analysis:bayesian-network:abc}.}
+\caption{Sample probability table and conditional probability tables for nodes A, B and C in the network illustrated in \Cref{fig:analysis:bayesian-network:abc}.}
 \label{tbl:analysis:bayesian-network:abc-tables}
 \begin{tabular}{ccc}
 \begin{tabular}{c}
@@ -80,7 +80,7 @@ As per Kjærulff \etal\cite[pp. 23-24]{kjaerulff2008bayesian} we distinquish bet
 
 \emph{Bayesian inference} or \emph{belief propagation} is the action of updating beliefs of variables when evidence is observed in the network. This means that the \emph{posterior distribution}, i.e. the probability after evidence is observed, is computed.
 
-$x_1,\ldots,x_n$ be the prior distributions for node $X$ with $n$ states and $\epsilon$ the soft evidence observed for $X$ where $\epsilon_i$ is the soft evidence for state $x_i$. Then the posterior probability of $x_i$, $P(x_{b,i})$ is computed as shown in \cref{eq:analysis:bayesian-network:soft-evidence}.
+$x_1,\ldots,x_n$ be the prior distributions for node $X$ with $n$ states and $\epsilon$ the soft evidence observed for $X$ where $\epsilon_i$ is the soft evidence for state $x_i$. Then the posterior probability of $x_i$, $P(x_{b,i})$ is computed as shown in \Cref{eq:analysis:bayesian-network:soft-evidence}.
 
 \begin{equation}
 \label{eq:analysis:bayesian-network:soft-evidence}
@@ -94,7 +94,7 @@ P(x_{b,i}) = \frac{x_i \cdot \epsilon_i}{\sum\limits_{i=1}^n x_n \cdot \epsilon_
 % P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
 % \end{equation}
 
-% The equation can also be written as shown in \cref{sec:analysis:bayesian-network:bayes-theorem-alt} because the probability of event B occuring when we have evidence on event A and event A occurring, is the same as events A and B occurring at the same time \cite{stephenson2000introduction}.
+% The equation can also be written as shown in \Cref{sec:analysis:bayesian-network:bayes-theorem-alt} because the probability of event B occuring when we have evidence on event A and event A occurring, is the same as events A and B occurring at the same time \cite{stephenson2000introduction}.
 
 % \begin{equation}
 % \label{sec:analysis:bayesian-network:bayes-theorem-alt}
@@ -119,18 +119,18 @@ The Hugin Decision Engine provide funtionalities for constructing, learning and 
 The graphical user interface builds on top of the decision engine to provide an easy-to-use interface for creating and running Bayesian networks and influence diagrams \cite{jensen2005hugin}.
 
 \Cref{fig:design:bayesian-network:hugin-functionality-running,fig:design:bayesian-network:hugin-functionality-editing} shows screenshots of the Hugin graphical user interface.
-In \cref{fig:design:bayesian-network:hugin-functionality-running} the screen is split vertically, showing the network on the right-hand side and the beliefs and evidence of all nodes on the left-hand side. In \cref{fig:design:bayesian-network:hugin-functionality-editing} the screen is split horizontally showing the network at the bottom and the probability tables and conditional probability tables at the top.
+In \Cref{fig:design:bayesian-network:hugin-functionality-running} the screen is split vertically, showing the network on the right-hand side and the beliefs and evidence of all nodes on the left-hand side. In \Cref{fig:design:bayesian-network:hugin-functionality-editing} the screen is split horizontally showing the network at the bottom and the probability tables and conditional probability tables at the top.
 
 The features of the software used in this project is highlighted on the screenshots with black cirtcles and annotated with a letter referencing the below description of the features.
 
 \begin{enumerate}[label=\Alph*.]
-\item Enter editing mode shown in \cref{fig:design:bayesian-network:hugin-functionality-editing}. The mode is used when editing edges, nodes and probabilitiy tables in the network.
-\item Enter running mode shown in \cref{fig:design:bayesian-network:hugin-functionality-running}. The mode is used when computing beliefs in the network given some evidence on the nodes.
+\item Enter editing mode shown in \Cref{fig:design:bayesian-network:hugin-functionality-editing}. The mode is used when editing edges, nodes and probabilitiy tables in the network.
+\item Enter running mode shown in \Cref{fig:design:bayesian-network:hugin-functionality-running}. The mode is used when computing beliefs in the network given some evidence on the nodes.
 \item Indicates hard evidence on one of the states in the node.
 \item Indicates soft evidence on one of the states in the node.
-\item Green bars show beliefs of states in a node. For example, in \cref{fig:design:bayesian-network:hugin-functionality-editing} the ``Television: on/off'' state of the Action node has a belief of 28.61\%.
-\item Blue bars show soft evidence on states of a node. For example, in \cref{fig:design:bayesian-network:hugin-functionality-editing} the ``Bedroom'' state of the Room node has soft evidence of 80\% where as the ``Living room'' state has soft evidence of 20\%.
-\item Red bars show hard evidence on one of the states in the node. For example, in \cref{fig:design:bayesian-network:hugin-functionality-editing} hard evidence is applied to the ``Yes'' state of the TV\_IsOn node.
+\item Green bars show beliefs of states in a node. For example, in \Cref{fig:design:bayesian-network:hugin-functionality-editing} the ``Television: on/off'' state of the Action node has a belief of 28.61\%.
+\item Blue bars show soft evidence on states of a node. For example, in \Cref{fig:design:bayesian-network:hugin-functionality-editing} the ``Bedroom'' state of the Room node has soft evidence of 80\% where as the ``Living room'' state has soft evidence of 20\%.
+\item Red bars show hard evidence on one of the states in the node. For example, in \Cref{fig:design:bayesian-network:hugin-functionality-editing} hard evidence is applied to the ``Yes'' state of the TV\_IsOn node.
 \item Example of a conditional probability table in which probabilities given some states are entered. The first column in the screenshot configures the probabilities for both the System\_State, Room\_Action and Gesture\_Action nodes being in state ``Music centre: play/pause''. Note that Hugin supports normalizing the probabilities.
 \end{enumerate}
 

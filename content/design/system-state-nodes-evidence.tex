@@ -1,7 +1,7 @@
 \subsection{Evidence in System State Nodes}
 \label{sec:design:bayesian-network:system-state-nodes-evidence}
 
-In \cref{fig:design:bayesian-network:overview} we suggested two nodes that supply information about the system state. The TV\_IsOn supplies information about whether not the television is on and the MusicCentre\_IsPlaying node supplies information on whether or not the music centre is playing music. Naturally these are examples of nodes that can describe the state of the system. Other examples can include if a lamp is on or not, a door is locked or unlocked or who is home.
+In \Cref{fig:design:bayesian-network:overview} we suggested two nodes that supply information about the system state. The TV\_IsOn supplies information about whether not the television is on and the MusicCentre\_IsPlaying node supplies information on whether or not the music centre is playing music. Naturally these are examples of nodes that can describe the state of the system. Other examples can include if a lamp is on or not, a door is locked or unlocked or who is home.
 
 Evidence on the system state nodes in the uppermost level is likely to be hard evidence, assuming that the state of the system retrieved from openHAB can be trusted. There could be cases where the system state returned by openHAB is not the correct state. The following are examples of cases where we may not be able to trust the state stored in openHAB.
 

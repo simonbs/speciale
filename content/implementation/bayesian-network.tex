@@ -1,19 +1,19 @@
 \section{Bayesian Network}
 \label{sec:implementation:bayesian-network}
 
-In \cref{sec:analysis:recommender-systems,sec:design:bayesian-network} we described our motivation to use a Bayesian network for determining the appropriate action to trigger given a context. In order to save time on the implementation of the Bayesian network, we decided investigate third party implementations.
+In \Cref{sec:analysis:recommender-systems,sec:design:bayesian-network} we described our motivation to use a Bayesian network for determining the appropriate action to trigger given a context. In order to save time on the implementation of the Bayesian network, we decided investigate third party implementations.
 
 Our requirements for the implementation were the following:
 
 \begin{itemize}
 \item The implementation should be correct, i.e. given a set of nodes with states, edges, probabilities and evidence the computed belief of the nodes should be correct.
-\item The implementation should support soft evidence as described in \cref{sec:design:bayesian-network}.
+\item The implementation should support soft evidence as described in \Cref{sec:design:bayesian-network}.
 \item The implementation should be written in Java.
 \end{itemize}
 
 We chose to only consider implementations written in Java as we are familiar with the language and we were confident that implementations written in Java would run on Android platforms with only little work required. 
 
-The correctness of the implementation was validated using Hugin, a decision making tool previously described in \cref{sec:analysis:bayesian-network:hugin}. Given a set of nodes with states, edges, probabilities and evidence on the states, the resulting belief of the states should equal the resulting belief when the same configurations were made in Hugin.
+The correctness of the implementation was validated using Hugin, a decision making tool previously described in \Cref{sec:analysis:bayesian-network:hugin}. Given a set of nodes with states, edges, probabilities and evidence on the states, the resulting belief of the states should equal the resulting belief when the same configurations were made in Hugin.
 
 When investigating third party solutions, we found that only few implementations supported soft evidence. Since we utilize this in the design of the Bayesian network, the implementation must support it. 
 

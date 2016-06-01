@@ -1,7 +1,7 @@
 \section{Bayesian Network}
 \label{sec:design:bayesian-network}
 
-The network is illustrated in \cref{fig:design:bayesian-network:overview}. We consider there to be the following three levels in the network.
+The network is illustrated in \Cref{fig:design:bayesian-network:overview}. We consider there to be the following three levels in the network.
 
 \begin{itemize}
 \item The uppermost level containing the ``Gesture'', ``Room'', ``TV\_IsOn'' and ``MusicCentre\_IsPlaying'' nodes provides contextual information.
@@ -11,7 +11,7 @@ The network is illustrated in \cref{fig:design:bayesian-network:overview}. We co
 
 The benefit of this structure is, that contextual information such as the performed gesture and the users position is always translated to probabilities for actions and these probabilities are independent of other contextual information that we may observe. When the contextual information is modelled as probabilities for actions, it becomes trivial to combine all the contextual information to choose the right action to perform.
 
-The probability tables and conditional probability tables shown in \cref{tbl:design:bayesian-network:pt-gesture-room,tbl:design:bayesian-network:pt-tv-ison-musiccentre-isplaying,tbl:design:bayesian-network:cpt-gesture-action,tbl:design:bayesian-network:cpt-room-action,tbl:design:bayesian-network:cpt-system-state-action,tbl:design:bayesian-network:cpt-action} only show selected states. In reality, the tables include states for all gestures, rooms and actions in the system but some have been left out for readability purposes.
+The probability tables and conditional probability tables shown in \Cref{tbl:design:bayesian-network:pt-gesture-room,tbl:design:bayesian-network:pt-tv-ison-musiccentre-isplaying,tbl:design:bayesian-network:cpt-gesture-action,tbl:design:bayesian-network:cpt-room-action,tbl:design:bayesian-network:cpt-system-state-action,tbl:design:bayesian-network:cpt-action} only show selected states. In reality, the tables include states for all gestures, rooms and actions in the system but some have been left out for readability purposes.
 
 \begin{figure}[h!]
 \centering
@@ -20,7 +20,7 @@ The probability tables and conditional probability tables shown in \cref{tbl:des
 \label{fig:design:bayesian-network:overview}
 \end{figure}
 
-\Cref{tbl:design:bayesian-network:pt-gesture-room} shows an excerpt of the probability table for the gesture node. The node contains probabilities for all gestures in the system. The probability is the same for all gestures in the system. This is because the user is equally likely to have performed the gestures when we have not observed anything else. Based on the likelihoods of each gesture supplied by the gesture recognizer, we can add soft evidence to the Gesture node. The evidence is assigned as described in \cref{sec:design:bayesian-network:gesture-node-evidence}.
+\Cref{tbl:design:bayesian-network:pt-gesture-room} shows an excerpt of the probability table for the gesture node. The node contains probabilities for all gestures in the system. The probability is the same for all gestures in the system. This is because the user is equally likely to have performed the gestures when we have not observed anything else. Based on the likelihoods of each gesture supplied by the gesture recognizer, we can add soft evidence to the Gesture node. The evidence is assigned as described in \Cref{sec:design:bayesian-network:gesture-node-evidence}.
 
 \begin{table}[h!]
 \centering
@@ -72,7 +72,7 @@ The Gesture, Room, TV\_IsOn and MusicCentre\_IsPlaying nodes constitute the uppe
 
 The nodes on the middle level observes nodes in the uppermost level and based on the observed information, compute probabilities for the all actions in the system. Without any evidence on a state, the probabilities of the states in nodes in the middle level is determined by gesture configurations.
 
-Consider the probabilities of the Gesture\_Action node as shown in \cref{tbl:design:bayesian-network:cpt-gesture-action}. In the scenario presented in \cref{sec:analysis:scenarios} we presented a configuration of the system. \Cref{tbl:design:bayesian-network:cpt-gesture-action} shows an excerpt of the configuration in which the user has configured the Z gesture to turn Lamp 3 and Lamp 8 on and off. The Half Circle gesture skips to the next track on the music centre and changes to the next channel on the television. The Horizontal Line gesture skips to the previous track on the music centre and changes to the previous channel on the television. The valid actions for each gesture have the same probability.
+Consider the probabilities of the Gesture\_Action node as shown in \Cref{tbl:design:bayesian-network:cpt-gesture-action}. In the scenario presented in \Cref{sec:analysis:scenarios} we presented a configuration of the system. \Cref{tbl:design:bayesian-network:cpt-gesture-action} shows an excerpt of the configuration in which the user has configured the Z gesture to turn Lamp 3 and Lamp 8 on and off. The Half Circle gesture skips to the next track on the music centre and changes to the next channel on the television. The Horizontal Line gesture skips to the previous track on the music centre and changes to the previous channel on the television. The valid actions for each gesture have the same probability.
 
 As the Gesture\_Action node observes the Gesture node, the probabilities of each action are changed when evidence is added to the states of the Gesture node.
 
@@ -96,7 +96,7 @@ Television: previous channel & 0   & 0             & 0.5
 
 The principle oof the Room\_Action and System\_State\_Action nodes are the same as the Gesture\_Action node. Each state of the nodes correspond to an action in the system. The probabilities of the nodes change when evidence is added to the Room, MusicCentre\_IsPlaying and TV\_IsOn nodes.
 
-The evidence added to the states of the Room node, is likely to be soft evidence as we adjust the probability of the user being in a room over time as he walks around as described in \cref{sec:design:bayesian-network:room-node-evidence}. The evidence of the MusicCentre\_IsPlaying and TV\_IsOn nodes are hard evidence as we can observe this with certainity from the state of items in openHAB.
+The evidence added to the states of the Room node, is likely to be soft evidence as we adjust the probability of the user being in a room over time as he walks around as described in \Cref{sec:design:bayesian-network:room-node-evidence}. The evidence of the MusicCentre\_IsPlaying and TV\_IsOn nodes are hard evidence as we can observe this with certainity from the state of items in openHAB.
 
 \begin{table}[h!]
 \centering
@@ -170,7 +170,7 @@ When System\_State\_Action = $A_1$, Room\_Action = $A_1$ and Gesture\_Action = $
 
 \begin{table}[h!]
 \centering
-\caption{Excerpt of the conditional probability table for the Action node in the Bayesian network presented in \cref{fig:design:bayesian-network:overview}.}
+\caption{Excerpt of the conditional probability table for the Action node in the Bayesian network presented in \Cref{fig:design:bayesian-network:overview}.}
 \label{tbl:design:bayesian-network:cpt-action}
 \begin{tabular}{c}
 \textbf{Action} \\
@@ -186,13 +186,13 @@ B                     & \begin{tabularx}{11cm}{YY|YY|YY|YY} 0 & $\frac{1}{3}$ & 
 
 \subsection{Alternative Model of System State}
 
-In \cref{fig:design:bayesian-network:overview} both the TV\_IsOn and the MusicCentre\_IsPlaying nodes are parents of the System\_State\_Action node. One may propose an alternative model for the sytem state as shown in \cref{fig:design:bayesian-network:alternative-network}.
+In \Cref{fig:design:bayesian-network:overview} both the TV\_IsOn and the MusicCentre\_IsPlaying nodes are parents of the System\_State\_Action node. One may propose an alternative model for the sytem state as shown in \Cref{fig:design:bayesian-network:alternative-network}.
 
-The System\_State action node have been replaced by the TV\_IsOn\_Action and MusicCentre\_IsPlaying\_Action nodes. Each observes a specific part of the system state. The conditional probability tables for the nodes are shown in \cref{tbl:design:bayesian-network:alternative-system-state}.
+The System\_State action node have been replaced by the TV\_IsOn\_Action and MusicCentre\_IsPlaying\_Action nodes. Each observes a specific part of the system state. The conditional probability tables for the nodes are shown in \Cref{tbl:design:bayesian-network:alternative-system-state}.
 
 Consider the table for TV\_IsOn\_Action with a subset of the actions presented in the scenario. As the node knows nothing about the state of the television, it must have equal probabilities for the two states when the television is on. However, if the television is off the node has zero probability of changing the channel on the television. The same principle applies for the MusicCentre\_IsPlaying\_Action node.
 
-The consequences of the alternative model is illustrated using screenshots from Hugin shown in \cref{fig:design:bayesian-network:system-state-one-6,fig:design:bayesian-network:system-state-multiple-6}. Note that the difference between the beliefs of the states in the Action node is smaller in \cref{fig:design:bayesian-network:system-state-multiple-6}. This is the reason we choose to model the system state as presented in \cref{fig:design:bayesian-network:overview} as it does not reduce the difference between states as significantly.
+The consequences of the alternative model is illustrated using screenshots from Hugin shown in \Cref{fig:design:bayesian-network:system-state-one-6,fig:design:bayesian-network:system-state-multiple-6}. Note that the difference between the beliefs of the states in the Action node is smaller in \Cref{fig:design:bayesian-network:system-state-multiple-6}. This is the reason we choose to model the system state as presented in \Cref{fig:design:bayesian-network:overview} as it does not reduce the difference between states as significantly.
 
 \begin{figure}[h!]
 \centering
@@ -203,7 +203,7 @@ The consequences of the alternative model is illustrated using screenshots from 
 
 \begin{table}[h!]
 \centering
-\caption{Probability tables for the TV\_IsOn\_Action and MusicCentre\_IsPlaying\_Action nodes in the alternative Bayesian network illustrated in \cref{fig:design:bayesian-network:system-state-nodes-evidence:alternative-network}.}
+\caption{Probability tables for the TV\_IsOn\_Action and MusicCentre\_IsPlaying\_Action nodes in the alternative Bayesian network illustrated in \Cref{fig:design:bayesian-network:system-state-nodes-evidence:alternative-network}.}
 \label{tbl:design:bayesian-network:alternative-system-state}
 \begin{tabular}{cc}
 \begin{tabular}{c}
@@ -233,14 +233,14 @@ Television: next channel & $\frac{1}{4}$ & $\frac{1}{3}$
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{images/system-state-one-6}
-\caption{Screenshot from Hugin. Please refer to \cref{sec:design:bayesian-network:hugin} for a detailed description of the elements shown. The network shows beliefs of actions when using one node at the middle level for system state. Nodes are configured according to the scenario presented in \cref{sec:analysis:scenarios}. Conditional tables for the TV\_IsOn and MusicCentre\_IsPlaying nodes are configured as shown in \cref{tbl:design:bayesian-network:alternative-system-state}.}
+\caption{Screenshot from Hugin. Please refer to \Cref{sec:design:bayesian-network:hugin} for a detailed description of the elements shown. The network shows beliefs of actions when using one node at the middle level for system state. Nodes are configured according to the scenario presented in \Cref{sec:analysis:scenarios}. Conditional tables for the TV\_IsOn and MusicCentre\_IsPlaying nodes are configured as shown in \Cref{tbl:design:bayesian-network:alternative-system-state}.}
 \label{fig:design:bayesian-network:system-state-one-6}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{images/system-state-multiple-6}
-\caption{Screenshot from Hugin. Please refer to \cref{sec:analysis:bayesian-network:hugin} for a detailed description of the elements shown. The network shows beliefs of actions when using multiple nodes at the middle level for system state. Nodes are configured according to the scenario presented in \cref{sec:analysis:scenarios}. Conditional tables for the TV\_IsOn and MusicCentre\_IsPlaying nodes are configured as shown in \cref{tbl:design:bayesian-network:alternative-system-state}.}
+\caption{Screenshot from Hugin. Please refer to \Cref{sec:analysis:bayesian-network:hugin} for a detailed description of the elements shown. The network shows beliefs of actions when using multiple nodes at the middle level for system state. Nodes are configured according to the scenario presented in \Cref{sec:analysis:scenarios}. Conditional tables for the TV\_IsOn and MusicCentre\_IsPlaying nodes are configured as shown in \Cref{tbl:design:bayesian-network:alternative-system-state}.}
 \label{fig:design:bayesian-network:system-state-multiple-6}
 \end{figure}
 

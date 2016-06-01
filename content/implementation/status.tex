@@ -26,11 +26,11 @@ The user utilizes the Android Wear smart watch to perform gestures which starts 
 \begin{itemize}
 \item Retrieval of available devices and actions from openHAB.
 \item Configuration of the smart watch application based on rooms and beacons registered in openHAB.
-\item Training of gestures using the 1\textcent~gesture recognizer as described in \cref{sec:design:gesture-recognition}.
+\item Training of gestures using the 1\textcent~gesture recognizer as described in \Cref{sec:design:gesture-recognition}.
 \item Recognition of gestures using the 1\textcent~gesture recognizer.
-\item Positioning of the user using Estimotes BLE beacons as described in \cref{sec:design:ble-positioning}.
+\item Positioning of the user using Estimotes BLE beacons as described in \Cref{sec:design:ble-positioning}.
 \item Setup of gesture configurations, i.e. a combination of a gesture, a room and an action.
-\item Recognition of the context using a Bayesian network as described in \cref{sec:design:bayesian-network}.
+\item Recognition of the context using a Bayesian network as described in \Cref{sec:design:bayesian-network}.
 \item Presentation of a list of actions if one single action cannot be determined but rather we have a set of actions to choose from.
 \item Configuration and use of virtual positions, i.e. allowing the user to manually determine which room he is in.
 \end{itemize}
@@ -39,15 +39,15 @@ The user utilizes the Android Wear smart watch to perform gestures which starts 
 
 The Bluetooth Low Energy beacons are used to position the user indoor.
 
-We have not implemented any features on the BLE beacons but in order to position te user, the smart watch reads the RSSI values from the Bluetooth beacons and based on those values determines which room the user is in, described in detail in \cref{sec:design:bayesian-network:room-node-evidence}.
+We have not implemented any features on the BLE beacons but in order to position te user, the smart watch reads the RSSI values from the Bluetooth beacons and based on those values determines which room the user is in, described in detail in \Cref{sec:design:bayesian-network:room-node-evidence}.
 
 \subsubsection{Raspberry Pi}
 
-The Raspberry Pi runs openHAB, which was described in \cref{sec:analysis:choice-of-hub}. openHAB is the home automation software utilized in the project. The software receives HTTP requests usoing an HTTP API. The request is then translated to an equivalent request using an appropriate protocol, e.g. Bluetooth, HTTP or MQTT, and forwards the translated request to a controllable device. The following features were implemented on openHAB.
+The Raspberry Pi runs openHAB, which was described in \Cref{sec:analysis:choice-of-hub}. openHAB is the home automation software utilized in the project. The software receives HTTP requests usoing an HTTP API. The request is then translated to an equivalent request using an appropriate protocol, e.g. Bluetooth, HTTP or MQTT, and forwards the translated request to a controllable device. The following features were implemented on openHAB.
 
 \begin{itemize}
 \item We implemented an openHAB plugin for configuring which beacons are installed in the rooms of the users house or apartment.
-\item openHAB was configured to support the actions in the scenario presented in \cref{sec:analysis:scenarios}, e.g. we implemented rules to toggle a lamp between the on and off states as this is not directly supported by openHAB.
+\item openHAB was configured to support the actions in the scenario presented in \Cref{sec:analysis:scenarios}, e.g. we implemented rules to toggle a lamp between the on and off states as this is not directly supported by openHAB.
 \end{itemize}
 
 \subsubsection{Computer}
@@ -82,7 +82,7 @@ The following describes known issues in the implementation.
 
 \subsection{Missing Implementation}
 
-While not part of the requirements presented in \cref{sec:requirements-specification}, we presented a model for including the state of the system in \cref{sec:design:bayesian-network}. The system state was introduced in the model to illustrate how contextual information different than the gesture performed by the user and the users location can be included in the system.
+While not part of the requirements presented in \Cref{sec:requirements-specification}, we presented a model for including the state of the system in \Cref{sec:design:bayesian-network}. The system state was introduced in the model to illustrate how contextual information different than the gesture performed by the user and the users location can be included in the system.
 
 The following features were not implemented.
 
@@ -97,7 +97,7 @@ Reuse of the Bayesian network could be implemented by creating the network when 
 
 \subsection{HTTP}
 
-As shown in \cref{fig:implementation:deployment-diagram} we use HTTP for communication between the smart watch, the Raspberry Pi and the computer acting as media centre with both expose a REST API.
+As shown in \Cref{fig:implementation:deployment-diagram} we use HTTP for communication between the smart watch, the Raspberry Pi and the computer acting as media centre with both expose a REST API.
 
 HTTP, or Hyptertext Transfer Protocol, which it is short for, is a protocol amongst others used for communication between a web browser and a web server. A web browser will make a request for a specific resource and the server will return the response or a failure. In the case of a web browser, the response is typically a web page formatted as HTML which the browser can render and present to the user.
 
@@ -112,7 +112,7 @@ The requests are sent to either openHAB or the Spotify Controls API which will r
 
 % \subsection{ZigBee}
 
-% The ZigBee protocol is targeted towards devices that fit within the concept of internet of things, e.g. lamps, thermostats and door locks. The devices create a \emph{mesh network}, i.e. a network in which nodes relays information to other nodes \cite{zigbee:zigbee-pro}. This is depicted in the deployment diagram shown in \cref{fig:implementation:deployment-diagram} in which both Philips Hue light bulbs receives commands by the bridge but the bulbs can also relay commands to each other.
+% The ZigBee protocol is targeted towards devices that fit within the concept of internet of things, e.g. lamps, thermostats and door locks. The devices create a \emph{mesh network}, i.e. a network in which nodes relays information to other nodes \cite{zigbee:zigbee-pro}. This is depicted in the deployment diagram shown in \Cref{fig:implementation:deployment-diagram} in which both Philips Hue light bulbs receives commands by the bridge but the bulbs can also relay commands to each other.
 
 % The ZigBee protocol, amongst others, specifies the frequencies on which the devices shuld communicate, how devices are discovered and how they are paired with each other.
 

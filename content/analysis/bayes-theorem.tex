@@ -1,6 +1,6 @@
 \subsection{Bayes Theorem}
 
-Up until now we have used \cref{fig:analysis:bayesian-network:abc} as an example Bayesian network. A more realistic network is illustrated in \cref{fig:analysis:bayesian-network:sample} where $K = \{Fraud, Age, Sex, Gas, Jewelry\}$, $E = \{\{Fraud, Gas\}, \{Fraud, Jewelry\}, \{Age, Jewelry\}, \{Sex, Jewelry\}\}$ and P can be defined as in \cref{tbl:analysis:bayesian-network:sample-tables-1,tbl:analysis:bayesian-network:sample-tables-2,tbl:analysis:bayesian-network:sample-tables-3}. The network models credit card fraud. From the network we can see, that if there is credit card fraud then there is a chance of gas or jewelry being bought. The chance of jewelry being bought is also affected by the age and the sex of the purchaser.
+Up until now we have used \Cref{fig:analysis:bayesian-network:abc} as an example Bayesian network. A more realistic network is illustrated in \Cref{fig:analysis:bayesian-network:sample} where $K = \{Fraud, Age, Sex, Gas, Jewelry\}$, $E = \{\{Fraud, Gas\}, \{Fraud, Jewelry\}, \{Age, Jewelry\}, \{Sex, Jewelry\}\}$ and P can be defined as in \Cref{tbl:analysis:bayesian-network:sample-tables-1,tbl:analysis:bayesian-network:sample-tables-2,tbl:analysis:bayesian-network:sample-tables-3}. The network models credit card fraud. From the network we can see, that if there is credit card fraud then there is a chance of gas or jewelry being bought. The chance of jewelry being bought is also affected by the age and the sex of the purchaser.
 
 \begin{figure}[h!]
 \centering
@@ -11,7 +11,7 @@ Up until now we have used \cref{fig:analysis:bayesian-network:abc} as an example
 
 \begin{table}[h!]
 \centering
-\caption{Probability tables for the Fraud, Gas and Sex nodes in the network illustrated in \cref{fig:analysis:bayesian-network:sample}. Values are from \cite{stephenson2000introduction}.}
+\caption{Probability tables for the Fraud, Gas and Sex nodes in the network illustrated in \Cref{fig:analysis:bayesian-network:sample}. Values are from \cite{stephenson2000introduction}.}
 \label{tbl:analysis:bayesian-network:sample-tables-1}
 \begin{tabular}{ccc}
 \begin{tabular}{c}
@@ -42,7 +42,7 @@ Male   & Female \\ \hline
 
 \begin{table}[h!]
 \centering
-\caption{Conditional probability table for the Gas node in the network illustrated in \cref{fig:analysis:bayesian-network:sample}. Values are from \cite{stephenson2000introduction}.}
+\caption{Conditional probability table for the Gas node in the network illustrated in \Cref{fig:analysis:bayesian-network:sample}. Values are from \cite{stephenson2000introduction}.}
 \label{tbl:analysis:bayesian-network:sample-tables-2}
 \begin{tabular}{c}
 \textbf{Gas}   \\
@@ -56,7 +56,7 @@ Fraud = No   & 0.01       & 0.99 \\
 
 \begin{table}[h!]
 \centering
-\caption{Conditional probability table for the Jewelry node in the network illustrated in \cref{fig:analysis:bayesian-network:sample}. Values are from \cite{stephenson2000introduction}.}
+\caption{Conditional probability table for the Jewelry node in the network illustrated in \Cref{fig:analysis:bayesian-network:sample}. Values are from \cite{stephenson2000introduction}.}
 \label{tbl:analysis:bayesian-network:sample-tables-3}
 \begin{tabular}{c}
 \textbf{Jewelry} \\
@@ -70,7 +70,7 @@ Jewelry = No  & \begin{tabularx}{0.8\textwidth}{YY|YY|YY|YY|YY|YY} $\frac{19}{20
 \end{tabular}
 \end{table}
 
-Given the network illustrated in \cref{fig:analysis:bayesian-network:sample} we could be interested in computing $P(Fraud|Jewelry = Yes, Gas = No, Sex = Male, Age = < 30)$, that is, the probabilities of fraud happening when we have observed, that a male purchaser younger than 30 years have bought jewelry and have not bought gas.
+Given the network illustrated in \Cref{fig:analysis:bayesian-network:sample} we could be interested in computing $P(Fraud|Jewelry = Yes, Gas = No, Sex = Male, Age = < 30)$, that is, the probabilities of fraud happening when we have observed, that a male purchaser younger than 30 years have bought jewelry and have not bought gas.
 
 We compute this using Bayes' theorem which is defined as:
 
@@ -90,7 +90,7 @@ P(F=Y|J = Y, G = N, S = M, A = < 30)
 \end{split}
 \end{equation*}
 
-According to \cref{eq:analysis:bayesian-network:prod} we can write this as
+According to \Cref{eq:analysis:bayesian-network:prod} we can write this as
 
 \begin{equation*}
 P(F=Y|J = Y, G = N, S = M, A = < 30) 

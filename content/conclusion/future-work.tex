@@ -1,7 +1,7 @@
 \section{Future Work}
 \label{sec:conclusion:future-work}
 
-Based on the evaluation presented in \cref{chap:evaluation} and the project results presented in \cref{sec:results}, we believe that a contet-aware smart home controlled using gestures is feasible in the future. 
+Based on the evaluation presented in \Cref{chap:evaluation} and the project results presented in \Cref{sec:results}, we believe that a contet-aware smart home controlled using gestures is feasible in the future. 
 In this section, we present functionality and design changes that it would make sense to investigate, in case future work is to be done on the project.
 
 \subsection{Continuous Recognition of Gestures}
@@ -19,7 +19,7 @@ Research in continuous gesture recognition, or \emph{real time gesture recogniti
 
 \subsection{Inclusion of System State}
 
-In the design of the Bayesian network used for context recognition (see \ref{sec:design:bayesian-network}) we introduced the state of the system as contextual information and as explained in \cref{sec:implementation:status}, the functionality was not implemented.
+In the design of the Bayesian network used for context recognition (see \ref{sec:design:bayesian-network}) we introduced the state of the system as contextual information and as explained in \Cref{sec:implementation:status}, the functionality was not implemented.
 
 The idea of introducing the state of the system, is to give lower probability to actions that it does not make sense to trigger given the state of the system. For example, an action fo changing channel on the television would have lower probability when the teleivison is turned off, than when it is turned on. 
 
@@ -35,9 +35,9 @@ Short-term historical data, i.e. data of the users behaviour collected just few 
 
 We have found the Bayesian network designed and implemented in this project to produce inaccurate results, especially when a gesture is associated with multiple actions, and as such future research should focus on investigating alternative designs for the context engine.
 
-In \cref{ysec:evaluation:alternative-models} we proposed using an influence diagram rather than the Bayesian network. Future research can focus on determining of modelling the context engine using an influence diagram would result in an improved accuracy, i.e. an accuracy of above 44\%.
+In \Cref{ysec:evaluation:alternative-models} we proposed using an influence diagram rather than the Bayesian network. Future research can focus on determining of modelling the context engine using an influence diagram would result in an improved accuracy, i.e. an accuracy of above 44\%.
 
-Furthermore future research could focus on determining if alternative models of the Bayesian network would produce an improved accuracy, as suggested in \cref{sec:evaluation:alternative-models}.
+Furthermore future research could focus on determining if alternative models of the Bayesian network would produce an improved accuracy, as suggested in \Cref{sec:evaluation:alternative-models}.
 
 %%% Local Variables:
 %%% mode: latex

@@ -10,11 +10,11 @@ There are two primary methods for performing gesture recognition~\cite[pp. 19-21
 
 Examples of camera based approaches for gesture recognition includes the use of one or more Microsoft Kinects that record the users motions~\cite{caon2011context}. The benefit of Microsoft Kinects is, that they can potentially record gestures performed with any part of the body. Another approach is an infrared gesture pendant worn by the user which records their hand motions when gestures are performed in front of their chest~\cite{starner2000gesture}.
 
-As stated in \cref{sec:related-work} we opt to not use camera based methods as they require a line of sight between the user and any device he intends to interact with or optionally, a line of sight between the user and multiple cameras installed in his smart home.
+As stated in \Cref{sec:related-work} we opt to not use camera based methods as they require a line of sight between the user and any device he intends to interact with or optionally, a line of sight between the user and multiple cameras installed in his smart home.
 
 Hence we elected to use a motion-based approach. As of spring 2016 a significant amount (55\%) of wrist-worn wearables contained an accelerometer~\cite[pp. 2-3]{prespecialisation} and as such it makes sense to focus on motion-based gesture recognition utilizing an accelerometer.
 
-While it is natural to use hands to perform gestures, we chose to look at wearables that are worn on the wrist rather than wearables that are worn on the hands, \eg the fingers. As shown in \cref{fig:wearables-placement} only very few wearables are worn on the hands and we found it more interesting to develop for more widely available devices. In regards to gestures, the primary difference between recognizing a gesture with a wearable worn on the hand and on the wrist, is that the motions must be larger, when the wearable is worn on the wrist, \ie the user must move the entire arm in order to produce significant accelerations on the axes of the accelerometer.
+While it is natural to use hands to perform gestures, we chose to look at wearables that are worn on the wrist rather than wearables that are worn on the hands, \eg the fingers. As shown in \Cref{fig:wearables-placement} only very few wearables are worn on the hands and we found it more interesting to develop for more widely available devices. In regards to gestures, the primary difference between recognizing a gesture with a wearable worn on the hand and on the wrist, is that the motions must be larger, when the wearable is worn on the wrist, \ie the user must move the entire arm in order to produce significant accelerations on the axes of the accelerometer.
 
 \begin{figure}[!htb]
   \centering
@@ -60,7 +60,7 @@ Based on these criteria we will examine the following gesture recognition soluti
 
 The \$3 gesture recognizer is based on the \$1 gesture recognizer but works with three-dimensional accelerometer measurements instead of two-dimensional coordinates~\cite{threedollar}.
 
-The \$3 gesture recognizer translates measurements on a tri-axis accelerometer to coordinates by using the first measurement as origo and adding the difference between subsequent measurements to form a timeseries of acceleration deltas as shown in \cref{eq:acceleration-timeseries}.
+The \$3 gesture recognizer translates measurements on a tri-axis accelerometer to coordinates by using the first measurement as origo and adding the difference between subsequent measurements to form a timeseries of acceleration deltas as shown in \Cref{eq:acceleration-timeseries}.
 
 \begin{figure}[h]
 \[ T = \{p_1,\ldots,p_X\} \text{ s.t. } p_i=a_i-a_{i-1} \]
@@ -69,7 +69,7 @@ The \$3 gesture recognizer translates measurements on a tri-axis accelerometer t
 \end{figure}
 
 This timeseries $T$ is known as the gesture trace and will be rotated to find the smallest distance to the trained gesture templates.
-The way \$3 works is elaborated in \cref{sec:design:gesture-recognition}.
+The way \$3 works is elaborated in \Cref{sec:design:gesture-recognition}.
 
 The gesture recognizer was used in~\cite{prespecialisation} and was found to have a precision between 58\% - 98\%, depending on the user utilizing the recognizer~\cite[p. 344]{threedollar}. The concrete implementation of the recognizer was also found to have memory issues where allocated memory was not deallocated~\cite[p. 54]{prespecialisation}.
 
@@ -77,8 +77,8 @@ The gesture recognizer was used in~\cite{prespecialisation} and was found to hav
 
 Like the \$3 gesture recognizer, the 1\textcent gesture recognizer is also based on \$1. Where \$3 improves \$1 by adding support for a third dimension as well as use of accelerometer data, 1\textcent improves \$1 by decreasing the amount of computations, thus making it more suitable for embedded and resource constrained devices.
 
-1\textcent decreases the amount of computations by not rotating a gesture trace when matching it with trained gesture templates. Instead it computes distances from each point in the gesture trace to the centroid of the trace as shown in \cref{eq:one-cent-trace}.
-Further description of how 1\textcent works and is used can be found in \cref{sec:design:gesture-recognition}.
+1\textcent decreases the amount of computations by not rotating a gesture trace when matching it with trained gesture templates. Instead it computes distances from each point in the gesture trace to the centroid of the trace as shown in \Cref{eq:one-cent-trace}.
+Further description of how 1\textcent works and is used can be found in \Cref{sec:design:gesture-recognition}.
 
 \begin{figure}[h]
 \[ d = \{d_i,\ldots,d_N\} \text{ s.t. } d_i=||p_i-c|| \]

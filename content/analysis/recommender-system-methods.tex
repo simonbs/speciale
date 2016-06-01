@@ -56,7 +56,7 @@ A Bayesian network is based on joint probabilities, \eg~$P(G,S)$ is the joint pr
 
 In the system designed in this report, we are interested in finding the probabilities of events occurring based on the observations of other events. More specifically, we want to determine an action to trigger based on the performed gesture and the room the user is in.
 
-As per the requirements presented in~\cref{sec:requirements-specification}, we are interested in presenting the user with actions he is likely to trigger when we are unable to determine which action he desires to trigger. Working with probabilities is a good way to fulfill this requirement. When working with probabilities, an action can be triggered if it is the only action with a sufficiently high probability, $P$. When no action have a probability succeeding $P$ or more actions has probabilities succeeding $P$, the actions can be suggested to the user.
+As per the requirements presented in~\Cref{sec:requirements-specification}, we are interested in presenting the user with actions he is likely to trigger when we are unable to determine which action he desires to trigger. Working with probabilities is a good way to fulfill this requirement. When working with probabilities, an action can be triggered if it is the only action with a sufficiently high probability, $P$. When no action have a probability succeeding $P$ or more actions has probabilities succeeding $P$, the actions can be suggested to the user.
 
 % \subsection{Neural Network}
 % \label{sec:analysis:recommender-methods:neural-networks}
@@ -66,11 +66,11 @@ As per the requirements presented in~\cref{sec:requirements-specification}, we a
 \label{sec:analysis:recommender-methods:conclusion}
 
 A multitude of different solutions have been proposed for recommender systems~\cite{adomavicius2005toward} with just a few presented in this report.
-Collaborative filtering, presented in~\cref{sec:analysis:recommender-methods:collaborative-filtering}, can be a useful approach when different users are comparable and the interests of other users may have a positive impact on a given user.
+Collaborative filtering, presented in~\Cref{sec:analysis:recommender-methods:collaborative-filtering}, can be a useful approach when different users are comparable and the interests of other users may have a positive impact on a given user.
 
 However in this project we focus on single user needs and do not see the behaviour of other users as applicable to a given user. Hence we deem content-based filtering to be a better fit for this project.
 
-Decision trees, described in~\cref{sec:analysis:recommender-methods:decision-trees}, though prevalent for use in content-based recommender systems, do not handle missing data as well as Bayesian networks and thusly we deem Bayesian networks a better suited model for the purposes of this project. Furthermore Bayesian networks is highly based on probabilities, a desired feature in our system as we will see in~\cref{sec:design:bayesian-network:gesture-node-evidence,sec:design:bayesian-network:room-node-evidence}, and is a natural way to model the contextual information.
+Decision trees, described in~\Cref{sec:analysis:recommender-methods:decision-trees}, though prevalent for use in content-based recommender systems, do not handle missing data as well as Bayesian networks and thusly we deem Bayesian networks a better suited model for the purposes of this project. Furthermore Bayesian networks is highly based on probabilities, a desired feature in our system as we will see in~\Cref{sec:design:bayesian-network:gesture-node-evidence,sec:design:bayesian-network:room-node-evidence}, and is a natural way to model the contextual information.
 
 %%% Local Variables:
 %%% mode: latex
