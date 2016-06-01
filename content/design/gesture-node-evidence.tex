@@ -3,25 +3,21 @@
 
 The following section describes how the evidence assigned to the states in the Gesture node of the Bayesian network is determined. In order to determine the evidence, we introduce the \emph{gesture context provider}.
 
-The gesture context provider determines the actions that make sense to trigger based on the motion performed by the user. When the user performs a motion, the gesture recognizer scores the trained gestures as explained in \cref{sec:design:gesture-recognition}. When the gestures are scored, they are passed to the context provider which calculates the probabilities of each action associated with the gesture. The calculation of probabilities is similar to the calculation of probabilities for the position context provider presented in \cref{sec:design:bayesian-network:room-node-evidence}.
+The gesture context provider determines the actions that make sense to trigger based on the motion performed by the user. When the user performs a motion, the gesture recognizer scores the trained gestures as explained in \cref{sec:design:gesture-recognition}. When the gestures are scored, they are passed to the context provider which calculates the probabilities of each action associated with the gesture. 
 
-When calculating the probabilities, all actions associated with each gesture is retrieved, the scores are normalized and distributed among the actions.
+Because the gesture recognizer scores all trained templates, gestures that are obviously not correct are returned by the gesture recognizer. Therefore we introduce a threshold which the gesture scores must be below to be considered. We only consider gestures with a score of 70 or below. The threshold of 70 was determined by considering the scores of multiple gesture samples and we found that generally, gestures with a score of 70 or below can be considered as a properly recognized gesture.
 
-For example, if gestures $G_1$ and $G_2$ are recognized with $G_1$ having a score of 47 and $G_2$ having a score of 93, the total score is $47 + 93 = 140$. Assume that $G_1$ is associated with actions 1 and 2 and $G_2$ is associated with action 3.
+The set of matches returned by the gesture recognizer are not unique per gesture name. A gesture named ``Circle'' may appear several times if the gesture trace matches multiple samples of the traiend gesture templates. We take the average of each gesture, grouped by the nae of the gesture.
 
-The lower the score is, the better. Therefore the probability of gesture $G_1$ being recognized is considered to be the following.
+The gesture recognizer use the distance of the recorded sample to each trained sample as the score for the gesture. Thereby the lower the score, the better the result. When calculating the belief of gesture nodes, we create a \emph{translated score} where a high score indicates a better match. Let $G = \{G_1, G_2, \ldots, G_n\}$ be the set scores, then the translated score, $G'_i$ is computed as $G'_i = max(G) \cdot \frac{max(G)}{G_i}$. This ensures the proportions between scores are the same.
 
-\begin{equation*}
-(1 - \frac{47}{140}) \cdot 100 = 66.43
-\end{equation*}
+For example, if we have recognized gestures with scores $G = {40, 62}$, then the translated scores are computed as $G' = \{ 62 \cdot \frac{62}{40}, 62 \cdot \frac{62}{62} \} = \{ 96.1, 69 \}$.
 
-The probability of gesture $G_2$ is considered to be the following.
+Given the translated scores, we can calculate the beliefs as:
 
 \begin{equation*}
-(1 - \frac{93}{140}) \cdot 100 = 33.57
+B_i = \frac{{G'}_{i}}{\sum\limits_{x \in G'} x}
 \end{equation*}
-
-The normalized probabilities are used as soft evidence of the states in the Gesture node.
 
 %%% Local Variables:
 %%% mode: latex
