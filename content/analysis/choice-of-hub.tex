@@ -59,20 +59,6 @@ openHAB is free and open source maintained by a community of enthusiasts. It sup
 
 The devices connected to an openHAB environment is exposed over HTTP using a REST architecture.
 
-\subsection{Conclusion}
-\label{sec:analysis:choice-of-hub:conclusion}
-
-While the SmartThings hub is a consumer oriented solution which is easy to install, we want to keep the price of our solution to a minimum and thus prefer a free software solution rather than purchase the SmartThings hub.
-
-The choice between HomePort and openHAB came down to the following two things.
-
-\begin{itemize}
-\item We experienced various issues with HomePort. In a previous project \cite{prespecialisation} we found that the Phidget adapter is incompatible with the most recent version of HomePort, that we were unable to run previous a previous version on OS X and that the same version would frequently crash on Windows.
-\item Furthermore we found that the community developing openHAB has created bindings for hardware we already have access to and assuming these work, we will not need to create our own adapters.
-\end{itemize}
-
-The main focus of this report is not the research or development of a smart hub and therefore we do not intend to spend much time installing and configuring a hub. Hence we think that openHAB is the best fit for this project and will be our choice of hub.
-
 \subsection{Hardware}
 
 The hardware that, together with openHAB, constitutes the hub should fulfill the following requirements.
@@ -90,6 +76,22 @@ Typical desktop computers are not a great fit for this project as they are typic
 Furthermore tiny computers such as the Raspberry Pi Zero are priced as low as \$5 dollars \cite{raspberrypi:zero}. While the Pi Zero requires an adapter to be connected to the Internet, the total cost of the solution is still less than a setup using a desktop computer. Recently Adafruit, the company behind the Raspberry Pi, released the Raspberry Pi 3, which is the first Raspberry Pi with built-in WiFi and Bluetooth LE.
 
 Raspberry Pi is completely compatible with openHAB and is one of the recommended computers for running openHAB \cite{openhab:hardware}. Therefore we choose to base the hub on a Raspberry Pi but the hub should be able to run on any machine that can run a JVM.
+
+\subsection{Conclusion}
+\label{sec:analysis:choice-of-hub:conclusion}
+
+While the SmartThings hub is a consumer oriented solution which is easy to install, we want to keep the price of our solution to a minimum and thus prefer a free software solution rather than purchase the SmartThings hub.
+
+The choice between HomePort and openHAB came down to the following two things.
+
+\begin{itemize}
+\item We experienced various issues with HomePort. In a previous project \cite{prespecialisation} we found that the Phidget adapter is incompatible with the most recent version of HomePort, that we were unable to run previous a previous version on OS X and that the same version would frequently crash on Windows.
+\item Furthermore we found that the community developing openHAB has created bindings for hardware we already have access to and assuming these work, we will not need to create our own adapters.
+\end{itemize}
+
+The main focus of this report is not the research or development of a smart hub and therefore we do not intend to spend much time installing and configuring a hub. Hence we think that openHAB is the best fit for this project and will be our choice of hub.
+
+We will run openHAB on a Raspberry Pi as the price of the computer is low reducing the barrier of entry to the system and it is a very small computer making it easy to hide it in e.g. a closet.
 
 %%% Local Variables:
 %%% mode: latex
