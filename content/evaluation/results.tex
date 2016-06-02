@@ -64,16 +64,16 @@ For each participant, the average success rate for all actions, gestures, and lo
 \subsection{Results}
 \label{sec:evaluation:user-tests-results}
 
-The average success rate of actions is below the 80\% requirement specified in \Cref{sec:requirements-specification} with a combined average of 0.4361381674.
+The average success rate of actions is below the 80\% requirement specified in \Cref{sec:requirements-specification} with a combined average of 44\%.
 Triggering the correct action less than half of the time is not a satisfactory result and is thus something that needs to be looked into.
-The locations are correctly identified in the majority of the cases with an average success rate of 0.827020202 which indicates that the positioning is reliable.
+The locations are correctly identified in the majority of the cases with an average success rate of 83\% which indicates that the positioning is reliable.
 
 One source of the inaccuracy comes from the low average success rates of the gestures.
-\Cref{fig:participant-average} shows that the gesture success rates are generally higher than those of actions with an average of 0.5567550505.
+\Cref{fig:participant-average} shows that the gesture success rates are generally higher than those of actions with an average of 56\%.
 However differences between the average gesture success rates of the participants are noticable.
 The most noticable example is comparing \Cref{fig:participant-1,fig:participant-2}.
 Something to note here is that both of these participants, as well as participant 1 experienced some technical difficulties which prevented them from completing the \emph{Spotify\_PlayPause (Virtual)} task.
-Participant 2 has an average success rate for gestures of \emph{0.925} and participant 6 has an average success rate of \emph{0.2}.
+Participant 2 has an average success rate for gestures of \emph{93\%} and participant 6 has an average success rate of \emph{20\%}.
 This is a significant difference and indicates that possibly something went wrong during the tests of participant 6, or the gesture recognizer is not capable of handling people with different capabilities of performing these gestures.
 
 Another source of the inaccuracy of actions is the way we have modeled the context engine.
@@ -212,7 +212,7 @@ As such it is easier to trigger actions that only have a single gesture associat
 \subsection{Conclusion}
 \label{sec:evaluation:user-tests-conclusion}
 
-From the results of the user tests we can see that the average success rate of actions falls below the 80\% stated in \Cref{sec:requirements-specification} with a value of \emph{0.4361381674}.
+From the results of the user tests we can see that the average success rate of actions falls below the 80\% stated in \Cref{sec:requirements-specification} with a value of \emph{44\%}.
 The two primary causes of this is likely the low average success rate of gestures and the way the context engine is modeled.
 
 The gesture recognition performs sufficiently well for some participants, like participant 2, but the correctness varies too much between different participants.
