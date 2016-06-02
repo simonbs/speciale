@@ -4,22 +4,23 @@
 This section will describe the experimental procedures carried out during the project to determine how well it performed when used by
 other people and how well it performed comparing to the requirements specified in \Cref{sec:requirements-specification}.
 
+\subsection{Goal}
+
 \subsection{Setup}
 \label{sec:evaluation:user-tests-setup}
 
 The setup of our user test consisted of a Macbook Pro running OpenHAB and Spotify, two Philips Hue lamps and two Estimote beacons.
-Seven people were asked to train four unique gestures, creating ten templates per gesture resulting in a total of 40 gesture templates
-per person.
+Seven people were asked to train four unique gestures, creating ten templates per gesture resulting in a total of 40 gesture templates per person.
 The gestures used were:
 
 \begin{itemize}
   \item Circle
-  \item Swipe left to right
+  \item Swipe Left to Right
   \item V
   \item Zorro
 \end{itemize}
 
-The setup was limited to a subset of the smart devices and gestures presented in the scenario \Cref{sec:analysis:scenarios}, because we did not have the necessary hardware and space available to perform a test of the entire scenario as well as to keep the invested time for each participant to a minimum, so it is more likely that they could schedule time to participate in a test.
+The setup was limited to a subset of the smart devices and gestures presented in the scenario in \Cref{sec:analysis:scenarios}, because we did not have the necessary hardware and space available to perform a test of the entire scenario as well as to keep the invested time for each participant to a minimum, so it is more likely that they could schedule time to participate in a test.
 
 \begin{figure}[h]
 \centering
@@ -30,18 +31,19 @@ The setup was limited to a subset of the smart devices and gestures presented in
 
 The gesture templates stored in the database were removed before each test so each participant was only using his own templates and not those created by others.
 
-The participants were instructed how to perform the gestures but were allowed to scale them to their personal preference, eg.
-either create large circles or small circles.
+The participants were instructed how to perform the gestures but were allowed to scale them to their personal preference, \eg either create large circles or small circles.
+
+\subsection{Method}
 
 Once the gesture templates had been created the participants were asked to complete seven tasks, each of which required them to perform a given gesture five times.
 Tests took place in a single room but to simulate the user moving between two different rooms, only one Estimote beacon would be turned on at a time.
 A list of the gestures and locations is shown in in \Cref{table:user-test-tasks}, along with the OpenHAB actions they were supposed to trigger.
 
-\begin{table}[]
+\begin{table}[h]
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
-\textbf{Action}                  & \textbf{Gesture}             & \textbf{Location}                       \\ \hline
+\textbf{Action}         & \textbf{Gesture}    & \textbf{Location}              \\ \hline
 Shelves\_Lamp\_Toggle   & V                   & Home Office                    \\ \hline
 Spotify\_PlayPause      & Circle              & Home Office                    \\ \hline
 Spotify\_Next           & Swipe Left to Right & Home Office                    \\ \hline
@@ -54,24 +56,24 @@ Shelves\_Lamp\_Toggle   & V                   & Home Office                    \
 \label{table:user-test-tasks}
 \end{table}
 
+For each participant and task, the success rate of the actions triggered was calculated as the \emph{number of times the intended action was triggered} divided by the \emph{number of attempts} and can be found in \Cref{fig:user-test-action-correctness}.
+In the same manner, the success rate for gestures and locations have been plotted in \Cref{fig:user-test-gesture-correctness,fig:user-test-location-correctness}.
+For each participant, the average success rate for all actions, gestures, and locations can be found in \Cref{table:user-task-averages}.
+\Cref{fig:participant-average} shows the combined averages of all participents separated per task.
+
 \subsection{Results}
 \label{sec:evaluation:user-tests-results}
 
-For each participant and task, the correctness rate of the actions triggered was calculated as the \emph{number of times the intended action was triggered} divided by the \emph{number of attempts} and can be found in \Cref{fig:user-test-action-correctness}.
-In the same manner, the correctness rate for gestures and locations have been plotted in \Cref{fig:user-test-gesture-correctness,fig:user-test-location-correctness}.
-For each participant, the average correctness rate for all actions, gestures, and locations can be found in \Cref{table:user-task-averages}.
-\Cref{fig:participant-average} shows the combined averages of all participents separated per task.
-
-The average correctness rate of actions is below the 80\% requirement specified in \Cref{sec:requirements-specification} with a combined average of 0.4361381674.
+The average success rate of actions is below the 80\% requirement specified in \Cref{sec:requirements-specification} with a combined average of 0.4361381674.
 Triggering the correct action less than half of the time is not a satisfactory result and is thus something that needs to be looked into.
-The locations are correctly identified in the majority of the cases with an average correctness rate of 0.827020202 which indicates that the positioning is reliable.
+The locations are correctly identified in the majority of the cases with an average success rate of 0.827020202 which indicates that the positioning is reliable.
 
-One source of the inaccuracy comes from the low average correctness rates of the gestures.
-\Cref{fig:participant-average} shows that the gesture correctness rates are generally higher than those of actions with an average of 0.5567550505.
-However differences between the average gesture correctness rates of the participants are noticable.
+One source of the inaccuracy comes from the low average success rates of the gestures.
+\Cref{fig:participant-average} shows that the gesture success rates are generally higher than those of actions with an average of 0.5567550505.
+However differences between the average gesture success rates of the participants are noticable.
 The most noticable example is comparing \Cref{fig:participant-1,fig:participant-2}.
 Something to note here is that both of these participants, as well as participant 1 experienced some technical difficulties which prevented them from completing the \emph{Spotify\_PlayPause (Virtual)} task.
-Participant 2 has an average correctness rate for gestures of \emph{0.925} and participant 6 has an average correctness rate of \emph{0.2}.
+Participant 2 has an average success rate for gestures of \emph{0.925} and participant 6 has an average success rate of \emph{0.2}.
 This is a significant difference and indicates that possibly something went wrong during the tests of participant 6, or the gesture recognizer is not capable of handling people with different capabilities of performing these gestures.
 
 Another source of the inaccuracy of actions is the way we have modeled the context engine.
@@ -140,7 +142,7 @@ As such it is easier to trigger actions that only have a single gesture associat
     width=0.95\textwidth,
     ymin = 0,
     ymax = 1,
-    ylabel = correctness rate
+    ylabel = success rate
     ]
     \addplot table[x=Row, y=2] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=2] {data/ActionCorrectnessTransposed.csv};
@@ -176,7 +178,7 @@ As such it is easier to trigger actions that only have a single gesture associat
 \subcaption{Participant 6.}
 \label{fig:participant-2}
 \end{subfigure}
-\caption{Average correctness rate for gestures, actions and locations for the participants who performed the best and worst respectively.}
+\caption{Average success rate for gestures, actions and locations for the participants who performed the best and worst respectively.}
 \end{figure}
 
 \begin{figure}[h]
@@ -194,7 +196,7 @@ As such it is easier to trigger actions that only have a single gesture associat
     width=0.42\textwidth,
     ymin = 0,
     ymax = 1,
-    ylabel = correctness rate,
+    ylabel = success rate,
     legend style={
     at={(0,0)},
     anchor=west, at={(axis description cs:1,0.5)}}]
@@ -210,14 +212,14 @@ As such it is easier to trigger actions that only have a single gesture associat
 \subsection{Conclusion}
 \label{sec:evaluation:user-tests-conclusion}
 
-From the results of the user tests we can see that the average correctness rate of actions falls below the 80\% stated in \Cref{sec:requirements-specification} with a value of \emph{0.4361381674}.
-The two primary causes of this is likely the low average correctness rate of gestures and the way the context engine is modeled.
+From the results of the user tests we can see that the average success rate of actions falls below the 80\% stated in \Cref{sec:requirements-specification} with a value of \emph{0.4361381674}.
+The two primary causes of this is likely the low average success rate of gestures and the way the context engine is modeled.
 
 The gesture recognition performs sufficiently well for some participants, like participant 2, but the correctness varies too much between different participants.
-The correctness rate of the gestures could perhaps be improved if the participants had been asked to practice the gestures before training and using them.
+The success rate of the gestures could perhaps be improved if the participants had been asked to practice the gestures before training and using them.
 It may also work better if the users were allowed to make up their own gestures instead of using the ones selected by us.
 
-The correctness rate of the actions could be improved by using a different model as the current model favors actions that have only a single gesture associated with it, as seen the example shown in \Cref{table:participant-2-first-run}.
+The success rate of the actions could be improved by using a different model as the current model favors actions that have only a single gesture associated with it, as seen the example shown in \Cref{table:participant-2-first-run}.
 An alternative model could be one where the \emph{Gesture} and \emph{Room} nodes were direct parents of the \emph{Action} node and removing the \emph{Gesture\_Action} and \emph{Room\_Action} nodes.
 
 Other alternative models are presented in \Cref{sec:evaluation-alternative-models}.
