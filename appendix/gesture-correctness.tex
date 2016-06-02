@@ -1,4 +1,4 @@
-\chapter{Gesture Correctness}
+\chapter{User Test Results}
 \label{appendix:Gesture-Correctness}
 
 \pgfplotsset{every axis legend/.append style={
@@ -29,9 +29,7 @@
     \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
-\figcaption{Participant 1.
-Bars in order from left to right:
-\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}.}
+\figcaption{Participant 1}
 
 &
 
@@ -54,9 +52,7 @@ Bars in order from left to right:
     \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
-\figcaption{Participant 2.
-Bars in order from left to right:
-\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}}
+\figcaption{Participant 2}
 
 \\
 
@@ -82,9 +78,7 @@ Bars in order from left to right:
     \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
-\figcaption{Participant 3.
-Bars in order from left to right:
-\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}.}
+\figcaption{Participant 3}
 
 &
 
@@ -107,9 +101,7 @@ Bars in order from left to right:
     \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
-\figcaption{Participant 4.
-Bars in order from left to right:
-\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}}
+\figcaption{Participant 4}
 
 \\
 
@@ -135,9 +127,7 @@ Bars in order from left to right:
     \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
-\figcaption{Participant 5.
-Bars in order from left to right:
-\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}.}
+\figcaption{Participant 5}
 
 &
 
@@ -160,9 +150,7 @@ Bars in order from left to right:
     \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
-\figcaption{Participant 6.
-Bars in order from left to right:
-\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}.}
+\figcaption{Participant 6}
 
 \\
 
@@ -188,9 +176,7 @@ Bars in order from left to right:
     \legend{Gesture, Action, Location}
 \end{axis}
 \end{tikzpicture}
-\figcaption{Participant 7.
-Bars in order from left to right:
-\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}.}
+\figcaption{Participant 7}
 
 &
 
@@ -214,9 +200,7 @@ Bars in order from left to right:
 \end{axis}
 \end{tikzpicture}
 \label{fig:participant-average}
-\figcaption{All participants combined.
-Bars in order from left to right:
-\emph{Gesture correctness rate}, \emph{Action correctness rate}, \emph{Location correctness rate}}
+\figcaption{All participants combined}
 \end{longtable}
 
 \begin{figure}
@@ -226,7 +210,7 @@ Bars in order from left to right:
       ybar,
       bar width=2pt,
       xlabel = Intended Action,
-      ylabel = Action Correctness rate,
+      ylabel = Action success rate,
       xtick=data,
       xticklabels from table={data/ActionCorrectnessTransposed.csv}{Action},
       x tick label style={
@@ -252,8 +236,8 @@ Bars in order from left to right:
   \end{axis}
 \label{fig:user-test-action-correctness}
 \end{tikzpicture}
-\caption{The rate at which the correct action was triggered for each participant. The last bar for each action is the average correctness rate of all participants.
-The last group of bars is the average correctness rate per user, across all actions.}
+\caption{The rate at which the correct action was triggered for each participant. The last bar for each action is the average success rate of all participants.
+The last group of bars is the average success rate per user, across all actions.}
 \end{figure}
 
 \begin{figure}
@@ -269,7 +253,7 @@ The last group of bars is the average correctness rate per user, across all acti
     anchor=east,
     },
     xlabel = Intended Gesture,
-    ylabel = Gesture Correctness rate,
+    ylabel = Gesture success rate,
     width=0.95\textwidth,
     height = 6cm,
     ymin = 0,
@@ -286,8 +270,8 @@ The last group of bars is the average correctness rate per user, across all acti
 \end{axis}
 \end{tikzpicture}
 \label{fig:user-test-gesture-correctness}
-\caption{The correctness rate for gestures. The last bar for each gesture is the average correctness rate of all participants.
-The last group of bars is the average correctness rate per user, across all gestures.}
+\caption{The success rate for gestures. The last bar for each gesture is the average success rate of all participants.
+The last group of bars is the average success rate per user, across all gestures.}
 \end{figure}
 
 \begin{figure}
@@ -303,7 +287,7 @@ The last group of bars is the average correctness rate per user, across all gest
         anchor=east,
         },
         xlabel = Intended Location,
-        ylabel = Location Correctness rate,
+        ylabel = Location success rate,
         width=0.95\textwidth,
         height = 6cm,
         ymin = 0,
@@ -319,8 +303,8 @@ The last group of bars is the average correctness rate per user, across all gest
         \legend{P1, P2, P3, P4, P5, P6, P7, All}
     \end{axis}
     \end{tikzpicture}
-\caption{The correctness rate for locations. The last bar for each location is the average correctness rate of all participants.
-The last group of bars is the average correctness rate per user, across all gestures.}
+\caption{The success rate for locations. The last bar for each location is the average success rate of all participants.
+The last group of bars is the average success rate per user, across all gestures.}
 \label{fig:user-test-location-correctness}
 \end{figure}
 
