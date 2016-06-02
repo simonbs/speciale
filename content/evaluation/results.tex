@@ -141,8 +141,8 @@ As such it is easier to trigger actions that only have a single gesture associat
     },
     width=0.95\textwidth,
     ymin = 0,
-    ymax = 1,
-    ylabel = success rate
+    ymax = 100,
+    ylabel = success rate (\%)
     ]
     \addplot table[x=Row, y=2] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=2] {data/ActionCorrectnessTransposed.csv};
@@ -165,7 +165,7 @@ As such it is easier to trigger actions that only have a single gesture associat
     },
     width=0.95\textwidth,
     ymin = 0,
-    ymax = 1,
+    ymax = 100,
     legend style={
     at={(0,0)},
     anchor=west, at={(axis description cs:1,0.5)}}]
@@ -195,8 +195,8 @@ As such it is easier to trigger actions that only have a single gesture associat
     },
     width=0.42\textwidth,
     ymin = 0,
-    ymax = 1,
-    ylabel = success rate,
+    ymax = 100,
+    ylabel = success rate (\%),
     legend style={
     at={(0,0)},
     anchor=west, at={(axis description cs:1,0.5)}}]

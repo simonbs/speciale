@@ -19,7 +19,7 @@
     },
     width=0.42\textwidth,
     ymin = 0,
-    ymax = 1,
+    ymax = 100,
     legend style={
     at={(0,0)},
     anchor=east, at={(axis description cs:-0.15,0.5)}}]
@@ -45,7 +45,7 @@
     },
     width=0.42\textwidth,
     ymin = 0,
-    ymax = 1]
+    ymax = 100]
     \addplot table[x=Row, y=2] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=2] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=2] {data/LocationCorrectness.csv};
@@ -68,7 +68,7 @@
     },
     width=0.42\textwidth,
     ymin = 0,
-    ymax = 1,
+    ymax = 100,
     legend style={
     at={(0,0)},
     anchor=east, at={(axis description cs:-0.15,0.5)}}]
@@ -94,7 +94,7 @@
     },
     width=0.42\textwidth,
     ymin = 0,
-    ymax = 1]
+    ymax = 100]
     \addplot table[x=Row, y=4] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=4] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=4] {data/LocationCorrectness.csv};
@@ -117,7 +117,7 @@
     },
     width=0.42\textwidth,
     ymin = 0,
-    ymax = 1,
+    ymax = 100,
     legend style={
     at={(0,0)},
     anchor=east, at={(axis description cs:-0.15,0.5)}}]
@@ -143,7 +143,7 @@
     },
     width=0.42\textwidth,
     ymin = 0,
-    ymax = 1]
+    ymax = 100]
     \addplot table[x=Row, y=6] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=6] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=6] {data/LocationCorrectness.csv};
@@ -166,7 +166,7 @@
     },
     width=0.42\textwidth,
     ymin = 0,
-    ymax = 1,
+    ymax = 100,
     legend style={
     at={(0,0)},
     anchor=east, at={(axis description cs:-0.15,0.5)}}]
@@ -192,7 +192,7 @@
     },
     width=0.42\textwidth,
     ymin = 0,
-    ymax = 1]
+    ymax = 100]
     \addplot table[x=Row, y=Average] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=Average] {data/ActionCorrectnessTransposed.csv};
     \addplot table[x=Row, y=Average] {data/LocationCorrectness.csv};
@@ -210,7 +210,7 @@
       ybar,
       bar width=2pt,
       xlabel = Intended Action,
-      ylabel = Action success rate,
+      ylabel = Action success rate (\%),
       xtick=data,
       xticklabels from table={data/ActionCorrectnessTransposed.csv}{Action},
       x tick label style={
@@ -221,7 +221,7 @@
       height = 6cm,
       yticklabel style={align=right,inner sep=0pt,xshift=-0.3em},
       ymin = 0,
-      ymax = 1,
+      ymax = 100,
       grid=major,
       try min ticks=10] 
     \addplot table[x=Row, y=1] {data/ActionCorrectnessTransposed.csv};
@@ -253,11 +253,11 @@ The last group of bars is the average success rate per user, across all actions.
     anchor=east,
     },
     xlabel = Intended Gesture,
-    ylabel = Gesture success rate,
+    ylabel = Gesture success rate (\%),
     width=0.95\textwidth,
     height = 6cm,
     ymin = 0,
-    ymax = 1]
+    ymax = 100]
     \addplot table[x=Row, y=1] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=2] {data/GestureCorrectness.csv};
     \addplot table[x=Row, y=3] {data/GestureCorrectness.csv};
@@ -287,11 +287,11 @@ The last group of bars is the average success rate per user, across all gestures
         anchor=east,
         },
         xlabel = Intended Location,
-        ylabel = Location success rate,
+        ylabel = Location success rate (\%),
         width=0.95\textwidth,
         height = 6cm,
         ymin = 0,
-        ymax = 1]
+        ymax = 100]
         \addplot table[x=Row, y=1] {data/LocationCorrectness.csv};
         \addplot table[x=Row, y=2] {data/LocationCorrectness.csv};
         \addplot table[x=Row, y=3] {data/LocationCorrectness.csv};
