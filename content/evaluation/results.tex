@@ -237,9 +237,10 @@ As such it is easier to trigger actions that only have a single gesture associat
       upper whisker=100,
       lower whisker=0
     },
+    color=orange
     ] coordinates {};
     % Action success rate
-    \addplot+[
+    \addplot[
     boxplot prepared={
       median=71,
       upper quartile=75,
@@ -247,9 +248,10 @@ As such it is easier to trigger actions that only have a single gesture associat
       upper whisker=75,
       lower whisker=0
     },
+    color=yellow
     ] coordinates {};
     % Action success rate
-    \addplot+[
+    \addplot[
     boxplot prepared={
       median=28,
       upper quartile=53,
@@ -257,6 +259,7 @@ As such it is easier to trigger actions that only have a single gesture associat
       upper whisker=83,
       lower whisker=0
     },
+    color=green
     ] coordinates {};
   \end{axis}
 \end{tikzpicture}
