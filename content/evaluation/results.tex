@@ -181,31 +181,87 @@ As such it is easier to trigger actions that only have a single gesture associat
 \end{figure}
 
 \begin{figure}[h]
-\centering
 \begin{tikzpicture}
-\begin{axis}[
-    ybar,
-    bar width=2pt,
-    xticklabels from table={data/ActionCorrectnessTransposed.csv}{Action},
-    xtick=data,
-    x tick label style={
-    rotate=45,
-    anchor=east,
+  \begin{axis}
+    [
+    ytick={1,2,3,4,5,6,7},
+    yticklabels from table={data/ActionCorrectnessTransposed.csv}{Action},
+    xlabel = Success rate (\%)
+    ]
+    % Action success rate
+    \addplot+[
+    boxplot prepared={
+      median=0,
+      upper quartile=39,
+      lower quartile=0,
+      upper whisker=40,
+      lower whisker=0
     },
-    width=0.42\textwidth,
-    ymin = 0,
-    ymax = 100,
-    ylabel = success rate (\%),
-    legend style={
-    at={(0,0)},
-    anchor=west, at={(axis description cs:1,0.5)}}]
-    \addplot table[x=Row, y=Average] {data/GestureCorrectness.csv};
-    \addplot table[x=Row, y=Average] {data/ActionCorrectnessTransposed.csv};
-    \addplot table[x=Row, y=Average] {data/LocationCorrectness.csv};
-    \legend{Gesture, Action, Location}
-\end{axis}
+    ] coordinates {};
+    % Action success rate
+    \addplot+[
+    boxplot prepared={
+      median=40,
+      upper quartile=55,
+      lower quartile=8,
+      upper whisker=100,
+      lower whisker=0
+    },
+    ] coordinates {};
+    % Action success rate
+    \addplot+[
+    boxplot prepared={
+      median=32,
+      upper quartile=69,
+      lower quartile=4,
+      upper whisker=100,
+      lower whisker=0
+    },
+    ] coordinates {};
+    % Action success rate
+    \addplot+[
+    boxplot prepared={
+      median=60,
+      upper quartile=90,
+      lower quartile=20,
+      upper whisker=100,
+      lower whisker=0
+    },
+    ] coordinates {};
+    % Action success rate
+    \addplot+[
+    boxplot prepared={
+      median=100,
+      upper quartile=100,
+      lower quartile=50,
+      upper whisker=100,
+      lower whisker=0
+    },
+    ] coordinates {};
+    % Action success rate
+    \addplot+[
+    boxplot prepared={
+      median=71,
+      upper quartile=75,
+      lower quartile=50,
+      upper whisker=75,
+      lower whisker=0
+    },
+    ] coordinates {};
+    % Action success rate
+    \addplot+[
+    boxplot prepared={
+      median=28,
+      upper quartile=53,
+      lower quartile=6,
+      upper whisker=83,
+      lower whisker=0
+    },
+    ] coordinates {};
+  \end{axis}
 \end{tikzpicture}
-\caption{All participants combined.}
+\caption{Action success rate across all participants.}
+\label{fig:user-test-action-boxplot}
 \end{figure}
 
 \subsection{Conclusion}
@@ -222,7 +278,6 @@ The success rate of the actions could be improved by using a different model as 
 An alternative model could be one where the \emph{Gesture} and \emph{Room} nodes were direct parents of the \emph{Action} node and removing the \emph{Gesture\_Action} and \emph{Room\_Action} nodes.
 
 Other alternative models are presented in \Cref{sec:evaluation-alternative-models}.
-
 
 %%% Local Variables:
 %%% mode: latex
