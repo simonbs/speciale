@@ -282,7 +282,11 @@ It may also work better if the users were allowed to make up their own gestures 
 The success rate of the actions could be improved by using a different model as the current model favors actions that have only a single gesture associated with it, as seen the example shown in \Cref{table:participant-2-first-run}.
 An alternative model could be one where the \emph{Gesture} and \emph{Room} nodes were direct parents of the \emph{Action} node and removing the \emph{Gesture\_Action} and \emph{Room\_Action} nodes.
 
-Other alternative models are presented in \Cref{sec:evaluation-alternative-models}.
+From the user test we found the accuracy of the system to be unsatisfying. The poor accuracy is likely to be due to the model used for context recognition, i.e. the Bayesian network and the design of it. We should have discovered the issues before performing user tests, e.g. in the analysis or design phase of the projects. If more comprehensive tests in Hugin were done before implementing the system, we might have been able to discover the issue earlier.
+
+One approach for discovering the issue earlier could have involved some user testing as we could have validated that the gesture recognizer worked, recorded gesture traces from multiple users and using the data, design the and test the system.
+
+In \Cref{sec:evaluation-alternative-models} alternative models and improvements to the current model is presented.
 
 %%% Local Variables:
 %%% mode: latex
