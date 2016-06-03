@@ -1,2 +1,21 @@
 \section{Project Results}
 \label{sec:results}
+
+In this section, we will conclude on the results from investigating the problem statement presented in \Cref{sec:problem-statement}. The problem statement asks:
+
+\begin{framed}
+\noindent How can we design and implement a system that utilize contextual information for controlling a smart home using a wearable in a gesture driven solution?
+\end{framed}
+
+In this report, we have presented an approach for recognizing gestures and when a gesture is recognized, start recognizing of the context the user is in an trigger an appropriate action based on the recognized context. The presented system has been designed and implemented on an Android Wear and a Raspberry Pi, allowing users to control a music centre and smart bulbs.
+
+We have intended to model a generic engine for recognizing context based on various sources for contextual information. Our concrete implementation of the system utilize BLE for positioning the user and a gesture recognizer. In practice the context engine suggests different actions for the same gesture depending on the position of the user in his smart home.
+
+As described in \Cref{sec:evaluation:user-tests}, the system triggers a correct action 44\% of the time. According to the requirement specification presented in \Cref{sec:requirements-specification}, an accuracy of at least 80\% was desired and as such, the system is not satisfiyingly accurate.
+
+In this report we present a concrete design and implementation for a system utilizing contextual information to control a smart home. As the accuracy of the system is unsatisfying, better designs such system may exist. We have investigated an alternative model of the network, also using a Baysian network and found that it is not more accurate. It is our belief that further work on this project should investigate the possibility of using influence diagrams as the model for the context engine.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:
