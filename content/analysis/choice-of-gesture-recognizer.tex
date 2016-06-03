@@ -64,26 +64,50 @@ The \$3 gesture recognizer translates measurements on a tri-axis accelerometer t
 
 \begin{figure}[h]
 \[ T = \{p_1,\ldots,p_X\} \text{ s.t. } p_i=a_i-a_{i-1} \]
-\caption{Gesture trace representation in \$3. $T$ is the gesture trace, $a_i$ is an accelerometer measurement and $X$ is the number of accelerations measured.}
+\caption{Gesture trace representation in \$3. $T$ is the gesture trace, $a_i$ is an accelerometer measurement and $X$ is the number of accelerations measured.
+This equation is not available in~\cite{threedollar} but is created by us to illustrate how they create gesture traces.}
 \label{eq:acceleration-timeseries}
 \end{figure}
 
 This timeseries $T$ is known as the gesture trace and will be rotated to find the smallest distance to the trained gesture templates.
-The way \$3 works is elaborated in \Cref{sec:design:gesture-recognition}.
 
 The gesture recognizer was used in~\cite{prespecialisation} and was found to have a precision between 58\% - 98\%, depending on the user utilizing the recognizer~\cite[p. 344]{threedollar}. The concrete implementation of the recognizer was also found to have memory issues where allocated memory was not deallocated~\cite[p. 54]{prespecialisation}.
 
 \subsection{1\textcent}
 
-Like the \$3 gesture recognizer, the 1\textcent gesture recognizer is also based on \$1. Where \$3 improves \$1 by adding support for a third dimension as well as use of accelerometer data, 1\textcent improves \$1 by decreasing the amount of computations, thus making it more suitable for embedded and resource constrained devices.
+The 1\textcent~gesture recognizer by Herold \etal~is designed as an improvement to the 1\$ recognizer \cite{wobbrock2007gestures} by Wobbrock \etal~by removing computationally expensive rotate-and-check methods and instead using a one-dimensional representation of gestures that is rotation-invariant.
+This means that rather than attempting to rotate a given gesture trace to best match the stored templates, an alternative representation is used such that rotating the trace is not required regardless of how it was performed.
 
-1\textcent decreases the amount of computations by not rotating a gesture trace when matching it with trained gesture templates. Instead it computes distances from each point in the gesture trace to the centroid of the trace as shown in \Cref{eq:one-cent-trace}.
-Further description of how 1\textcent works and is used can be found in \Cref{sec:design:gesture-recognition}.
+A gesture is recorded as a timeseries of two-dimensional coordinates which is then resampled to contain a fixed amount of points $N$.
+Herold \etal~use $N = 64$ to match Wobbrock \etal~but state that any value between 16 and 128 will suffice.
+Once a gesture has been resampled, the centroid is calculated and for each point in the gesture the euclidean distance between that point and the centroid is calculated and stored in an array as shown in \Cref{eq:one-cent-trace}.
 
 \begin{figure}[h]
 \[ d = \{d_i,\ldots,d_N\} \text{ s.t. } d_i=||p_i-c|| \]
-\caption{Gesture trace representation in 3\textcent. $d$ is the gesture trace represented as distances to the centroid, $p_i$ is a point in the trace and $c$ is the centroid of the trace. Source: \cite{herold20121}}
+\caption{Gesture trace representation in 3\textcent. $d$ is the gesture trace represented as distances to the centroid, $p_i$ is a point in the trace and $c$ is the centroid of the trace. Source:~\cite{herold20121}}
 \label{eq:one-cent-trace}
+\end{figure}
+
+This array of distances to the centroid is the one-dimensional representation of a gesture. Herold \etal~calls this a template.
+The idea behind this one-dimensional representation is that it does not matter whether the user performs a rotated version of the gesture because the distance from each point in the trace to the centroid is the same regardless.
+This is illustrated in \Cref{fig:one-cent-star} which shows the same gesture with two different rotations.
+The points \texttt{D1} and \texttt{D2} have the same distance to the centroid \texttt{C} in both cases.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{images/one-cent-star-example}
+\caption{Star Example. Source:~\cite{herold20121}}
+\label{fig:one-cent-star}
+\end{figure}
+
+When attempting to recognize an input from a user, the input is resampled and converted to a template in the same way to enable comparison between the input and the stored templates.
+Comparison between the input and a template is done by calculating the distance between the input and each stored templated using \Cref{eq:one-cent-l-squared}.
+The template with the lowest $L^2$ distance to the input is the best match.
+
+\begin{figure}[h]
+\[ L^{2}(v_1, v_2) = \lvert\lvert v_1 - v_2 \rvert\rvert^2 \]
+\label{eq:one-cent-l-squared}
+\caption{Distance between two templates. Source: \cite{herold20121}}
 \end{figure}
 
 \subsection{Conclusion}
