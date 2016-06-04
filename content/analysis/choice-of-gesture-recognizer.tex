@@ -78,8 +78,9 @@ The gesture recognizer was used in~\cite{prespecialisation} and was found to hav
 The 1\textcent~gesture recognizer by Herold \etal~is designed as an improvement to the 1\$ recognizer \cite{wobbrock2007gestures} by Wobbrock \etal~by removing computationally expensive rotate-and-check methods and instead using a one-dimensional representation of gestures that is rotation-invariant.
 This means that rather than attempting to rotate a given gesture trace to best match the stored templates, an alternative representation is used such that rotating the trace is not required regardless of how it was performed.
 
-A gesture is recorded as a timeseries of two-dimensional coordinates which is then resampled to contain a fixed amount of points $N$.
+A gesture is recorded as a timeseries of two-dimensional coordinates which is then resampled to contain a fixed amount of equidistant points.
 Herold \etal~use $N = 64$ to match Wobbrock \etal~but state that any value between 16 and 128 will suffice.
+\$3 resample the gesture traces with $N = 150$ and state that a higher resample rate $N$ provides higher precision at the cost of increased computation time~\cite[p. 342]{threedollar}.
 Once a gesture has been resampled, the centroid is calculated and for each point in the gesture the euclidean distance between that point and the centroid is calculated and stored in an array as shown in \Cref{eq:one-cent-trace}.
 
 \begin{figure}[h]
