@@ -1,8 +1,8 @@
 \section{Gesture Recognition}
 \label{sec:design:gesture-recognition}
 
-As stated in \Cref{sec:analysis:choice-of-gesture-recognizer} we decided to use the 1\textcent~gesture recognizer~\cite{herold20121}.
-However as the 1\textcent~gesture recognizer is designed to be used for recognition of two-dimensional gestures we have created a modified version of it that is able to recognize three-dimensional gestures recorded using a three-axis accelerometer by utilizing one of the techniques used by \$3~\cite{three-dollar}.
+As stated in \Cref{sec:analysis:choice-of-gesture-recognizer} we decided to use the 1\textcent~gesture recognizer.
+However, as the 1\textcent~gesture recognizer is designed to be used for recognition of two-dimensional gestures we have created a modified version of it that is able to recognize three-dimensional gestures recorded using a three-axis accelerometer by utilizing one of the techniques used by \$3~\cite{threedollar}.
 
 \subsection{Converting 1\textcent~to Three Dimensions}
 For use in this project we created a modified version of 1\textcent~that works with three-dimensional accelerometer data.
@@ -17,11 +17,11 @@ If these two measurements are used as coordinates for the gesture, it would end 
 \centering
 % Pure accelerometer points
 \begin{tikzpicture}
-    \draw[gray, ->, thick] (0,-5) -- (0,5) node[left] {$y$};
-    \draw[gray, ->, thick] (-5,0) -- (5,0) node[below] {$x$};
-    \draw[blue, ->, thick] (0,0) -- (4,0);
-    \draw[blue, ->, thick] (0,0) -- (0,4);
-    \filldraw[red] (0,0) circle (2pt);
+  \draw[gray, ->, thick] (0,-5) -- (0,5) node[left] {$y$};
+  \draw[gray, ->, thick] (-5,0) -- (5,0) node[below] {$x$};
+  \draw[blue, ->, thick] (0,0) -- (4,0);
+  \draw[blue, ->, thick] (0,0) -- (0,4);
+  \filldraw[red] (0,0) circle (2pt);
 \end{tikzpicture}
 \caption{Two consecutive accelerometer measurements $\{4,0\}$ and $\{0,4\}$. Accelerations are measured in $\frac{m}{s^2}$}
 \label{fig:accelerometerpoints}
@@ -63,4 +63,9 @@ If these two measurements are used as coordinates for the gesture, it would end 
 
 The proper path is illustrated in \Cref{fig:acceleromterpath-proper}.
 The way we achieve the proper path is by borrowing a technique from~\cite{threedollar} where acceleration are acquired by subtracting the current measurement from the previous one to obtain an acceleration delta and adding it to the previous point to create the new point as shown in \Cref{eq:one-cent-trace}.
-However in our specific implementation we do not add the acceleration deltas to the previous point but instead add the current acceleration measurement.
+However, in our specific implementation we do not add the acceleration deltas to the previous point but instead add the current acceleration measurement.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End:
