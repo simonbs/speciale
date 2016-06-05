@@ -8,10 +8,10 @@ In this section, we present functionality and design changes that would make sen
 
 Investigation of battery efficient approaches for continuous gesture recognition could be beneficial. The current implementation requires the user to open the Andorid Wear application, tap to start recognizing a gesture, perform the gesture and then tap again to stop the gesture recognition. From the tests we conducted with users, we found the approach to be unsuitable as starting the recognition must be done with the arm on which the watch is mounted, held in a position ready to do the gesture when starting and stopping the gesture must be done in the position where the gesture ended.
 
-In order to avoid this, we imagine a solution where the smart watch continuously attempts to recognize gestures based on accelerometer data, even when the smart watch application running in the background. Such a solution would solve the following two issues.
+In order to avoid this, we imagine a solution where the smartwatch continuously attempts to recognize gestures based on accelerometer data, even when the smartwatch application running in the background. Such a solution would solve the following two issues.
 
 \begin{description}
-\item[The need to open the application to perform recognition] When gesture recognition can be done with the application put into the background, \ie~not launched and visible on the screen of the smart watch, there is no longer a need to open the application thus making it faster to control the smart home using gestures.
+\item[The need to open the application to perform recognition] When gesture recognition can be done with the application put into the background, \ie~not launched and visible on the screen of the smartwatch, there is no longer a need to open the application thus making it faster to control the smart home using gestures.
 \item[Starting and stopping the recognition] The user no longer has to manually start and stop the gesture recognition after performing each gesture. The continuous gesture recognizer should automatically detect when the user starts performing a gesture and when he stops performing it.
 \end{description}
 

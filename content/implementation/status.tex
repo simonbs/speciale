@@ -19,13 +19,13 @@ In our specific prototype, we have a computer acting as the media centra and we 
 
 Below we present the features implemented as part of the project. Features are grouped by the hardware the software is running on.
 
-\subsubsection{Smart Watch}
+\subsubsection{Smartwatch}
 
-The user utilizes the Android Wear smart watch to perform gestures which starts the context recognition process. Furthermore the smart watch is used for positioning the user and configuring parts of the system. The following features are implemented on the watch.
+The user utilizes the Android Wear smartwatch to perform gestures which starts the context recognition process. Furthermore the smartwatch is used for positioning the user and configuring parts of the system. The following features are implemented on the watch.
 
 \begin{itemize}
 \item Retrieval of available devices and actions from openHAB.
-\item Configuration of the smart watch application based on rooms and beacons registered in openHAB.
+\item Configuration of the smartwatch application based on rooms and beacons registered in openHAB.
 \item Training of gestures using the 1\textcent~gesture recognizer as described in \Cref{sec:design:gesture-recognition}.
 \item Recognition of gestures using the 1\textcent~gesture recognizer.
 \item Positioning of the user using Estimotes BLE beacons as described in \Cref{sec:design:ble-positioning}.
@@ -39,7 +39,7 @@ The user utilizes the Android Wear smart watch to perform gestures which starts 
 
 The Bluetooth Low Energy beacons are used to position the user indoor.
 
-We have not implemented any features on the BLE beacons but in order to position te user, the smart watch reads the RSSI values from the Bluetooth beacons and based on those values determines which room the user is in, described in detail in \Cref{sec:design:bayesian-network:room-node-evidence}.
+We have not implemented any features on the BLE beacons but in order to position te user, the smartwatch reads the RSSI values from the Bluetooth beacons and based on those values determines which room the user is in, described in detail in \Cref{sec:design:bayesian-network:room-node-evidence}.
 
 \subsubsection{Raspberry Pi}
 
@@ -68,14 +68,14 @@ We have not implemented any features on the bridge but use it in order to contro
 
 \subsubsection{Philips Hue Light Bulb}
 
-The light bulbs provided by Philips are controlled using gestures on the smart watch, i.e. using the CARMA application. The bulbs receive commands from the Philips Hue bridge when they need to change their state, e.g. turn on, turn off, change color or change temperature. The bulbs can communicate with each other using the ZigBee Light Link protocol to extend the range of the network by forwarding commands between bulbs.
+The light bulbs provided by Philips are controlled using gestures on the smartwatch, i.e. using the CARMA application. The bulbs receive commands from the Philips Hue bridge when they need to change their state, e.g. turn on, turn off, change color or change temperature. The bulbs can communicate with each other using the ZigBee Light Link protocol to extend the range of the network by forwarding commands between bulbs.
 
 \subsection{Known Issues}
 
 The following describes known issues in the implementation.
 
 \begin{itemize}
-\item There is an issue with the implementation of the gesture recognizer that causes the smart watch application to crash if recognition is started with little to no measurements from the accelerometer are available to the gesture recognizer. In order to fix the issue, recognition should most likely be abandoned all together when little information is available. We have only seen the issue when users have accidentally stopped recognition immediately after starting it.
+\item There is an issue with the implementation of the gesture recognizer that causes the smartwatch application to crash if recognition is started with little to no measurements from the accelerometer are available to the gesture recognizer. In order to fix the issue, recognition should most likely be abandoned all together when little information is available. We have only seen the issue when users have accidentally stopped recognition immediately after starting it.
 \item Sometimes the application will hang, i.e. ``freeze'', when context recognition is started. The fix for the issue is most likely to perform the context recognition on another thread.
 \item In order to present the settings (see \Cref{fig:implementation:prototype:screenshots:3}), the user must scroll from right to left on the gesture recognition screen (see \Cref{fig:implementation:prototype:screenshots:1}). The list of settings is meant to be scrolled vertically but it seems that the horizontal scroll gesture interferes with the vertical scroll causing the list of settings not to scroll. It is, however, possible to tap in the top and the bottom of the list to change the selected setting.
 \end{itemize}
@@ -97,7 +97,7 @@ Reuse of the Bayesian network could be implemented by creating the network when 
 
 \subsection{HTTP}
 
-As shown in \Cref{fig:implementation:deployment-diagram} we use HTTP for communication between the smart watch, the Raspberry Pi and the computer acting as media centre.
+As shown in \Cref{fig:implementation:deployment-diagram} we use HTTP for communication between the smartwatch, the Raspberry Pi and the computer acting as media centre.
 
 HTTP, or Hyptertext Transfer Protocol, which it is short for, is a protocol generally used for exchanging \emph{hypertext}, text which includes hyperlinks. HTTP is a client-server protocol, in which a client sends a request to the server which in turn sends a response.
 
@@ -107,7 +107,7 @@ When a web server returns a response, it will return an HTTP status code as part
 
 HTTP utilize TCP/IP to transfer information. TCP transfers information in small packets between machines and IP is responsible for addressing machines in a network and routing the information between the machines.
 
-In our prototype we use a framework appropriate for the platform to issue requests and send a response, e.g. in the case of the smart watch application we use the Android Volley framework for making requests\footnote{For more information about Google Volley, refer to \url{https://developer.android.com/training/volley/}}. In the case of the Spotify Controls API, we use the Express\footnote{For more information about Express, refer to \url{http://expressjs.com}} framework for building the server.
+In our prototype we use a framework appropriate for the platform to issue requests and send a response, e.g. in the case of the smartwatch application we use the Android Volley framework for making requests\footnote{For more information about Google Volley, refer to \url{https://developer.android.com/training/volley/}}. In the case of the Spotify Controls API, we use the Express\footnote{For more information about Express, refer to \url{http://expressjs.com}} framework for building the server.
 
 The requests are sent to either openHAB or the Spotify Controls API which will return a response formatted using JSON. In the case of a simple request, e.g. for changing the state of the music centre, the JSON response, as well as the HTTP status code, indicates whether or not the request was successful. For a more complex request, e.g. when requesting the available items in openHAB, the response will contain all available items in openHAB formatted as JSON along with a HTTP status code.
 

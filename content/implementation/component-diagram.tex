@@ -1,8 +1,8 @@
 \section{Component Diagram}
 \label{sec:implementation:component-diagram}
 
-\Cref{fig:implementation:component-diagram:wear} shows a component diagram of the primary components involved in the application developed for the Android Wear smart watch. The component diagram illustrates which key components are involved in the software and how they interact with each other.
-The diagram focus on the smart watch as most of our development was concentrated on that platform. 
+\Cref{fig:implementation:component-diagram:wear} shows a component diagram of the primary components involved in the application developed for the Android Wear smartwatch. The component diagram illustrates which key components are involved in the software and how they interact with each other.
+The diagram focus on the smartwatch as most of our development was concentrated on that platform.
 
 Below is a brief description of the components in the diagram. Please beware of the note in the in the diagram. Components which communicates without an \emph{assembly connector}, i.e. communicating using a required and a provided interface, communicates without the use of Java interfaces, e.g invocation of public methods that are not part of a Java interface. Since the components are still considered to be independent of each other, it makes sense to revisit the implementation to communicate using assembly connectors, i.e. Java interfaces. When information is passed without the use of assembly connectors, the edge is annotated with the information being passed between the components.
 
@@ -11,9 +11,9 @@ Below is a brief description of the components in the diagram. Please beware of 
 \item[PositionContextualInformationProvider] Provides the context recognizer with information about the users position. I.e. contains the Room and Room\_Action nodes of the Bayesian network and computes evidence for all rooms.
 \item[GestureContextualInformationProvider] Provides the context recognizer with informtion about the gesture the user performed. I.e. contains the Gesture and Gesture\_Action nodes of the Bayesian network and computes evidence for all gestures.
 \item[ContextRecognizer] Determines an appropriate action to trigger based on the information provided by \texttt{PositionContextualInformationProvider} and \texttt{GestureContextualInformationProvider}.
-\item[GestureRecognizer] Given X, Y and Z-accelerations obtained from the accelerometer of the smart watch, the component scores the gesture templates and thus determines the gestures the user is likely to have made.
+\item[GestureRecognizer] Given X, Y and Z-accelerations obtained from the accelerometer of the smartwatch, the component scores the gesture templates and thus determines the gestures the user is likely to have made.
 \item[OpenHABClient] Communicates with openHAP over HTTP using the REST API provided by openHAB.
-\item[App UI] The component represents the UI of the Android Wear smart watch application.
+\item[App UI] The component represents the UI of the Android Wear smartwatch application.
 \end{description}
 
 For a more detailed description of the components involved in the context engine, please refer to \Cref{sec:implementation:context-engine}.

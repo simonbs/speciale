@@ -6,7 +6,7 @@ This section presents the prototype of the Android Wear application as well as t
 \subsection{Android Wear}
 \label{sec:implementation:prototype:android-wear}
 
-\Cref{fig:implementation:prototype:navigation-diagram} shows a navigation diagram for the user interface of the smart watch application. The letters in the top right corner of the nodes in the diagram references the screenshots shown in \Cref{fig:implementation:prototype:screenshots}.
+\Cref{fig:implementation:prototype:navigation-diagram} shows a navigation diagram for the user interface of the smartwatch application. The letters in the top right corner of the nodes in the diagram references the screenshots shown in \Cref{fig:implementation:prototype:screenshots}.
 
 The diagram shows that the application can be considered divided into the following two areas.
 
@@ -55,7 +55,7 @@ For a list of the supported features in the application, please refer to \Cref{s
     \subbottom[Action picker shown when creating a gesture configuration. A similar picker is shown when the context engine suggests multiple actions.]{\label{fig:implementation:prototype:screenshots:9}
         \frame{\includegraphics[width=0.3\textwidth]{images/wear-screenshot-actions}}
     }
-    \caption{Screenshots of the prototype developed for the Android Wear smart watch.}
+    \caption{Screenshots of the prototype developed for the Android Wear smartwatch.}
     \label{fig:implementation:prototype:screenshots}
 \end{figure}
 
@@ -66,9 +66,9 @@ We developed a \emph{binding} for openHAB. A \emph{binding} is an addon for open
 
 We chose to place the configuration of the rooms and beacons in openHAB, as this is a one time configuration which can be shared amongst the users in a home where as the creation of gesture configurations is place on the watch as this can be independent for each inhabitant of a home.
 
-The rooms and beacons are synchronized to the smart watch when the application is loaded. The watch use the models when positioning the user.
+The rooms and beacons are synchronized to the smartwatch when the application is loaded. The watch use the models when positioning the user.
 
-A room has a name and when it is created, openHAB assigns it a UID. When creating a beacon, the user must enter the UID assigned by openHAB in order to specify which room the beacon is placed in. Furthermore the user should enter the Eddystone namespace and instance, both described in \Cref{sec:design:ble-positioning}. This identifies the specific beacon. When the smart watch registers a beacon, it can determine which room the user is in by the beacons reference to a room.
+A room has a name and when it is created, openHAB assigns it a UID. When creating a beacon, the user must enter the UID assigned by openHAB in order to specify which room the beacon is placed in. Furthermore the user should enter the Eddystone namespace and instance, both described in \Cref{sec:design:ble-positioning}. This identifies the specific beacon. When the smartwatch registers a beacon, it can determine which room the user is in by the beacons reference to a room.
 
 % \begin{figure}[!htb]%
 %     \centering
