@@ -89,7 +89,7 @@ Lamp 8: on/off               & 0.5 & 0             & 0                \\
 Music centre: next track     & 0   & 0.5             & 0                \\
 Music centre: previous track & 0   & 0             & 0.5              \\
 Television: next channel     & 0   & 0.5             & 0                \\
-Television: previous channel & 0   & 0             & 0.5              
+Television: previous channel & 0   & 0             & 0.5
 \end{tabular}
 \end{tabular}
 \end{table}
@@ -124,37 +124,37 @@ Television: previous channel & $\frac{1}{3}$   & 0  \\
 \textbf{System\_State\_Action}   \\
 \begin{tabular}{l|cc}
 MusicCentre\_IsPlaying       & Yes & No \\
-TV\_IsOn                     & 
+TV\_IsOn                     &
 \begin{tabularx}{2cm}{YY} Yes & No \end{tabularx}
 &
 \begin{tabularx}{2cm}{YY} Yes & No \end{tabularx}
 \\ \hline
-Lamp 3: on/off               & 
+Lamp 3: on/off               &
 \begin{tabularx}{2cm}{YY} $\frac{1}{6}$ & 0.25 \end{tabularx}
 &
 \begin{tabularx}{2cm}{YY} 0.25 & 0.5 \end{tabularx}
 \\
-Lamp 8: on/off               & 
+Lamp 8: on/off               &
 \begin{tabularx}{2cm}{YY} $\frac{1}{6}$ & 0.25 \end{tabularx}
 &
 \begin{tabularx}{2cm}{YY} 0.25 & 0.5 \end{tabularx}
 \\
-Music centre: next track               & 
+Music centre: next track               &
 \begin{tabularx}{2cm}{YY} $\frac{1}{6}$ & 0.25 \end{tabularx}
 &
 \begin{tabularx}{2cm}{YY} 0 & 0 \end{tabularx}
 \\
-Music centre: previous track               & 
+Music centre: previous track               &
 \begin{tabularx}{2cm}{YY} $\frac{1}{6}$ & 0.25 \end{tabularx}
 &
 \begin{tabularx}{2cm}{YY} 0 & 0 \end{tabularx}
 \\
-Television: next channel               & 
+Television: next channel               &
 \begin{tabularx}{2cm}{YY} $\frac{1}{6}$ & 0 \end{tabularx}
 &
 \begin{tabularx}{2cm}{YY} 0.25 & 0 \end{tabularx}
 \\
-Television: previous channel               & 
+Television: previous channel               &
 \begin{tabularx}{2cm}{YY} $\frac{1}{6}$ & 0 \end{tabularx}
 &
 \begin{tabularx}{2cm}{YY} 0.25 & 0 \end{tabularx}
@@ -178,7 +178,7 @@ When System\_State\_Action = $A_1$, Room\_Action = $A_1$ and Gesture\_Action = $
 System\_State\_Action & \begin{tabularx}{11cm}{Y|Y} $A_1$ & $A_2$ \end{tabularx} \\ \hline
 Room\_Action          & \begin{tabularx}{11cm}{Y|Y|Y|Y} $A_1$ & $A_2$ & $A_1$ & $A_2$ \end{tabularx} \\ \hline
 Gesture\_Action       & \begin{tabularx}{11cm}{YY|YY|YY|YY} $A_1$ & $A_2$ & $A_1$ & $A_2$ & $A_1$ & $A_2$ & $A_1$ & $A_2$ \end{tabularx} \\ \hline
-A                     & \begin{tabularx}{11cm}{YY|YY|YY|YY} 1 & $\frac{2}{3}$ & $\frac{2}{3}$ & $\frac{1}{3}$ & $\frac{2}{3}$ & $\frac{1}{3}$ & $\frac{1}{3}$ & 0 \end{tabularx} \\ 
+A                     & \begin{tabularx}{11cm}{YY|YY|YY|YY} 1 & $\frac{2}{3}$ & $\frac{2}{3}$ & $\frac{1}{3}$ & $\frac{2}{3}$ & $\frac{1}{3}$ & $\frac{1}{3}$ & 0 \end{tabularx} \\
 B                     & \begin{tabularx}{11cm}{YY|YY|YY|YY} 0 & $\frac{1}{3}$ & $\frac{1}{3}$ & $\frac{2}{3}$ & $\frac{1}{3}$ & $\frac{2}{3}$ & $\frac{2}{3}$ & 1 \end{tabularx}
 \end{tabular}
 \end{tabular}
@@ -233,14 +233,14 @@ Television: next channel & $\frac{1}{4}$ & $\frac{1}{3}$
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{images/system-state-one-6}
-\caption{Screenshot from Hugin. Please refer to \Cref{sec:analysis:bayesian-network:hugin} for a detailed description of the elements shown. The network shows beliefs of actions when using one node at the middle level for system state. Nodes are configured according to the scenario presented in \Cref{sec:analysis:scenarios}. Conditional tables for the TV\_IsOn and MusicCentre\_IsPlaying nodes are configured as shown in \Cref{tbl:design:bayesian-network:alternative-system-state}.}
+\caption{Screenshot from Hugin. Refer to \Cref{sec:analysis:bayesian-network:hugin} for a detailed description of the elements shown. The network shows beliefs of actions when using one node at the middle level for system state. Nodes are configured according to the scenario presented in \Cref{sec:analysis:scenarios}. Conditional tables for the TV\_IsOn and MusicCentre\_IsPlaying nodes are configured as shown in \Cref{tbl:design:bayesian-network:alternative-system-state}.}
 \label{fig:design:bayesian-network:system-state-one-6}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{images/system-state-multiple-6}
-\caption{Screenshot from Hugin. Please refer to \Cref{sec:analysis:bayesian-network:hugin} for a detailed description of the elements shown. The network shows beliefs of actions when using multiple nodes at the middle level for system state. Nodes are configured according to the scenario presented in \Cref{sec:analysis:scenarios}. Conditional tables for the TV\_IsOn and MusicCentre\_IsPlaying nodes are configured as shown in \Cref{tbl:design:bayesian-network:alternative-system-state}.}
+\caption{Screenshot from Hugin. Refer to \Cref{sec:analysis:bayesian-network:hugin} for a detailed description of the elements shown. The network shows beliefs of actions when using multiple nodes at the middle level for system state. Nodes are configured according to the scenario presented in \Cref{sec:analysis:scenarios}. Conditional tables for the TV\_IsOn and MusicCentre\_IsPlaying nodes are configured as shown in \Cref{tbl:design:bayesian-network:alternative-system-state}.}
 \label{fig:design:bayesian-network:system-state-multiple-6}
 \end{figure}
 

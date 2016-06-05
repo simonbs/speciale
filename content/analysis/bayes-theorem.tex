@@ -64,7 +64,7 @@ Fraud = No   & 0.01       & 0.99 \\
 Age           & \begin{tabularx}{0.8\textwidth}{Y|Y|Y} < 30 & 30 - 50 & > 50 \end{tabularx} \\ \hline
 Fraud         & \begin{tabularx}{0.8\textwidth}{YY|YY|YY} Yes & No & Yes & No & Yes & No \end{tabularx} \\ \hline
 Sex           & \begin{tabularx}{0.8\textwidth}{YY|YY|YY|YY|YY|YY} M & F & M & F & M & F & M & F & M & F & M & F \end{tabularx} \\ \hline
-Jewelry = Yes & \begin{tabularx}{0.8\textwidth}{YY|YY|YY|YY|YY|YY} $\frac{1}{20}$ & $\frac{1}{20}$ & $\frac{1}{10000}$ & $\frac{1}{2000}$ & $\frac{1}{20}$ & $\frac{1}{20}$ & $\frac{1}{2500}$ & $\frac{1}{500}$ & $\frac{1}{20}$ & $\frac{1}{20}$ & $\frac{1}{5000}$ & $\frac{1}{1000}$ \end{tabularx} \\ 
+Jewelry = Yes & \begin{tabularx}{0.8\textwidth}{YY|YY|YY|YY|YY|YY} $\frac{1}{20}$ & $\frac{1}{20}$ & $\frac{1}{10000}$ & $\frac{1}{2000}$ & $\frac{1}{20}$ & $\frac{1}{20}$ & $\frac{1}{2500}$ & $\frac{1}{500}$ & $\frac{1}{20}$ & $\frac{1}{20}$ & $\frac{1}{5000}$ & $\frac{1}{1000}$ \end{tabularx} \\
 Jewelry = No  & \begin{tabularx}{0.8\textwidth}{YY|YY|YY|YY|YY|YY} $\frac{19}{20}$ & $\frac{19}{20}$ & $\frac{9999}{10000}$ & $\frac{1999}{2000}$ & $\frac{19}{20}$ & $\frac{19}{20}$ & $\frac{2499}{2500}$ & $\frac{499}{500}$ & $\frac{19}{20}$ & $\frac{19}{20}$ & $\frac{4999}{5000}$ & $\frac{999}{1000}$ \end{tabularx}
 \end{tabular}
 \end{tabular}
@@ -78,10 +78,10 @@ We compute this using Bayes' theorem which is defined as:
 P(A|B) = \frac{P(B|A)P(A)}{P(B)}
 \end{equation}
 
-More specifically, we want to compute the following. Please note that for readability purposes the names of the variables and the states have been shortened to their initial letter.
+More specifically, we want to compute the following. Note that for readability purposes the names of the variables and the states have been shortened to their initial letter.
 
 \begin{equation*}
-P(F=Y|J = Y, G = N, S = M, A = < 30) 
+P(F=Y|J = Y, G = N, S = M, A = < 30)
 \end{equation*}
 \begin{equation*}
 \begin{split}
@@ -93,7 +93,7 @@ P(F=Y|J = Y, G = N, S = M, A = < 30)
 According to \Cref{eq:analysis:bayesian-network:prod} we can write this as
 
 \begin{equation*}
-P(F=Y|J = Y, G = N, S = M, A = < 30) 
+P(F=Y|J = Y, G = N, S = M, A = < 30)
 \end{equation*}
 \begin{equation*}
 = \frac{P(J = Y, S = M, A = < 30|F=Y) \cdot P(G=N|F=Y) \cdot P(F=Y)}{P(J=Y|F=Y,S=M,A=<30) \cdot P(G=N|F=Y) \cdot P(S=M) \cdot P(A=<30)}
@@ -102,10 +102,10 @@ P(F=Y|J = Y, G = N, S = M, A = < 30)
 Then we substitute with the probabilities from our probability tables and conditional probability tables.
 
 \begin{equation*}
-P(F=Y|J = Y, G = N, S = M, A = < 30) 
+P(F=Y|J = Y, G = N, S = M, A = < 30)
 \end{equation*}
 \begin{equation*}
-= \frac{\frac{1}{20} \cdot 0.8 \cdot 0.00001}{\frac{1}{20} \cdot 0.8 \cdot 0.5 \cdot 0.25} = 
+= \frac{\frac{1}{20} \cdot 0.8 \cdot 0.00001}{\frac{1}{20} \cdot 0.8 \cdot 0.5 \cdot 0.25} =
 \end{equation*}
 %%% Local Variables:
 %%% mode: latex

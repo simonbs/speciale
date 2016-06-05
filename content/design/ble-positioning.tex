@@ -32,7 +32,7 @@ The Measured Power is broadcasted by the beacon in order for other Bluetooth LE-
 
 In the examples in \Cref{tbl:design:ble-positioning:ibeacon1,tbl:design:ble-positioning:ibeacon2,tbl:design:ble-positioning:ibeacon3}, $664E170A-21BB-457C-A86B-F9265595452A$ is the UUID of all McDonalds' beacons, a major value of 1 indicates a restaurant in Copenhagen and a major value of 2 indicates a restaurant in Aalborg. Beacons installed on first floor has a minor value of 1 and beacons installed on second floor has a minor value of 2.
 
-Please note that all examples are fictitious.
+Note that all examples are fictitious.
 
 \begin{table}[h!]
 \centering
@@ -41,7 +41,7 @@ Please note that all examples are fictitious.
 \begin{tabular}{ll}
 \textbf{UUID}  & 664E170A-21BB-457C-A86B-F9265595452A \\
 \textbf{Major} & 1                                    \\
-\textbf{Minor} & 1            \\                        
+\textbf{Minor} & 1            \\
 \textbf{Measured Power} & -44
 \end{tabular}
 \end{table}
@@ -54,7 +54,7 @@ Please note that all examples are fictitious.
 \textbf{UUID}  & 664E170A-21BB-457C-A86B-F9265595452A \\
 \textbf{Major} & 1                                    \\
 \textbf{Minor} & 2           \\
-\textbf{Measured Power} & -44                        
+\textbf{Measured Power} & -44
 \end{tabular}
 \end{table}
 
@@ -65,7 +65,7 @@ Please note that all examples are fictitious.
 \begin{tabular}{ll}
 \textbf{UUID}  & 664E170A-21BB-457C-A86B-F9265595452A \\
 \textbf{Major} & 2                                    \\
-\textbf{Minor} & 1            \\                        
+\textbf{Minor} & 1            \\
 \textbf{Measured Power} & -44
 \end{tabular}
 \end{table}
@@ -113,7 +113,7 @@ The Eddystone-UID frame type is suitable for granular indoor positioning as the 
 16                   & BID{[}5{]}     &                                       & 0x11           \\
 17                   & BID{[}6{]}     &                                       & 0xA6           \\
 18                   & RFU            & Reserved for future use.               &                \\
-19                   & RFU            & Reserved for future use.               &               
+19                   & RFU            & Reserved for future use.               &
 \end{tabular}
 \end{table}
 
@@ -150,7 +150,7 @@ Eddystone-URL frames are broadcasted when interested in redirecting users to a w
 12                   & URL{[}9{]}     &                                                            & K              \\
 13                   & URL{[}10{]}     &                                                            & X              \\
 14                   & URL{[}11{]}     &                                                            & k              \\
-15                   & URL{[}12{]}     &                                                            & v             
+15                   & URL{[}12{]}     &                                                            & v
 \end{tabular}
 \end{table}
 
@@ -187,14 +187,14 @@ Eddystone-TLM frames are broadcasted when interested in monitoring the health of
 10                   & SEC\_CNT{[}0{]} & Time since power-on or reboot.                                               & 0x00           \\
 11                   & SEC\_CNT{[}1{]} &                                                                             & 0x09           \\
 12                   & SEC\_CNT{[}2{]} &                                                                             & 0x3A           \\
-13                   & SEC\_CNT{[}3{]} &                                                                             & 0x80          
+13                   & SEC\_CNT{[}3{]} &                                                                             & 0x80
 \end{tabular}
 \end{table}
 
 \subsection{Installation}
 \todo[author=Kasper]{Vi bør nok finde på en bedre titel til denne subsection.}
 
-Both the iBeacon and the Eddystone protocols are suitable for the system described in this report. 
+Both the iBeacon and the Eddystone protocols are suitable for the system described in this report.
 
 The iBeacon protocol solely supports positioning of the user, either granularly using the Measured Power or non-granularly using regions defined by the major and/or minor value of the beacon.
 
