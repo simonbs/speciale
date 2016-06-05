@@ -1,17 +1,15 @@
 \section{Choice of Wearable}
 \label{sec:analysis:choice-of-wearables}
 
-The following section analyzes the possibilities of the selected wearables in regards to the solution described in this report.
-
-The wearable is primarily used for gesture recognition and positioning of the user. Furthermore the wearable is utilised to give feedback to the user when a gesture culd not be recognized. The wearable should also allow for interactions, such as virtually changing the position of the user as described in \Cref{sec:analysis:scenarios}.
+The wearable is primarily used for gesture recognition and positioning of the user. Furthermore the wearable is utilised to give feedback to the user when a gesture could not be recognized and for creation of gesture configurations. The wearable should allow for interactions, such as virtually changing the position of the user as described in \Cref{sec:analysis:scenarios}.
 
 Hence we decided on the following requirements.
 
 \begin{itemize}
-\item The wearable must possess a screen on which visual feedback can be presented and allow for presenting and interacting with proposed gestures, in case the gesture that the user performs was not recognized. Furthermore, displaying and interacting with information is needed when the user virtually changes his position.
+\item The wearable must possess a screen on which visual feedback can be presented and allow for presenting and interacting with proposed gestures, in case we are unable to determine one specific action to be triggered. Furthermore, displaying and interacting with information is needed when the user virtually changes his position.
 \item The wearable must possess an accelerometer in order to detect the users movements and derive gestures from those.
-\item As described in section \Cref{sec:analysis:indoor-positioning}, bluetooth is used for positioning the user. Therefore the wearable should possess bluetooth in order to position the user.
-\item WiFi connection in order to send commands to the hub. The wearable should ideally be independent of the phone and should send commands directly to the hub. WiFi is suitable for this as it is assumed that a WiFi connection is available in the entire house of the user. \author[author=Simon]{Argument why we use a hub that uses WiFi. Reference to section on choice of hub.}
+\item As described in \Cref{sec:analysis:indoor-positioning}, Bluetooth is used for positioning the user. Therefore the wearable should possess Bluetooth in order to position the user.
+\item WiFi connection in order to send commands to the hub. The wearable should ideally be independent of the phone and should send commands directly to the hub. WiFi is suitable for this as it is assumed that a WiFi connection is available in the entire house of the user.
 \item We must be able to install and run our own applications on the wearable.
 \end{itemize}
 
@@ -31,11 +29,11 @@ The below four smartwatches are analyzed in the following sections.
 \item Microsoft Band running Microsofts wearable architecture.
 \end{itemize}
 
-\Cref{tbl:analysis:choice-of-wearable} shows a comparison of the four smartwatches based on the three parameters previously listed. The table shows that the Pebble Classic and the Apple Watch do not provide access to the bluetooth API and thus we cannot perform positioning directly on the smartwatch. An alternative is to accept this limitation and perform the positioning of the user on a smartphone and continously transfer the positions to the hub. The smartwatch can then retrieve the positions when needed.
+\Cref{tbl:analysis:choice-of-wearable} shows a comparison of the four smartwatches based on the three parameters previously listed. The table shows that the Pebble Classic and the Apple Watch do not provide access to the Bluetooth API and thus we cannot perform positioning directly on the smartwatch. An alternative is to accept this limitation and perform the positioning of the user on a smartphone and continously transfer the positions to the hub. The smartwatch can then retrieve the positions when needed.
 This limitation requires the user to carry the phone wherever he goes.
 
 \renewcommand{\arraystretch}{1.2}
-\begin{table}[htb]
+\begin{table}[!htb]
 \centering
 \caption{Comparison of wearables}
 \label{tbl:analysis:choice-of-wearable}
@@ -43,12 +41,12 @@ This limitation requires the user to carry the phone wherever he goes.
 \multicolumn{1}{l}{\textbf{}}     & \textbf{Pebble Classic}                       & \textbf{Second generation Moto 360} \\
 \textbf{Feedback} & Screen with hardware buttons for interaction. & Touchscreen.                        \\
 \textbf{Gesture recognition}      & Accelerometer. \cite{pebble:accelerometer}                                & Accelerometer and gyroscope available from API level 3 and 9 respectively. \cite{motorola:moto360, android:creating-wearable-apps, android:motion-sensors, android:sensors-overview}        \\
-\textbf{Positioning}              & No access to the bluetooth API.               & Access to the bluetooth API available from API level 1. \cite{motorola:moto360, android:creating-wearable-apps, android:bluetooth, android:broadcast-receiver}        \\
+\textbf{Positioning}              & No access to the Bluetooth API.               & Access to the Bluetooth API available from API level 1. \cite{motorola:moto360, android:creating-wearable-apps, android:Bluetooth, android:broadcast-receiver}        \\
 \textbf{WiFi}                     & Unknown\footnotemark[\getrefnumber{ftn:choice-of-wearable:unknown-feature}].    & Yes.                                \\
 \multicolumn{1}{l}{}              & \textbf{Samsung Gear S2}                      & \textbf{Apple Watch}                \\
 \textbf{Feedback} & Touchscreen with a rotating bezel.             & Touchscreen with digital crown.     \\
 \textbf{Gesture recognition}      & Accelerometer and gyroscope. \cite{samsung:gears2, tizen:sensors}                  & Accelerometer.                      \\
-\textbf{Positioning}              & Access to the bluetooth API. \cite{samsung:gears2, tizen:bluetooth}                  & No access to the bluetooth API.     \\
+\textbf{Positioning}              & Access to the Bluetooth API. \cite{samsung:gears2, tizen:Bluetooth}                  & No access to the Bluetooth API.     \\
 \textbf{WiFi}                     & Yes.                                          & Yes.                               \\
 \multicolumn{1}{l}{}              & \textbf{Microsoft Band}                      & ~                \\
 \textbf{Feedback} & Touchscreen.            & ~     \\
@@ -62,9 +60,9 @@ This limitation requires the user to carry the phone wherever he goes.
 
 \subsection{Conclusion}
 
-\Cref{tbl:analysis:choice-of-wearable} shows that only two wearables fulfill our requirements, namely the second generation Moto 360 by Motorola and the Gear S2 by Samsung. The other wearables provide access to the an accelerometer but do not provide access to the bluetooth API. In those cases performing the positioning of the user on a smartphone could be a solution, thus requiring the user to carry his phone around with him whenever he use the solution.
+\Cref{tbl:analysis:choice-of-wearable} shows that only two wearables fulfill our requirements, namely the second generation Moto 360 by Motorola and the Gear S2 by Samsung. The other wearables provide access to the an accelerometer but do not provide access to the Bluetooth API. 
 
-Implementing the system on a wearable which gives access to both the bluetooth and the accelerometer APIs seems to be the most attractive solution. Of the two proposed wearables, we find the Moto 360 to be best suited for our project as we already have experience with the Android platform and therefore should be able to make progress on a prototype of the system faster.
+Of the two proposed wearables, we find the Moto 360 to be best suited for our project as we already have experience with the Android platform and therefore should be able to make progress on a prototype of the system faster.
 
 %%% Local Variables:
 %%% mode: latex

@@ -3,7 +3,7 @@
 
 In the envisioned system the context is used to determine which actions should be triggered when the user performs a gesture. Therefore the context plays an important part in the envisioned system.
 
-The notion of context is researched in multiple fields, including philosophy and psychology \cite{bolchini2007data}. For the purpose of this project we focus on the notion of context in context-aware software systems. Abowd \etal\cite{abowd1999towards} uses \Cref{def:context} of the context for context-aware systems.
+The notion of context is researched in multiple fields, including philosophy and psychology \cite{bolchini2007data}. For the purpose of this project we focus on the notion of context in context-aware software systems. In \cite{abowd1999towards}, the context for a context-aware system is defined as in \Cref{def:context}.
 
 \begin{definition}
 \label{def:context}
@@ -32,9 +32,9 @@ Information such as what other customers are in the store and the time of the da
 
 \subsection{Context Types}
 
-Abowd \etal\cite{abowd1999towards} categorizes context, describing the location, identity, time and activity to be the \emph{primary} context types that answer questions of \emph{where}, \emph{who}, \emph{when} and \emph{what}. Answering these questions help us understand \emph{why} a given situation occurs. In this project an action is triggered on a controllable device because the user is interested in triggering it (that's the \emph{why}).
+In \cite{abowd1999towards} context is categorized. The location, identity, time and activity to be the \emph{primary} context types that answer questions of \emph{where}, \emph{who}, \emph{when} and \emph{what}. Answering these questions help us understand \emph{why} a given situation occurs. In this project an action is triggered on a controllable device because the user is interested in triggering it (that is the \emph{why}).
 
-Abowd \etal~state that \emph{secondary} context types can be derived from the \emph{primary} context types. When the identity of a user is known, additional information can be derived. In the previous example the sex and age of the user are primary context types that can be derived from the identity of the user. 
+\emph{Secondary} context types can be derived from the \emph{primary} context types. When the identity of a user is known, additional information can be derived. In the previous example the sex and age of the user are primary context types that can be derived from the identity of the user. 
 The price reduction of the t-shirt is secondary information as well as it can be derived from the identity of the t-shirt.
 The position of the user and the t-shirt are both primary context types.
 
@@ -47,23 +47,23 @@ Abowd \etal\cite{abowd1999towards} defines a context-aware system as in \Cref{de
 A system is context-aware if it uses context to provide relevant information and/or services to the user, where relevancy depends on the user's task.
 \end{definition}
 
-Based on this definition, Ferreira \etal\cite{ferreira2014distributed} outlines the following three main features a context-aware system can provide to its users.
+Based on this definition, \cite{ferreira2014distributed} outline the following three main features a context-aware system can provide to its users.
 
-\begin{itemize}
-\item Presentation of information and services. Systems with this feature, use context to suggest services to the users or present them with relevant information. Yelp, a service that presents users with nearby businesses, is an example of a system implementing this feature.
-\item Automatic execution of a service. Systems with this feature automatically execute a service based on context. Philips Hue, which can automatically change the lighting based on the time of day, is an example of a system implementing this feature.
-\item Tagging of context to information for later retrieval. Systems with this feature associate information with context. \cite{ferreira2014distributed} uses a service that tags locations with a virtual note for other users to see as an example of systems implementing this feature.
-\end{itemize}
+\begin{description}
+\item[Presentation of information and services] Systems with this feature use context to suggest services to the users or present them with relevant information. Yelp, a service that presents users with nearby businesses, is an example of a system implementing this feature.
+\item[Automatic execution of a service] Systems with this feature automatically execute a service based on context. Philips Hue, which can automatically change the lighting based on the time of day, is an example of a system implementing this feature.
+\item[Tagging of context to information for later retrieval] Systems with this feature associate information with context. \cite{ferreira2014distributed} uses a service that tags locations with a virtual note for other users to see as an example of systems implementing this feature.
+\end{description}
 
 According to the categorization of context-aware systems by Ferreira \etal~the system envisioned in this report belongs to the category of systems implementing automatic execution of a service. Based on context, the system automatically triggers an action on a controllable device. While the user must perform a gesture in order to trigger the action, the system is still automatic as we consider the gesture to be context.
 
 \subsection{Conclusion}
 
-We accept the definitions of context and context-aware systems proposed by Abowd \etal. We also introduce the term \emph{contextual information} as defined in \Cref{def:contextual-information}. 
+We follow the definitions of context and context-aware systems proposed by Abowd \etal. We also introduce the term \emph{contextual information} as defined in \Cref{def:contextual-information}. 
 
 \begin{definition}
 \label{def:contextual-information}
-\emph{Contextual information} is information that is part of the context, e.g. the position of the user.
+Contextual information is information that is part of the context, e.g. the position of the user.
 \end{definition}
 
 Examples of contextual information, include the following.
@@ -90,7 +90,7 @@ While other context can be included in the system, for the purpose of the protot
 
 The contextual information provides us with a way of initiating the process of determining the correct action to trigger. When the user has performed a motion, we begin the recognition of the context. Gestures can trigger different actions depending on the position of the user, thus reducing the number of gestures the user needs to remember as a single gesture can be configured to trigger different actions as illustrated in \Cref{sec:analysis:scenarios}.
 
-We refer to the combination of gesture, room and action, i.e. a gesture causing a specific action to be triggered in a specific room, as a \emph{gesture configuration} as defined in \Cref{def:gesture-configuration}. Gesture configurations are meant to be configured by a user. For example, a user can configure a circle gesture to turn on table lamp when he is in the living room.
+We refer to the combination of gesture, room and as a \emph{gesture configuration} as defined in \Cref{def:gesture-configuration}. Gesture configurations are meant to be configured by a user. For example, a user can configure a circle gesture to turn on table lamp when he is in the living room.
 
 \begin{definition}
 \label{def:gesture-configuration}

@@ -11,7 +11,7 @@ For this project we decided to revisit the following hubs to determine which one
     \item OpenHAB
 \end{itemize}
 
-Common for all three solution is that they serve as adapters. Devices that fit within the concept of IoT, \eg~smart bulbs, media centres, windows, door locks and so on communicate using different protocols. These protocols include ZigBee, Z-Wave, HTTP and Bluetooth. The hubs expose devices communicating using those protocols under a common interface, \eg~HTTP using a REST architecture.
+Common for all three solution is that they serve as adapters. Devices that fit within the concept of IoT, \eg~smart bulbs, media centres, windows, door locks and so on communicate using different protocols. These protocols include ZigBee, Z-Wave, HTTP and Bluetooth. The hubs expose devices communicating using those protocols under a common interface \eg~HTTP.
 
 The hub should fulfill the following requirements.
 
@@ -24,16 +24,16 @@ The hub should fulfill the following requirements.
 \subsection{HomePort}
 \label{sec:analysis:choice-of-hub:homeport}
 
-Homeport \cite{HOMEPORT10,homeport:github} is a free open and source software solution developed as a research project at the Institute of Computer Science at Aalborg University.
+HomePort is a free open and source software solution developed as a research project at the Institute of Computer Science at Aalborg University \cite{HOMEPORT10,homeport:github}.
 HomePort is a software solution that the user needs to install it on a computer that will then act as the hub.
 
-HomePort supports communication with Phidget USB devices and expose them using a REST interface over the HTTP protocol. Other applications can control the Phidget devices and read their state by issuing requests to HomePort using the REST interface.
+HomePort supports communication with Phidget USB devices and expose them over the HTTP protocol. Other applications can control the Phidget devices and read their state by issuing requests to HomePort.
 
 When using HomePort in \cite{prespecialisation} we experienced the following issues.
 
 \begin{itemize}
 \item We found that the Phidget adapter was not compatible with the most recent version of HomePort.
-\item Furthermore we had difficulties getting an older version of HomePort with a compatible Phidget adapter running on OS X.
+\item We had difficulties getting an older version of HomePort with a compatible Phidget adapter running on OS X.
 \item We got the older version of HomePort running on a Windows machine but found that it would frequently crash requiring a reboot of the HomePort software.
 \end{itemize}
 
@@ -42,7 +42,7 @@ When using HomePort in \cite{prespecialisation} we experienced the following iss
 
 SmartThings \cite{SMARTTHINGS}\footnote{More information about SmartThings is available at \url{https://www.smartthings.com/products/hub}} is commercial home automation hub offered by Samsung. SmartThings is a hardware device that comes preinstalled with the necessary software.
 
-Protocols supported by SmartThings include ZigBee and Z-Wave as well as devices communicating over WiFi within the local network \cite{smartthings:compatible-products}. SmartThings expose the devices over HTTP using a REST architecture \cite{smartthings:developer}.
+Protocols supported by SmartThings include ZigBee and Z-Wave as well as devices communicating over WiFi within the local network \cite{smartthings:compatible-products}. SmartThings expose the devices over HTTP using a REST API \cite{smartthings:developer}.
 
 While exposing devices using a REST interface, Samsung also provides a concept of SmartApps, applications installed in the cloud, \ie~on Samsungs servers. These applications react to events within the users SmartThings environment, \ie~a new temperature reading and triggers other events based on the new information. SmartApps can also run events periodically.
 
@@ -52,12 +52,12 @@ At the time of writing the retail price for the hub is \$99.
 \label{sec:analysis:choice-of-hub:openhab}
 
 Unlike SmartThings, openHAB \cite{OPENHAB} does not come with the hardware needed to run the hub.
-openHAB is based on Eclipse SmartHome \footnote{The Eclipse SmartHome project can be found at \url{https://www.eclipse.org/smarthome/}}, an open source framework for building software for a smart home. Amongst others, the framework provides a mechanisms for handling data (including a common type system) and a rule engine.
+openHAB is based on Eclipse SmartHome\footnote{The Eclipse SmartHome project can be found at \url{https://www.eclipse.org/smarthome/}}, an open source framework for building software for a smart home. Amongst others, the framework provides a mechanisms for handling data (including a common type system) and a rule engine.
 openHAB and Eclipse SmartHome are both Java based software solutions that supports any platform capable of running a JVM \cite{openhab:introduction}.
 
 openHAB is free and open source maintained by a community of enthusiasts. It supports a wide range of devices, 121 as of writing this \cite{openhab:supported-technologies}. Amongst these are devices communicating using ZigBee, Z-Wave, MQTT and HTTP. openHABs concept of adapters is called ``bindings'' and these can be specific to a protocol or a product. For example, the community has developed bindings for the HTTP, Bluetooth and MQTT protocols as well as for the Philips Hue, Netatmo, and Sonos products.
 
-The devices connected to an openHAB environment is exposed over HTTP using a REST architecture.
+The devices connected to an openHAB environment is exposed over HTTP.
 
 \subsection{Hardware}
 

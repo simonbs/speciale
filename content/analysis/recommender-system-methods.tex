@@ -3,8 +3,8 @@
 
 Given the gesture a user has performed and his location in a smart home, i.e. contextual information, we want to determine an appropriate action to trigger thus changing the state of one or more devices in the smart home. The following section focus on approaches for determining the appropriate action.
 
-It is our hypothesis that we can use concepts from the field of machine intelligence to determine the action to trigger given contextual information. Recommender systems are designed to recommend an some \emph{item} to the user given information about the domain the system is operating in. For example, the video streaming srevice Netflix can utilize a recommender system to recommend movies to its users based on movies the user previously have expressed excitement about, e.g. through ratings.
-In the case of the system presented in this report, \emph{items} are actions that change state of one or more smart devices in a smart home. The recommendation is based on the provided contextual information.
+It is our hypothesis that we can use concepts from the field of machine intelligence to determine the action to trigger given contextual information. Recommender systems are designed to recommend some \emph{item} to the user given information about the domain the system is operating in. For example, the video streaming service Netflix can utilize a recommender system to recommend movies to its users based on movies the user previously have the he like or dislike, e.g. through ratings.
+In the case of the system presented in this report, \emph{items} are actions that change the state of one or more smart devices in a smart home. The recommendation is based on the provided contextual information.
 
 The section present selected techniques for creating a recommender system. The strengths and weaknesses of the techniques are outlined and the technique used in this project is decided.
 
@@ -18,7 +18,7 @@ The system then find users with similar preferences and look at which movies the
 
 Consider the example of John. Because John has given high ratings to western movies from the 50s, the system knows that John likes those movies. The system then looks for users with a similar taste in movies, \ie~users who have given high ratings to western movies from the 50s. If the set of movies retrieved from the users with a similar taste in movies contains a movie John have not watched, the movie can be suggested to John. Note that it is key that both John and the users have given high ratings to the movies. As a consequence, if users with similar taste in movies have given the western movies from the 50s low ratings, these are not recommended to John.
 
-Some of the issues with collaborative filtering according to Claypool \etal\cite{claypool1999combining} are that it depends heavily on users actually providing ratings, otherwise the recommender system will have nothing to base its recommendations on. This issue will occur every time a new item is added as users have yet to rate it.
+Some of the issues with collaborative filtering according to \cite{claypool1999combining} are that it depends heavily on users actually providing ratings, otherwise the recommender system will have nothing to base its recommendations on. This issue will occur every time a new item is added as users have yet to rate it.
 In addition, when a new recommender system is created, the system will suffer from lack of data and every user will be afflicted by this ``Early rater problem'' for all items.
 
 % We deem collaborative filtering unsuited for the purposes of this project as it requires multiple comparable users and our project is tailored more towards individual users.
@@ -26,14 +26,13 @@ In addition, when a new recommender system is created, the system will suffer fr
 \subsection{Content-based Filtering}
 \label{sec:analysis:recommender-methods:content-based-filtering}
 
-A different method that Claypool \etal~utilize to compensate for the ``Early rater problem'' is content-based filtering which relies on the correlation between a users preferences and the information about items.
+A different method to compensate for the ``Early rater problem'' is content-based filtering which relies on the correlation between a users preferences and the information about items \cite{claypool1999combining}.
 \eg~John, the user who likes western movies from the 50s, is more likely to be recommended other western movies from the 50s regardless of how other users have rated the recommended movies.
 One of the challenges of this technique is to create proper classification of items and their attributes along with user profiles such that they can be matched.
-Pazzani \etal\cite{pazzani1996syskill} classify web pages by analysing the word frequencies, excluding common English words.
-To determine the preferences of the user some form of relevancy feedback is required, either positive or negative.
-Pazanni \etal~have the user categorize the web pages he visits as either \texttt{hot}, \texttt{luke-warm} or \texttt{cold}.
-It is also possible to use implicit feedback, as discussed by Meteeren \etal\cite{van2000using}, such as the time spent on a web page.
-However when using implicit feedback one has to be cautious with how strong belief is put into each observation as with Meteeren \etal~they mention that one could look at ignored links as being negative feedback on those pages, but perhaps the user did not dislike the link but rather did not see it.
+\cite{pazzani1996syskill} classify web pages by analysing the word frequencies, excluding common English words.
+To determine the preferences of the user some form of relevancy feedback is required, either positive or negative. An example of this is to have the user categorize the web pages he visits as either \texttt{hot}, \texttt{luke-warm} or \texttt{cold} \cite{pazzani1996syskill}.
+It is also possible to use implicit feedback such as the time spent on a web page \cite{van2000using}.
+However when using implicit feedback one has to be cautious with how strong belief is put into each observation. One could look at ignored links as being negative feedback on those pages, but perhaps the user did not dislike the link but rather did not see it \cite{van2000using}.
 
 %We deem content-based filtering unfit for this project as it would be complicated to come up with attributes that would fit the items in our recommender system.
 
@@ -44,14 +43,14 @@ However when using implicit feedback one has to be cautious with how strong beli
 
 Decision trees are a model for decision making and prediction using a graph structure where leaf nodes represent outcome and non-leaf nodes test attributes or random variables.
 The branches that leave non-leaf nodes are labeled with the value of the corresponding attribute.
-Decision trees need not be balanced trees so some paths may end in a leaf node after very few nodes, as in figure 2 of Cho \etal\cite{cho2002personalized} where if the root node evaluates to ``manager'' the tree immediately ends in a leaf node ``buy''.
+Decision trees need not be balanced trees so some paths may end in a leaf node after very few nodes.
 
 A decision tree is built on rules, \eg~$(A \wedge B) => C$. That is, if both A and B are observed, then C applies. Decision trees are commonly used for content-based filtering~\cite{adomavicius2005toward}.
 
 \subsection{Bayesian Networks}
 \label{sec:analysis:recommender-methods:bayesian-networks}
 
-Bayesian networks are a model for for prediction represented as a directed acyclic graph where each node represents a random variable and edges between represent conditional dependencies.
+Bayesian networks are a model for classification. The representation is a directed acyclic graph where each node represents a random variable and edges between represent conditional dependencies.
 This means that any child node is conditionally dependent on its parents.
 Each node or item in the network has a probability distribution that may change when evidence is observed.
 A node representing the probability for a given disease may be conditionally dependent in such a way that observing the symptoms of a patient will change the likelihood that the patient is afflicted.

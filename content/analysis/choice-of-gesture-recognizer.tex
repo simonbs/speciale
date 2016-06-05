@@ -4,15 +4,15 @@
 There are two primary methods for performing gesture recognition~\cite[pp. 19-21]{prespecialisation}:
 
 \begin{itemize}
-\item Camera based
-\item Motion based
+\item Camera based.
+\item Motion based.
 \end{itemize}
 
-Examples of camera based approaches for gesture recognition includes the use of one or more Microsoft Kinects that record the users motions~\cite{caon2011context}. The benefit of Microsoft Kinects is, that they can potentially record gestures performed with any part of the body. Another approach is an infrared gesture pendant worn by the user which records their hand motions when gestures are performed in front of their chest~\cite{starner2000gesture}.
+Examples of camera based approaches for gesture recognition includes the use of one or more Microsoft Kinects that record the users movements~\cite{caon2011context}. The benefit of Microsoft Kinects is, that they can potentially record gestures performed with any part of the body. Another approach is an infrared gesture pendant worn by the user which records their hand motions when gestures are performed in front of their chest~\cite{starner2000gesture}.
 
 As stated in \Cref{sec:related-work} we opt to not use camera based methods as they require a line of sight between the user and any device he intends to interact with or optionally, a line of sight between the user and multiple cameras installed in his smart home.
 
-Hence we elected to use a motion-based approach. As of spring 2016 a significant amount (55\%) of wrist-worn wearables contained an accelerometer~\cite[pp. 2-3]{prespecialisation} and as such it makes sense to focus on motion-based gesture recognition utilizing an accelerometer.
+Hence we elected to use a motion based approach. As of spring 2016 a significant amount (55\%) of wrist-worn wearables contained an accelerometer~\cite[pp. 2-3]{prespecialisation} and as such it makes sense to focus on motion based gesture recognition utilizing an accelerometer.
 
 While it is natural to use hands to perform gestures, we chose to look at wearables that are worn on the wrist rather than wearables that are worn on the hands, \eg the fingers. As shown in \Cref{fig:wearables-placement} only very few wearables are worn on the hands and we found it more interesting to develop for more widely available devices. In regards to gestures, the primary difference between recognizing a gesture with a wearable worn on the hand and on the wrist, is that the motions must be larger, when the wearable is worn on the wrist, \ie the user must move the entire arm in order to produce significant accelerations on the axes of the accelerometer.
 
@@ -38,13 +38,7 @@ We have the following requirements for the gesture recognizer.
     \item Preferably it should run on the wearable independently from the smartphone.
 \end{itemize}
 
-Based on these criteria we will examine the following gesture recognition solutions:
-
-\begin{itemize}
-    % \item GRT~\cite{gillian2011gesture, gillian2014gesture, gilliangesturegithub}
-    \item \$3~\cite{threedollar}
-    \item 1\textcent~\cite{herold20121}
-\end{itemize}
+\noindent Based on these criteria we will examine the \$3~\cite{threedollar} and 1\textcent~\cite{herold20121} gesture recognizers.
 
 % The Kiwi\footnote{For more information about Kiwi, refer to http://kiwi.ai/} and FocusMotion\footnote{For more information about FocusMotion, refer to http://focusmotion.io/} gesture recognizers were not taken into consideration as they are commercial and potentially expensive solutions and as per the requirement specification presented, we desire to use inexpensive software.
 
@@ -75,11 +69,11 @@ The gesture recognizer was used in~\cite{prespecialisation} and was found to hav
 
 \subsection{1\textcent}
 
-The 1\textcent~gesture recognizer by Herold \etal~is designed as an improvement to the 1\$ recognizer \cite{wobbrock2007gestures} by Wobbrock \etal~by removing computationally expensive rotate-and-check methods and instead using a one-dimensional representation of gestures that is rotation-invariant.
+The 1\textcent~gesture recognizer is designed as an improvement of the 1\$ recognizer \cite{wobbrock2007gestures}. Improvements are made by removing computationally expensive rotate-and-check methods and instead using a one-dimensional representation of gestures that is rotation-invariant.
 This means that rather than attempting to rotate a given gesture trace to best match the stored templates, an alternative representation is used such that rotating the trace is not required regardless of how it was performed.
 
 A gesture is recorded as a timeseries of two-dimensional coordinates which is then resampled to contain a fixed amount of equidistant points.
-Herold \etal~use $N = 64$ to match Wobbrock \etal~but state that any value between 16 and 128 will suffice.
+The 1\textcent~recognizer use a resample rate of 64 to match the \$1 but state that any value between 16 and 128 will suffice.
 \$3 resample the gesture traces with $N = 150$ and state that a higher resample rate $N$ provides higher precision at the cost of increased computation time~\cite[p. 342]{threedollar}.
 Once a gesture has been resampled, the centroid is calculated and for each point in the gesture the euclidean distance between that point and the centroid is calculated and stored in an array as shown in \Cref{eq:one-cent-trace}.
 
@@ -89,7 +83,7 @@ Once a gesture has been resampled, the centroid is calculated and for each point
 \label{eq:one-cent-trace}
 \end{figure}
 
-This array of distances to the centroid is the one-dimensional representation of a gesture. Herold \etal~calls this a template.
+This array of distances to the centroid is the one-dimensional representation of a gesture, called a \emph{template} in \cref{herold20121}.
 The idea behind this one-dimensional representation is that it does not matter whether the user performs a rotated version of the gesture because the distance from each point in the trace to the centroid is the same regardless.
 This is illustrated in \Cref{fig:one-cent-star} which shows the same gesture with two different rotations.
 The points \texttt{D1} and \texttt{D2} have the same distance to the centroid \texttt{C} in both cases.
@@ -113,9 +107,9 @@ The template with the lowest $L^2$ distance to the input is the best match.
 
 \subsection{Conclusion}
 
-Concrete implementations of \$3 and 1\textcent are available and both support the Android Wear platform, although only \$3 utilizes the accelerometer data in order to train and recognize gestures. While we have previous experience with the \$3 algorithm and found it to have an accuracy of up to 98\%, we chose to utilize the 1\textcent as it requires fewer computations by not rotatiing the trace and is thus better suited for embedded devices.
+Concrete implementations of \$3 and 1\textcent~are available and both support the Android Wear platform, although only \$3 utilizes the accelerometer data in order to train and recognize gestures. While we have previous experience with the \$3 algorithm and found it to have an accuracy of up to 98\%, we chose to utilize the 1\textcent~as it requires fewer computations by not rotating the trace and is thus better suited for embedded devices.
 
-The 1\textcent gesture recognizer only supports recognition in two dimensions, \eg recognition on a touch screen, therefore we choose to implement support for a third dimension and use it with accelerations on the X, Y and Z axes provided by the accelerometer of an Android Wear device by merging it with the technique used in \$3.
+The 1\textcent~gesture recognizer only supports recognition in two dimensions, \eg recognition on a touch screen, therefore we choose to implement support for a third dimension and use it with accelerations on the X, Y and Z axes provided by the accelerometer of an Android Wear device by merging it with the technique used in \$3.
 
 %%% Local Variables:
 %%% mode: latex
