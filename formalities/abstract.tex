@@ -1,3 +1,8 @@
-This report presents a system that allows a person using a wearable device, such as a smartwatch, to point at smart devices and then control them by performing a gesture with his arm. We use a combination of Bluetooth Low Energy beacons (from Estimote), for indoor positioning, and a magnetometer for detecting the users orientation, to determine which device the user points at. The smart devices are connected to a smart hub. We implement a server for handling the connection between the smart hub and the wearable. The server also keeps track of the device information from the smart hub, and the location of the smart device.
+This report presents a context-aware system that enables users to control a smart home using gestures. Bluetooth Low Energy beacons are used to position a user wearing a smart watch indoor. Gesture recognition is performed on the smart watch. When a gesture is recognized, the system attempts to recognize the context the user is situated in and based on the context, the smart devices in the smart home changes to an appropriate state. We use the gesture performed by the user and the position of the user as \emph{contextual information}.
 
-Our tests show that the Bluetooth Low Energy beacons provide an indoor positioning accuracy of \SI{2.92}{\meter}. This low accuracy means that we are only able to point to the correct device \perc{4.29} of the time. 
+The design and implementation of the prototype is presented and the results of a user test focusing on the prototype is discussed.
+
+%%% Local Variables:
+%%% mode: plain-tex
+%%% TeX-master: "../master"
+%%% End:
