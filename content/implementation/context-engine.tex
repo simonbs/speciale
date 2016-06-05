@@ -11,7 +11,7 @@ In \Cref{sec:design:bayesian-network,sec:design:context-engine}, the reason for 
 \item[ProvidedContextualInformation] Encapsulates information from a \texttt{ContextualInformationProvider}. The model contains the node which should be parent to the Action node, a node to apply evidence to and the soft evidence to apply to the node. The parent node, which resides at the middle level in the Bayesian network, and the node to apply evidence to can be the same.
 \item[ContextRecognizer] The recognizer orchestrates the retrieval of contextual information from the providers. Because a provider is not required to provide its contextual information instantly, the recognizer will timeout and thus cancel the provider if it takes too long to deliver the information.
 \item[ContextRecognizerListener] When recognition completes, the context recognizer informs a listener about the outcome. Objects conforming to the \texttt{ContextRecognizerListener} interface can be informed about the outcome.
-\item[ContextOutcome] A context outcome encapsulates an action that can be triggered the probability that the action should be triggered. Context outcomes are the result of performing context recognition. The outcomes are parsed to the object conforming to the \texttt{ContextRecognizerListener} interface.
+\item[ContextOutcome] A context outcome encapsulates an action that can be triggered and the probability that the action should be triggered. Context outcomes are the result of performing context recognition. The outcomes are parsed to the object conforming to the \texttt{ContextRecognizerListener} interface.
 \end{description}
 
 Because the Baysian network is modelled to ``translate'' probabilities of states on the uppermost level to probabilities of actions in the system at the middle level, we can implement the contextual information providers to be entirely independent of each other have each provider encapsulate all the information it needs.
@@ -24,7 +24,7 @@ In order to use the provider, it is added to the context recognizer which needs 
 \label{fig:implementation:context-engine}
 \end{figure}
 
-\Cref{fig:implementation:context-engine:providers} shows a class diagram of the contextual information providers rgistered with the context recognizer in the prototype developed duing the project. Below is a brief description of the classes and interfaces.
+\Cref{fig:implementation:context-engine:providers} shows a class diagram of the contextual information providers registered with the context recognizer in the prototype developed duing the project. Below is a brief description of the classes and interfaces.
 
 \begin{description}
 \item[Beacon] A representation of a beacon installed in a room. Beacons are retrieved from openHAB over HTTP using the REST API.

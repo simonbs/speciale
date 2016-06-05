@@ -8,11 +8,11 @@ Below is a brief description of the components in the diagram. Notice the note i
 
 \begin{description}
 \item[PositionManager] Responsible for determing which room the user is in.
-\item[PositionContextualInformationProvider] Provides the context recognizer with information about the users position. I.e. contains the Room and Room\_Action nodes of the Bayesian network and computes evidence for all rooms.
-\item[GestureContextualInformationProvider] Provides the context recognizer with informtion about the gesture the user performed. I.e. contains the Gesture and Gesture\_Action nodes of the Bayesian network and computes evidence for all gestures.
+\item[PositionContextualInformationProvider] Provides the context recognizer with information about the users position. The provider encapsulates the Room and Room\_Action nodes of the Bayesian network and computes evidence for all rooms.
+\item[GestureContextualInformationProvider] Provides the context recognizer with information about the gesture the user performed. The  provider encapsulates the Gesture and Gesture\_Action nodes of the Bayesian network and computes evidence for all gestures.
 \item[ContextRecognizer] Determines an appropriate action to trigger based on the information provided by \texttt{PositionContextualInformationProvider} and \texttt{GestureContextualInformationProvider}.
 \item[GestureRecognizer] Given X, Y and Z-accelerations obtained from the accelerometer of the smartwatch, the component scores the gesture templates and thus determines the gestures the user is likely to have made.
-\item[OpenHABClient] Communicates with openHAP over HTTP using the REST API provided by openHAB.
+\item[OpenHABClient] Communicates with openHAP over HTTP.
 \item[App UI] The component represents the UI of the Android Wear smartwatch application.
 \end{description}
 

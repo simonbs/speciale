@@ -6,18 +6,14 @@ This section presents the prototype of the Android Wear application as well as t
 \subsection{Android Wear}
 \label{sec:implementation:prototype:android-wear}
 
-\Cref{fig:implementation:prototype:navigation-diagram} shows a navigation diagram for the user interface of the smartwatch application. The letters in the top right corner of the nodes in the diagram references the screenshots shown in \Cref{fig:implementation:prototype:screenshots}.
-
-The diagram shows that the application can be considered divided into the following two areas.
+\Cref{fig:implementation:prototype:navigation-diagram} shows a navigation diagram for the user interface of the smartwatch application. The letters in the top right corner of the nodes in the diagram references the screenshots shown in \Cref{fig:implementation:prototype:screenshots}. The diagram shows that the application can be considered divided into the following two areas.
 
 \begin{description}
-\item[Primary use] We refer to the parts of the application which the user use the most as the \emph{primary use}. This involves the recognition of gestures as well as the picker presented when an action to trigger could not be determined after context recognition.
-\item[Configuration] Before the user gets involved with the primary use, he will need to configure the application, i.e. train gestures and create gesture configurations.
+\item[Primary use] We refer to the parts of the application which the user uses the most as the \emph{primary use}. This involves the recognition of gestures as well as the picker presented when an action to trigger could not be determined after context recognition.
+\item[Configuration] The user will need to configure the application, i.e. train gestures and create gesture configurations. We refer to this part of the application as \emph{configuration}.
 \end{description}
 
-When opening the application, the user is presented with a screen to perform gesture recognition. This enables the user to start context recognition fast, whereas he needs to dive deeper into the navigation in order to train gestures and create gesture configurations, i.e. features that he will not use as often as the context recognition.
-
-For a list of the supported features in the application, refer to \Cref{sec:implementation:status}.
+When opening the application, the user is presented with a screen to perform gesture recognition. This enables the user to start context recognition fast, whereas he needs to dive deeper into the navigation in order to train gestures and create gesture configurations, i.e. features that he will not use as often as the context recognition. For a list of the supported features in the application, refer to \Cref{sec:implementation:status}.
 
 \begin{figure}[!htb]
     \centering
@@ -64,11 +60,11 @@ For a list of the supported features in the application, refer to \Cref{sec:impl
 
 We developed a \emph{binding} for openHAB. A \emph{binding} is an addon for openHAB which relates to a specific problem domain. For example, there is a binding for communcating with Philips Hue lights and a binding for controlling a Sonos media centre. We have created a binding for configuring the rooms and beacons in a users home.
 
-We chose to place the configuration of the rooms and beacons in openHAB, as this is a one time configuration which can be shared amongst the users in a home where as the creation of gesture configurations is place on the watch as this can be independent for each inhabitant of a home.
-
-The rooms and beacons are synchronized to the smartwatch when the application is loaded. The watch use the models when positioning the user.
+We chose to place the configuration of the rooms and beacons in openHAB, as this is a one time configuration which can be shared amongst the users in a home where as the creation of gesture configurations is place on the watch as this can be independent for each inhabitant of a home. The rooms and beacons are synchronized to the smartwatch when the application is loaded. The watch use the models when positioning the user.
 
 A room has a name and when it is created, openHAB assigns it a UID. When creating a beacon, the user must enter the UID assigned by openHAB in order to specify which room the beacon is placed in. Furthermore the user should enter the Eddystone namespace and instance, both described in \Cref{sec:design:ble-positioning}. This identifies the specific beacon. When the smartwatch registers a beacon, it can determine which room the user is in by the beacons reference to a room.
+
+In order to control Spotify running on a desktop machine, we created the Spotify Controls API. We configured openHAB to communicate with the API using the default Exec binding, a binding which executes a shell command when some event occurs in openHAB.
 
 % \begin{figure}[!htb]%
 %     \centering
