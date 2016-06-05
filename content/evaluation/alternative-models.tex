@@ -1,29 +1,29 @@
 \section{Alternative Models}
 \label{sec:evaluation:alternative-models}
 
-As the users tests described in \Cref{sec:evaluation:user-tests} showed that the system had an accuracy of 44\% \ie the correct action was triggered in 44\% of the cases, alternative models were considered. This section describes some of the alternative models that were considered and whether or not they addressed the issues raised in \Cref{sec:evaluation:user-tests-conclusion}.
+As the users tests described in \Cref{sec:evaluation:user-tests} showed that the system had an accuracy of 44\%. This section describes some of the alternative models that were considered and whether or not they addressed the issues raised in \Cref{sec:evaluation:user-tests-conclusion}.
 
 \subsection{Bayesian Network With a Single Action Node}
 
-The Bayesian network used on the context engine consists of an \emph{action} node and its parent nodes are \emph{gesture\_action} and \emph{room\_action}.
+The Bayesian network used on the context engine consists of an Action node and its parent nodes are Gesture\_Action and Room\_Action.
 These two parent nodes were intended to make the network more modular to support additional context information later but in this model the probability of each action is calculated multiple times based on different prior probabilities.
-Hence we considered an alternate model in which the \emph{gesture} and \emph{room} nodes were direct parents of the \emph{action} node.
+Hence we considered an alternate model in which the Gesture and Room nodes were direct parents of the Action node.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.50\textwidth]{images/DirectParentBaysianNetwork}
+\includegraphics[width=0.40\textwidth]{images/DirectParentBaysianNetwork}
 \caption{Bayesian network without the intermediate \emph{gesture\_action} and \emph{room\_action} nodes.}
 \label{fig:evaluation:alternative-models:direct-parents}
 \end{figure}
 
-This alternate network was tested with the belief values of the \emph{gesture} and \emph{room} nodes of participant 7 and a new success rate of 36\% was computed.
-Compared to the previous success rate of 41\% this model did not prove to be an improvement over the existing one and was discarded.
+This alternate network was tested with the belief values of the Gesture and Room nodes of participant 7 and a new success rate of 36\% was computed.
+Compared to the previous success rate of 41\% for the participant, this model did not prove to be an improvement over the existing one and was discarded.
 
 \subsection{Influence Diagram}
 
 Influence diagrams can be regarded as Bayesian networks extended with decision variables and utility functions~\cite{kjaerulff2008bayesian}. \Cref{fig:evaluation:alternative-models:influence-diagram} shows an influence diagram modelling a context engine. The model does not correspond exactly with the model previously presented in this report but is an alternative model.
 
-We will not go into details about influence diagrams in this report. As for the graphical representation of an inflence diagram, the square nodes represent \emph{decision nodes}, \ie something we must decide to do or not to do. Diamond nodes represent \emph{utility nodes} describing a \emph{utility function} and oval nodes represent \emph{uncertainty nodes}. In an influence diagram we are generally interested in taking the decision that results in the highest utility, therefore utility can be regarded a measurement of the quality of a decision.
+As for the graphical representation of an inflence diagram, the square nodes represent \emph{decision nodes}, \ie something we must decide to do or not to do. Diamond nodes represent \emph{utility nodes} describing a \emph{utility function} and oval nodes represent \emph{uncertainty nodes}. In an influence diagram we are generally interested in taking the decision that results in the highest utility, therefore utility can be regarded a measurement of the quality of a decision.
 
 In the model presented in \Cref{fig:evaluation:alternative-models:influence-diagram}, the utility is a function of the gesture, room and action. We assign a high utility to combinations of gesture and room that are part of a gesture configuration. 
 
