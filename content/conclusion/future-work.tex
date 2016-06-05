@@ -31,6 +31,13 @@ Looking further into inclusion of concepts from machine intelligence could prese
 
 Short-term historical data, \ie~data of the users behaviour collected minutes or hours ago, could be used to further determine the context that the user is in. If he interacted with his television within that past five minutes, the belief of actions related to the television may be enhanced. This is based on the assumption that if the user recently interacted with his television, he may want to interact with it again. Further research into the behaviour of users in a smart home and their interactions with electronic devices could help confirm of dismiss this hypothesis.
 
+\subsection{Improve Handling of Uncertainties}
+
+In \Cref{sec:analysis:scenarios:handling_uncertainties}, we presented suggstions for handling uncertainties in the system, e.g. when a performed gesture was not recognized. In that case, we suggest presenting a list of actions for smart devices the user has recently interacted with.
+The list of actions could be prioritized, e.g. ordered by how often the user triggers the action.
+
+This functionality was not implemented in the project. Further research can investigate how we can improve handling of uncertainties.
+
 \subsection{Investigate Alternative Designs for Context Recognition}
 
 We have found the Bayesian network designed and implemented in this project to produce inaccurate results, especially when a gesture is associated with multiple actions, and as such future research should focus on investigating alternative designs for the context engine.

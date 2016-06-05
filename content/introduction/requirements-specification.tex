@@ -12,12 +12,12 @@ This section presents the requirements for the solution. The requirements are di
 \subsection{Functional Requirements}
 
 \begin{description}
-\item[Train and recognize gestures] User should be able to train a motion gesture and when trained, the system should be able to recognize the gesture when the user performs the same movement.
+\item[Train and recognize gestures] Users should be able to train a motion gesture and the system should be able to recognize the gesture when the user performs this gesture.
 \item[Trigger actions on controllable devices using gestures] Users should be able to trigger an action on a controllable device by performing a gesture using a wearable.
-\item[Receive feedback if a gesture is not recognized] If a gesture is not recognized, the user should receive feedback. If possible, the system should guess which gestures the user was likely to perform and suggest the actions associated with the guessed gesture to the user.
-\item[Context-aware] The system should be context-aware such that different actions may be triggered from the same gesture depending on the other contextual information available. For example, a circular gesture may turn on the TV when the user is in the living room but when the user is in the kitchen, it turns on the lights.
-\item[Associate a gesture with actions] The user should be able to associate a gesture with one or more actions that a controllable device can perform. A gesture can only be associated with multiple actions, if the controllable devices to which the action belongs reside in different rooms.
-\item[Virtual positioning of users] A user should be able to virtually positioning himself in his home using the wearable. This allows users to perform gestures in one room, while being in another.
+% \item[Receive feedback if a gesture is not recognized] If a gesture is not recognized, the user should receive feedback. If possible, the system should guess which gestures the user was likely to perform and suggest the actions associated with the guessed gesture to the user.
+\item[Context-aware] The system should be context-aware such that different actions may be triggered from the same gesture depending on contextual information. For example, a circular gesture may turn on the TV when the user is in the living room but turn on the lights when the user is in the kitchen.
+\item[Associate a gesture with actions] The user should be able to associate a gesture with one or more actions that a controllable device can perform. A gesture can only be associated with multiple actions, if the controllable devices to which the action belongs reside in different rooms. Actions change the state of one or more smart devices in a smart home when triggered.
+\item[Virtual positioning of users] A user should be able to virtually position himself in his home using the wearable. This allows the user to perform gestures in one room, while being in another.
 \end{description}
 
 \subsection{Performance Requirements}
@@ -31,8 +31,8 @@ This section presents the requirements for the solution. The requirements are di
 \subsection{Overall Requirements}
 
 \begin{description}
-\item[Use inexpensive hardware and software] As described in \Cref{sec:analysis:scenarios} the target group are people living in a smart home, typically in an apartment with a size of 90 square meters. Therefore we are not interested in expensive cooperate solutions when looking at hardware or software.
-\item[Not limited to smart devices in line of sight] Reemo, a related solution, limits the user to control devices that are in line of sight. We do not want to have this limitation in our solution.
+\item[Use inexpensive hardware and software] As described in \Cref{sec:analysis:scenarios} the target group are people living in a smart home, typically in an apartment with a size of 90 square meters. Therefore we are not interested in expensive solutions when looking at hardware or software.
+\item[Not limited to smart devices in line of sight] Reemo, a related solution, limits the user to control devices that are in line of sight. We do not want to have this limitation in our solution, as it limits the smart devices that can be controlled.
 \end{description}
 
 %%% Local Variables:

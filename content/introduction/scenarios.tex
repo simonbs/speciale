@@ -1,11 +1,11 @@
 \section{Scenario}
 \label{sec:analysis:scenarios}
 
-This section describes a scenario the envisioned system may be used in and outlines the target group of the system.
+This section describes a scenario in which the envisioned system may be used and outlines the target group of the system.
 
-In \cite[p. 15]{prespecialisation} we defined the target group as people living in a smart home and interested in controlling the state of their home, \eg~lights, music centers, doors and windows, in a convenient matter. The group of people will currently consist of early adoptors of smart home technologies but based on the trend in IoT, our assumption is that the technology will be widespread within 5-10 years. 
+In \cite[p. 15]{prespecialisation} we defined the target group as people whove live in a smart home and are interested in controlling the state of their home, \eg~lights, music centres, doors and windows in a convenient way. The target group currently consist of early adoptors of smart home technologies but based on the trend in Internet of Things, abbreviated IoT, our assumption is that the technology will be widespread within 5-10 years. 
 
-We extend the definition of the target group presented in \cite[p. 15]{prespecialisation} to include a definition of the surroundings. As shown in \Cref{appendix:housing-types:table} the most common size of housings in Denmark is 75-99 square meters. Therefore we assume that the solution presented in this report is installed in a typical Danish apartment with a size of 90 square meters and with 3-4 rooms. 
+In this report we extend the definition of the target group presented in \cite[p. 15]{prespecialisation} to include a definition of the surroundings. As shown in \Cref{appendix:housing-types:table} the most common size of housings in Denmark is 75-99 square meters. Therefore we assume that the solution presented in this report is installed in a typical Danish apartment with a size of 90 square meters and with 3-4 rooms. 
 
 We make the following assumptions about the system and the environment in which the scenario takes place:
 
@@ -16,9 +16,16 @@ We make the following assumptions about the system and the environment in which 
     \item The location of the user is always available when he is in his home.
 \end{itemize}
 
-We assume each room has two-three controllable lamps. The living room may have a television and a music center while the kitchen may have a controllable coffee machine. We estimate that 2-5 controllable devices per room seems fair leaving us with a maximum of 20 controllable devices in an apartment.
+We assume each room has two or three controllable lamps. The living room may have a television and a music centre while the kitchen may have a controllable coffee machine. We estimate that there are 2-5 controllable devices per room leaving us with a maximum of 20 controllable devices in an apartment.
 
 We consider the system to be installed in the apartment shown in \Cref{fig:analysis:scenario:apartment}. The rooms in the apartment are listed in \Cref{tbl:analysis:scenario:rooms} along with the controllable devices that seem realistic to be located in each room.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{images/room-with-beacons}
+\caption{Example apartment we envision the system to be installed in.}
+\label{fig:analysis:scenario:apartment}
+\end{figure}
 
 \begin{table}[h!]
 \centering
@@ -90,7 +97,7 @@ For each room there are a number of gestures that are valid in that room and whe
 
 \begin{table}[]
 \centering
-\caption{Shows gestures that perform actions on controllable devices in each room of the apartment shown in \Cref{fig:analysis:scenario:apartment}}
+\caption{Shows gestures that perform actions on controllable devices in each room of the apartment shown in \Cref{fig:analysis:scenario:apartment}.}
 \label{tbl:analysis:scenario:gesture-configurations}
 \begin{tabular}{lll}
 \textbf{Region} & \textbf{Affected device} & \textbf{Gesture}                       \\
@@ -127,14 +134,9 @@ Bathroom                   & Lamp 12                             & Z turns on an
 \end{tabular}
 \end{table}
 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=\textwidth]{images/room-with-beacons}
-\label{fig:analysis:scenario:apartment}
-\caption{Example apartment we envision the system to be installed in.}
-\end{figure}
-
 We consider the following example of a day in a users life realistic to take place in the apartment illustrated in \Cref{fig:analysis:scenario:apartment,tbl:analysis:scenario:rooms} with the gestures outline in \Cref{tbl:analysis:scenario:gestures}.
+
+The below example briefly shows how the user can move around his apartment and use the same eight gestures to control different devices located in different rooms.
 
 \begin{testexample}
 At the begnning of the day, the user wakes up in his bedroom. He makes a Z gesture to turn on Lamp 8 in the bedroom and gets out of bed. He goes to the bathroom to take a shower and turns on Lamp 12 by performing gesture Z as he enters. When he is done, he performs gesture Z to turn off the Lamp 12.
@@ -145,34 +147,28 @@ When the user is done eating breakfast, he goes to the living room and turns off
 
 When done working, he goes grocery shopping. As he leaves the home office, he performs gestures Z and V to turn off Lamp 10 and Lamp 11. He goes to the hallway and performs the Circle gesture to unlock the door. The user locks the door by performing a Circle gesture.
 
-When the user comes home, he unlocks the door by performing a Circle gesture and unpacks his groceries in the kitchen in which he turns on Lamp 7 by performing a V gesture. Whe he is done unpacking the grocieries, he turns off Lamp 7 again by performing the V gesture again.
+When the user comes home, he unlocks the door by performing a Circle gesture and unpacks his groceries in the kitchen and turns on Lamp 7 by performing a V gesture. When he is done unpacking the grocieries, he turns off Lamp 7 again by performing the V gesture.
 
 Earlier that day, the user had turned on Lamp 4 and Lamp 5 in the living room. He goes to the living room and turns off Lamp 4 and Lamp 5 by performing the V and Triangle gestures. He continues to the bedroom to watch television. The television is turned on by performing the Circle gesture. After watching television, the user turns off the TV by performing the Circle gesture and Lamp 8 by performing the Z gesture.
 \end{testexample}
-
-The above example briefly shows how the user can move around his apartment and use the same eight gestures to control different devices located in different rooms.
 
 \subsection{Handling Uncertainties}
 \label{sec:analysis:scenarios:handling_uncertainties}
 
 Not all scenarios will work out as well as the one previously presented.
 Sometimes a meaningful action cannot be determined from a gesture or the context of the user.
-Assume that a person is in his living room and he performs a gesture that is recognized as ``Turn on TV'', but the only TV in the house (located in the living room) is already turned on.
+Assume that a person is in his living room and he performs a gesture that is recognized as ``Turn on TV'', but the only TV in the house is already turned on.
 In this case the action could be considered void, but we propose a different solution.
-Rather than just ignoring the persons request, a list of alternate actions could be presented to him on his smartwatch.
-
-It may be safe to assume that the person wanted to interact with the TV if the gesture performed was bound to this device, thus the target is still determined from the gesture, the location of the user and the location of the device, just as in the previous scenario.
-Which actions would be presented however, could be the inverse of the one performed (if applicable) which in this case would be to turn the TV off.
+Rather than just ignoring the persons request, a list of alternate actions could be presented to him on his smartwatch. Which actions would be presented however, could be the inverse of the one performed (if applicable) which in this case would be to turn the TV off.
 It could also be a list of the actions most frequently performed by the user.
 
-Another case of uncertainty would be if the gesture performed was not recognized.
-This could be considered void and the person would be asked to try again, or the intended target could be assumed to be the device that the person most recently interacted with, and a list of the most frequently used actions could be presented on the persons watch.
+If the gesture performed is not recognized, this could be considered void and the person would be asked to try again. Alternatively, the intended target could be assumed to be the device that the person most recently interacted with, and a list of the most frequently used actions could be presented on the persons smartwatch.
 
 \subsection{Controlling Devices in Other Rooms}
 \label{sec:analysis:scenarios:other_rooms}
 
 Assume that a person is in his home office listening to music but then remembers that he forgot to turn off the music in the living room.
-He wishes to turn off the music in the living room but not the one located in the home office.
+He wishes to turn off the music in the living room but not on the speakers located in the home office.
 If the user performs the Circle gesture to pause the music, he would pause it in the home office.
 To circumvent this, the smartwatch application could allow the user to select which room he would like to control devices in.
 
