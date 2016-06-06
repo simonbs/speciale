@@ -14,7 +14,7 @@ As stated in \Cref{sec:related-work} we opt to not use camera based methods as t
 
 Hence we elected to use a motion based approach. As of spring 2016 a significant amount (55\%) of wrist-worn wearables contained an accelerometer~\cite[pp. 2-3]{prespecialisation} and as such it makes sense to focus on motion based gesture recognition utilizing an accelerometer.
 
-While it is natural to use hands to perform gestures, we chose to look at wearables that are worn on the wrist rather than wearables that are worn on the hands, \eg the fingers. As shown in \Cref{fig:wearables-placement} only very few wearables are worn on the hands and we found it more interesting to develop for more widely available devices. In regards to gestures, the primary difference between recognizing a gesture with a wearable worn on the hand and on the wrist, is that the motions must be larger, when the wearable is worn on the wrist, \ie the user must move the entire arm in order to produce significant accelerations on the axes of the accelerometer.
+While it is natural to use hands to perform gestures, we chose to look at wearables that are worn on the wrist rather than wearables that are worn on the hands, \eg~the fingers. As shown in \Cref{fig:wearables-placement} only very few wearables are worn on the hands and we found it more interesting to develop for more widely available devices. In regards to gestures, the primary difference between recognizing a gesture with a wearable worn on the hand and on the wrist, is that the motions must be larger, when the wearable is worn on the wrist, \ie the user must move the entire arm in order to produce significant accelerations on the axes of the accelerometer.
 
 \begin{figure}[!htb]
   \centering
@@ -109,7 +109,7 @@ The template with the lowest $L^2$ distance to the input is the best match.
 
 Concrete implementations of \$3 and 1\textcent~are available and both support the Android Wear platform, although only \$3 utilizes the accelerometer data in order to train and recognize gestures. While we have previous experience with the \$3 algorithm and found it to have an accuracy of up to 98\%, we chose to utilize the 1\textcent~as it requires fewer computations by not rotating the trace and is thus better suited for embedded devices.
 
-The 1\textcent~gesture recognizer only supports recognition in two dimensions, \eg recognition on a touch screen, therefore we choose to implement support for a third dimension and use it with accelerations on the X, Y and Z axes provided by the accelerometer of an Android Wear device by merging it with the technique used in \$3.
+The 1\textcent~gesture recognizer only supports recognition in two dimensions, \eg~recognition on a touch screen, therefore we choose to implement support for a third dimension and use it with accelerations on the X, Y and Z axes provided by the accelerometer of an Android Wear device by merging it with the technique used in \$3.
 
 %%% Local Variables:
 %%% mode: latex

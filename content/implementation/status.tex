@@ -3,7 +3,7 @@
 
 As part of the project we have designed and implemented a context-aware home automation solution on an Android Wear and a Raspberry Pi with Philips Hue light bulbs and a desktop machine running a Spotify client acting as the controllable devices. 
 
-\Cref{fig:implementation:deployment-diagram} shows a deployment diagram of the prototype developed during the project. \Cref{sec:implementation:status:devices} describes the devices involved in the deployment as well as the features implemented on the devices. In our specific prototype, we have a computer acting as the media centre and we have two Philips Hue light bulbs connected to openHAB. The number of devices will vary depending on the specific deployment, e.g. there can be more Philips Hue light bulbs or other devices in the system, e.g. door locks, a television or a thermostat.
+\Cref{fig:implementation:deployment-diagram} shows a deployment diagram of the prototype developed during the project. \Cref{sec:implementation:status:devices} describes the devices involved in the deployment as well as the features implemented on the devices. In our specific prototype, we have a computer acting as the media centre and we have two Philips Hue light bulbs connected to openHAB. The number of devices will vary depending on the specific deployment, \eg~there can be more Philips Hue light bulbs or other devices in the system, \eg~door locks, a television or a thermostat.
 
 \begin{figure}[H]
 \centering
@@ -39,11 +39,11 @@ The Bluetooth Low Energy beacons are used to position the user indoor. We have n
 
 \subsubsection{Raspberry Pi}
 
-The Raspberry Pi runs openHAB, which was described in \Cref{sec:analysis:choice-of-hub}. openHAB is the home automation software utilized in the project. The software receives requests over HTTP. Each request is then translated to an equivalent request using an appropriate protocol, e.g. Bluetooth, HTTP or MQTT. The translated request is forwarded to a controllable device. The following features were implemented on openHAB.
+The Raspberry Pi runs openHAB, which was described in \Cref{sec:analysis:choice-of-hub}. openHAB is the home automation software utilized in the project. The software receives requests over HTTP. Each request is then translated to an equivalent request using an appropriate protocol, \eg~Bluetooth, HTTP or MQTT. The translated request is forwarded to a controllable device. The following features were implemented on openHAB.
 
 \begin{itemize}
 \item We implemented an openHAB plugin for configuring which beacons are installed in the rooms of the users house or apartment.
-\item openHAB was configured to support the actions in the scenario presented in \Cref{sec:analysis:scenarios}, e.g. we implemented rules to toggle a lamp between the on and off states as this is not directly supported by openHAB.
+\item openHAB was configured to support the actions in the scenario presented in \Cref{sec:analysis:scenarios}, \eg~we implemented rules to toggle a lamp between the on and off states as this is not directly supported by openHAB.
 \end{itemize}
 
 \subsubsection{Computer}
@@ -62,7 +62,7 @@ A bridge provided by Philips is installed in the users home. The bridge communic
 
 \subsubsection{Philips Hue Light Bulb}
 
-The light bulbs provided by Philips are controlled using gestures on the smartwatch, i.e. using the CARMA application. The bulbs receive commands from the Philips Hue bridge when they need to change their state, e.g. turn on, turn off, change color or change temperature. The bulbs can communicate with each other using the ZigBee Light Link protocol to extend the range of the network by forwarding commands between bulbs.
+The light bulbs provided by Philips are controlled using gestures on the smartwatch, i.e. using the CARMA application. The bulbs receive commands from the Philips Hue bridge when they need to change their state, \eg~turn on, turn off, change color or change temperature. The bulbs can communicate with each other using the ZigBee Light Link protocol to extend the range of the network by forwarding commands between bulbs.
 
 \subsection{Known Issues}
 
@@ -85,7 +85,7 @@ The following features were not implemented.
 \item Reuse of the Bayesian network. The Bayesian network is created every time the recognition is started. When the network is created once, it could be reused for future computations of beliefs.
 \end{itemize}
 
-While inclusion of the system state is not implemented, a naive implementation of the system state is trivial to implement. The Android Wear application can periodically request the state of all controllable devices registered in openHAB and based on the response, populate the system state nodes in the Bayesian network with the appropriate states. The nodes will typically have hard evidence on one of the states as openHAB is considered to hold the truth of the systems state, e.g. it knows if a television is on or not and if music is playing or not.
+While inclusion of the system state is not implemented, a naive implementation of the system state is trivial to implement. The Android Wear application can periodically request the state of all controllable devices registered in openHAB and based on the response, populate the system state nodes in the Bayesian network with the appropriate states. The nodes will typically have hard evidence on one of the states as openHAB is considered to hold the truth of the systems state, \eg~it knows if a television is on or not and if music is playing or not.
 
 Reuse of the Bayesian network could be implemented by creating the network when the application whenever the network changes, i.e. new gesture configurations are created. The network could then be stored either in memory or on disk and loaded. For sufficiently large networks, this may be faster than recreating the network whenever it is needed.
 
@@ -93,17 +93,17 @@ Reuse of the Bayesian network could be implemented by creating the network when 
 
 As shown in \Cref{fig:implementation:deployment-diagram} we use HTTP for communication between the smartwatch, the Raspberry Pi and the computer acting as media centre. HTTP, or Hyptertext Transfer Protocol, which it is short for, is a protocol generally used for exchanging \emph{hypertext}, text which includes hyperlinks. HTTP is a client-server protocol, in which a client sends a request to the server which in turn sends a response. Resources provided by the server are identified by a URL, a Uniform Resource Locator. An example of a URL is ``http://mysite.com/index.html'' which requests the ``index.html'' file on the ``mysite.com'' hostname using the ``http'' protocol. When a web server returns a response, it will return an HTTP status code as part of the response. Examples of this includes the status code 200 for success, 404 for a resource not found and 400 for a bad request. HTTP utilizes TCP/IP to transfer information. TCP transfers information in small packets between machines and IP is responsible for addressing machines in a network and routing the information between the machines.
 
-In our prototype we use a framework appropriate for the platform to issue requests and send a response, e.g. in the case of the smartwatch application we use the Android Volley framework for making requests\footnote{For more information about Google Volley, refer to \url{https://developer.android.com/training/volley/}}. In the case of the Spotify Controls API, we use the Express\footnote{For more information about Express, refer to \url{http://expressjs.com}} framework for building the server. The requests are sent to either openHAB or the Spotify Controls API which will return a response formatted using JSON. In the case of a simple request, e.g. for changing the state of the music centre, the JSON response, as well as the HTTP status code, indicates whether or not the request was successful. For a more complex request, e.g. when requesting the available items in openHAB, the response will contain all available items in openHAB formatted as JSON along with a HTTP status code.
+In our prototype we use a framework appropriate for the platform to issue requests and send a response, \eg~in the case of the smartwatch application we use the Android Volley framework for making requests\footnote{For more information about Google Volley, refer to \url{https://developer.android.com/training/volley/}}. In the case of the Spotify Controls API, we use the Express\footnote{For more information about Express, refer to \url{http://expressjs.com}} framework for building the server. The requests are sent to either openHAB or the Spotify Controls API which will return a response formatted using JSON. In the case of a simple request, \eg~for changing the state of the music centre, the JSON response, as well as the HTTP status code, indicates whether or not the request was successful. For a more complex request, \eg~when requesting the available items in openHAB, the response will contain all available items in openHAB formatted as JSON along with a HTTP status code.
 
 HTTP defines methods for sending requests to a server. Amongst others are GET, POST and PUT, which are generally used for retrieving content,creating content and updating existing content, respectively. The Spotify Controls API use the HTTP method PUT for changing the state of the player. Likewise the openHAB API also use the GET, POST and PUT where appropriate.
 
 % \subsection{ZigBee}
 
-% The ZigBee protocol is targeted towards devices that fit within the concept of internet of things, e.g. lamps, thermostats and door locks. The devices create a \emph{mesh network}, i.e. a network in which nodes relays information to other nodes~\cite{zigbee:zigbee-pro}. This is depicted in the deployment diagram shown in \Cref{fig:implementation:deployment-diagram} in which both Philips Hue light bulbs receives commands by the bridge but the bulbs can also relay commands to each other.
+% The ZigBee protocol is targeted towards devices that fit within the concept of internet of things, \eg~lamps, thermostats and door locks. The devices create a \emph{mesh network}, i.e. a network in which nodes relays information to other nodes~\cite{zigbee:zigbee-pro}. This is depicted in the deployment diagram shown in \Cref{fig:implementation:deployment-diagram} in which both Philips Hue light bulbs receives commands by the bridge but the bulbs can also relay commands to each other.
 
 % The ZigBee protocol, amongst others, specifies the frequencies on which the devices shuld communicate, how devices are discovered and how they are paired with each other.
 
-% The Philips Hue light bulbs used in our prototype utilize the ZigBee Light Link standard, an extension of the ZigBee protocol, which is a ZigBee standardization of how communication with light bulbs is done, e.g. the information sent to the bulbs when changing their state.
+% The Philips Hue light bulbs used in our prototype utilize the ZigBee Light Link standard, an extension of the ZigBee protocol, which is a ZigBee standardization of how communication with light bulbs is done, \eg~the information sent to the bulbs when changing their state.
 
 % In this project, we have not implemented communication using ZigBee, but instead utilize HTTP to communiate with the Philips Hue brdige which in turn communicates with the bulbs using the ZigBee protocol.
 
