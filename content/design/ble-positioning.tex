@@ -3,21 +3,21 @@
 
 In \Cref{sec:analysis:indoor-positioning} various technologies for positioning a user was presented. We chose to use Bluetooth. The following section describes how we utilize Bluetooth for indoor positioning.
 
-In \cite{prespecialisation} we used Estimotes beacons for indoor positioning. The beacons are Bluetooth LE-enabled devices that can be installed throughout a house. The beacons continuously emit a signal that other Bluetooth LE-enabled devices can pick up.
+In~\cite{prespecialisation} we used Estimotes beacons for indoor positioning. The beacons are Bluetooth LE-enabled devices that can be installed throughout a house. The beacons continuously emit a signal that other Bluetooth LE-enabled devices can pick up.
 Estimote beacons can use either the iBeacon protocol or the Eddystone protocol. The two protocols and their uses are described below.
 
 \subsection{iBeacon}
 
-The iBeacon protocol is designed by Apple. When using the iBeacon protocol, a beacon will broadcast the following three identifiers \cite[ch. 1]{gilchrist2014learning}.
+The iBeacon protocol is designed by Apple. When using the iBeacon protocol, a beacon will broadcast the following three identifiers~\cite[ch. 1]{gilchrist2014learning}.
 
 \begin{description}
-\item[UUID] A Universally Unique Identifier is 16-byte string specific to a deployment of a set of beacons \cite{estimote:what-is-ibeacon}. For example, if McDonalds deployed iBeacons in all of their restaurants, the beacons would all have the same UUID letting their application know which beacons to look for \cite[ch. 1]{gilchrist2014learning}.
-\item[Major] The major value is a 2-byte string that distinguishes a smaller group of installed beacons \cite[ch. 1]{gilchrist2014learning}\cite{estimote:what-is-ibeacon}. For McDonalds, the major value could be specific to an installation of iBeacons in a certain restaurant.
-\item[Minor] The major value is a 2-byte string that further distinguishes a group of beacons \cite[ch. 1]{gilchrist2014learning}\cite{estimote:what-is-ibeacon}. McDonalds could use this to distinguish between the floors of a restaurant.
-\item[Measured Power] A value, meaured in dBM, that helps Bluetooth LE-enabled devices with ranging accuracy \cite{apple:proximity-beacon-spec}.
+\item[UUID] A Universally Unique Identifier is 16-byte string specific to a deployment of a set of beacons~\cite{estimote:what-is-ibeacon}. For example, if McDonalds deployed iBeacons in all of their restaurants, the beacons would all have the same UUID letting their application know which beacons to look for~\cite[ch. 1]{gilchrist2014learning}.
+\item[Major] The major value is a 2-byte string that distinguishes a smaller group of installed beacons~\cite[ch. 1]{gilchrist2014learning}\cite{estimote:what-is-ibeacon}. For McDonalds, the major value could be specific to an installation of iBeacons in a certain restaurant.
+\item[Minor] The major value is a 2-byte string that further distinguishes a group of beacons~\cite[ch. 1]{gilchrist2014learning}\cite{estimote:what-is-ibeacon}. McDonalds could use this to distinguish between the floors of a restaurant.
+\item[Measured Power] A value, meaured in dBM, that helps Bluetooth LE-enabled devices with ranging accuracy~\cite{apple:proximity-beacon-spec}.
 \end{description}
 
-The Measured Power is broadcasted by the beacon in order for other Bluetooth LE-enabled devices to more accurately determine a granular proxmity to the beacon. The value is measured using the following method and is performed using an iPhone 5s \cite{apple:proximity-beacon-spec}.
+The Measured Power is broadcasted by the beacon in order for other Bluetooth LE-enabled devices to more accurately determine a granular proxmity to the beacon. The value is measured using the following method and is performed using an iPhone 5s~\cite{apple:proximity-beacon-spec}.
 
 \begin{enumerate}
 \item The iPhone 5s must be held in portrait orientation with nothing covering the top half.
@@ -68,11 +68,11 @@ In the examples in \Cref{tbl:design:ble-positioning:ibeacon1,tbl:design:ble-posi
 
 \subsection{Eddystone}
 
-Eddystone is an open protocol designed by Google \cite{estimote:what-is-eddystone}. The Eddystone protocol supports the following \emph{frame types}, \ie~different types of packets that can be broadcasted \cite{eddystone:protocol-spec}.
+Eddystone is an open protocol designed by Google~\cite{estimote:what-is-eddystone}. The Eddystone protocol supports the following \emph{frame types}, \ie~different types of packets that can be broadcasted~\cite{eddystone:protocol-spec}.
 
 \subsubsection{Eddystone-UID}
 
-Eddystone-UID frames are broadcasted when interested in identifying groups of beacons or particular beacons within a group. The beacon emits the following information \cite{eddystone:protocol-uid-spec}.
+Eddystone-UID frames are broadcasted when interested in identifying groups of beacons or particular beacons within a group. The beacon emits the following information~\cite{eddystone:protocol-uid-spec}.
 
 \begin{description}
 \item[Namespace] 10-byte identifier. Groups a particular set of beacons, similar to the UUID in the iBeacon protocol
@@ -86,7 +86,7 @@ The Eddystone-UID frame type is suitable for granular indoor positioning as the 
 
 \begin{table}[h!]
 \centering
-\caption{Example of an Eddystone-UID frame \cite{eddystone:protocol-uid-spec}.}
+\caption{Example of an Eddystone-UID frame~\cite{eddystone:protocol-uid-spec}.}
 \label{tbl:design:ble-positioning:eddystone-uid}
 \begin{tabular}{llll}
 \textbf{Byte offset} & \textbf{Field} & \textbf{Description}                  & \textbf{Value} \\
@@ -115,7 +115,7 @@ The Eddystone-UID frame type is suitable for granular indoor positioning as the 
 
 \subsubsection{Eddystone-URL}
 
-Eddystone-URL frames are broadcasted when interested in redirecting users to a website. The frame is used in the Physical Web, in which beacons broadcast URLs that can be retrieved by users by tapping the beacon with their phone\footnote{More information about the Physical Web is available at https://google.github.io/physical-web/} \cite{eddystone:protocol-url-spec}. The beacon emits the following information \cite{eddystone:protocol-url-spec}.
+Eddystone-URL frames are broadcasted when interested in redirecting users to a website. The frame is used in the Physical Web, in which beacons broadcast URLs that can be retrieved by users by tapping the beacon with their phone\footnote{More information about the Physical Web is available at https://google.github.io/physical-web/}~\cite{eddystone:protocol-url-spec}. The beacon emits the following information~\cite{eddystone:protocol-url-spec}.
 
 \begin{description}
 \item[Tx Power] The received power at 0 meters from the beacon, measured in dBm.
@@ -127,7 +127,7 @@ Eddystone-URL frames are broadcasted when interested in redirecting users to a w
 
 \begin{table}[h!]
 \centering
-\caption{Example of an Eddystone-URL frame \cite{eddystone:protocol-url-spec}.}
+\caption{Example of an Eddystone-URL frame~\cite{eddystone:protocol-url-spec}.}
 \label{tbl:design:ble-positioning:eddystone-url}
 \begin{tabular}{llll}
 \textbf{Byte offset} & \textbf{Field} & \textbf{Description}                                       & \textbf{Value} \\
@@ -152,10 +152,10 @@ Eddystone-URL frames are broadcasted when interested in redirecting users to a w
 
 \subsubsection{Eddystone-TLM}
 
-Eddystone-TLM frames are broadcasted when interested in monitoring the health of beacons. The Eddystone-TLM is meant to be transmitted along with either the Eddystone-UID or the Eddystone-URL. The beacon emits the following information \cite{eddystone:protocol-tlm-spec}.
+Eddystone-TLM frames are broadcasted when interested in monitoring the health of beacons. The Eddystone-TLM is meant to be transmitted along with either the Eddystone-UID or the Eddystone-URL. The beacon emits the following information~\cite{eddystone:protocol-tlm-spec}.
 
 \begin{description}
-\item[Version] TLM version. Always $0x00$ \cite{eddystone:protocol-tlm-spec}.
+\item[Version] TLM version. Always $0x00$~\cite{eddystone:protocol-tlm-spec}.
 \item[Battery voltage] Voltage of the battery, \ie~remaining power, measured in 1 mv/bit.
 \item[Beacon temperature] Temperature of the beacon, measured in degrees Celsius. Signed 8.8 fixed-point notation.
 \item[Advertisement count] Number of frames advertised since the beacon was powered on or rebooted.
@@ -166,7 +166,7 @@ Eddystone-TLM frames are broadcasted when interested in monitoring the health of
 
 \begin{table}[!htb]
 \centering
-\caption{Example of an Eddystone-TLM frame \cite{eddystone:protocol-tlm-spec}.}
+\caption{Example of an Eddystone-TLM frame~\cite{eddystone:protocol-tlm-spec}.}
 \label{tbl:design:ble-positioning:eddystone-tlm}
 \begin{tabular}{llll}
 \textbf{Byte offset} & \textbf{Field}  & \textbf{Description}                                                        & \textbf{Value} \\
@@ -193,9 +193,9 @@ Both the iBeacon and the Eddystone protocols are suitable for the system describ
 
 The Eddystone protocol supports more than positioning of the user. It also supports the monitoring the health of the beacon. While technically, Eddystone-URL frames can be used for positioning the user in regions based on the broadcasted URL, \ie~different URLs for each regions, the Eddystone-UID frame seems better suited for this purpose. Using Eddystone-UID regions can be identified based in the instance of a beacon.
 
-While the iBeacon protocol is only officially supported by iOS devices, the Eddystone protocol is officially supported by both iOS and Android \cite{estimote:what-is-eddystone}. Since we are using a smartwatch running Android Wear for our prototype, we will use the Eddystone protocol.
+While the iBeacon protocol is only officially supported by iOS devices, the Eddystone protocol is officially supported by both iOS and Android~\cite{estimote:what-is-eddystone}. Since we are using a smartwatch running Android Wear for our prototype, we will use the Eddystone protocol.
 
-In \cite{prespecialisation} we worked with granular positioning using the Measured Power in the iBeacon protocol. In this report we focus on non-granular positioning of the user. That is, we only determine the region which the user is currently in.
+In~\cite{prespecialisation} we worked with granular positioning using the Measured Power in the iBeacon protocol. In this report we focus on non-granular positioning of the user. That is, we only determine the region which the user is currently in.
 
 The wearable must pick up the frames advertised by the beacons and determine the region the user is in based in the namespace and instance of the Eddystone-UID frame. The wearable may also need to investigate the Tx power and RSSI received by the beacons, to determine which beacon the user is closest to if more beacons are available.
 

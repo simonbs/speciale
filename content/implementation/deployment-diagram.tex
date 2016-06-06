@@ -5,7 +5,7 @@
 \begin{description}
 \item[Smartwatch] The Motorola 360, i.e. the Android smartwatch used in this project, runs the application used for creating gesture configurations and interacting with the system using gestures. We refer to this application as the \emph{CARMA app}, an abbreviation of \emph{Context AwaRe hoMe Automation}. The application stores gesture configurations in a SQLite database.
 \item[BLE Beacon] The Bluetooth Low Energy beacons are used to position the user indoor. The smartwatch reads the RSSI value from the Bluetooth beacons and determine which room the user is in.
-\item[Raspberry Pi] The Raspberry Pi runs openHAB, which the smartwatch communicates using a REST API over HTTP when loading configured beacons and rooms and when triggering actions. OpenHAB stores its data in a MapDB database, an embedded database meant to be interacted with using a Java collection framework \cite{mapdb:mapdb}.
+\item[Raspberry Pi] The Raspberry Pi runs openHAB, which the smartwatch communicates using a REST API over HTTP when loading configured beacons and rooms and when triggering actions. OpenHAB stores its data in a MapDB database, an embedded database meant to be interacted with using a Java collection framework~\cite{mapdb:mapdb}.
 \item[Computer] The computer runs an instance of Spotify, an application from streaming music as well as our Spotify Controls API, which allows for controlling the Spotify application over HTTP. openHAB communicates with the computer, and more specifically the API, when the user triggers an action affecting the music centre.
 \item[Philips Hue Bridge] A bridge provided by Philips is installed in the users home. The bridge communicates with the Philips Hue lights using the ZigBee protocol. The protocol is described later in this section.
 \item[Philips Hue Light Bulb] The light bulbs provided by Philips are controlled using gestures on the smartwatch, i.e. using the CARMA application. The bulbs receive commands from the Philips Hue bridge when they need to change their state, e.g. turn on, turn off, change color or change temperature. The bulbs can communicate with each other using the ZigBee Light Link protocol to extend the range of the network by forwarding commands between bulbs.
@@ -28,7 +28,7 @@ The requests are sent to either openHAB or the Spotify Controls API which will r
 
 \subsection{ZigBee}
 
-The ZigBee protocol is targeted towards devices that fit within the concept of internet of things, e.g. lamps, thermostats and door locks. The devices create a \emph{mesh network}, i.e. a network in which nodes relays information to other nodes \cite{zigbee:zigbee-pro}. This is depicted in the deployment diagram shown in \Cref{fig:implementation:deployment-diagram} in which both Philips Hue light bulbs receives commands by the bridge but the bulbs can also relay commands to each other.
+The ZigBee protocol is targeted towards devices that fit within the concept of internet of things, e.g. lamps, thermostats and door locks. The devices create a \emph{mesh network}, i.e. a network in which nodes relays information to other nodes~\cite{zigbee:zigbee-pro}. This is depicted in the deployment diagram shown in \Cref{fig:implementation:deployment-diagram} in which both Philips Hue light bulbs receives commands by the bridge but the bulbs can also relay commands to each other.
 
 The ZigBee protocol, amongst others, specifies the frequencies on which the devices shuld communicate, how devices are discovered and how they are paired with each other.
 

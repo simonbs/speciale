@@ -3,14 +3,14 @@
 
 In the envisioned system the context is used to determine which actions should be triggered when the user performs a gesture. Therefore the context plays an important part in the envisioned system.
 
-The notion of context is researched in multiple fields, including philosophy and psychology \cite{bolchini2007data}. For the purpose of this project we focus on the notion of context in context-aware software systems. In \cite{abowd1999towards}, the context for a context-aware system is defined as in \Cref{def:context}.
+The notion of context is researched in multiple fields, including philosophy and psychology~\cite{bolchini2007data}. For the purpose of this project we focus on the notion of context in context-aware software systems. In~\cite{abowd1999towards}, the context for a context-aware system is defined as in \Cref{def:context}.
 
 \begin{definition}
 \label{def:context}
 Context is any information that can be used to characterize the situation of an entity. An entity is a person, place, or object that is considered relevant to the interaction between a user and an application, including the user and applications themselves.
 \end{definition}
 
-According to this definition, information is context if the information characterizes the situation of a participant in an interaction \cite{abowd1999towards}.
+According to this definition, information is context if the information characterizes the situation of a participant in an interaction~\cite{abowd1999towards}.
 
 Consider the following example.
 
@@ -32,7 +32,7 @@ Information such as what other customers are in the store and the time of the da
 
 \subsection{Context Types}
 
-In \cite{abowd1999towards} context is categorized. The location, identity, time and activity to be the \emph{primary} context types that answer questions of \emph{where}, \emph{who}, \emph{when} and \emph{what}. Answering these questions help us understand \emph{why} a given situation occurs. In this project an action is triggered on a controllable device because the user is interested in triggering it (that is the \emph{why}).
+In~\cite{abowd1999towards} context is categorized. The location, identity, time and activity to be the \emph{primary} context types that answer questions of \emph{where}, \emph{who}, \emph{when} and \emph{what}. Answering these questions help us understand \emph{why} a given situation occurs. In this project an action is triggered on a controllable device because the user is interested in triggering it (that is the \emph{why}).
 
 \emph{Secondary} context types can be derived from the \emph{primary} context types. When the identity of a user is known, additional information can be derived. In the previous example the sex and age of the user are primary context types that can be derived from the identity of the user. 
 The price reduction of the t-shirt is secondary information as well as it can be derived from the identity of the t-shirt.
@@ -47,12 +47,12 @@ Abowd \etal\cite{abowd1999towards} defines a context-aware system as in \Cref{de
 A system is context-aware if it uses context to provide relevant information and/or services to the user, where relevancy depends on the user's task.
 \end{definition}
 
-Based on this definition, \cite{ferreira2014distributed} outline the following three main features a context-aware system can provide to its users.
+Based on this definition,~\cite{ferreira2014distributed} outline the following three main features a context-aware system can provide to its users.
 
 \begin{description}
 \item[Presentation of information and services] Systems with this feature use context to suggest services to the users or present them with relevant information. Yelp, a service that presents users with nearby businesses, is an example of a system implementing this feature.
 \item[Automatic execution of a service] Systems with this feature automatically execute a service based on context. Philips Hue, which can automatically change the lighting based on the time of day, is an example of a system implementing this feature.
-\item[Tagging of context to information for later retrieval] Systems with this feature associate information with context. \cite{ferreira2014distributed} uses a service that tags locations with a virtual note for other users to see as an example of systems implementing this feature.
+\item[Tagging of context to information for later retrieval] Systems with this feature associate information with context.~\cite{ferreira2014distributed} uses a service that tags locations with a virtual note for other users to see as an example of systems implementing this feature.
 \end{description}
 
 According to the categorization of context-aware systems by Ferreira \etal~the system envisioned in this report belongs to the category of systems implementing automatic execution of a service. Based on context, the system automatically triggers an action on a controllable device. While the user must perform a gesture in order to trigger the action, the system is still automatic as we consider the gesture to be context.

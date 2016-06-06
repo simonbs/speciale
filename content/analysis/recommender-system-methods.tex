@@ -18,7 +18,7 @@ The system then find users with similar preferences and look at which movies the
 
 Consider the example of John. Because John has given high ratings to western movies from the 50s, the system knows that John likes those movies. The system then looks for users with a similar taste in movies, \ie~users who have given high ratings to western movies from the 50s. If the set of movies retrieved from the users with a similar taste in movies contains a movie John have not watched, the movie can be suggested to John. Note that it is key that both John and the users have given high ratings to the movies. As a consequence, if users with similar taste in movies have given the western movies from the 50s low ratings, these are not recommended to John.
 
-Some of the issues with collaborative filtering according to \cite{claypool1999combining} are that it depends heavily on users actually providing ratings, otherwise the recommender system will have nothing to base its recommendations on. This issue will occur every time a new item is added as users have yet to rate it.
+Some of the issues with collaborative filtering according to~\cite{claypool1999combining} are that it depends heavily on users actually providing ratings, otherwise the recommender system will have nothing to base its recommendations on. This issue will occur every time a new item is added as users have yet to rate it.
 In addition, when a new recommender system is created, the system will suffer from lack of data and every user will be afflicted by this ``Early rater problem'' for all items.
 
 % We deem collaborative filtering unsuited for the purposes of this project as it requires multiple comparable users and our project is tailored more towards individual users.
@@ -26,13 +26,13 @@ In addition, when a new recommender system is created, the system will suffer fr
 \subsection{Content-based Filtering}
 \label{sec:analysis:recommender-methods:content-based-filtering}
 
-A different method to compensate for the ``Early rater problem'' is content-based filtering which relies on the correlation between a users preferences and the information about items \cite{claypool1999combining}.
+A different method to compensate for the ``Early rater problem'' is content-based filtering which relies on the correlation between a users preferences and the information about items~\cite{claypool1999combining}.
 \eg~John, the user who likes western movies from the 50s, is more likely to be recommended other western movies from the 50s regardless of how other users have rated the recommended movies.
 One of the challenges of this technique is to create proper classification of items and their attributes along with user profiles such that they can be matched.
 \cite{pazzani1996syskill} classify web pages by analysing the word frequencies, excluding common English words.
-To determine the preferences of the user some form of relevancy feedback is required, either positive or negative. An example of this is to have the user categorize the web pages he visits as either \texttt{hot}, \texttt{luke-warm} or \texttt{cold} \cite{pazzani1996syskill}.
-It is also possible to use implicit feedback such as the time spent on a web page \cite{van2000using}.
-However when using implicit feedback one has to be cautious with how strong belief is put into each observation. One could look at ignored links as being negative feedback on those pages, but perhaps the user did not dislike the link but rather did not see it \cite{van2000using}.
+To determine the preferences of the user some form of relevancy feedback is required, either positive or negative. An example of this is to have the user categorize the web pages he visits as either \texttt{hot}, \texttt{luke-warm} or \texttt{cold}~\cite{pazzani1996syskill}.
+It is also possible to use implicit feedback such as the time spent on a web page~\cite{van2000using}.
+However when using implicit feedback one has to be cautious with how strong belief is put into each observation. One could look at ignored links as being negative feedback on those pages, but perhaps the user did not dislike the link but rather did not see it~\cite{van2000using}.
 
 %We deem content-based filtering unfit for this project as it would be complicated to come up with attributes that would fit the items in our recommender system.
 
