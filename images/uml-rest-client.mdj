@@ -3171,7 +3171,7 @@
 																"$ref": "AAAAAAFTxveUnlQJy5Y="
 															},
 															"name": "getRawValue",
-															"documentation": "Retrieves the raw string value type, i.e.\nthe one used in openHAB.\n@return Raw item type.",
+															"documentation": "Retrieves the raw string value type, \ie~\nthe one used in openHAB.\n@return Raw item type.",
 															"visibility": "public",
 															"isStatic": false,
 															"isLeaf": false,
@@ -4118,7 +4118,7 @@
 																"$ref": "AAAAAAFTxveUz1Q21rE="
 															},
 															"name": "getRawValue",
-															"documentation": "Retrieves the raw string value type, i.e.\nthe one used in openHAB.\n@return Raw thing type.",
+															"documentation": "Retrieves the raw string value type, \ie~\nthe one used in openHAB.\n@return Raw thing type.",
 															"visibility": "public",
 															"isStatic": false,
 															"isLeaf": false,
@@ -4355,7 +4355,7 @@
 															"isActive": false
 														}
 													],
-													"documentation": "Contains custom configurations for a thing,\ni.e. properties added by the developer of the\nbinding. These properties are specific to the\ntype of thing.",
+													"documentation": "Contains custom configurations for a thing,\n\ie~properties added by the developer of the\nbinding. These properties are specific to the\ntype of thing.",
 													"visibility": "public",
 													"attributes": [
 														{

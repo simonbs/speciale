@@ -27,10 +27,10 @@ The user utilizes the Android Wear smartwatch to perform gestures which starts t
 \item Training of gestures using the 1\textcent~gesture recognizer as described in \Cref{sec:design:gesture-recognition}.
 \item Recognition of gestures using the 1\textcent~gesture recognizer.
 \item Positioning of the user using Estimotes BLE beacons as described in \Cref{sec:design:ble-positioning}.
-\item Setup of gesture configurations, i.e. a combination of a gesture, a room and an action.
+\item Setup of gesture configurations, \ie~a combination of a gesture, a room and an action.
 \item Recognition of the context using a Bayesian network as described in \Cref{sec:design:bayesian-network}.
 \item Presentation of a list of actions if one single action cannot be determined but rather we have a set of actions to choose from.
-\item Configuration and use of virtual positions, i.e. allowing the user to manually determine which room he is in.
+\item Configuration and use of virtual positions, \ie~allowing the user to manually determine which room he is in.
 \end{itemize}
 
 \subsubsection{BLE Beacon}
@@ -62,7 +62,7 @@ A bridge provided by Philips is installed in the users home. The bridge communic
 
 \subsubsection{Philips Hue Light Bulb}
 
-The light bulbs provided by Philips are controlled using gestures on the smartwatch, i.e. using the CARMA application. The bulbs receive commands from the Philips Hue bridge when they need to change their state, \eg~turn on, turn off, change color or change temperature. The bulbs can communicate with each other using the ZigBee Light Link protocol to extend the range of the network by forwarding commands between bulbs.
+The light bulbs provided by Philips are controlled using gestures on the smartwatch, \ie~using the CARMA application. The bulbs receive commands from the Philips Hue bridge when they need to change their state, \eg~turn on, turn off, change color or change temperature. The bulbs can communicate with each other using the ZigBee Light Link protocol to extend the range of the network by forwarding commands between bulbs.
 
 \subsection{Known Issues}
 
@@ -70,7 +70,7 @@ The following describes known issues in the implementation.
 
 \begin{itemize}
 \item There is an issue with the implementation of the gesture recognizer that causes the smartwatch application to crash if recognition is started while little to no measurements from the accelerometer are available to the gesture recognizer. In order to fix the issue, recognition should most likely be abandoned all together when little information is available. We have only seen the issue when users have accidentally stopped recognition immediately after starting it.
-\item Sometimes the application will hang, i.e. ``freeze'', when context recognition is started. The fix for the issue is most likely to perform the context recognition on another thread.
+\item Sometimes the application will hang, \ie~``freeze'', when context recognition is started. The fix for the issue is most likely to perform the context recognition on another thread.
 \item In order to present the settings (see \Cref{fig:implementation:prototype:screenshots:3}), the user must scroll from right to left on the gesture recognition screen (see \Cref{fig:implementation:prototype:screenshots:1}). The list of settings is meant to be scrolled vertically but it seems that the horizontal scroll gesture interferes with the vertical scroll causing the list of settings not to scroll. It is, however, possible to tap in the top and the bottom of the list to change the selected setting.
 \end{itemize}
 
@@ -87,7 +87,7 @@ The following features were not implemented.
 
 While inclusion of the system state is not implemented, a naive implementation of the system state is trivial to implement. The Android Wear application can periodically request the state of all controllable devices registered in openHAB and based on the response, populate the system state nodes in the Bayesian network with the appropriate states. The nodes will typically have hard evidence on one of the states as openHAB is considered to hold the truth of the systems state, \eg~it knows if a television is on or not and if music is playing or not.
 
-Reuse of the Bayesian network could be implemented by creating the network when the application whenever the network changes, i.e. new gesture configurations are created. The network could then be stored either in memory or on disk and loaded. For sufficiently large networks, this may be faster than recreating the network whenever it is needed.
+Reuse of the Bayesian network could be implemented by creating the network when the application whenever the network changes, \ie~new gesture configurations are created. The network could then be stored either in memory or on disk and loaded. For sufficiently large networks, this may be faster than recreating the network whenever it is needed.
 
 \subsection{HTTP}
 
@@ -99,7 +99,7 @@ HTTP defines methods for sending requests to a server. Amongst others are GET, P
 
 % \subsection{ZigBee}
 
-% The ZigBee protocol is targeted towards devices that fit within the concept of internet of things, \eg~lamps, thermostats and door locks. The devices create a \emph{mesh network}, i.e. a network in which nodes relays information to other nodes~\cite{zigbee:zigbee-pro}. This is depicted in the deployment diagram shown in \Cref{fig:implementation:deployment-diagram} in which both Philips Hue light bulbs receives commands by the bridge but the bulbs can also relay commands to each other.
+% The ZigBee protocol is targeted towards devices that fit within the concept of internet of things, \eg~lamps, thermostats and door locks. The devices create a \emph{mesh network}, \ie~a network in which nodes relays information to other nodes~\cite{zigbee:zigbee-pro}. This is depicted in the deployment diagram shown in \Cref{fig:implementation:deployment-diagram} in which both Philips Hue light bulbs receives commands by the bridge but the bulbs can also relay commands to each other.
 
 % The ZigBee protocol, amongst others, specifies the frequencies on which the devices shuld communicate, how devices are discovered and how they are paired with each other.
 

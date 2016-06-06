@@ -15,7 +15,7 @@ In \Cref{sec:design:bayesian-network,sec:design:context-engine}, the reason for 
 \end{description}
 
 Because the Baysian network is modelled to ``translate'' probabilities of states on the uppermost level to probabilities of actions in the system at the middle level, we can implement the contextual information providers to be entirely independent of each other have each provider encapsulate all the information it needs.
-In order to use the provider, it is added to the context recognizer which needs to know nothing about the contextual information encapsulated but only the probabilities of the states, i.e. the \texttt{ProvidedContextualInformation}, as defined by the \texttt{ContextualInformationProvider} interface.
+In order to use the provider, it is added to the context recognizer which needs to know nothing about the contextual information encapsulated but only the probabilities of the states, \ie~the \texttt{ProvidedContextualInformation}, as defined by the \texttt{ContextualInformationProvider} interface.
 
 \begin{figure}[h!]
 \centering

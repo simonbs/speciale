@@ -1,7 +1,7 @@
 \section{Prototype}
 \label{sec:implementation:prototype}
 
-This section presents the prototype of the Android Wear application as well as the \emph{binding}, i.e. an addon providing functionality specific to a problem domain, for openHAB developed during the project.
+This section presents the prototype of the Android Wear application as well as the \emph{binding}, \ie~an addon providing functionality specific to a problem domain, for openHAB developed during the project.
 
 \subsection{Android Wear}
 \label{sec:implementation:prototype:android-wear}
@@ -10,10 +10,10 @@ This section presents the prototype of the Android Wear application as well as t
 
 \begin{description}
 \item[Primary use] We refer to the parts of the application which the user uses the most as the \emph{primary use}. This involves the recognition of gestures as well as the picker presented when an action to trigger could not be determined after context recognition.
-\item[Configuration] The user will need to configure the application, i.e. train gestures and create gesture configurations. We refer to this part of the application as \emph{configuration}.
+\item[Configuration] The user will need to configure the application, \ie~train gestures and create gesture configurations. We refer to this part of the application as \emph{configuration}.
 \end{description}
 
-When opening the application, the user is presented with a screen to perform gesture recognition. This enables the user to start context recognition fast, whereas he needs to dive deeper into the navigation in order to train gestures and create gesture configurations, i.e. features that he will not use as often as the context recognition. For a list of the supported features in the application, refer to \Cref{sec:implementation:status}.
+When opening the application, the user is presented with a screen to perform gesture recognition. This enables the user to start context recognition fast, whereas he needs to dive deeper into the navigation in order to train gestures and create gesture configurations, \ie~features that he will not use as often as the context recognition. For a list of the supported features in the application, refer to \Cref{sec:implementation:status}.
 
 \begin{figure}[!htb]
     \centering
@@ -36,10 +36,10 @@ When opening the application, the user is presented with a screen to perform ges
     \subbottom[Screen shown when the user starts training a gesture. Tapping the ``Gesture name'' button will present the user with a speech recognition interface from which he pronounce the name of the gesture to configure it.]{\label{fig:implementation:prototype:screenshots:4}
         \frame{\includegraphics[width=0.3\textwidth]{images/wear-screenshot-name-gesture}}
     }
-    \subbottom[Screen shown when training a gesture and the gesture recognizer has not been started. We see that two gesture samples, i.e. gesture templates, have been trained.]{\label{fig:implementation:prototype:screenshots:5}
+    \subbottom[Screen shown when training a gesture and the gesture recognizer has not been started. We see that two gesture samples, \ie~gesture templates, have been trained.]{\label{fig:implementation:prototype:screenshots:5}
         \frame{\includegraphics[width=0.3\textwidth]{images/wear-screenshot-touch-train}}
     }
-    \subbottom[Screen shown when training a gesture and the gesture recognizer has been started, i.e. the user is performing a gesture.]{\label{fig:implementation:prototype:screenshots:6}
+    \subbottom[Screen shown when training a gesture and the gesture recognizer has been started, \ie~the user is performing a gesture.]{\label{fig:implementation:prototype:screenshots:6}
         \frame{\includegraphics[width=0.3\textwidth]{images/wear-screenshot-training}}
     }
     \subbottom[Gesture picker showing the gestures the user has trained. The gesture picker is used when creating a gesture configuration.]{\label{fig:implementation:prototype:screenshots:7}
