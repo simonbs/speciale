@@ -57,7 +57,7 @@ The \$3 gesture recognizer is based on the \$1 gesture recognizer but works with
 The \$3 gesture recognizer translates measurements on a tri-axis accelerometer to coordinates by using the first measurement as origo and adding the difference between subsequent measurements to form a timeseries of acceleration deltas as shown in \Cref{eq:acceleration-timeseries}.
 
 \begin{figure}[h]
-\[ T = \{p_1,\ldots,p_X\} \text{ s.t. } p_i=a_i-a_{i-1} \]
+\[ T = \{p_1,\ldots,p_X\} \text{ s.t. } p_i= p_{i-1} + a_i - a_{i-1} \]
 \caption{Gesture trace representation in \$3. $T$ is the gesture trace, $a_i$ is an accelerometer measurement and $X$ is the number of accelerations measured.
 This equation is not available in~\cite{threedollar} but is created by us to illustrate how they create gesture traces.}
 \label{eq:acceleration-timeseries}
