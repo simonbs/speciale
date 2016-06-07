@@ -20,16 +20,17 @@ Two nodes, A and C are said to be conditionally independent if there is no edge 
 
 For each variable in the Bayesian network there is a probability distribution function which depends on the edges leading into the variable. Probability distribution functions can be illustrated using \emph{probability tables}. A probability table is said to be \emph{conditional}, \ie~it is a \emph{conditional probability table} if the variable to which the table belongs depends on one or more variables.
 
-Probabilities are denoted $P(A|B)$, meaning the probability of A given B. An alternative notation is $P(A=a|B=b)$, meaning the probability of variable $A$ having value $a$, also referred to as being \emph{in state} $a$, when $B$ is in state $b$. We have that $P(A|B,C) = P(A|B)$ when A and C are conditionally independent as is the case in \Cref{fig:analysis:bayesian-network:abc}. The joint distribution of nodes, $X = X_1,\ldots,X_n$, in a network is
+Probabilities are denoted $P(A|B)$, meaning the probability of A given B. An alternative notation is $P(A=a|B=b)$, meaning the probability of variable $A$ having value $a$, also referred to as being \emph{in state} $a$, when $B$ is in state $b$. We have that $P(A|B,C) = P(A|B)$ when A and C are conditionally independent as is the case in \Cref{fig:analysis:bayesian-network:abc}. The joint distribution of nodes, $X = X_1,\ldots,X_n$, in a network is computed as shown in \Cref{eq:analysis:bayesian-network:prod} \cite{stephenson2000introduction}.
 
 \begin{equation}
 \label{eq:analysis:bayesian-network:prod}
 P(X) = \displaystyle \prod_{i=1}^{n} P(X_i|parents(X_i))
 \end{equation}
 
-In case of the network illustrated in \Cref{fig:analysis:bayesian-network:abc}, the joint distribution of all variables is
+In case of the network illustrated in \Cref{fig:analysis:bayesian-network:abc}, the joint distribution of all variables is as shown in \Cref{eq:analysis:bayesian-network:prod-example} \cite{stephenson2000introduction}.
 
 \begin{equation}
+\label{eq:analysis:bayesian-network:prod-example}
 P(A, B, C) = P(A|B) \cdot P(B) \cdot P(C|B)
 \end{equation}
 
