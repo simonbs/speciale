@@ -1,13 +1,13 @@
 \section{Hardware Components}
 \label{sec:analysis:system-components}
 
-The following section summarize the hardware components needed in order to design and implement the scenarios presented in \Cref{sec:analysis:scenarios}.
+The following section summarizes the hardware components needed in order to design and implement the scenarios presented in \Cref{sec:analysis:scenarios}.
 
-We envision two different configurations for positioning of the system. Both configurations assume that Bluetooth technology is utilized to determine the position of the user as described in \Cref{sec:analysis:indoor-positioning}.
+We envision two different configurations for locating the user in the system. Both configurations assume that Bluetooth technology is utilized to determine the position of the user as described in \Cref{sec:analysis:indoor-positioning}.
 
 \begin{enumerate}
-\item One configuration in which the wearable continuously scan for Bluetooth beacons. The wearable determines the position of the user based on data advertised by the bacons.
-\item Another configuration in which Bluetooth enabled microcontrollers scan for wearables and uploads the RSSI to a central location in which the position of the user is determined based on the set of available RSSIs.
+\item One configuration in which the wearable continuously scans for Bluetooth beacons. The wearable determines the position of the user based on data advertised by the bacons.
+\item Another configuration in which Bluetooth enabled microcontrollers scan for wearables and upload the Received Signal Strength Indication (RSSI) to a central location in which the position of the user is determined based on the set of available RSSIs.
 \end{enumerate}
 
 The idea of the second configuration is to design the system in such a way that it works on wearables that do not provide access to the Bluetooth APIs. A microcontroller should do one of the following.
@@ -35,7 +35,7 @@ The following list presents the hardware needed for the system.
 \begin{itemize}
 \item A computer running the hub. The hub is responsible for forwarding commands from the user to the controllable devices, \eg~lamps. The benefit of running the hub on a central computer rather than the smartwatch, is that the hub could potentially be configured with rules for automation and should therefore always be running, compromising the battery life of a wearable. Furthermore placing the logic in a central place can prove beneficial in an environment with multiple users in which multiple hubs would have to be synchronized.
 \item A wearable which provides access to APIs for both Bluetooth and the accelerometer. Furthermore it should be possible to give some sort of feedback to the user when a gesture could not be recognized. The wearable should also be able to communicate with hub.
-\item Minimum one Bluetooth beacon per room. Two beacons are needed in other to test the system in more than one room. The Bluetooth beacons are used to determine which room the user is in.
+\item Minimum one Bluetooth beacon per room. Two beacons are needed in order to test the system in more than one room. The Bluetooth beacons are used to determine which room the user is in.
 \item Minimum two controllable devices, one per room in the system. These devices receive requests from the hub that ask them to change their state.
 \end{itemize}
 
