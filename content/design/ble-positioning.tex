@@ -3,7 +3,7 @@
 
 In \Cref{sec:analysis:indoor-positioning} various technologies for positioning a user was presented. We chose to use Bluetooth. The following section describes how we utilize Bluetooth for indoor positioning.
 
-In~\cite{prespecialisation} we used Estimotes beacons for indoor positioning. The beacons are Bluetooth LE-enabled devices that can be installed throughout a house. The beacons continuously emit a signal that other Bluetooth LE-enabled devices can pick up.
+In~\cite{prespecialisation} we used Estimotes beacons for indoor positioning. The beacons are BLE-enabled devices that can be installed throughout a house. The beacons continuously emit a signal that other BLE-enabled devices can pick up.
 Estimote beacons can use either the iBeacon protocol or the Eddystone protocol. The two protocols and their uses are described below.
 
 \subsection{iBeacon}
@@ -14,10 +14,10 @@ The iBeacon protocol is designed by Apple. When using the iBeacon protocol, a be
 \item[UUID] A Universally Unique Identifier is 16-byte string specific to a deployment of a set of beacons~\cite{estimote:what-is-ibeacon}. For example, if McDonalds deployed iBeacons in all of their restaurants, the beacons would all have the same UUID letting their application know which beacons to look for~\cite[ch. 1]{gilchrist2014learning}.
 \item[Major] The major value is a 2-byte string that distinguishes a smaller group of installed beacons~\cite[ch. 1]{gilchrist2014learning}\cite{estimote:what-is-ibeacon}. For McDonalds, the major value could be specific to an installation of iBeacons in a certain restaurant.
 \item[Minor] The major value is a 2-byte string that further distinguishes a group of beacons~\cite[ch. 1]{gilchrist2014learning}\cite{estimote:what-is-ibeacon}. McDonalds could use this to distinguish between the floors of a restaurant.
-\item[Measured Power] A value, meaured in dBM, that helps Bluetooth LE-enabled devices with ranging accuracy~\cite{apple:proximity-beacon-spec}.
+\item[Measured Power] A value, meaured in dBM, that helps BLE-enabled devices with ranging accuracy~\cite{apple:proximity-beacon-spec}.
 \end{description}
 
-The Measured Power is broadcasted by the beacon in order for other Bluetooth LE-enabled devices to more accurately determine a granular proxmity to the beacon. The value is measured using the following method and is performed using an iPhone 5s~\cite{apple:proximity-beacon-spec}.
+The Measured Power is broadcasted by the beacon in order for other BLE-enabled devices to more accurately determine a granular proxmity to the beacon. The value is measured using the following method and is performed using an iPhone 5s~\cite{apple:proximity-beacon-spec}.
 
 \begin{enumerate}
 \item The iPhone 5s must be held in portrait orientation with nothing covering the top half.

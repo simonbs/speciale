@@ -17,10 +17,10 @@ The idea of the second configuration is to design the system in such a way that 
 \item Given the MAC address of the wearable, it should obtain the RSSI.
 \end{itemize}
 
-The second configuration was abandoned due to restrictions posed by the Bluetooth LE specification. The specification poses the following limitations that prevent such a system from working properly.
+The second configuration was abandoned due to restrictions posed by the Bluetooth Low Energy (BLE) specification. The specification poses the following limitations that prevent such a system from working properly.
 
 \begin{itemize}
-\item A Bluetooth LE peripheral, \eg~a wearable, can only be paired with a single other device.
+\item A BLE peripheral, \eg~a wearable, can only be paired with a single other device.
 \item A peripheral must advertise in order to be discovered by a central. Advertising requires a piece of software to be running on the peripheral and thus access to the Bluetooth API.
 \item A central can obtain an RSSI based on the MAC address of a peripheral. However, the Bluetooth specification allows a peripheral to change its MAC address in order to prevent tracking of the user~\cite[p.~91]{Bluetooth2010Bluetooth_vol_1}. The change of MAC address could be disabled for this approach, if this is possible on the wearable. However, since this is a security feature introduced in the Bluetooth specification, this seems undesirable for our purposes.
 \end{itemize}
