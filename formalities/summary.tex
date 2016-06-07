@@ -3,11 +3,13 @@
 
 This thesis focuses on the design and implementation of a context based system for controlling a smart home environment utilizing gesture recognition on a smartwatch.
 
-The system is designed to utilize available contextual information about the user and the environment he resides in to determine which devices he wishes to interact with and what change he intends to apply to it.
+The system is designed to utilize contextual information about the user and the environment he resides in to determine which devices he wishes to interact with and what change he intends to apply to it.
 To limit the scope of the project the system only utilizes two sources of contextual information: Which gesture the user has performed and which room he is situated in.
 
 The hardware requirements of the system is a smartwatch that supports Bluetooth and contains an accelerometer, a computer to act as a hub and one Estimote beacon per room in the smart home.
-This project was implemented using a second generation Moto 360 smartwatch and a Raspberry Pi 3.
+This project was implemented using a second generation Moto 360 smartwatch and a Raspberry Pi 3 as the hub.
+
+The hub is intended to facilitate communication between the smartwatch and all the controllable devices and is responsible for triggering actions on these devices, such as turning on a lamp, when a user performs a gesture and an action has been determined.
 
 In order to recognize gestures performed by the user a mix between 1\textcent~\cite{herold20121} and \$3~\cite{threedollar} was created.
 The gesture recognizer creates a timeseries of recorded accelerometer measurements by adding each succesive measurement to the previous one.
@@ -26,5 +28,6 @@ The participants were asked to train four unique gestures ten times each, result
 The gesture shapes were predetermined by us and the participants were instructed how to perform them but were given no opportunity to practice them.
 They were then asked to perform these gestures in different rooms simulated by turning the different beacons on and off.
 
-The result was that the correct action was triggered 44\% of the time and a flaw in our Bayesian network was discovered which led us to search for an alternative model.
-Of the alternative models considered, influence diagrams seemed the most promising.
+The result of the user test was that the correct action was triggered 44\% of the time.
+However a flaw in our Bayesian network was discovered after the test which led us to consider ways of improving it.
+Most of the suggested improvements were tested using data from a single participant collected during the user test and the most promising suggestions seemed to be influence diagrams and introducing system state as a contextual information to better eliminate false actions such as turning off a device that is already turned off.
