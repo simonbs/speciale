@@ -2,12 +2,12 @@
 
 Determining the correct action to trigger based on the contextual information is done using a Bayesian network. In this section, we will describe key aspects of a Bayesian network.
 
-A Bayesian network, defined by \Cref{def:bayesian-network}, is modelled as a graph which is composed of nodes and edges between the nodes. Each node in the network represents a variable and edges connect two nodes. If there is a causal relationship between two nodes, the edge is directed. If there is only some correlation between two nodes, the edge is undirected~\cite{stephenson2000introduction}.
+A Bayesian network is modelled as a graph which is composed of nodes and edges between the nodes. Each node in the network represents a variable and edges connect two nodes. If there is a causal relationship between two nodes, the edge is directed. If there is only some correlation between two nodes, the edge is undirected~\cite{stephenson2000introduction}.
 
-\begin{definition}
-\label{def:bayesian-network}
-A Bayesian network is a directed acyclic graph, $G = (V, E)$ where $V$ is a set of random variables (nodes) and E is a set of directed edgs between nodes. $P(X_V)$ is a probability distribution over the set of variables $X_V$ were $X_V \subseteq V$.
-\end{definition}
+% \begin{definition}
+% \label{def:bayesian-network}
+% A Bayesian network is a directed acyclic graph, $G = (V, E)$ where $V$ is a set of random variables (nodes) and E is a set of directed edgs between nodes. $P(X_V)$ is a probability distribution over the set of variables $X_V$ were $X_V \subseteq V$.
+% \end{definition}
 
 Two nodes, A and C are said to be conditionally independent if there is no edge between them. If we introduce a variable B and directed edges from B to A and B to C, both A and B are said to be dependent on B. B is totally independent because it does not depend on other nodes where as A and B are said to be conditionally independent given B~\cite{stephenson2000introduction}. The network is illustrated in figure \Cref{fig:analysis:bayesian-network:abc}.
 
