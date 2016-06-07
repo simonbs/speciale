@@ -13,14 +13,13 @@ We make the following assumptions about the system and the environment in which 
     \item All controllable devices are connected through a central hub.
     \item The system is installed in a private home where the different rooms can be defined.
     \item The state of the controllable devices is always available.
-    \item The location of the user is always available when he is in his home.
 \end{itemize}
 
 We assume each room has two or three controllable lamps. The living room may have a television and a music centre while the kitchen may have a controllable coffee machine. We estimate that there are 2-5 controllable devices per room leaving us with a maximum of 20 controllable devices in an apartment.
 
 We consider the system to be installed in the apartment shown in \Cref{fig:analysis:scenario:apartment}. The rooms in the apartment are listed in \Cref{tbl:analysis:scenario:rooms} along with the controllable devices that seem realistic to be located in each room.
 
-\begin{figure}[h!]
+\begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{images/room-with-beacons}
 \caption{Example apartment we envision the system to be installed in.}
@@ -42,11 +41,9 @@ Bathroom        & A lamp.
 \end{tabular}
 \end{table}
 
-\Cref{tbl:analysis:scenario:gestures} shows the gestures a user may perform in the apartment shown in \Cref{fig:analysis:scenario:apartment}.
-
-\begin{table}[h!]
+\begin{table}[h]
 \centering
-\caption{Gestures the user has configured.}
+\caption{Gestures a user may perform in the apartment shown in \Cref{fig:analysis:scenario:apartment}}
 \label{tbl:analysis:scenario:gestures}
 \begin{tabular}{ll}
 \textbf{Gesture name} & \textbf{Illustration}
@@ -97,7 +94,7 @@ For each room there are a number of gestures that are valid in that room and whe
 
 \begin{table}[]
 \centering
-\caption{Shows gestures that perform actions on controllable devices in each room of the apartment shown in \Cref{fig:analysis:scenario:apartment}.}
+\caption{Gestures that perform actions on controllable devices in each room of the apartment shown in \Cref{fig:analysis:scenario:apartment}.}
 \label{tbl:analysis:scenario:gesture-configurations}
 \begin{tabular}{lll}
 \textbf{Region} & \textbf{Affected device} & \textbf{Gesture}                       \\
@@ -134,9 +131,9 @@ Bathroom                   & Lamp 12                             & Z turns on an
 \end{tabular}
 \end{table}
 
-We consider the following example of a day in a users life realistic to take place in the apartment illustrated in \Cref{fig:analysis:scenario:apartment,tbl:analysis:scenario:rooms} with the gestures outline in \Cref{tbl:analysis:scenario:gestures}.
+We consider the following example of a day in a users life realistic to take place in the apartment illustrated in \Cref{fig:analysis:scenario:apartment,tbl:analysis:scenario:rooms} with the gestures outlined in \Cref{tbl:analysis:scenario:gestures}.
 
-The below example briefly shows how the user can move around his apartment and use the same eight gestures to control different devices located in different rooms.
+The following example briefly shows how the user can move around his apartment and use the same eight gestures to control different devices located in different rooms.
 
 \begin{testexample}
 At the beginning of the day, the user wakes up in his bedroom. He makes a Z gesture to turn on Lamp 8 in the bedroom and gets out of bed. He goes to the bathroom to take a shower and turns on Lamp 12 by performing gesture Z as he enters. When he is done, he performs gesture Z to turn off the Lamp 12.
@@ -156,10 +153,10 @@ Earlier that day, the user had turned on Lamp 4 and Lamp 5 in the living room. H
 \label{sec:analysis:scenarios:handling_uncertainties}
 
 Not all scenarios will work out as well as the one previously presented.
-Sometimes a meaningful action cannot be determined from a gesture or the context of the user.
+Sometimes a meaningful action cannot be determined from the context of the user.
 Assume that a person is in his living room and he performs a gesture that is recognized as ``Turn on TV'', but the only TV in the house is already turned on.
 In this case the action could be considered void, but we propose a different solution.
-Rather than just ignoring the persons request, a list of alternate actions could be presented to him on his smartwatch. Which actions would be presented however, could be the inverse of the one performed (if applicable) which in this case would be to turn the TV off.
+Instead of ignoring the persons request, a list of alternate actions could be presented to him on his smartwatch. Which actions would be presented however, could be the inverse of the one performed (if applicable) which in this case would be to turn the TV off.
 It could also be a list of the actions most frequently performed by the user.
 
 If the gesture performed is not recognized, this could be considered void and the person would be asked to try again. Alternatively, the intended target could be assumed to be the device that the person most recently interacted with, and a list of the most frequently used actions could be presented on the persons smartwatch.
