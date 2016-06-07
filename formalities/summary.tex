@@ -1,33 +1,39 @@
 \section*{Summary}
 \label{formalities:summary}
 
-This thesis focuses on the design and implementation of a context based system for controlling a smart home environment utilizing gesture recognition on a smartwatch.
+This thesis focuses on the design and implementation of a context-aware system for controlling a smart home system using gesture recognition performed on a smartwatch.
 
-The system is designed to utilize contextual information about the user and the environment he resides in to determine which devices he wishes to interact with and what change he intends to apply to it.
-To limit the scope of the project the system only utilizes two sources of contextual information: Which gesture the user has performed and which room he is situated in.
+The system is designed to utilize contextual information about the user and the environment he resides in to determine which smart devices he wishes to interact with and what change of state he wish to apply to the smart devices.
+To limit the scope of the project the system only utilizes the following two sources of contextual information. 
 
-The hardware requirements of the system is a smartwatch that supports Bluetooth and contains an accelerometer, a computer to act as a hub and one Estimote beacon per room in the smart home.
-This project was implemented using a second generation Moto 360 smartwatch and a Raspberry Pi 3 as the hub.
+\begin{itemize}
+\item The gesture the user has performed.
+\item The room the user is situated in.
+\end{itemize}
+
+The hardware requirements of the system is a smartwatch that supports Bluetooth and contains an accelerometer, a computer to act as a hub for communication between the wearable and smart devices and one Estimote beacon per room in the smart home.
+The prototype was implemented using a second generation Moto 360 smartwatch and a Raspberry Pi 3 running the hub software.
 
 The hub is intended to facilitate communication between the smartwatch and all the controllable devices and is responsible for triggering actions on these devices, such as turning on a lamp, when a user performs a gesture and an action has been determined.
 
-In order to recognize gestures performed by the user a mix between 1\textcent~\cite{herold20121} and \$3~\cite{threedollar} was created.
-The gesture recognizer creates a timeseries of recorded accelerometer measurements by adding each succesive measurement to the previous one.
-This trace is then resampled to contain exactly \emph{64} equidistant points and the centroid of the trace is determined.
-The trace is then converted to a vector containing the distance from each point in the trace to the centroid which is stored as a \emph{template} which can be compared with other templates.
+In order to recognize gestures performed by the user, we developed an algorithm that combines the 1\textcent~\cite{herold20121} and the \$3~\cite{threedollar} gesture recognizer algorithms. The algortihm takes accelerometer measurements recorded on the Moto 360 smartwatch as input.
 
-The second source of contextual information in this project is the location of the user which is obtained through use of Estimote beacons.
-These beacons send out Bluetooth signals that are picked up by the smartwatch and based on the RSSI value the smartwatch determines which beacon is the closest and thus which room the user is in.
+The second source of contextual information in this project is the position of the user which is obtained using Estimote BLE beacons. One or more beacons are placed in each room in the smart home.
+The beacons send out Bluetooth signals that are picked up by the smartwatch and based on the RSSI value, the smartwatch determines which beacon is the closest and thus which room the user is in.
 
-Users of the system can create configurations where combinations of a gesture, a room, a device and a supported action are selected.
+Users of the system can create configurations where combinations of a gesture, a room, a device and a supported action are selected. The selected action is triggered when the user performs the specified gesture in the selected room.
 
-In order to utilize the gesture and room information to determine an appropriate action to trigger, a Bayesian network was created that uses these configurations to determine which action is the most probable.
+In order to utilize the gesture and room information to determine an appropriate action to trigger, we developed a context engine based on a Bayesian network. Given probabilities of the configured gestures and rooms, the Bayesian network computes beliefs of the configured actions. When the belief of an action is sufficiently strong, the action is triggered, thus changing the state of one or more smart devices in the home. If a single action cannot be determined, the user is presented with a list of probable actions.
 
-To evaluate how well the system performed when used by other people a small scale test was carried out where seven master students participated.
-The participants were asked to train four unique gestures ten times each, resultin in a total of 40 templates.
+To evaluate how well the system performed when used by users, a user test was carried out where seven people participated.
+The participants were asked to train four unique gestures ten times each, resulting in a total of 40 gesture templates.
 The gesture shapes were predetermined by us and the participants were instructed how to perform them but were given no opportunity to practice them.
 They were then asked to perform these gestures in different rooms simulated by turning the different beacons on and off.
 
-The result of the user test was that the correct action was triggered 44\% of the time.
-However a flaw in our Bayesian network was discovered after the test which led us to consider ways of improving it.
-Most of the suggested improvements were tested using data from a single participant collected during the user test and the most promising suggestions seemed to be influence diagrams and introducing system state as a contextual information to better eliminate false actions such as turning off a device that is already turned off.
+Based on the user test we found that the correct action was triggered 44\% of the time.
+A flaw was discovered in our Bayesian network after the test which led us to consider ways of improving it.
+The suggested improvements were tested using data from a single participant collected during the user test and the most promising suggestions seemed to be influence diagrams and introducing the state of the smart devices in the system as a contextual information to better eliminate false actions such as turning off a device that is already turned off.
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../master"
+%%% End:
