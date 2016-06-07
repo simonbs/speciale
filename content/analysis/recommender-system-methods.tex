@@ -6,7 +6,7 @@ Given the gesture a user has performed and his location in a smart home, \ie~con
 It is our hypothesis that we can use concepts from the field of machine intelligence to determine the action to trigger given contextual information. Recommender systems are designed to recommend some \emph{item} to the user given information about the domain the system is operating in. For example, the video streaming service Netflix can utilize a recommender system to recommend movies to its users based on movies the user has previously expressed interest in, \eg~through ratings.
 In the case of the system presented in this report, \emph{items} are actions that change the state of one or more smart devices in a smart home. The recommendation is based on the provided contextual information.
 
-The section present selected techniques for creating a recommender system. The strengths and weaknesses of the techniques are outlined and the technique used in this project is decided.
+This section presents selected techniques for creating a recommender system. The strengths and weaknesses of the techniques are outlined and the technique used in this project is decided.
 
 \subsection{Collaborative Filtering}
 \label{sec:analysis:recommender-methods:collaborative-filtering}
@@ -18,7 +18,7 @@ The system then find users with similar preferences and look at which movies the
 
 Consider the example of John. Because John has given high ratings to western movies from the 50s, the system knows that John likes those movies. The system then looks for users with a similar taste in movies, \ie~users who have given high ratings to western movies from the 50s. If the set of movies retrieved from the users with a similar taste in movies contains a movie John have not watched, the movie can be suggested to John. Note that it is key that both John and the users have given high ratings to the movies. As a consequence, if users with similar taste in movies have given the western movies from the 50s low ratings, these are not recommended to John.
 
-Some of the issues with collaborative filtering according to~\cite{claypool1999combining} are that it depends heavily on users actually providing ratings, otherwise the recommender system will have nothing to base its recommendations on. This issue will occur every time a new item is added as users have yet to rate it.
+One of the issues with collaborative filtering according to~\cite{claypool1999combining} is that it depends heavily on users actually providing ratings, otherwise the recommender system will have nothing to base its recommendations on. This issue will occur every time a new item is added as users have yet to rate it.
 In addition, when a new recommender system is created, the system will suffer from lack of data and every user will be afflicted by this ``Early rater problem'' for all items.
 
 % We deem collaborative filtering unsuited for the purposes of this project as it requires multiple comparable users and our project is tailored more towards individual users.
@@ -26,7 +26,7 @@ In addition, when a new recommender system is created, the system will suffer fr
 \subsection{Content-based Filtering}
 \label{sec:analysis:recommender-methods:content-based-filtering}
 
-A different method to compensate for the ``Early rater problem'' is content-based filtering which relies on the correlation between a users preferences and the information about items~\cite{claypool1999combining}.
+A different method to compensate for the ``Early rater problem'' is content-based filtering which relies on the correlation between a user's preferences and the information about items~\cite{claypool1999combining}.
 \eg~John, the user who likes western movies from the 50s, is more likely to be recommended other western movies from the 50s regardless of how other users have rated the recommended movies.
 One of the challenges of this technique is to create proper classification of items and their attributes along with user profiles such that they can be matched.
 \cite{pazzani1996syskill} classify web pages by analysing the word frequencies, excluding common English words.
@@ -60,7 +60,7 @@ A Bayesian network is based on joint probabilities, \eg~$P(G,S)$ is the joint pr
 
 In the system designed in this report, we are interested in finding the probabilities of events occurring based on the observations of other events. More specifically, we want to determine an action to trigger based on the performed gesture and the room the user is in.
 
-As per the requirements presented in~\Cref{sec:requirements-specification}, we are interested in presenting the user with actions he is likely to trigger when we are unable to determine which action he desires to trigger. Working with probabilities is a good way to fulfill this requirement. When working with probabilities, an action can be triggered if it is the only action with a sufficiently high probability, $P$. When no action have a probability succeeding $P$ or more actions has probabilities succeeding $P$, the actions can be suggested to the user.
+As per the requirements presented in~\Cref{sec:requirements-specification}, we are interested in presenting the user with actions he is likely to trigger when we are unable to determine which action he desires to trigger. Working with probabilities is a good way to fulfill this requirement. When working with probabilities, an action can be triggered if it is the only action with a sufficiently high probability, $P$. When no action have a probability exceeding $P$ or more actions has probabilities exceeding $P$, the actions can be suggested to the user.
 
 % \subsection{Neural Network}
 % \label{sec:analysis:recommender-methods:neural-networks}

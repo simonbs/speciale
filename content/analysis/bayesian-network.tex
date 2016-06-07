@@ -9,12 +9,12 @@ A Bayesian network is modelled as a graph which is composed of nodes and edges b
 % A Bayesian network is a directed acyclic graph, $G = (V, E)$ where $V$ is a set of random variables (nodes) and E is a set of directed edgs between nodes. $P(X_V)$ is a probability distribution over the set of variables $X_V$ were $X_V \subseteq V$.
 % \end{definition}
 
-Two nodes, A and C are said to be conditionally independent if there is no edge between them. If we introduce a variable B and directed edges from B to A and B to C, both A and B are said to be dependent on B. B is totally independent because it does not depend on other nodes where as A and B are said to be conditionally independent given B~\cite{stephenson2000introduction}. The network is illustrated in figure \Cref{fig:analysis:bayesian-network:abc}.
+Two nodes, A and C are said to be conditionally independent if there is no edge between them. If we introduce a variable B and directed edges from B to A and B to C, both A and C are said to be dependent on B. B is totally independent because it does not depend on other nodes where as A and C are said to be conditionally independent given B~\cite{stephenson2000introduction}. The network is illustrated in figure \Cref{fig:analysis:bayesian-network:abc}.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.3\textwidth]{images/a_b_c_bayesian_network}
-\caption{Simple Bayesian network. The network consist of three nodes, \ie~three variables: A, B and C. A and C depends on B and B is totally independent~\cite{stephenson2000introduction}.}
+\caption{Simple Bayesian network. The network consist of three nodes, \ie~three variables: A, B and C. A and C depend on B and B is totally independent~\cite{stephenson2000introduction}.}
 \label{fig:analysis:bayesian-network:abc}
 \end{figure}
 
@@ -40,7 +40,7 @@ We also have that if the node $x_0$ does not depend on $x_n$, then we can remove
 P(x_0|x_1,\ldots,x_n,\ldots,x_k) = P(x_0|x_1,\ldots,x_{n-1},x_{n+1},\ldots,x_k)
 \end{equation}
 
-A graphical model of a Bayesian network consists of $V$, a set of nodes, $E$ a set of edges between the nodes and $P$, a set of probability distributions for each variable~\cite{stephenson2000introduction}. In case of \Cref{fig:analysis:bayesian-network:abc} we have that $V = \{A, B, C\}$ and $E = \{\{B, A\}, \{B,C\}\}$. An example definition of $P$ can be the probability table and conditional probability tables shown in \Cref{tbl:analysis:bayesian-network:abc-tables}. For example, the tables show that $P(B=Yes) = 0.3$ and $P(A=No|B=Yes) = 0.8$. This is the \emph{prior distribution}, \ie~our beliefs before any evidence is observed.
+A graphical model of a Bayesian network consists of a set of nodes $V$, a set of edges $E$ between the nodes and a set of probability distributions $P$ for each variable~\cite{stephenson2000introduction}. In case of \Cref{fig:analysis:bayesian-network:abc} we have that $V = \{A, B, C\}$ and $E = \{\{B, A\}, \{B,C\}\}$. An example definition of $P$ can be the probability table and conditional probability tables shown in \Cref{tbl:analysis:bayesian-network:abc-tables}. For example, the tables show that $P(B=Yes) = 0.3$ and $P(A=No|B=Yes) = 0.8$. This is the \emph{prior distribution}, \ie~our beliefs before any evidence is observed.
 
 \begin{table}[h!]
 \centering
@@ -123,7 +123,7 @@ The Hugin Decision Engine provide functionalities for constructing, learning and
 
 The graphical user interface builds on top of the decision engine to provide an easy-to-use interface for creating and running Bayesian networks and influence diagrams~\cite{jensen2005hugin}.
 
-\Cref{fig:design:bayesian-network:hugin-functionality-running,fig:design:bayesian-network:hugin-functionality-editing} shows screenshots of the Hugin graphical user interface.
+\Cref{fig:design:bayesian-network:hugin-functionality-running,fig:design:bayesian-network:hugin-functionality-editing} show screenshots of the Hugin graphical user interface.
 In \Cref{fig:design:bayesian-network:hugin-functionality-running} the screen is split vertically, showing the network on the right-hand side and the beliefs and evidence of all nodes on the left-hand side. In \Cref{fig:design:bayesian-network:hugin-functionality-editing} the screen is split horizontally showing the network at the bottom and the probability tables and conditional probability tables at the top.
 
 The features of the software used in this project are highlighted on the screenshots with black cirtcles and annotated with a letter referencing the below description of the features.

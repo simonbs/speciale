@@ -6,7 +6,7 @@ The wearable is primarily used for gesture recognition and positioning of the us
 Hence we decided on the following requirements.
 
 \begin{itemize}
-\item The wearable must possess a screen on which visual feedback can be presented and allow for presenting and interacting with proposed gestures, in case we are unable to determine one specific action to be triggered. Furthermore, displaying and interacting with information is needed when the user virtually changes his position.
+\item The wearable must possess a screen on which visual feedback can be presented and allow for presenting and interacting with proposed actions, in case we are unable to determine one specific action to be triggered. Furthermore, displaying and interacting with information is needed when the user virtually changes his position.
 \item The wearable must possess an accelerometer in order to detect the users movements and derive gestures from those.
 \item As described in \Cref{sec:analysis:indoor-positioning}, Bluetooth is used for positioning the user. Therefore the wearable should possess Bluetooth in order to position the user.
 \item WiFi connection in order to send commands to the hub. The wearable should ideally be independent of the phone and should send commands directly to the hub. WiFi is suitable for this as it is assumed that a WiFi connection is available in the entire house of the user. Had we used Bluetooth for communication between the wearable and the hub, it is likely there would often be connection issues as Bluetooth signals are significantly weakened by walls and furniture.
@@ -17,9 +17,7 @@ As we want a wearable that allows for both performing gestures, providing visual
 
 Performing gestures using a hand feels more natural than the feet, head or other body parts. This makes smartwatches ideal for recognizing gestures as they are worn on the wrist. Furthermore smartwatches are typically equipped with a touchscreen or buttons to interact with a screen or both.
 
-The following wearables were chosen based on their popularity, availability and a desire to include a watch by each of the major players in the mobile market which, as of writing this is Google, Microsoft, Apple and Samsung. Furthermore we included a Pebble Classic in our analysis as we already had access to one.
-
-The below four smartwatches are analyzed in the following sections.
+The following wearables were chosen based on their popularity, availability and a desire to include a watch by each of the major players in the mobile market which, as of writing is Google, Microsoft, Apple and Samsung. Furthermore we included a Pebble Classic in our analysis as we already had access to one.
 
 \begin{itemize}
 \item Pebble Classic running Pebble OS.
@@ -29,11 +27,11 @@ The below four smartwatches are analyzed in the following sections.
 \item Microsoft Band running Microsofts wearable architecture.
 \end{itemize}
 
-\Cref{tbl:analysis:choice-of-wearable} shows a comparison of the four smartwatches based on the three parameters previously listed. The table shows that the Pebble Classic and the Apple Watch do not provide access to the Bluetooth API and thus we cannot perform positioning directly on the smartwatch. An alternative is to accept this limitation and perform the positioning of the user on a smartphone and continously transfer the positions to the hub. The smartwatch can then retrieve the positions when needed.
+\Cref{tbl:analysis:choice-of-wearable} shows a comparison of the smartwatches based on the parameters previously listed. The table shows that the Pebble Classic and the Apple Watch do not provide access to the Bluetooth API and thus we cannot perform positioning directly on the smartwatch. An alternative is to accept this limitation and perform the positioning of the user on a smartphone and continously transfer the positions to the hub. The smartwatch can then retrieve the positions when needed.
 This limitation requires the user to carry the phone wherever he goes.
 
 \renewcommand{\arraystretch}{1.2}
-\begin{table}[!htb]
+\begin{table}[htb]
 \centering
 \caption{Comparison of wearables}
 \label{tbl:analysis:choice-of-wearable}

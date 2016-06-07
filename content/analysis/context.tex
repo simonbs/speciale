@@ -50,9 +50,9 @@ Abowd \etal\cite{abowd1999towards} defines a context-aware system as in \Cref{de
 Based on this definition,~\cite{ferreira2014distributed} outlines the following three main features a context-aware system can provide to its users.
 
 \begin{description}
-\item[Presentation of information and services] Systems with this feature use context to suggest services to the users or present them with relevant information. Yelp, a service that presents users with nearby businesses, is an example of a system implementing this feature.
-\item[Automatic execution of a service] Systems with this feature automatically execute a service based on context. Philips Hue, which can automatically change the lighting based on the time of day, is an example of a system implementing this feature.
-\item[Tagging of context to information for later retrieval] Systems with this feature associate information with context.~\cite{ferreira2014distributed} uses a service that tags locations with a virtual note for other users to see as an example of systems implementing this feature.
+\item[{``Presentation of information and services''~\cite[p. 13]{ferreira2014distributed}}]{ Systems with this feature use context to suggest services to the users or present them with relevant information. Yelp, a service that presents users with nearby businesses, is an example of a system implementing this feature.}
+\item[{``Automatic execution of a service''~\cite[p. 13]{ferreira2014distributed}}] Systems with this feature automatically execute a service based on context. Philips Hue, which can automatically change the lighting based on the time of day, is an example of a system implementing this feature.
+\item[{``Tagging of context to information for later retrieval''~\cite[p. 13]{ferreira2014distributed}}] Systems with this feature associate information with context.~\cite{ferreira2014distributed} uses a service that tags locations with a virtual note for other users to see as an example of systems implementing this feature.
 \end{description}
 
 According to the categorization of context-aware systems by Ferreira \etal~the system envisioned in this report belongs to the category of systems implementing automatic execution of a service. Based on context, the system automatically triggers an action on a controllable device. While the user must perform a gesture in order to trigger the action, the system is still automatic as we consider the gesture to be context.
@@ -90,7 +90,7 @@ While other context can be included in the system, for the purpose of the protot
 
 The contextual information provides us with a way of initiating the process of determining the correct action to trigger. When the user has performed a motion, we begin the recognition of the context. Gestures can trigger different actions depending on the position of the user, thus reducing the number of gestures the user needs to remember as a single gesture can be configured to trigger different actions as illustrated in \Cref{sec:analysis:scenarios}.
 
-We refer to the combination of gesture, room and as a \emph{gesture configuration} as defined in \Cref{def:gesture-configuration}. Gesture configurations are meant to be configured by a user. For example, a user can configure a circle gesture to turn on table lamp when he is in the living room.
+We refer to the combination of gesture, room and action as a \emph{gesture configuration} as defined in \Cref{def:gesture-configuration}. Gesture configurations are meant to be configured by a user. For example, a user can configure a circle gesture to turn on the table lamp when he is in the living room.
 
 \begin{definition}
 \label{def:gesture-configuration}
