@@ -68,6 +68,7 @@ This timeseries $T$ is known as the gesture trace and will be rotated to find th
 The gesture recognizer was used in~\cite{prespecialisation} and was found to have a precision between 58\% - 98\%, depending on the user utilizing the recognizer~\cite[p. 344]{threedollar}. The concrete implementation of the recognizer was also found to have memory issues where allocated memory was not deallocated~\cite[p. 54]{prespecialisation}.
 
 \subsection{1\textcent}
+\label{sec:analysis:choice-of-gesture-recognizer:one-cent}
 
 The 1\textcent~gesture recognizer is designed as an improvement of the 1\$ recognizer~\cite{wobbrock2007gestures}. Improvements are made by removing computationally expensive rotate-and-check methods and instead using a one-dimensional representation of gestures that is rotation-invariant.
 This means that rather than attempting to rotate a given gesture trace to best match the stored templates, an alternative representation is used such that rotating the trace is not required regardless of how it was performed.
