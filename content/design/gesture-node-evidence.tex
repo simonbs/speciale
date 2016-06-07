@@ -7,7 +7,7 @@ The gesture context provider determines the actions that make sense to trigger b
 
 Because the gesture recognizer scores all trained templates, gestures that are obviously not correct are returned by the gesture recognizer. Therefore we introduce a threshold which the gesture scores must be below to be considered. We only consider gestures with a score of 70 or below. The threshold of 70 was determined by considering the scores of multiple gesture samples and we found that generally, gestures with a score of 70 or below can be considered as a properly recognized gesture.
 
-The set of matches returned by the gesture recognizer are not unique per gesture name. A gesture named ``Circle'' may appear several times if the gesture trace matches multiple samples of the traiend gesture templates. We take the average of each gesture, grouped by the nae of the gesture.
+The set of matches returned by the gesture recognizer are not unique per gesture name. A gesture named ``Circle'' may appear several times if the gesture trace matches multiple samples of the trained gesture templates. We take the average of each gesture, grouped by the nae of the gesture.
 
 The gesture recognizer use the distance of the recorded sample to each trained sample as the score for the gesture. Thereby the lower the score, the better the result. When calculating the belief of gesture nodes, we create a \emph{translated score} where a high score indicates a better match. Let $G = \{G_1, G_2, \ldots, G_n\}$ be the set scores, then the translated score, $G'_i$ is computed as $G'_i = max(G) \cdot \frac{max(G)}{G_i}$. This ensures the proportions between scores are the same.
 

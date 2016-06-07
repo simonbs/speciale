@@ -11,7 +11,7 @@ We have presented an approach for recognizing gestures and once a gesture is rec
 
 We intended to model a generic engine for recognizing context based on various sources for contextual information. Our concrete implementation of the system utilizes BLE for positioning the user and a gesture recognizer derived from 1\textcent~\cite{herold20121} and \$3~\cite{threedollar}. In practice the context engine suggests different actions for the same gesture depending on the position of the user in his smart home.
 
-As described in \Cref{sec:evaluation:user-tests}, the system triggers the correct action 44\% of the time. According to the requirement specification presented in \Cref{sec:requirements-specification}, an accuracy of at least 80\% was desired and as such, the system is not satisfiyingly accurate.
+As described in \Cref{sec:evaluation:user-tests}, the system triggers the correct action 44\% of the time. According to the requirement specification presented in \Cref{sec:requirements-specification}, an accuracy of at least 80\% was desired and as such, the system is not satisfyingly accurate.
 
 We presented a concrete design and implementation for a system utilizing contextual information to control a smart home. As the accuracy of the system is unsatisfying, better designs of such a system may exist. We have investigated an alternative design of the Bayesian network and found that it was not more accurate.
 We also presented an influence diagram to potentially replace the Bayesian network. The diagram proved to perform better when tested with data from a single participant.

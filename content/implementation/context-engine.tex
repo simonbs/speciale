@@ -1,7 +1,7 @@
 \section{Context Engine}
 \label{sec:implementation:context-engine}
 
-In \Cref{sec:design:bayesian-network,sec:design:context-engine}, the reason for introducing action nodes at the middle level of the Bayesian network and thus ``translating'' probabilities of gestures and rooms at the uppermost level to probababilities of actions is described. Modelling the Bayesian network in this way results in a modular design in which contextual information observed by different sensors can be independent. In the following we will briefly describe the realization of this design, which we refer to as the \emph{context engine}. We will also discuss the benefits of the engine.
+In \Cref{sec:design:bayesian-network,sec:design:context-engine}, the reason for introducing action nodes at the middle level of the Bayesian network and thus ``translating'' probabilities of gestures and rooms at the uppermost level to probabilities of actions is described. Modelling the Bayesian network in this way results in a modular design in which contextual information observed by different sensors can be independent. In the following we will briefly describe the realization of this design, which we refer to as the \emph{context engine}. We will also discuss the benefits of the engine.
 
 \Cref{fig:implementation:context-engine} shows a class diagram of all clases and interfaces involved in the context engine. Below is a brief description of the classes and interface.
 
@@ -24,7 +24,7 @@ In order to use the provider, it is added to the context recognizer which needs 
 \label{fig:implementation:context-engine}
 \end{figure}
 
-\Cref{fig:implementation:context-engine:providers} shows a class diagram of the contextual information providers registered with the context recognizer in the prototype developed duing the project. Below is a brief description of the classes and interfaces.
+\Cref{fig:implementation:context-engine:providers} shows a class diagram of the contextual information providers registered with the context recognizer in the prototype developed during the project. Below is a brief description of the classes and interfaces.
 
 \begin{description}
 \item[Beacon] A representation of a beacon installed in a room. Beacons are retrieved from openHAB over HTTP using the REST API.

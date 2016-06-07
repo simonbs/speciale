@@ -7,7 +7,7 @@ The diagram focus on the smartwatch as most of our development was concentrated 
 Below is a brief description of the components in the diagram. Notice the note in the diagram. Components which communicate without an \emph{assembly connector}, \ie~communicating using a required and a provided interface, communicate without the use of Java interfaces, \eg~invocation of public methods that are not part of a Java interface. Since the components are still considered to be independent of each other, it makes sense to revisit the implementation to communicate using assembly connectors, \ie~Java interfaces. When information is passed without the use of assembly connectors, the edge is annotated with the information being passed between the components.
 
 \begin{description}
-\item[PositionManager] Responsible for determing which room the user is in.
+\item[PositionManager] Responsible for determining which room the user is in.
 \item[PositionContextualInformationProvider] Provides the context recognizer with information about the users position. The provider encapsulates the Room and Room\_Action nodes of the Bayesian network and computes evidence for all rooms.
 \item[GestureContextualInformationProvider] Provides the context recognizer with information about the gesture the user performed. The  provider encapsulates the Gesture and Gesture\_Action nodes of the Bayesian network and computes evidence for all gestures.
 \item[ContextRecognizer] Determines an appropriate action to trigger based on the information provided by \texttt{PositionContextualInformationProvider} and \texttt{GestureContextualInformationProvider}.

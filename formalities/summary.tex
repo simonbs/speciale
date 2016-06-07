@@ -16,7 +16,7 @@ The prototype was implemented using a second generation Moto 360 smartwatch and 
 
 The hub is intended to facilitate communication between the smartwatch and all the controllable devices and is responsible for triggering actions on these devices, such as turning on a lamp, when a user performs a gesture and an action has been determined.
 
-In order to recognize gestures performed by the user, we developed an algorithm that combines the 1\textcent~\cite{herold20121} and the \$3~\cite{threedollar} gesture recognizer algorithms. The algortihm takes accelerometer measurements recorded on the Moto 360 smartwatch as input.
+In order to recognize gestures performed by the user, we developed an algorithm that combines the 1\textcent~\cite{herold20121} and the \$3~\cite{threedollar} gesture recognizer algorithms. The algorithm takes accelerometer measurements recorded on the Moto 360 smartwatch as input.
 
 The second source of contextual information in this project is the position of the user which is obtained using Estimote BLE beacons. One or more beacons are placed in each room in the smart home.
 The beacons send out Bluetooth signals that are picked up by the smartwatch and based on the RSSI value, the smartwatch determines which beacon is the closest and thus which room the user is in.
@@ -33,6 +33,7 @@ They were then asked to perform these gestures in different rooms simulated by t
 Based on the user test we found that the correct action was triggered 44\% of the time.
 A flaw was discovered in our Bayesian network after the test which led us to consider ways of improving it.
 The suggested improvements were tested using data from a single participant collected during the user test and the most promising suggestions seemed to be influence diagrams and introducing the state of the smart devices in the system as a contextual information to better eliminate false actions such as turning off a device that is already turned off.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../master"

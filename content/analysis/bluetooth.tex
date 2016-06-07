@@ -17,7 +17,7 @@ Bluetooth has a maximum range of 100 meters but is typically used for much short
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=0.8\textwidth]{images/bluetooth-architecture}
-\caption{High-level architechture of Bluetooth. Illustration from~\cite[p. 22]{gupta2013inside}.}
+\caption{High-level architecture of Bluetooth. Illustration from~\cite[p. 22]{gupta2013inside}.}
 \label{fig:analysis:bluetooth:highlevel-architecture}
 \end{figure}
 
@@ -27,7 +27,7 @@ Attribute Protocol, abbreviated ATT, uses L2CAP to transfer data. Mechanisms pro
 
 The Bluetooth Core 4.0 Specification, \ie~the specification including BLE, introduces the General Attribute Profile (GATT) architecture illustrated in \Cref{fig:analysis:bluetooth:gatt-architecture}. The GATT framework specifies how a device can discover, read, write and indicate its characteristics. Profiles consist of one or more services that are needed in order to provide a specific functionality, \eg~proximity monitoring~\cite[p. 259-261]{gupta2013inside}. Services provide one or more characteristics that describe a feature, \eg~the temperature of a thermostat. Services may be shared by multiple profiles.
 
-The Bluetooth Special Interest Group, the group that maintains the Bluetooth standards, provide a range of profiles, \eg~a proxmity profile for monitoring the distance to devices and a profile for heart rate sensors.
+The Bluetooth Special Interest Group, the group that maintains the Bluetooth standards, provide a range of profiles, \eg~a proximity profile for monitoring the distance to devices and a profile for heart rate sensors.
 Apple and Google have developed the iBeacon and Eddystone profiles respectively for region monitoring.
 Eddystone GATT profile defines the Eddystone Service that advertises \emph{frames} of information. These are described in detail in \Cref{sec:design:ble-positioning} as well as the Eddystone Configuration Services in which a device is connectable and the advertised values can be configured by a client BLE-enabled device.
 

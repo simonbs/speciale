@@ -81,7 +81,7 @@ Bayesian networks are used in order to reason under uncertainty. When reasoning 
 
 When using a Bayesian network, we assign evidence to the states of a node. If a node, $X$, in a Bayesian network has states $x_1$, $x_2$ and $x_3$ then an evidence function $\epsilon_X = (1, 0, 0)$ indicates that $X = x_1$, \ie~node $X$ is in state $x_1$ with certainty. If $\epsilon_X = (1, 2, 0)$ then we are sure that $X$ is not in state $x_3$ and $X = x_2$ is twice as likely as $X = x_1$~\cite[pp. 23-24]{kjaerulff2008bayesian}. The probabilities for a column in a conditional probability table should have a sum of 1. That is for a node $X$, $P(x_1) + P(x_2) + ... + P(X_n) = 1$ where $n$ is the number of states in $X$.
 
-We distinquish between \emph{hard evidence} and \emph{soft evidence}~\cite{kjaerulff2008bayesian}. If an evidence function assigns a probability of zero to all but one state in a node, then there is \emph{hard evidence} on that one state. If an evidence function assigns an evidence greater than zero to multiple states, there is said to be \emph{soft evidence} on the states.
+We distinguish between \emph{hard evidence} and \emph{soft evidence}~\cite{kjaerulff2008bayesian}. If an evidence function assigns a probability of zero to all but one state in a node, then there is \emph{hard evidence} on that one state. If an evidence function assigns an evidence greater than zero to multiple states, there is said to be \emph{soft evidence} on the states.
 
 \emph{Bayesian inference} or \emph{belief propagation} is the action of updating beliefs of variables when evidence is observed in the network. This means that the \emph{posterior distribution}, \ie~the probability after evidence is observed, is computed.
 
@@ -119,7 +119,7 @@ P(x_{b,i}) = \frac{x_i \cdot \epsilon_i}{\sum\limits_{i=1}^n x_n \cdot \epsilon_
 
 The Hugin Tools\footnote{The Hugin Tools are available at \url{http://www.hugin.com}.}, also referred to as just Hugin, amongst others consist of the Hugin Decision Engine and the Hugin Graphical User Interface~\cite{jensen2005hugin}. Hugin can be useful for modelling Bayesian networks and is used in the design phase of our system.
 
-The Hugin Decision Engine provide funtionalities for constructing, learning and analysing Bayesian networks and influence diagrams. The engine supports manual creation of networks and learning the structure of networks based on provided data~\cite{jensen2005hugin}. Manual creation of networks can be done by experts in a field who knows the relationships between nodes. If the relationship is not known but the data is available, the structural learning can be used to build the network with no knowledge of relationships.
+The Hugin Decision Engine provide functionalities for constructing, learning and analysing Bayesian networks and influence diagrams. The engine supports manual creation of networks and learning the structure of networks based on provided data~\cite{jensen2005hugin}. Manual creation of networks can be done by experts in a field who knows the relationships between nodes. If the relationship is not known but the data is available, the structural learning can be used to build the network with no knowledge of relationships.
 
 The graphical user interface builds on top of the decision engine to provide an easy-to-use interface for creating and running Bayesian networks and influence diagrams~\cite{jensen2005hugin}.
 
@@ -129,14 +129,14 @@ In \Cref{fig:design:bayesian-network:hugin-functionality-running} the screen is 
 The features of the software used in this project are highlighted on the screenshots with black cirtcles and annotated with a letter referencing the below description of the features.
 
 \begin{enumerate}[label=\Alph*.]
-\item Enter editing mode shown in \Cref{fig:design:bayesian-network:hugin-functionality-editing}. The mode is used when editing edges, nodes and probabilitiy tables in the network.
+\item Enter editing mode shown in \Cref{fig:design:bayesian-network:hugin-functionality-editing}. The mode is used when editing edges, nodes and probability tables in the network.
 \item Enter running mode shown in \Cref{fig:design:bayesian-network:hugin-functionality-running}. The mode is used when computing beliefs in the network given some evidence on the nodes.
 \item Indicates hard evidence on one of the states in the node.
 \item Indicates soft evidence on one of the states in the node.
 \item Green bars show beliefs of states in a node. For example, in \Cref{fig:design:bayesian-network:hugin-functionality-editing} the ``Television: on/off'' state of the Action node has a belief of 28.61\%.
 \item Blue bars show soft evidence on states of a node. For example, in \Cref{fig:design:bayesian-network:hugin-functionality-editing} the ``Bedroom'' state of the Room node has soft evidence of 80\% where as the ``Living room'' state has soft evidence of 20\%.
 \item Red bars show hard evidence on one of the states in the node. For example, in \Cref{fig:design:bayesian-network:hugin-functionality-editing} hard evidence is applied to the ``Yes'' state of the TV\_IsOn node.
-\item Example of a conditional probability table in which probabilities given some states are entered. The first column in the screenshot configures the probabilities for both the System\_State, Room\_Action and Gesture\_Action nodes being in state ``Music centre: play/pause''. Note that Hugin supports normalizing the probabilities.
+\item Example of a conditional probability table in which probabilities given some states are entered. The first column in the screenshot configures the probabilities for both the System\_State, Room\_Action and Gesture\_Action nodes being in state ``Music centre: play/pause''. Note that Hugin supports normalising the probabilities.
 \end{enumerate}
 
 \begin{figure}[h!]
