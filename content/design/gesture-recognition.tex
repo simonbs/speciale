@@ -62,7 +62,7 @@ If these two measurements are used as coordinates for the gesture, it would end 
 \end{figure}
 
 The proper path is illustrated in \Cref{fig:acceleromterpath-proper}.
-The way we achieve the proper path is by borrowing a technique from~\cite{threedollar} where acceleration are acquired by subtracting the current measurement from the previous one to obtain an acceleration delta and adding it to the previous point to create the new point as shown in \Cref{eq:one-cent-trace}.
+The way we achieve the proper path is by borrowing a technique from~\cite{threedollar} where points are acquired by subtracting the current accelerometer measurement from the previous one to obtain an acceleration delta and adding it to the previous point to create the new point as shown in \Cref{eq:acceleration-timeseries}.
 However, in our specific implementation we do not add the acceleration deltas to the previous point but instead add the current acceleration measurement.
 
 %%% Local Variables:

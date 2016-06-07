@@ -3,21 +3,22 @@
 
 The following section describes how the evidence assigned to the states in the Gesture node of the Bayesian network is determined. In order to determine the evidence, we introduce the \emph{gesture context provider}.
 
-The gesture context provider determines the actions that make sense to trigger based on the motion performed by the user. When the user performs a motion, the gesture recognizer scores the trained gestures as explained in \Cref{sec:design:gesture-recognition}. When the gestures are scored, they are passed to the context provider which calculates the probabilities of each action associated with the gesture. 
+The gesture context provider determines the actions that make sense to trigger based on the motion performed by the user. When the user performs a motion, the gesture recognizer scores the trained gestures as explained in \Cref{sec:analysis:choice-of-gesture-recognizer:one-cent}. When the gestures are scored, they are passed to the context provider which calculates the probabilities of each action associated with the gesture. 
 
-Because the gesture recognizer scores all trained templates, gestures that are obviously not correct are returned by the gesture recognizer. Therefore we introduce a threshold which the gesture scores must be below to be considered. We only consider gestures with a score of 70 or below. The threshold of 70 was determined by considering the scores of multiple gesture samples and we found that generally, gestures with a score of 70 or below can be considered as a properly recognized gesture.
+Because the gesture recognizer scores all trained templates, gestures that are obviously not correct are returned by the gesture recognizer. Therefore we introduce a threshold which the gesture scores must be below to be considered. We only consider gestures with a score of 70 or below. The threshold of 70 was determined by considering the scores of multiple gesture templates and we found that generally, gestures with a score of 70 or below can be considered as a properly recognized gesture.
 
-The set of matches returned by the gesture recognizer are not unique per gesture name. A gesture named ``Circle'' may appear several times if the gesture trace matches multiple samples of the trained gesture templates. We take the average of each gesture, grouped by the nae of the gesture.
+The set of matches returned by the gesture recognizer are not unique per gesture name. A gesture named ``Circle'' may appear several times if the gesture trace matches multiple templates of the trained gesture templates. We take the average of each gesture, grouped by the name of the gesture.
 
-The gesture recognizer use the distance of the recorded sample to each trained sample as the score for the gesture. Thereby the lower the score, the better the result. When calculating the belief of gesture nodes, we create a \emph{translated score} where a high score indicates a better match. Let $G = \{G_1, G_2, \ldots, G_n\}$ be the set scores, then the translated score, $G'_i$ is computed as $G'_i = max(G) \cdot \frac{max(G)}{G_i}$. This ensures the proportions between scores are the same.
+The gesture recognizer uses the distance of the recorded template to each trained template as the score for the gesture. Thereby the lower the score, the better the result. When calculating the belief of gesture nodes, we create a \emph{translated score} where a high score indicates a better match. Let $G = \{G_1, G_2, \ldots, G_n\}$ be the set scores, then the translated score, $G'_i$ is computed as $G'_i = max(G) \cdot \frac{max(G)}{G_i}$. This ensures the proportions between scores are the same.
 
-For example, if we have recognized gestures with scores $G = {40, 62}$, then the translated scores are computed as $G' = \{ 62 \cdot \frac{62}{40}, 62 \cdot \frac{62}{62} \} = \{ 96.1, 69 \}$.
+For example, if we have recognized gestures with scores $G = \{40, 62\}$, then the translated scores are computed as $G' = \{ 62 \cdot \frac{62}{40}, 62 \cdot \frac{62}{62} \} = \{ 96.1, 62 \}$.
 
-Given the translated scores, we can calculate the beliefs as:
+Given the translated scores, we can calculate the beliefs as shown in \Cref{eq:gesture-belief}.
 
-\begin{equation*}
+\begin{equation}
 B_i = \frac{{G'}_{i}}{\sum\limits_{x \in G'} x}
-\end{equation*}
+\label{eq:gesture-belief}
+\end{equation}
 
 %%% Local Variables:
 %%% mode: latex

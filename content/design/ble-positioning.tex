@@ -17,7 +17,7 @@ The iBeacon protocol is designed by Apple. When using the iBeacon protocol, a be
 \item[Measured Power] A value, measured in dBM, that helps BLE-enabled devices with ranging accuracy~\cite{apple:proximity-beacon-spec}.
 \end{description}
 
-The Measured Power is broadcasted by the beacon in order for other BLE-enabled devices to more accurately determine a granular proximity to the beacon. The value is measured using the following method and is performed using an iPhone 5s~\cite{apple:proximity-beacon-spec}.
+The Measured Power is broadcast by the beacon in order for other BLE-enabled devices to more accurately determine a granular proximity to the beacon. The value is measured using the following method and is performed using an iPhone 5s~\cite{apple:proximity-beacon-spec}.
 
 \begin{enumerate}
 \item The iPhone 5s must be held in portrait orientation with nothing covering the top half.
@@ -68,11 +68,11 @@ In the examples in \Cref{tbl:design:ble-positioning:ibeacon1,tbl:design:ble-posi
 
 \subsection{Eddystone}
 
-Eddystone is an open protocol designed by Google~\cite{estimote:what-is-eddystone}. The Eddystone protocol supports the following \emph{frame types}, \ie~different types of packets that can be broadcasted~\cite{eddystone:protocol-spec}.
+Eddystone is an open protocol designed by Google~\cite{estimote:what-is-eddystone}. The Eddystone protocol supports the following \emph{frame types}, \ie~different types of packets that can be broadcast~\cite{eddystone:protocol-spec}.
 
 \subsubsection{Eddystone-UID}
 
-Eddystone-UID frames are broadcasted when interested in identifying groups of beacons or particular beacons within a group. The beacon emits the following information~\cite{eddystone:protocol-uid-spec}.
+Eddystone-UID frames are broadcast when interested in identifying groups of beacons or particular beacons within a group. The beacon emits the following information~\cite{eddystone:protocol-uid-spec}:
 
 \begin{description}
 \item[Namespace] 10-byte identifier. Groups a particular set of beacons, similar to the UUID in the iBeacon protocol
@@ -80,7 +80,7 @@ Eddystone-UID frames are broadcasted when interested in identifying groups of be
 \item[Tx Power] The received power at 0 meters from the beacon, measured in dBm. Similar to the Measured Power in the iBeacon protocol. Resolution of 1 dBm.
 \end{description}
 
-The Eddystone-UID frame type is suitable for granular indoor positioning as the packet includes the Tx Power. Furthermore it is suitable for non-granular indoor positioning as each room can be identifier using the instance.
+The Eddystone-UID frame type is suitable for granular indoor positioning as the packet includes the Tx Power. Furthermore it is suitable for non-granular indoor positioning as each room can be identified using the instance.
 
 \Cref{tbl:design:ble-positioning:eddystone-uid} shows an example of a frame with the UID frame type.
 
@@ -115,12 +115,12 @@ The Eddystone-UID frame type is suitable for granular indoor positioning as the 
 
 \subsubsection{Eddystone-URL}
 
-Eddystone-URL frames are broadcasted when interested in redirecting users to a website. The frame is used in the Physical Web, in which beacons broadcast URLs that can be retrieved by users by tapping the beacon with their phone\footnote{More information about the Physical Web is available at https://google.github.io/physical-web/}~\cite{eddystone:protocol-url-spec}. The beacon emits the following information~\cite{eddystone:protocol-url-spec}.
+Eddystone-URL frames are broadcast when interested in redirecting users to a website. The frame is used in the Physical Web, in which beacons broadcast URLs that can be retrieved by users by tapping the beacon with their phone\footnote{More information about the Physical Web is available at https://google.github.io/physical-web/}~\cite{eddystone:protocol-url-spec}. The beacon emits the following information~\cite{eddystone:protocol-url-spec}:
 
 \begin{description}
 \item[Tx Power] The received power at 0 meters from the beacon, measured in dBm.
-\item[URL Scheme] Scheme prefix of the broadcasted URL.
-\item[URL] The broadcasted URL.
+\item[URL Scheme] Scheme prefix of the broadcast URL.
+\item[URL] The broadcast URL.
 \end{description}
 
 \Cref{tbl:design:ble-positioning:eddystone-url} shows an example of an Eddystone-URL frame broadcasting the \emph{http://goo.gl/POKXkv}.
@@ -152,7 +152,7 @@ Eddystone-URL frames are broadcasted when interested in redirecting users to a w
 
 \subsubsection{Eddystone-TLM}
 
-Eddystone-TLM frames are broadcasted when interested in monitoring the health of beacons. The Eddystone-TLM is meant to be transmitted along with either the Eddystone-UID or the Eddystone-URL. The beacon emits the following information~\cite{eddystone:protocol-tlm-spec}.
+Eddystone-TLM frames are broadcast when interested in monitoring the health of beacons. The Eddystone-TLM is meant to be transmitted along with either the Eddystone-UID or the Eddystone-URL. The beacon emits the following information~\cite{eddystone:protocol-tlm-spec}:
 
 \begin{description}
 \item[Version] TLM version. Always $0x00$~\cite{eddystone:protocol-tlm-spec}.
@@ -191,13 +191,13 @@ Eddystone-TLM frames are broadcasted when interested in monitoring the health of
 
 Both the iBeacon and the Eddystone protocols are suitable for the system described in this report. The iBeacon protocol solely supports positioning of the user, either granularly using the Measured Power or non-granularly using regions defined by the major and/or minor value of the beacon.
 
-The Eddystone protocol supports more than positioning of the user. It also supports the monitoring the health of the beacon. While technically, Eddystone-URL frames can be used for positioning the user in regions based on the broadcasted URL, \ie~different URLs for each regions, the Eddystone-UID frame seems better suited for this purpose. Using Eddystone-UID regions can be identified based in the instance of a beacon.
+The Eddystone protocol supports more than positioning of the user. It also supports the monitoring the health of the beacon. While technically, Eddystone-URL frames can be used for positioning the user in regions based on the broadcast URL, \ie~different URLs for each regions, the Eddystone-UID frame seems better suited for this purpose. Using Eddystone-UID regions can be identified based in the instance of a beacon.
 
 While the iBeacon protocol is only officially supported by iOS devices, the Eddystone protocol is officially supported by both iOS and Android~\cite{estimote:what-is-eddystone}. Since we are using a smartwatch running Android Wear for our prototype, we will use the Eddystone protocol.
 
 In~\cite{prespecialisation} we worked with granular positioning using the Measured Power in the iBeacon protocol. In this report we focus on non-granular positioning of the user. That is, we only determine the region which the user is currently in.
 
-The wearable must pick up the frames advertised by the beacons and determine the region the user is in based in the namespace and instance of the Eddystone-UID frame. The wearable may also need to investigate the Tx power and RSSI received by the beacons, to determine which beacon the user is closest to if more beacons are available.
+The smartwatch must pick up the frames advertised by the beacons and determine the region the user is in based in the namespace and instance of the Eddystone-UID frame. The smartwatch may also need to investigate the Tx power and RSSI received by the beacons, to determine which beacon the user is closest to if more beacons are available.
 
 By analyzing the namespace, instance and Tx power in the frames advertised by the beacons, we can determine which region the user is in.
 

@@ -10,7 +10,7 @@ Evidence on the system state nodes in the uppermost level is likely to be hard e
 \item When a request to change the state of an item is send through openHAB, the new state can be stored by openHAB if the request was successful. For some protocols, \eg~UDP, it is not known if a message is delivered correctly and therefore openHAB cannot depend on storing the state of a device only if a request is successful, except if it only use protocols that support this. Another issue with UDP is that the order of messages is unknown, hence it is unknown which state the device ends in.
 \end{itemize}
 
-When trusting the state stored in openHAB, the evidence can be hard. If the state is not trusted, one can reside to using soft evidence. \eg~based on historical data for each device.
+When trusting the state stored in openHAB, the evidence can be hard. If the state is not trusted, one can resort to using soft evidence. \eg~based on historical data for each device.
 
 %%% Local Variables:
 %%% mode: latex

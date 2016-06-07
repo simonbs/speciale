@@ -6,10 +6,10 @@ If multiple actions have beliefs that are approximately equal within a threshold
 
 The requirements also outline that the design should make no assumptions about the type of contextual information supplied to the context engine. We have decided to fulfill this requirement by enforcing a ``translation'' of probabilities in the uppermost level, \ie~the level containing the Gesture and Room node in our specific implementation, to probabilities of actions in the middle level.
 The consequence of this, is that the design makes no assumptions about the type of information but it enforces a uniformity of the parents to the Action node.
-Because the nodes at the uppermost level are independent of each other, we can implement it as two components with no knowledge to each other. This provides for an implementation which allows us to easily extend the engine with new nodes providing contextual information as described in \Cref{sec:implementation:bayesian-network}.
+Because the nodes at the uppermost level are independent of each other, we can implement it as two components with no knowledge to each other. This implementation allows us to easily extend the engine with new nodes providing contextual information as described in \Cref{sec:implementation:bayesian-network}.
 
 Furthermore the requirements mention that the design should support an arbitrary number of contextual information. While the design in principle fulfills the requirement, the conditional probability table of the Action node will grow exponentially when parent nodes are added.
-A solution for this can be to replace the conditional probability table with a deterministic function that, given the parent nodes as input, counts the number of nodes pointing at each state. In principle, this means that each parent node ``vote'' on which action should be triggered and the action with most votes is triggered. If multiple actions have the same amount of votes, the actions are presented to the user who can choose the correct action to trigger.
+A solution for this can be to replace the conditional probability table with a deterministic function that, given the parent nodes as input, counts the number of nodes pointing at each state. In principle, this means that each parent node ``votes'' on which action should be triggered and the action with most votes is triggered. If multiple actions have the same amount of votes, the actions are presented to the user who can choose the correct action to trigger.
 
 %%% Local Variables:
 %%% mode: latex
