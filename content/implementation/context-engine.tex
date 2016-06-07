@@ -3,10 +3,10 @@
 
 In \Cref{sec:design:bayesian-network,sec:design:context-engine}, the reason for introducing action nodes at the middle level of the Bayesian network and thus ``translating'' probabilities of gestures and rooms at the uppermost level to probabilities of actions is described. Modelling the Bayesian network in this way results in a modular design in which contextual information observed by different sensors can be independent. In the following we will briefly describe the realization of this design, which we refer to as the \emph{context engine}. We will also discuss the benefits of the engine.
 
-\Cref{fig:implementation:context-engine} shows a class diagram of all clases and interfaces involved in the context engine. Below is a brief description of the classes and interface.
+\Cref{fig:implementation:context-engine} shows a class diagram of all classes and interfaces involved in the context engine. Below is a brief description of the classes and interface.
 
 \begin{description}
-\item[ContextualInformationProvider] Observes a delimited area of the context and provides information about the area to the \texttt{ContextRecognizer}. The provided information is encapsulated in a \texttt{ProvidedContextualInformation} model. Examples of \texttt{ContextualInformationProvider}s include the \texttt{GestureContextualInformationProvider} and the \texttt{PositionContextualInformationProvider} which provides information about the performed gesture and the room the user is in respectively. Providers encapsulate one or more nodes in the Bayesian network presented in \Cref{sec:design:bayesian-network}. It encapsulate a node at the middle level in the network and zero or more nodes at the uppermost level. For example, the \texttt{GestureContextualInformationProvider} encapsulates the Gesture and Gesture\_Action nodes. The providers are described in greater detail later in this section.
+\item[ContextualInformationProvider] Observes a delimited area of the context and provides information about the area to the \texttt{ContextRecognizer}. The provided information is encapsulated in a \texttt{ProvidedContextualInformation} model. Examples of \texttt{ContextualInformationProvider}s include the \texttt{GestureContextualInformationProvider} and the \texttt{PositionContextualInformationProvider} which provide information about the gesture performed and the room the user is in respectively. Providers encapsulate one or more nodes in the Bayesian network presented in \Cref{sec:design:bayesian-network}. It encapsulates a node at the middle level in the network and zero or more nodes at the uppermost level. For example, the \texttt{GestureContextualInformationProvider} encapsulates the Gesture and Gesture\_Action nodes. The providers are described in greater detail later in this section.
 \item[ContextualInformationListener] Objects conforming to the interface can get a callback when a \texttt{ContextualInformationProvider} either has the necessary contextual information or fails to retrieve it. The \texttt{ContextRecognizer} pass these as anonymous classes in Java.
 \item[ProvidedContextualInformation] Encapsulates information from a \texttt{ContextualInformationProvider}. The model contains the node which should be parent to the Action node, a node to apply evidence to and the soft evidence to apply to the node. The parent node, which resides at the middle level in the Bayesian network, and the node to apply evidence to can be the same.
 \item[ContextRecognizer] The recognizer orchestrates the retrieval of contextual information from the providers. Because a provider is not required to provide its contextual information instantly, the recognizer will timeout and thus cancel the provider if it takes too long to deliver the information.
@@ -14,7 +14,7 @@ In \Cref{sec:design:bayesian-network,sec:design:context-engine}, the reason for 
 \item[ContextOutcome] A context outcome encapsulates an action that can be triggered and the probability that the action should be triggered. Context outcomes are the result of performing context recognition. The outcomes are parsed to the object conforming to the \texttt{ContextRecognizerListener} interface.
 \end{description}
 
-Because the Baysian network is modelled to ``translate'' probabilities of states on the uppermost level to probabilities of actions in the system at the middle level, we can implement the contextual information providers to be entirely independent of each other have each provider encapsulate all the information it needs.
+Because the Baysian network is modelled to ``translate'' probabilities of states on the uppermost level to probabilities of actions in the system at the middle level, we can implement the contextual information providers to be entirely independent of each other and have each provider encapsulate all the information it needs.
 In order to use the provider, it is added to the context recognizer which needs to know nothing about the contextual information encapsulated but only the probabilities of the states, \ie~the \texttt{ProvidedContextualInformation}, as defined by the \texttt{ContextualInformationProvider} interface.
 
 \begin{figure}[h!]
@@ -38,7 +38,7 @@ In order to use the provider, it is added to the context recognizer which needs 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{images/uml-context-engine-providers}
-\caption{Class diagram showing the clases and interfaces involved in the providers.}
+\caption{Class diagram showing the classes and interfaces involved in the providers.}
 \label{fig:implementation:context-engine:providers}
 \end{figure}
 
