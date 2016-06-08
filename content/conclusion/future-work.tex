@@ -6,7 +6,7 @@ In this section, we present functionality and design changes that would make sen
 
 \subsection{Continuous Recognition of Gestures}
 
-Investigation of battery efficient approaches for continuous gesture recognition could be beneficial. The current implementation requires the user to open the Andorid Wear application, tap to start recognizing a gesture, perform the gesture and then tap again to stop the gesture recognition. From the tests we conducted with users, we found the approach to be unsuitable as starting the recognition must be done with the arm on which the watch is mounted, held in a position ready to do the gesture and stopping the gesture must be done in the position where the gesture ended.
+Investigation of battery efficient approaches for continuous gesture recognition could be beneficial. The current implementation requires the user to open the Android Wear application, tap to start recognizing a gesture, perform the gesture and then tap again to stop the gesture recognition. From the tests we conducted with users, we found the approach to be unsuitable as starting the recognition must be done with the arm on which the watch is mounted, held in a position ready to do the gesture and stopping the gesture must be done in the position where the gesture ended.
 
 In order to avoid this, we imagine a solution where the smartwatch continuously attempts to recognize gestures based on accelerometer data, even when the smartwatch application is in the background. Such a solution would solve the following two issues.
 
@@ -15,13 +15,13 @@ In order to avoid this, we imagine a solution where the smartwatch continuously 
 \item[Starting and stopping the recognition] The user no longer has to manually start and stop the gesture recognition after performing each gesture. The continuous gesture recognizer should automatically detect when the user starts performing a gesture and when he stops performing it.
 \end{description}
 
-Research in continuous gesture recognition, or \emph{real time gesture recognition} as it is referred to in~\cite{gillian2014gesture}. The authors have implemented a solution for continuous recognition using a Kinect infrared camera to detect motions and claim that it works with other sensor data as well, \eg~accelerations from an accelerometer. The article does not state an accuracy of the recognition.
+Research has been conducted in continuous gesture recognition, or \emph{real time gesture recognition} as it is referred to in~\cite{gillian2014gesture}. The authors have implemented a solution for continuous recognition using a Kinect infrared camera to detect motions and claim that it works with other sensor data as well, \eg~accelerations from an accelerometer~\cite{gillian2014gesture}. The article does not state an accuracy of the recognition.
 
 \subsection{Inclusion of System State}
 
 In the design of the Bayesian network used for context recognition presented in \Cref{sec:design:bayesian-network}, we introduced the state of the system as contextual information and as explained in \Cref{sec:implementation:status}, the functionality was not implemented. The point of introducing the state of the system, is to achieve lower belief values of actions that it does not make sense to trigger given the current state of the system. For example, an action for changing channel on the television would have a lower belief value when the television is turned off, than when it is turned on. 
 
-When excluding the system state, the context engine may suggest such actions and since it is fair to assume that the user knows at least part of the system state, the suggested action is likely not be the intended one. By including the system state, we could potentially reduce the risk of suggesting unintended actions.
+When excluding the system state, the context engine may suggest such actions and since it is fair to assume that the user knows at least part of the system state, the suggested action is likely not the intended one. By including the system state, we could potentially reduce the risk of suggesting unintended actions.
 
 \subsection{Inclusion of User History}
 
