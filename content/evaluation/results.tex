@@ -1,11 +1,11 @@
-\section{User Tests}
+\section{User Test}
 \label{sec:evaluation:user-tests}
 
-User tests were performed in order to investigate the accuracy of the system given data from different users. The test is presented in the following section.
+A user test was performed in order to investigate the accuracy of the system given data from different users. The test is presented in the following section.
 
 \subsection{Goal}
 
-The goal of these tests was to see how well the system performed when used by other people as well as to determine if it achieved the requirement of triggering the correct actions 80\% of the time as specified in \Cref{sec:requirements-specification}.
+The goal of the test was to see how well the system performed when used by other people as well as to determine if it achieved the requirement of triggering the correct actions 80\% of the time as specified in \Cref{sec:requirements-specification}.
 
 \subsection{Setup}
 \label{sec:evaluation:user-tests-setup}
@@ -21,26 +21,26 @@ The gestures used were:
   \item Zorro
 \end{itemize}
 
-The people who participated in the tests were fellow masters students and as such were adept at using modern technology, however none of them had any prior experience with our project.
+The people who participated in the test were fellow masters students and as such were adept at using modern technology, however none of them had any prior experience with our project.
 
 The setup was limited to a subset of the smart devices and gestures presented in the scenario in \Cref{sec:analysis:scenarios}, because we did not have the necessary hardware and space available to perform a test of the entire scenario as well as to keep the invested time for each participant to a minimum.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.45\textwidth]{images/user-test-setup.jpg}
-\caption{Image of the setup used for the user tests.}
+\caption{Image of the setup used for the user test.}
 \label{fig:user-test-setup-image}
 \end{figure}
 
 The gesture templates stored in the database were removed before each test so each participant was only using his own templates and not those created by others.
 
-The participants were instructed how to perform the gestures but were allowed to scale them to their personal preference, \eg either create large circles or small circles.
+The participants were instructed how to perform the gestures but were allowed to scale them to their personal preference, \eg~either create large circles or small circles.
 
 \subsection{Method}
 
 Once the gesture templates had been created the participants were asked to complete seven tasks, each of which required them to perform a given gesture five times.
-Tests took place in a single room but to simulate the user moving between two different rooms, only one Estimote beacon would be turned on at a time.
-A list of the gestures and locations is shown in in \Cref{table:user-test-tasks}, along with the OpenHAB actions they were supposed to trigger.
+The test took place in a single room but to simulate the participant moving between two different rooms, only one Estimote beacon would be turned on at a time.
+A list of the gestures and locations is shown in \Cref{table:user-test-tasks}, along with the OpenHAB actions they were supposed to trigger.
 
 \begin{table}[h]
 \centering
@@ -55,7 +55,7 @@ TV\_Lamp\_Toggle        & Zorro               & Living Room                    \
 Spotify\_Next           & Swipe Left to Right & Home Office (Virtual Position) \\ \hline
 Shelves\_Lamp\_Toggle   & V                   & Home Office                    \\ \hline
 \end{tabular}
-\caption{The actions, gestures and locations that were used during the user tests.}
+\caption{The actions, gestures and locations that were used during the user test.}
 \label{table:user-test-tasks}
 \end{table}
 
@@ -77,7 +77,7 @@ Participant 2 has an average success rate for gestures of \emph{93\%} and partic
 This is a significant difference and indicates that possibly something went wrong during the tests of participant 6, or the gesture recognizer is not capable of handling people with different capabilities of performing these gestures.
 
 Another source of the inaccuracy of actions is the way we have modeled the context engine.
-Loking at the correctness rates for \emph{Shelves_Lamp_Toggle} in \Cref{fig:participant-1} shows that the correct gesture and location was always identified, yet the correct action was only triggered 40\% of the time.
+Loking at the success rates for \emph{Shelves_Lamp_Toggle} in \Cref{fig:participant-1} shows that the correct gesture and location was always identified, yet the correct action was only triggered 40\% of the time.
 
 \begin{table}[h]
 \centering
@@ -269,21 +269,21 @@ As such it is easier to trigger actions that only have a single gesture associat
 \subsection{Threats}
 \label{sec:evaluation:threats}
 
-The following are threats, that could potentially have impacted the results from the user tests.
+The following are threats, that could potentially have impacted the results from the user test.
 
 \begin{itemize}
 \item The system was only tested with users who had never tried to use the system before. Users who have more experience with the system would likely perform gestures with a higher accuracy, thus potentially triggering the correct actions more often.
 \item The chosen gestures might be too similar and thus the gesture recognizer might be unable to precisely determine which gesture the user performed.
-\item As part of the gesture recognition, a gesture trace is resampled in order to consist of the same amount of points as the templates. We use a resampling rate of 64 to be consistent with 1\textcent~\cite{herold20121}. \$3 uses a resampling rate of 150~\cite{threedollar}. As our solution is a combination of both the 1\textcent~and the \$3, it could be that a higher resampling rate result in a higher accuracy.
+\item As part of the gesture recognition, a gesture trace is resampled in order to consist of the same amount of points as the templates. We use a resampling rate of 64 to be consistent with 1\textcent~\cite{herold20121}. \$3 uses a resampling rate of 150~\cite{threedollar}. As our solution is a combination of both 1\textcent~and \$3, it could be that a higher resampling rate result in a higher accuracy.
 \end{itemize}
 
 \subsection{Conclusion}
 \label{sec:evaluation:user-tests-conclusion}
 
-From the results of the user tests we can see that the average success rate of actions falls below the 80\% stated in \Cref{sec:requirements-specification} with a value of \emph{44\%}.
+From the results of the user test we can see that the average success rate of actions falls below the 80\% stated in \Cref{sec:requirements-specification} with a value of \emph{44\%}.
 The two primary causes of this is likely the low average success rate of gestures and the way the context engine is modeled.
 
-The gesture recognition performs sufficiently well for some participants, like participant 2, but the correctness varies too much between different participants.
+The gesture recognition performs sufficiently well for some participants, like participant 2, but the success rate varies too much between different participants.
 The success rate of the gestures could perhaps be improved if the participants had been asked to practice the gestures before training and using them.
 It may also work better if the users were allowed to make up their own gestures instead of using the ones selected by us.
 

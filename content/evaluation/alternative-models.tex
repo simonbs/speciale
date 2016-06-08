@@ -1,7 +1,7 @@
 \section{Alternative Models}
 \label{sec:evaluation:alternative-models}
 
-As the users tests described in \Cref{sec:evaluation:user-tests} showed that the system had an accuracy of 44\%. This section describes some of the alternative models that were considered and whether or not they addressed the issues raised in \Cref{sec:evaluation:user-tests-conclusion}.
+As the user test described in \Cref{sec:evaluation:user-tests} showed that the system had an accuracy of 44\%. This section describes some of the alternative models that were considered and whether or not they addressed the issues raised in \Cref{sec:evaluation:user-tests-conclusion}.
 
 \subsection{Bayesian Network With a Single Action Node}
 
@@ -40,7 +40,7 @@ Due to inference in the probabilistic network, actions are assigned a utility wh
 
 The scenario discussed in \Cref{sec:evaluation:user-tests} in which the belief values of a gesture was divided when the gesture was associated with multiple different actions is addressed in \Cref{fig:evaluation:alternative-models:hugin-influence-diagram} where the correct action has a greater utility and can be triggered with greater confidence.
 
-When testing the Bayesian network with a subset of the recorded data from the user tests, we found that when using the influence diagram, we were able to trigger the correct action more often. During the user test a correct action was triggered 36\% of the time for participant 7. Using the exact same beliefs on gesture and room nodes in the influence diagram, the correct action is triggered 50\% of the time.
+When testing the Bayesian network with a subset of the recorded data from the user test, we found that when using the influence diagram, we were able to trigger the correct action more often. During the user test a correct action was triggered 36\% of the time for participant 7. Using the exact same beliefs on gesture and room nodes in the influence diagram, the correct action is triggered 50\% of the time.
 
 % Note that during the tests with the Bayesian network we considered the outcome of performing an action acceptable if a list of suggested actions were shown and the intended action was in the list. This was not taken into account when testing the influence diagram with the data from participant 7 and as such the accuracy of the influence diagram may increase if a threshold for the utility of accepted actions is introduced.
 
