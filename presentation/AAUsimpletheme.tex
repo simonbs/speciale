@@ -18,12 +18,19 @@
 %\setbeamercolor{normal text}{fg=black,bg=gray!10}
 % ... and you can of course change a lot more - see the beamer user manual.
 
+\setbeamertemplate{caption}[numbered]
+
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 % Or whatever. Note that the encoding and the font should match. If T1
 % does not look nice, try deleting the line with the fontenc.
 \usepackage{helvet}
+
+\usepackage{caption}
+\usepackage{tikz} %Tikz
+\usepackage{pgfplots} %Graph plotting
+\usepackage[absolute,overlay]{textpos}
 
 % colored hyperlinks
 \newcommand{\chref}[2]{%
@@ -81,6 +88,8 @@
 % %%%%%%%%%%%%%%%%
 
 \input{content/introduction}
+\input{content/deployment-diagram}
+\input{content/context-engine}
 
 %%%
 % BELOW IS THE DEMO CONTENT
