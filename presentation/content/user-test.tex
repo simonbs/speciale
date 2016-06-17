@@ -1,0 +1,90 @@
+\section{User Test}
+
+\begin{frame}{User Test}
+\begin{figure}[h]
+\begin{tikzpicture}[scale=0.85]
+  \begin{axis}
+    [
+    ytick={1,2,3,4,5,6,7},
+    yticklabels from table={data/ActionCorrectnessTransposed.csv}{Action},
+    xlabel = Success rate (\%)
+    ]
+    % Action success rate
+    \addplot+[
+    boxplot prepared={
+      median=0,
+      upper quartile=39,
+      lower quartile=0,
+      upper whisker=40,
+      lower whisker=0
+    },
+    ] coordinates {};
+    % Action success rate
+    \addplot+[
+    boxplot prepared={
+      median=40,
+      upper quartile=55,
+      lower quartile=8,
+      upper whisker=100,
+      lower whisker=0
+    },
+    ] coordinates {};
+    % Action success rate
+    \addplot+[
+    boxplot prepared={
+      median=32,
+      upper quartile=69,
+      lower quartile=4,
+      upper whisker=100,
+      lower whisker=0
+    },
+    ] coordinates {};
+    % Action success rate
+    \addplot+[
+    boxplot prepared={
+      median=60,
+      upper quartile=90,
+      lower quartile=20,
+      upper whisker=100,
+      lower whisker=0
+    },
+    ] coordinates {};
+    % Action success rate
+    \addplot+[
+    boxplot prepared={
+      median=100,
+      upper quartile=100,
+      lower quartile=50,
+      upper whisker=100,
+      lower whisker=0
+    },
+    color=orange
+    ] coordinates {};
+    % Action success rate
+    \addplot[
+    boxplot prepared={
+      median=71,
+      upper quartile=75,
+      lower quartile=50,
+      upper whisker=75,
+      lower whisker=0
+    },
+    color=black!30!yellow
+    ] coordinates {};
+    % Action success rate
+    \addplot[
+    boxplot prepared={
+      median=28,
+      upper quartile=53,
+      lower quartile=6,
+      upper whisker=83,
+      lower whisker=0
+    },
+    color=black!30!green
+    ] coordinates {};
+  \end{axis}
+\end{tikzpicture}
+\caption{Action success rate across all participants.}
+\label{fig:user-test-action-boxplot}
+\end{figure}
+\end{frame}

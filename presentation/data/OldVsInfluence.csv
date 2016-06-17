@@ -1,0 +1,7 @@
+Row,Action,Previous Model,Influence Diagram
+6,Shelves\_Lamp\_Toggle,40,100
+5,Spotify\_PlayPause,100,100
+4,Spotify\_Next,50,75
+3,Architect\_Lamp\_Toggle,60,80
+2,TV\_Lamp\_Toggle,100,100
+1,Shelves\_Lamp\_Toggle,83.33333333,100

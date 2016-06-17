@@ -1,0 +1,63 @@
+\section{Conclusion}
+
+\begin{frame}{Conclusion}{Problem Statement}
+
+\begin{framed}
+\noindent How can we design and implement a system that utilizes contextual information for controlling a smart home using a wearable in a gesture driven solution?
+\end{framed}
+
+\end{frame}
+
+\begin{frame}{Conclusion}{Our Solution}
+
+\begin{itemize}
+	\item Combination of 1\textcent~and \$3 to recognize gestures on the wearable
+	\item BLE beacons to position user
+	\item Raspberry Pi and openHAB to connect wearable and controllable devices
+	\item Bayesian network for determining appropriate action
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Conclusion}{Issues}
+
+\begin{itemize}
+	\item Model was flawed and affected configurations where a gesture was bound to multiple actions
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Conclusion}{Influence Diagram}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.7]
+\begin{axis}[
+    xbar,
+    bar width=7pt,
+    yticklabels from table={data/OldVsInfluence.csv}{Action},
+    ytick=data,
+    y tick label style={
+    % rotate=45,
+    anchor=east,
+    },
+    xlabel = Success Rate (\%),
+    % width=0.45\textwidth,
+    xmin = 0,
+    xmax = 100,
+    legend style={
+    at={(0,0)},
+    anchor=south, at={(axis description cs:0.5,1)}}
+    ]
+    \addplot table[y=Row, x=Previous Model] {data/OldVsInfluence.csv};
+    \addplot table[y=Row, x=Influence Diagram] {data/OldVsInfluence.csv};
+    \legend{Previous Model, Influence Diagram}
+\end{axis}
+\end{tikzpicture}
+\caption{Success rates for participant 2 in the previous model compared to the proposed influence diagram.}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\centering\huge\textbf{\structure{Demo}}
+\end{frame}

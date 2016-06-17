@@ -29,8 +29,22 @@
 
 \usepackage{caption}
 \usepackage{tikz} %Tikz
+\usepackage{tikzscale}
 \usepackage{pgfplots} %Graph plotting
+\pgfplotsset{compat=newest,
+%  grid=major, 
+  table/col sep = comma,
+  every axis legend/.append style={
+    no marks,
+%   at={(0.5,1.25)},
+%   legend columns=-1,
+    filter discard warning=false,
+  }
+}
+\usepgfplotslibrary{statistics} % For box plots
 \usepackage[absolute,overlay]{textpos}
+\usepackage{framed} %For definitions
+\usepackage{textcomp} %provides text versions of math symbols, e.g. \textrightarrow
 
 % colored hyperlinks
 \newcommand{\chref}[2]{%
@@ -90,6 +104,8 @@
 \input{content/introduction}
 \input{content/deployment-diagram}
 \input{content/context-engine}
+\input{content/user-test}
+\input{content/conclusion}
 
 %%%
 % BELOW IS THE DEMO CONTENT
